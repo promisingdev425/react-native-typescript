@@ -5,7 +5,7 @@ import { Text } from 'react-native';
  * @param {object} props
  * @param {string} [props.className]
  */
-export default function WithMocks({
+export function WithMocks({
 }) {
   return (
     <>

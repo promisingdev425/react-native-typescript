@@ -1,22 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MOCKS } from '@env';
 
-import { useExampleAuth } from '~/services/auth';
+import { useAuthService } from '~/services/auth';
 
-import Main from './src/bootstrap/WithServer.jsx';
+import { PageLoader } from './src/components';
+import { LoginConnected } from './src/pages/login';
+// TODO No longer need default export
+import { WithServer } from './src/bootstrap/WithServer.jsx';
 
-function PageLoader() {
-  return <Text>Loading...</Text>;
-}
-
-function Login() {
-  return <Text>Login In</Text>;
-}
-
+/**
+ * @param {object} props
+ * @param {object} [props.authService]
+ * @param {React.ReactElement} [props.children]
+ * @return {React.ReactNode}
+ */
 export default function App({
+  // Allow overriding the default auth client.
   authService,
+  // Allow passing the mock implementation.
+  children,
+  // Anything else should be passed through to WithServer
   ...rest
 }) {
   const {
@@ -25,7 +27,7 @@ export default function App({
     onLogin,
     onForgotLogin,
     onLogout
-  } = useExampleAuth(authService);
+  } = useAuthService(authService);
 
   const props = {
     ...rest,
@@ -42,44 +44,16 @@ export default function App({
   return (
     <>
       {!authenticated &&
-        <Login onLogin={onLogin} onForgotLogin={onForgotLogin} />
+        <LoginConnected onLogin={onLogin} onForgotLogin={onForgotLogin} />
       }
       {initialized &&
         <React.Suspense fallback={<PageLoader />}>
-          <Main {...rest} />
+          { children
+            ? children
+            : <WithServer {...props} />
+          }
         </React.Suspense>
       }
     </>
   );
-
-  // if (!authenticated) {
-  //   return <Login onLogin={onLogin} onForgotLogin={onForgotLogin} />;
-  // } else if (initialized) {
-  //   return (
-  //     <React.Suspense fallback={<PageLoader />}>
-  //       <Main {...rest} />
-  //     </React.Suspense>
-  //   );
-  // } else {
-  //   // TODO Will we ever get into this state?
-  //   return <PageLoader />;
-  // }
-
-  // return (
-  //   <View style={styles.container}>
-  //     <React.Suspense fallback={<PageLoader />}>
-  //       <Main />
-  //     </React.Suspense>
-  //     <StatusBar style="auto" />
-  //   </View>
-  // );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

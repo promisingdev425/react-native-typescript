@@ -5,8 +5,7 @@ import { Text } from 'react-native';
  * @param {object} props
  * @param {string} [props.className]
  */
-export default function WithServer({
-  // className,
+export function WithServer({
 }) {
   return (
     <Text>With Server!!</Text>

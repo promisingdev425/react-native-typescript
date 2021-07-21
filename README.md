@@ -15,6 +15,7 @@ the following tools and frameworks:
 - [Firebase](https://firebase.google.com/) for data integration
 - [React Navigation](https://reactnavigation.org/) navigation/routing library
 - [Emotion](https://emotion.sh/docs/introduction) CSS in JS tooling
+- [Polp](https://plopjs.com/) For scaffolding/generating components
 
 ## Install
 
@@ -42,8 +43,28 @@ You can then login from the commandline using:
 
 The following commands are available through yarn:
 
+### Run
+
 - `yarn start` Start the Expo development environment pointed.
 - `yarn start:mock` Start the Expo development environment configured to use mock data.
+- `yarn web` Start Expo and launch the web version.
+- `yarn web:mock` Start Expo and launch the web version in mock mode.
+- `yarn ios` Start Expo and launch the ios version.
+- `yarn ios:mock` Start Expo and launch the ios version in mock mode.
+- `yarn android` Start Expo and launch the android version.
+- `yarn android:mock` Start Expo and launch the android version in mock mode.
+
+### Util
+
+- `yarn generate` Generate a new component or page. Follow the instructions or read the
+   Plop.js docs for more info.
+
+### Build
+
+- `yarn build:web` Build the production web version of the application
+- `yarn build:ios` Build the production ios version of the application
+- `yarn build:android` Build the production android version of the application
+- `yarn clean` Remove all build artifacts.
 
 ## Debugging the Simulator
 
