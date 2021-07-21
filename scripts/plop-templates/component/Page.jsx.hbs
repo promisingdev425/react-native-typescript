@@ -1,0 +1,35 @@
+import React from 'react';
+import { View } from 'react-native';
+import PropTypes from 'prop-types';
+
+/**
+ * `<{{pascalCase name}}>`
+ *
+ * @param {object} props
+ * @return {React.ReactNode}
+ */
+export function {{pascalCase name}}({
+  ...rest
+}) {
+  return (
+    <View {...rest}>
+    </View>
+  );
+}
+
+{{pascalCase name}}.propTypes = {
+};
+
+/**
+ * `<{{pascalCase name}}Connected>` connects the {{pascalCase name}}
+ * component with the rest of the app (ie. routing, services, store, etc.).
+ *
+ * @param {object} props
+ * @return {React.ReactNode}
+ */
+export function {{pascalCase name}}Connected() {
+  return (
+    <{{pascalCase name}}
+    />
+  );
+}

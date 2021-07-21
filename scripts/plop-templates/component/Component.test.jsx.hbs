@@ -1,0 +1,18 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+
+import { {{pascalCase name}} } from './{{pascalCase name}}.jsx';
+
+describe('{{pascalCase name}}', function() {
+  beforeEach(() => {
+    render(
+      <{{pascalCase name}}
+        testId="{{pascalCase name}}"
+      />
+    );
+  });
+
+  it('should render', () => {
+    expect(screen.getByTestId('{{pascalCase name}}')).toBeInTheDocument();
+  });
+});
