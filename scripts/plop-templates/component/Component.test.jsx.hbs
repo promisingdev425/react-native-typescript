@@ -1,18 +1,24 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { View } from 'react-native';
+import { render, screen } from '@testing-library/react-native';
 
 import { {{pascalCase name}} } from './{{pascalCase name}}.jsx';
 
 describe('{{pascalCase name}}', function() {
+  let screen;
+
   beforeEach(() => {
-    render(
-      <{{pascalCase name}}
-        testId="{{pascalCase name}}"
-      />
+    screen = render(
+      <View testID="Root">
+        <{{pascalCase name}}
+          testID="{{pascalCase name}}"
+        />
+      </View>
     );
   });
 
   it('should render', () => {
-    expect(screen.getByTestId('{{pascalCase name}}')).toBeInTheDocument();
+    expect(screen.getByTestId('Root'))
+      .toContain(screen.getByTestId('{{pascalCase name}}'));
   });
 });
