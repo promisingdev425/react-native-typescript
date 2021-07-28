@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { render } from '@testing-library/react-native';
 
-import { Login } from './Login.js';
+import { Login } from './Login.jsx';
 
 describe('Login', function() {
   let screen;

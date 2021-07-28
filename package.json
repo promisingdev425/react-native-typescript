@@ -15,11 +15,11 @@
     "build:android": "expo build:android --no-publish",
     "test": "jest",
     "generate": "plop --plopfile ./scripts/plopfile.js",
-    "clean": "rimraf .expo/web/cache web-build App.js",
-    "setup": "yarn clean && cpr App.api.js App.js -o",
-    "setup:mock": "yarn clean && cpr App.mock.js App.js -o",
-    "setup:storybook": "yarn clean && cpr App.storybook.js App.js -o && rnstl --searchDir ./src --pattern **/*.stories.*",
-    "storybook": "start-storybook -p 7007",
+    "clean": "rimraf .expo/web/cache web-build App.jsx",
+    "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
+    "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
+    "setup:storybook": "yarn clean && cpr App.storybook.jsx App.jsx -o && rnstl --searchDir ./src --pattern **/*.stories.*",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -36,12 +36,18 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "0.13.18"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.14.8",
+    "@expo/webpack-config": "^0.13.1",
+    "@storybook/addon-actions": "^6.3.6",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/addon-links": "^6.3.6",
+    "@storybook/react": "^6.3.6",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-native": "^7.2.0",
+    "@types/react-native": "~0.63.2",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.6.0",
@@ -49,11 +55,23 @@
     "cpr": "^3.0.1",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-jest": "^24.4.0",
+    "jest-expo": "^42.0.1",
     "plop": "^2.7.4",
     "react-native-dotenv": "^3.1.1",
     "react-native-storybook-loader": "^2.0.4",
     "react-test-renderer": "^17.0.2",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "~4.0.0"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": ["./setupTests.js"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "transform": {
+      "^.+\\.[jt]sx?$": "babel-jest"
+    }
+  }
 }

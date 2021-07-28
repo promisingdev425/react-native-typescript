@@ -1,14 +1,9 @@
 import React from 'react';
 
-// TODO Will this bloat the production bundle?
-// If so, can we automate it's addition or removal?
-export {default} from './storybook';
-
 import { useAuthService } from '~/services/auth';
 
 import { PageLoader } from './src/components';
 import { LoginConnected } from './src/pages/login';
-// TODO No longer need default export
 import { WithServer } from './src/bootstrap/WithServer.jsx';
 
 /**

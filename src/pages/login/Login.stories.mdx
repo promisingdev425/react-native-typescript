@@ -2,15 +2,25 @@ import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-do
 
 import { Login } from './Login.jsx';
 
-<Meta title="Pages/Login" />
+<Meta
+  title="Pages/Login"
+  argTypes={{
+  }}
+/>
 
 # Login
 
 <Description of={ Login } />
 
+export const Template = props => <Login {...props} />;
+
 <Canvas>
-  <Story name="Login">
-    <Login />
+  <Story
+    name="Login"
+    args={{
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 

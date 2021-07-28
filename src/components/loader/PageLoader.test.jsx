@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { render } from '@testing-library/react-native';
 
-import { PageLoader } from './PageLoader.js';
+import { PageLoader } from './PageLoader.jsx';
 
 describe('PageLoader', function() {
   let screen;
