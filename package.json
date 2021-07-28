@@ -1,6 +1,36 @@
 {
+  "name": "@apartmentsnapshot/snapshot-ui-storybook",
+  "version": "0.0.1",
+  "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "validate": "cd packages/snapshot-ui && yarn validate",
+    "storybook": "yarn setup && expo start -c",
+    "clean": "rimraf .expo/web/cache web-build",
+    "setup": "yarn clean && rnstl --searchDir ./packages/snapshot-ui/src --pattern '**/*.stories.js'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "expo": "~42.0.0",
+    "expo-status-bar": "~1.0.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-web": "~0.13.12",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/addon-ondevice-notes": "^5.3.23",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "react-native-storybook-loader": "^2.0.4",
+    "rimraf": "^3.0.2"
+  }
 }

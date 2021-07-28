@@ -2,6 +2,18 @@
   "name": "@apartmentsnapshot/snapshot-ui",
   "version": "0.0.1",
   "main": ".expo/__generated__/AppEntry.js",
+  "workspaces": {
+    "nohoist": [
+      "plop",
+      "**/node-plop",
+      "@storybook",
+      "@storybook/**",
+      "@expo",
+      "@expo/**",
+      "expo",
+      "expo/**"
+    ]
+  },
   "scripts": {
     "start": "yarn setup && APP_ENV=dev expo start -c",
     "start:mock": "yarn setup:mock && APP_ENV=mock expo start -c",
@@ -15,15 +27,17 @@
     "build:web": "expo build:web --no-publish",
     "build:ios": "expo build:ios --no-publish",
     "build:android": "expo build:android --no-publish",
+    "lint": "yarn eslint",
     "test": "jest",
+    "test-ci": "yarn setup && yarn lint && yarn test --watchAll=false --runInBand --coverage",
+    "validate": "yarn setup && yarn test-ci && yarn build-storybook",
     "generate": "plop --plopfile ./scripts/plopfile.js",
     "clean": "rimraf .expo/web/cache web-build App.jsx",
     "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
-    "setup:storybook": "yarn clean && cpr App.storybook.jsx App.jsx -o && rnstl --searchDir ./src --pattern **/*.stories.*",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "postinstall": "expo-yarn-workspaces postinstall"
+    "postinstall": "expo-yarn-workspaces postinstall && patch-package"
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
@@ -56,6 +70,7 @@
     "babel-plugin-inline-dotenv": "^1.6.0",
     "colors": "^1.4.0",
     "cpr": "^3.0.1",
+    "eslint": "^7.31.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-jest": "^24.4.0",
     "expo-yarn-workspaces": "^1.5.2",

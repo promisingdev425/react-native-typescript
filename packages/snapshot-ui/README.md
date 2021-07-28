@@ -66,6 +66,11 @@ The following commands are available through yarn:
 - `yarn build:android` Build the production android version of the application
 - `yarn clean` Remove all build artifacts.
 
+### CI
+
+- `yarn validate` Validate the build on a CI environment. This is also useful
+  to run before opening a PR or merging to master.
+
 ## Debugging the Simulator
 
 You can use Chrome DevTools to debug the code running in the iOS or Android simulators

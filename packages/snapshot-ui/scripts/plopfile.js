@@ -57,7 +57,14 @@ function makeComponentActions(
       templateFile: `plop-templates/component/Component.test.jsx.hbs`,
     },
     {
-      // Name.stories.mdx
+      // Name.stories.js (Native on device stories)
+      type        : 'add',
+      data        : data,
+      path        : `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.stories.js`,
+      templateFile: `plop-templates/component/Component.stories.js.hbs`,
+    },
+    {
+      // Name.stories.mdx (Web component documentation)
       type        : 'add',
       data        : data,
       path        : `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.stories.mdx`,
