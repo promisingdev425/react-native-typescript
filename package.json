@@ -1,24 +1,48 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "yarn setup && APP_ENV=dev expo start -c",
+    "start:mock": "yarn setup:mock && APP_ENV=mock expo start -c",
+    "android": "yarn setup && expo start --android",
+    "android:mock": "yarn setup:mock && expo start --android",
+    "ios": "yarn setup && expo start --ios",
+    "ios:mock": "yarn setup:mock && expo start --ios",
+    "web": "yarn setup && expo start --web",
+    "web:mock": "yarn setup:mock && expo start --web",
+    "build:web": "expo build:web --no-publish",
+    "build:ios": "expo build:ios --no-publish",
+    "build:android": "expo build:android --no-publish",
+    "generate": "plop --plopfile ./scripts/plopfile.js",
+    "clean": "rimraf .expo/web/cache web-build App.js",
+    "setup": "yarn clean && cpr App.api.js App.js -o",
+    "setup:mock": "yarn clean && cpr App.mock.js App.js -o"
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.0",
+    "@thesoulfresh/utils": "^0.3.3",
     "expo": "~42.0.0",
+    "expo-auth-session": "^3.3.1",
+    "expo-random": "^11.2.0",
     "expo-status-bar": "~1.0.4",
+    "jwt-decode": "^3.1.2",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "babel-plugin-inline-dotenv": "^1.6.0",
+    "colors": "^1.4.0",
+    "cpr": "^3.0.1",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "plop": "^2.7.4",
+    "react-native-dotenv": "^3.1.1",
+    "rimraf": "^3.0.2"
   },
   "private": true
 }
