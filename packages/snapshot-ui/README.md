@@ -54,6 +54,11 @@ The following commands are available through yarn:
 - `yarn android` Start Expo and launch the android version.
 - `yarn android:mock` Start Expo and launch the android version in mock mode.
 
+### Storybook
+
+- `yarn storybook` Run the web storybook with full component documentation.
+- `yarn storybook:native` Run the on device storybook without docs.
+
 ### Util
 
 - `yarn generate` Generate a new component or page. Follow the instructions or read the
