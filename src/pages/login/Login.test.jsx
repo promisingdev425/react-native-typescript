@@ -1,18 +1,24 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { View } from 'react-native';
+import { render } from '@testing-library/react-native';
 
 import { Login } from './Login.jsx';
 
 describe('Login', function() {
+  let screen;
+
   beforeEach(() => {
-    render(
-      <Login
-        testId="Login"
-      />
+    screen = render(
+      <View testID="Root">
+        <Login
+          testID="Login"
+        />
+      </View>
     );
   });
 
   it('should render', () => {
-    expect(screen.getByTestId('Login')).toBeInTheDocument();
+    expect(screen.getByTestId('Root'))
+      .toContainElement(screen.getByTestId('Login'));
   });
 });

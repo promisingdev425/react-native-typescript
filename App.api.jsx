@@ -4,10 +4,14 @@ import { useAuthService } from '~/services/auth';
 
 import { PageLoader } from './src/components';
 import { LoginConnected } from './src/pages/login';
-// TODO No longer need default export
 import { WithServer } from './src/bootstrap/WithServer.jsx';
 
 /**
+ * If <App> is used as the entry point to the application,
+ * it will default to injecting the real services into the
+ * application. This entry point can also be used during
+ * testing by passing the auth service instance and the
+ * `<WithMocks>` component as children.
  * @param {object} props
  * @param {object} [props.authService]
  * @param {React.ReactElement} [props.children]

@@ -2,15 +2,25 @@ import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-do
 
 import { {{pascalCase name}} } from './{{pascalCase name}}.jsx';
 
-<Meta title="{{pascalCase componentType}}s/{{pascalCase name}}" />
+<Meta
+  title="{{pascalCase componentType}}s/{{pascalCase name}}"
+  argTypes={{
+  }}
+/>
 
 # {{pascalCase name}}
 
 <Description of={ {{pascalCase name}} } />
 
+export const Tempalte = props => <{{pascaleCase name}} {...props} />;
+
 <Canvas>
-  <Story name="{{pascalCase name}}">
-    <{{pascalCase name}} />
+  <Story
+    name="{{pascalCase name}}"
+    args={{
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
