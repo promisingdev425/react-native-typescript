@@ -1,77 +1,36 @@
 {
+  "name": "@apartmentsnapshot/snapshot-ui-storybook",
+  "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "yarn setup && APP_ENV=dev expo start -c",
-    "start:mock": "yarn setup:mock && APP_ENV=mock expo start -c",
-    "start:storybook": "yarn setup:storybook && APP_ENV=mock expo start -c",
-    "android": "yarn setup && expo start --android",
-    "android:mock": "yarn setup:mock && expo start --android",
-    "ios": "yarn setup && expo start --ios",
-    "ios:mock": "yarn setup:mock && expo start --ios",
-    "web": "yarn setup && expo start --web",
-    "web:mock": "yarn setup:mock && expo start --web",
-    "build:web": "expo build:web --no-publish",
-    "build:ios": "expo build:ios --no-publish",
-    "build:android": "expo build:android --no-publish",
-    "test": "jest",
-    "generate": "plop --plopfile ./scripts/plopfile.js",
-    "clean": "rimraf .expo/web/cache web-build App.jsx",
-    "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
-    "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
-    "setup:storybook": "yarn clean && cpr App.storybook.jsx App.jsx -o && rnstl --searchDir ./src --pattern **/*.stories.*",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "validate": "cd packages/snapshot-ui && yarn validate",
+    "storybook": "yarn setup && expo start -c",
+    "clean": "rimraf .expo/web/cache web-build",
+    "setup": "yarn clean && rnstl --searchDir ./packages/snapshot-ui/src --pattern '**/*.stories.js'"
   },
-  "dependencies": {
-    "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.0",
-    "@thesoulfresh/utils": "^0.3.3",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
     "expo": "~42.0.0",
-    "expo-auth-session": "^3.3.1",
-    "expo-random": "^11.2.0",
     "expo-status-bar": "~1.0.4",
-    "jwt-decode": "^3.1.2",
-    "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-web": "0.13.18"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@expo/webpack-config": "^0.13.1",
-    "@storybook/addon-actions": "^6.3.6",
-    "@storybook/addon-essentials": "^6.3.6",
-    "@storybook/addon-links": "^6.3.6",
-    "@storybook/react": "^6.3.6",
-    "@testing-library/jest-native": "^4.0.1",
-    "@testing-library/react-native": "^7.2.0",
-    "@types/react-native": "~0.63.2",
-    "babel-jest": "^27.0.6",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-inline-dotenv": "^1.6.0",
-    "colors": "^1.4.0",
-    "cpr": "^3.0.1",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "jest-expo": "^42.0.1",
-    "plop": "^2.7.4",
-    "react-native-dotenv": "^3.1.1",
+    "react-native-web": "~0.13.12",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/addon-ondevice-notes": "^5.3.23",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
     "react-native-storybook-loader": "^2.0.4",
-    "react-test-renderer": "^17.0.2",
-    "rimraf": "^3.0.2",
-    "typescript": "~4.0.0"
-  },
-  "private": true,
-  "jest": {
-    "preset": "jest-expo",
-    "setupFilesAfterEnv": ["./setupTests.js"],
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
-    ],
-    "transform": {
-      "^.+\\.[jt]sx?$": "babel-jest"
-    }
+    "rimraf": "^3.0.2"
   }
 }

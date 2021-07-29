@@ -1,0 +1,98 @@
+{
+  "name": "@apartmentsnapshot/snapshot-ui",
+  "version": "0.0.1",
+  "main": ".expo/__generated__/AppEntry.js",
+  "workspaces": {
+    "nohoist": [
+      "plop",
+      "**/node-plop",
+      "@storybook",
+      "@storybook/**",
+      "@expo",
+      "@expo/**",
+      "expo",
+      "expo/**"
+    ]
+  },
+  "scripts": {
+    "start": "yarn setup && APP_ENV=dev expo start -c",
+    "start:mock": "yarn setup:mock && APP_ENV=mock expo start -c",
+    "start:storybook": "yarn setup:storybook && APP_ENV=mock expo start -c",
+    "android": "yarn setup && expo start --android",
+    "android:mock": "yarn setup:mock && expo start --android",
+    "ios": "yarn setup && expo start --ios",
+    "ios:mock": "yarn setup:mock && expo start --ios",
+    "web": "yarn setup && expo start --web",
+    "web:mock": "yarn setup:mock && expo start --web",
+    "build:web": "expo build:web --no-publish",
+    "build:ios": "expo build:ios --no-publish",
+    "build:android": "expo build:android --no-publish",
+    "lint": "yarn eslint",
+    "test": "jest",
+    "test-ci": "yarn setup && yarn lint && yarn test --watchAll=false --runInBand --coverage",
+    "validate": "yarn setup && yarn test-ci && yarn build-storybook",
+    "generate": "plop --plopfile ./scripts/plopfile.js",
+    "clean": "rimraf .expo/web/cache web-build App.jsx",
+    "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
+    "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook",
+    "postinstall": "expo-yarn-workspaces postinstall && patch-package"
+  },
+  "dependencies": {
+    "@emotion/native": "^11.0.0",
+    "@emotion/react": "^11.4.0",
+    "@thesoulfresh/utils": "^0.3.3",
+    "expo": "~42.0.0",
+    "expo-auth-session": "^3.3.1",
+    "expo-random": "^11.2.0",
+    "expo-status-bar": "~1.0.4",
+    "jwt-decode": "^3.1.2",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-web": "0.13.18"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@expo/webpack-config": "^0.13.1",
+    "@storybook/addon-actions": "^6.3.6",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/addon-links": "^6.3.6",
+    "@storybook/react": "^6.3.6",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/react-native": "~0.63.2",
+    "babel-jest": "^27.0.6",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-inline-dotenv": "^1.6.0",
+    "colors": "^1.4.0",
+    "cpr": "^3.0.1",
+    "eslint": "^7.31.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "expo-yarn-workspaces": "^1.5.2",
+    "jest-expo": "^42.0.1",
+    "plop": "^2.7.4",
+    "react-native-dotenv": "^3.1.1",
+    "react-native-storybook-loader": "^2.0.4",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "~4.0.0"
+  },
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "transform": {
+      "^.+\\.[jt]sx?$": "babel-jest"
+    }
+  }
+}

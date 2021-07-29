@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "storybook-native",
-    "slug": "storybook-native",
+    "name": "snapshot-ui",
+    "slug": "snapshot-ui",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.apartmentsnapshot.snapshot-ui"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.apartmentsnapshot.snapshotui"
     },
     "web": {
       "favicon": "./assets/favicon.png"
