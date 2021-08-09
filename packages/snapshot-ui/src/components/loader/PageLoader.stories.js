@@ -5,8 +5,8 @@ import { Centered } from '../../storybook-utils';
 
 import { PageLoader } from './PageLoader.jsx';
 
-storiesOf('PageLoader', module)
+storiesOf('Loader', module)
   .addDecorator(cb => <Centered>{cb()}</Centered>)
-  .add('page loader', () => (
+  .add('Page Loader', () => (
     <PageLoader />
   ));
