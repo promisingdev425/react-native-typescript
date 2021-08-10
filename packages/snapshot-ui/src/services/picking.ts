@@ -17,18 +17,6 @@ const getPlatformGroup = () => {
   return isIphoneX() ? 'iPhoneX' : 'notIphoneX'
 }
 
-const invokeLazily = (fn) => {
-  return (...args) => {
-    const actionToInvoke = fn(...args)
-
-    if (!actionToInvoke) {
-      return null
-    }
-
-    return actionToInvoke()
-  }
-}
-
 const forPlatform = (platform: any, fallback?: any) => {
   const OSKey = getPlatformOS()
   const groupKey = getPlatformGroup()
@@ -37,12 +25,9 @@ const forPlatform = (platform: any, fallback?: any) => {
   return find([platform[OSKey], platform[groupKey], platform[defaultKey], fallback], negate(isNil))
 }
 
-const invokeForPlatform = invokeLazily(forPlatform)
-
 export default {
   getPlatformGroup,
   getPlatformOS,
   getPlatformVersion,
   forPlatform,
-  invokeForPlatform,
 }

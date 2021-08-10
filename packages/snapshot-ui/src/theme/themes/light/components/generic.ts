@@ -2,13 +2,13 @@ import { getColor } from '../../../helpers'
 
 export default {
   color: {
-    primary: getColor('persimmon100'),
+    primary: getColor('brandOrange'),
     neutral: getColor('white'),
   },
 
   isPressed: {
     color: {
-      primary: getColor('persimmon75'),
+      primary: getColor('brandPink'),
       neutral: getColor('white'),
     },
   },
