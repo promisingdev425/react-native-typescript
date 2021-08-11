@@ -11,16 +11,16 @@ the following tools and frameworks:
 - Yarn for package management
 - [React Native](https://reactnative.dev/)
 - [Expo](https://docs.expo.io/) for cross device development environment and libraries (web, iOS, Android)
+- [Storybook](https://storybook.js.org/) for component development and documentation
 - [Auth0](https://auth0.com/) for authentication
 - [Firebase](https://firebase.google.com/) for data integration
 - [React Navigation](https://reactnavigation.org/) navigation/routing library
-- [Emotion](https://emotion.sh/docs/introduction) CSS in JS tooling
 - [Polp](https://plopjs.com/) For scaffolding/generating components
 
 ## Install
 
     git clone git@github.com:Apartment-Snapshot/snapshot-ui.git
-    cd snapshot-ui
+    cd snapshot-ui/app
     yarn install
     yarn global install expo-cli
 
@@ -63,6 +63,7 @@ The following commands are available through yarn:
 
 - `yarn generate` Generate a new component or page. Follow the instructions or read the
    Plop.js docs for more info.
+- `yarn lint` Lint the code. This is also run during `yarn validate`.
 
 ### Build
 
