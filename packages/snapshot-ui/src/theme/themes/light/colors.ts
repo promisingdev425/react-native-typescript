@@ -1,6 +1,6 @@
 export default {
   // System colors
-  black: '#1F326C',
+  black: '#000000',
   white: '#FFFFFF',
   clear: 'rgba(0, 0, 0, 0)',
   overlay: 'rgba(0, 0, 0, 0.4)',
@@ -22,7 +22,6 @@ export default {
   background: '#F5F6FA',
 
   // Text colors
-  textPrimary: '#ffffff',
+  textPrimary: '#1F326C',
   textSecondary: '#8F94A2',
-
 }
