@@ -13,6 +13,7 @@
     "storybook": "yarn workspace @apartmentsnapshot/snapshot-ui storybook",
     "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook storybook",
     "test": "yarn workspace @apartmentsnapshot/snapshot-ui test",
+    "lint": "yarn workspace @apartmentsnapshot/snapshot-ui lint",
     "validate": "yarn workspace @apartmentsnapshot/snapshot-ui validate",
     "postinstall": "patch-package"
   },

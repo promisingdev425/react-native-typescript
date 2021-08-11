@@ -10,7 +10,7 @@
   },
   "scripts": {
     "storybook": "yarn setup && expo start -c",
-    "clean": "rimraf .expo",
+    "clean": "rimraf .expo storyLoader.js",
     "setup": "yarn clean && rnstl --searchDir ../app/src --pattern '**/*.stories.js' --outputFile ./storyLoader.js",
     "postinstall": "expo-yarn-workspaces postinstall"
   },

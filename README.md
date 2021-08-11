@@ -1,35 +1,52 @@
 # snapshot-ui
 
-This repo contains the Mobile and Web Snapshot UI.
-
-## Structure
-
-This package utilizes yarn workspaces with subpackages located in the `/packages`
-folder. The root of this project is configured to render React Native
-Storybook with "on device" component stories.
-
-For documentation on the subpackages, see those packages directly.
-
-### Why Yarn Workspaces?
-
-The workspaces setup allows us to document and test our components for both
-React Native and React Web. It is required because Storybook for React Native
-needs to work with a different version of the `@storybook` package than
-Storybook for Web. In order to facilitate this, the root of this package
-installs the necessary packages to run React Native Storybook. The subpackages
-can then install different versions of `@storybook`, enabling the Storybook
-for Web UI. Unfortunately, the React Native Storybook is not able to compile
-files above it's `package.json` file which is why it cannot be placed as a
-subpackage next to (or inside) `snapshot-ui`.
+This repo contains the Mobile and Web Snapshot UI. It is built with
+Expo for mobile and web deployment and with Storybook for component
+documentation. See the `app/` folder for more detailed information
+about the project.
 
 ## Setup
 
     > yarn install
-    > cd packages/snapshot-ui
+    > cd app/
     > yarn start
 
 ## Available Commands
 
-- `yarn storybook` Start the React Native on device Storybook.
+- `yarn start` Start the app with live APIs.
+- `yarn start:mock` Start the app with mock APIs.
+- `yarn storybook` Start the full Storybook with web components and documentation.
+- `yarn storybook:native` Start the simplified Storybook that runs on native devices and simulators.
+- `yarn test` Run the tests.
+- `yarn lint` Lint the code.
 - `yarn validate` Validate the project on a CI environment (ie. run tests and builds).
+
+> When switching between native builds (ex. `yarn start` and `yarn storybook`), you
+> may find the simulator fails to refresh. You can use `Cmd + Shift + z` to open
+> the Expo menu on the simulator and then click "Reload" to force a refresh of the app.
+
+## Project Structure
+
+This project uses a non-standard folder layout in order to support
+building separate Storybook environments for web and native. During
+development, you can work directly within the `app/` folder as if it were
+a standard React Native project.
+
+### Tell me more...
+
+This project utilizes Yarn workspaces with subpackages located in the
+`app/` and `storybook/` folders. The `app/` directory is the main source
+directory for the application. During development, you can run the main
+development yarn commands from either the project root or from within
+the `app/` directory.
+
+The `storybook/` subpackage is used to build an on device version of our
+storybook. This separate package is required because `@storybook/react-native`
+depends on an older version of `@storybook/core` than our primary storybook
+environment. Utilizing Yarn workspaces allows us to install both versions
+of `@storybook` dependencies. You should never need to work within the
+`storybook/` folder as the `yarn storybook:native` commands are available
+within the project root and `app/` subpackage.
+
+For further documentation on the individual subpackages, see those packages directly.
 
