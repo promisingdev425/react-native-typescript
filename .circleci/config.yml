@@ -74,7 +74,6 @@ commands:
 jobs:
   test:
     executor: node
-    environment:
     steps:
       - checkout
       - install_dependencies
@@ -84,7 +83,7 @@ jobs:
           command: yarn validate
       - save_logs
       - store_test_results:
-          path: ./reports/coverage/
+          path: ./reports/coverage
       # https://circleci.com/docs/2.0/artifacts/
       - store_artifacts:
           path: ./reports
