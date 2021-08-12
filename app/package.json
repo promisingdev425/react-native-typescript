@@ -15,11 +15,12 @@
     "build:ios": "expo build:ios --no-publish",
     "build:android": "expo build:android --no-publish",
     "lint": "yarn eslint",
+    "lint-ci": "yarn eslint --format junit -o reports/junit/js-lint-results.xml",
     "test": "jest --watch",
-    "test-ci": "yarn setup && yarn test --watchAll=false --runInBand --coverage",
-    "validate": "yarn setup && yarn lint && yarn test-ci && yarn build-storybook",
+    "test-ci": "yarn setup && jest --watchAll=false --runInBand --coverage=true  --reporters=default --reporters=jest-junit",
+    "validate": "yarn setup && yarn lint-ci && yarn test-ci && yarn build-storybook",
     "generate": "plop --plopfile ./scripts/plopfile.js",
-    "clean": "rimraf .expo/web/cache web-build App.jsx",
+    "clean": "rimraf .expo/web/cache web-build App.jsx reports junit.xml",
     "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
     "storybook": "start-storybook -p 7007",
@@ -62,6 +63,7 @@
     "eslint-plugin-jest": "^24.4.0",
     "expo-yarn-workspaces": "^1.5.2",
     "jest-expo": "^42.0.1",
+    "jest-junit": "^12.2.0",
     "plop": "^2.7.4",
     "react-native-dotenv": "^3.1.1",
     "react-test-renderer": "^17.0.2",
@@ -79,6 +81,15 @@
     ],
     "transform": {
       "^.+\\.[jt]sx?$": "babel-jest"
+    },
+    "coverageDirectory": "reports/coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
     }
   }
 }

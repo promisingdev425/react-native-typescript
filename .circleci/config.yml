@@ -8,161 +8,165 @@ executors:
       - image: cimg/node:14.17.5-browsers
     working_directory: ~/apartment-snapshot
 
-# commands:
-#   set_deploy_key:
-#     description: Sets the ssh key to allow pushing to GitHub branches
-#     steps:
-#       - add_ssh_keys:
-#           fingerprints:
-#             - '3f:7c:21:22:cf:8c:2d:1c:e5:4a:9c:55:7c:f0:fc:8e'
-#
-#   gcloud_auth:
-#     description: "Authenticate the Google Cloud SDK"
-#     parameters:
-#       keyfile:
-#         type: string
-#         default: "GCP_DEV_KEY"
-#     steps:
-#       - run:
-#           name: "Activate GCP Service Account"
-#           command: |
-#             # https://github.com/firebase/firebase-tools/issues/825
-#             # https://developers.google.com/accounts/docs/application-default-credentials
-#             echo ${<< parameters.keyfile >>} | base64 -d > ${HOME}/gcloud-service-key.json
-#             echo 'export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud-service-key.json"' >> $BASH_ENV
-#
-#   install_dependencies:
-#     description: 'Install dependencies with caching.'
-#     parameters:
-#       cache_id:
-#         type: string
-#         default: v4
-#     steps:
-#       # Download and cache dependencies
-#       - restore_cache:
-#           keys:
-#             # https://circleci.com/docs/2.0/caching/#yarn-node
-#             - << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
-#             - << parameters.cache_id >>-streetwise-
-#       - run:
-#           name: "Install Dependencies"
-#           command: |
-#             ./nodew yarn install
-#
-#   save_dependency_cache:
-#     description: "Caching Dependencies"
-#     parameters:
-#       cache_id:
-#         type: string
-#         default: v4
-#     steps:
-#       - save_cache:
-#           key: << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
-#           paths:
-#             - ~/.cache/yarn
-#             - ~/.nvm
-#             - ./node_modules
-#
-#   save_logs:
-#     description: 'Save logs.'
-#     steps:
-#       - store_artifacts:
-#           path: ~/.npm/_logs
-#
-# jobs:
-#   test:
-#     executor: node
-#     environment:
-#     steps:
-#       - checkout
-#       - install_dependencies
-#       - save_dependency_cache
-#       - run:
-#           name: "Validate the Build"
-#           command: ./nodew yarn validate-ci
-#       - save_logs
-#       - store_test_results:
-#           path: test-results
-#       # https://circleci.com/docs/2.0/artifacts/
-#       - store_artifacts:
-#           path: test-results
-#       - store_artifacts:
-#           path: coverage
-#
-#   deploy-dev:
-#     executor: node
-#     steps:
-#       - checkout
-#       - gcloud_auth
-#       - install_dependencies
-#       - run:
-#           name: "Build for Dev"
-#           command: ./nodew yarn build-dev
-#       - run:
-#           name: "Deploy to Dev"
-#           command: ./nodew yarn deploy-dev
-#       - save_logs
-#
-#   deploy-storybook:
-#     executor: node
-#     steps:
-#       - set_deploy_key
-#       - run:
-#           name: "Ensure Correct Node Path"
-#           command: npm config set scripts-prepend-node-path auto
-#       - checkout
-#       - install_dependencies
-#       - run: ./nodew yarn deploy-storybook-ci
-#       - save_logs
-#
-#   deploy-prod:
-#     executor: node
-#     steps:
-#       - checkout
-#       - gcloud_auth:
-#           keyfile: "GCP_PROD_KEY"
-#       - install_dependencies
-#       - run:
-#           name: "Build for Prod"
-#           command: ./nodew yarn build
-#       - run:
-#           name: "Deploy to Prod"
-#           command: ./nodew yarn deploy-prod
-#       - save_logs
-#
-# # https://circleci.com/docs/2.0/workflows/
-# workflows:
-#   version: 2
-#   test-deploy:
-#     jobs:
-#       - test:
-#           filters:
-#             branches:
-#               ignore: gh-pages
-#             # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
-#             tags:
-#               only: /.*/
-#
-#       - deploy-dev:
-#           requires:
-#             - test
-#           filters:
-#             branches:
-#               only: master
-#               ignore: gh-pages
-#
-#       - deploy-storybook:
-#           requires:
-#             - test
-#           filters:
-#             branches:
-#               only: master
-#
-#       - deploy-prod:
-#           requires:
-#             - test
-#           filters:
-#             branches:
-#               ignore: /.*/
-#             tags:
-#               only: /release\/[0-9]+(\.[0-9]+)*/
+commands:
+  # set_deploy_key:
+  #   description: Sets the ssh key to allow pushing to GitHub branches
+  #   steps:
+  #     - add_ssh_keys:
+  #         fingerprints:
+  #           - '3f:7c:21:22:cf:8c:2d:1c:e5:4a:9c:55:7c:f0:fc:8e'
+
+  # gcloud_auth:
+  #   description: "Authenticate the Google Cloud SDK"
+  #   parameters:
+  #     keyfile:
+  #       type: string
+  #       default: "GCP_DEV_KEY"
+  #   steps:
+  #     - run:
+  #         name: "Activate GCP Service Account"
+  #         command: |
+  #           # https://github.com/firebase/firebase-tools/issues/825
+  #           # https://developers.google.com/accounts/docs/application-default-credentials
+  #           echo ${<< parameters.keyfile >>} | base64 -d > ${HOME}/gcloud-service-key.json
+  #           echo 'export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud-service-key.json"' >> $BASH_ENV
+
+  install_dependencies:
+    description: 'Install dependencies with caching.'
+    parameters:
+      cache_id:
+        type: string
+        default: v1
+    steps:
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # https://circleci.com/docs/2.0/caching/#yarn-node
+            - << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+            - << parameters.cache_id >>-streetwise-
+      - run:
+          name: "Install Dependencies"
+          command: |
+            yarn install
+
+  save_dependency_cache:
+    description: "Caching Dependencies"
+    parameters:
+      cache_id:
+        type: string
+        default: v1
+    steps:
+      - save_cache:
+          key: << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.nvm
+            - ./node_modules
+            - ./app/node_modules
+            - ./storybook/node_modules
+
+  save_logs:
+    description: 'Save logs.'
+    steps:
+      - store_artifacts:
+          path: ~/.npm/_logs
+
+jobs:
+  test:
+    executor: node
+    environment:
+    steps:
+      - checkout
+      - install_dependencies
+      - save_dependency_cache
+      - run:
+          name: "Validate the Build"
+          command: yarn validate
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - save_logs
+      - store_test_results:
+          path: ./reports/junit/
+      # https://circleci.com/docs/2.0/artifacts/
+      - store_artifacts:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/coverage/
+
+  # deploy-dev:
+  #   executor: node
+  #   steps:
+  #     - checkout
+  #     - gcloud_auth
+  #     - install_dependencies
+  #     - run:
+  #         name: "Build for Dev"
+  #         command: yarn build-dev
+  #     - run:
+  #         name: "Deploy to Dev"
+  #         command: yarn deploy-dev
+  #     - save_logs
+
+  deploy-storybook:
+    executor: node
+    steps:
+      - set_deploy_key
+      - run:
+          name: "Ensure Correct Node Path"
+          command: npm config set scripts-prepend-node-path auto
+      - checkout
+      - install_dependencies
+      - run: yarn deploy-storybook-ci
+      - save_logs
+
+  # deploy-prod:
+  #   executor: node
+  #   steps:
+  #     - checkout
+  #     - gcloud_auth:
+  #         keyfile: "GCP_PROD_KEY"
+  #     - install_dependencies
+  #     - run:
+  #         name: "Build for Prod"
+  #         command: yarn build
+  #     - run:
+  #         name: "Deploy to Prod"
+  #         command: yarn deploy-prod
+  #     - save_logs
+
+# https://circleci.com/docs/2.0/workflows/
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: gh-pages
+            # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
+            tags:
+              only: /.*/
+
+      # - deploy-dev:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
+      #         ignore: gh-pages
+
+      - deploy-storybook:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+
+      # - deploy-prod:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /release\/[0-9]+(\.[0-9]+)*/
