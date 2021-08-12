@@ -105,7 +105,7 @@ jobs:
   deploy-storybook:
     executor: node
     steps:
-        - set_deploy_key
+      - set_deploy_key
       - run:
           name: "Ensure Correct Node Path"
           command: npm config set scripts-prepend-node-path auto
