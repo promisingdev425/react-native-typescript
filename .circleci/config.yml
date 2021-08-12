@@ -9,12 +9,12 @@ executors:
     working_directory: ~/apartment-snapshot
 
 commands:
-  # set_deploy_key:
-  #   description: Sets the ssh key to allow pushing to GitHub branches
-  #   steps:
-  #     - add_ssh_keys:
-  #         fingerprints:
-  #           - '3f:7c:21:22:cf:8c:2d:1c:e5:4a:9c:55:7c:f0:fc:8e'
+  set_deploy_key:
+    description: Sets the ssh key to allow pushing to GitHub branches
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '51:54:62:57:f5:e5:ab:fe:97:8d:4c:6d:13:cd:2e:33'
 
   # gcloud_auth:
   #   description: "Authenticate the Google Cloud SDK"
@@ -82,16 +82,12 @@ jobs:
       - run:
           name: "Validate the Build"
           command: yarn validate
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - save_logs
       - store_test_results:
           path: ./reports/coverage/
       # https://circleci.com/docs/2.0/artifacts/
       - store_artifacts:
-          path: ./reports/coverage/
-      - store_artifacts:
-          path: ./reports/junit/
+          path: ./reports
 
   # deploy-dev:
   #   executor: node
@@ -107,17 +103,17 @@ jobs:
   #         command: yarn deploy-dev
   #     - save_logs
 
-  # deploy-storybook:
-  #   executor: node
-  #   steps:
-  #       - set_deploy_key
-  #     - run:
-  #         name: "Ensure Correct Node Path"
-  #         command: npm config set scripts-prepend-node-path auto
-  #     - checkout
-  #     - install_dependencies
-  #     - run: yarn deploy-storybook-ci
-  #     - save_logs
+  deploy-storybook:
+    executor: node
+    steps:
+        - set_deploy_key
+      - run:
+          name: "Ensure Correct Node Path"
+          command: npm config set scripts-prepend-node-path auto
+      - checkout
+      - install_dependencies
+      - run: yarn deploy-storybook-ci
+      - save_logs
 
   # deploy-prod:
   #   executor: node
@@ -155,6 +151,7 @@ workflows:
       #         only: master
       #         ignore: gh-pages
 
+      # This requires paying for a Team license on GitHub
       # - deploy-storybook:
       #     requires:
       #       - test

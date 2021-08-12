@@ -1,5 +1,7 @@
 # snapshot-ui
 
+[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
+
 The Mobile and Web Snapshot UI
 
 ## Tools and Frameworks

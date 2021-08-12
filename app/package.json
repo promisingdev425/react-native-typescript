@@ -26,6 +26,8 @@
     "storybook": "start-storybook -p 7007",
     "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook storybook",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
     "postinstall": "expo-yarn-workspaces postinstall && cd .. && yarn postinstall"
   },
   "dependencies": {
@@ -49,6 +51,7 @@
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
     "@storybook/react": "^6.3.6",
+    "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-native": "^7.2.0",
     "@types/react-native": "~0.63.2",
@@ -91,5 +94,8 @@
         "statements": 90
       }
     }
+  },
+  "jest-junit": {
+    "outputDirectory": "reports/coverage"
   }
 }
