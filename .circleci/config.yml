@@ -107,17 +107,17 @@ jobs:
   #         command: yarn deploy-dev
   #     - save_logs
 
-  deploy-storybook:
-    executor: node
-    steps:
-      - set_deploy_key
-      - run:
-          name: "Ensure Correct Node Path"
-          command: npm config set scripts-prepend-node-path auto
-      - checkout
-      - install_dependencies
-      - run: yarn deploy-storybook-ci
-      - save_logs
+  # deploy-storybook:
+  #   executor: node
+  #   steps:
+  #       - set_deploy_key
+  #     - run:
+  #         name: "Ensure Correct Node Path"
+  #         command: npm config set scripts-prepend-node-path auto
+  #     - checkout
+  #     - install_dependencies
+  #     - run: yarn deploy-storybook-ci
+  #     - save_logs
 
   # deploy-prod:
   #   executor: node
@@ -155,12 +155,12 @@ workflows:
       #         only: master
       #         ignore: gh-pages
 
-      - deploy-storybook:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+      # - deploy-storybook:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
 
       # - deploy-prod:
       #     requires:
