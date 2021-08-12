@@ -77,16 +77,16 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - save_dependency_cache
       - run:
           name: "Validate the Build"
           command: yarn validate
       - save_logs
       - store_test_results:
-          path: ./reports/coverage
+          path: reports/coverage
       # https://circleci.com/docs/2.0/artifacts/
       - store_artifacts:
-          path: ./reports
+          path: reports
+      - save_dependency_cache
 
   # deploy-dev:
   #   executor: node
