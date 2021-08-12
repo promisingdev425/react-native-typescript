@@ -1,4 +1,4 @@
-import PickingService from '../../../services/picking'
+import PickingService from '~/services/picking'
 
 const group = PickingService.forPlatform({
   ios: {
