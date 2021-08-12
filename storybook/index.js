@@ -16,7 +16,7 @@ addDecorator(withKnobs);
 
 // import stories
 configure(() => {
-  // require('./stories')
+  // require('@apartmentsnapshot/snapshot-ui/src/components/loader/PageLoader.stories')
   loadStories()
 }, module);
 

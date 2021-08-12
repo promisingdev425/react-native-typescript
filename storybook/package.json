@@ -1,0 +1,43 @@
+{
+  "name": "@apartmentsnapshot/snapshot-ui-storybook",
+  "version": "0.0.1",
+  "main": "__generated__/AppEntry.js",
+  "private": true,
+  "workspaces": {
+    "nohoist": [
+      "@storybook/core"
+    ]
+  },
+  "scripts": {
+    "storybook": "yarn setup && expo start -c",
+    "clean": "rimraf .expo storyLoader.js",
+    "setup": "yarn clean && rnstl --searchDir ../app/src --pattern '**/*.stories.js' --outputFile ./storyLoader.js",
+    "postinstall": "expo-yarn-workspaces postinstall"
+  },
+  "dependencies": {
+    "@apartmentsnapshot/snapshot-ui": "0.0.1"
+  },
+  "devDependencies": {
+    "@expo/webpack-config": "^0.14.0",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/addon-ondevice-notes": "^5.3.23",
+    "@storybook/core": "^5.3",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "babel-loader": "^8.2.2",
+    "expo": "~42.0.0",
+    "expo-status-bar": "~1.0.4",
+    "expo-yarn-workspaces": "^1.5.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-storybook-loader": "^2.0.4",
+    "react-native-web": "~0.13.12",
+    "rimraf": "^3.0.2"
+  }
+}
