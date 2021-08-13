@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+
+import { Box } from './Box.jsx';
+
+<Meta
+  title="Components/Box"
+  argTypes={{
+  }}
+/>
+
+# Box
+
+<Description of={ Box } />
+
+export const Template = props => <Box {...props} />;
+
+<Canvas>
+  <Story
+    name="Box"
+    args={{
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ Box } />

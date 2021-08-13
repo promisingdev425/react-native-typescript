@@ -1,6 +1,7 @@
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 
+import themeDecorator from './themeDecorator';
 import { loadStories } from './storyLoader';
   // "config": {
   //   "react-native-storybook-loader": {
@@ -13,6 +14,7 @@ import './rn-addons';
 
 // enables knobs for all stories
 addDecorator(withKnobs);
+addDecorator(themeDecorator);
 
 // import stories
 configure(() => {
