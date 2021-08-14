@@ -1,3 +1,3 @@
 /* PLOP_INJECT_EXPORT */
-export * from './box';
+export * from './ui';
 export * from './loader';
