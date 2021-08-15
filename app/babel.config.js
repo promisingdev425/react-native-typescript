@@ -8,6 +8,7 @@ module.exports = function(api) {
         allowUndefined: true,
       }],
       ['module-resolver', {
+        'extensions': ['.js', '.jsx', 'ts', 'tsx'],
         'alias': {
           '~': './src',
         }

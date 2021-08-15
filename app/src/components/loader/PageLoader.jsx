@@ -20,4 +20,3 @@ export function PageLoader({
 
 PageLoader.propTypes = {
 };
-
