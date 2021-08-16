@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '~/components'
 // import PropTypes from 'prop-types';
 
 /**
@@ -13,7 +14,7 @@ export function Login({
 }) {
   return (
     <View {...rest}>
-      <Text>Login Page</Text>
+      <Text p={5}>Login Page</Text>
     </View>
   );
 }

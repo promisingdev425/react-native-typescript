@@ -1,27 +1,30 @@
 import { Text as TextRN } from 'react-native'
 import styled from 'styled-components/native'
-import { space, color, typography, layout, flexbox, position } from 'styled-system'
-import PT from 'prop-types'
+import { space, color, backgroundColor, typography, layout, flexbox, position } from 'styled-system'
+import PropTypes from 'prop-types'
 
-// import { fontFamilyComposite, lineHeightComposite } from '~/theme'
+import { fontFamilyComposite, lineHeightComposite } from '~/theme'
 
 const Text = styled.Text`
   ${space}
+  ${backgroundColor}
   ${color}
   ${typography}
   ${layout}
   ${flexbox}
   ${position}
+  ${fontFamilyComposite}
+  ${lineHeightComposite}
 `
 
 Text.propTypes = {
   ...TextRN.propTypes,
-  allowFontScaling: PT.bool,
-  bg: PT.string,
-  color: PT.string,
-  fontSize: PT.number,
-  // fontFamilyGroup: PT.string,
-  // fontFamilyStyle: PT.string,
+  allowFontScaling: PropTypes.bool,
+  bg: PropTypes.string,
+  color: PropTypes.string,
+  fontSize: PropTypes.number,
+  fontFamilyGroup: PropTypes.string,
+  fontFamilyStyle: PropTypes.string,
 }
 
 Text.defaultProps = {
@@ -30,8 +33,8 @@ Text.defaultProps = {
   bg: 'clear',
   color: 'textPrimary',
   fontSize: 3,
-  // fontFamilyGroup: 'group.sfProDisplay',
-  // fontFamilyStyle: 'style.regular',
+  fontFamilyGroup: 'group.sfProDisplay',
+  fontFamilyStyle: 'style.bold',
 }
 
 export { Text }
