@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Text } from '~/components'
+import { TabBrowseIcon } from '~/assets/images'
 // import PropTypes from 'prop-types';
 
 /**
@@ -15,6 +16,7 @@ export function Login({
   return (
     <View {...rest}>
       <Text p={5}>Login Page</Text>
+      <TabBrowseIcon />
     </View>
   );
 }
