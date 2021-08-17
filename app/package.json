@@ -74,6 +74,7 @@
     "eslint": "^7.31.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-jest": "^24.4.0",
+    "expo-cli": "^4.10.0",
     "expo-yarn-workspaces": "^1.5.2",
     "jest-expo": "^42.0.1",
     "jest-junit": "^12.2.0",
