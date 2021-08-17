@@ -15,7 +15,8 @@
     "test": "yarn workspace @apartmentsnapshot/snapshot-ui test",
     "lint": "yarn workspace @apartmentsnapshot/snapshot-ui lint",
     "validate": "yarn workspace @apartmentsnapshot/snapshot-ui validate",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/Apartment-Snapshot/snapshot-ui#readme",
   "devDependencies": {
+    "husky": "^7.0.0",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0"
   }
