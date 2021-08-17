@@ -1,2 +1,2 @@
 /* PLOP_INJECT_EXPORT */
-export * from './loader';
+export * from "./loader";

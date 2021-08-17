@@ -1,1 +1,1 @@
-export * from './Auth0Mock';
+export * from "./Auth0Mock";

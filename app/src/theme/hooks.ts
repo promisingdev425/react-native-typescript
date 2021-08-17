@@ -1,6 +1,6 @@
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
 
 export const useTheme = () => {
-  return useContext(ThemeContext)
-}
+  return useContext(ThemeContext);
+};

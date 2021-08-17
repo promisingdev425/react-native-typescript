@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 // import PropTypes from 'prop-types';
 
 /**
@@ -8,9 +8,7 @@ import { View, Text } from 'react-native';
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function Login({
-  ...rest
-}) {
+export function Login({ ...rest }) {
   return (
     <View {...rest}>
       <Text>Login Page</Text>
@@ -18,8 +16,7 @@ export function Login({
   );
 }
 
-Login.propTypes = {
-};
+Login.propTypes = {};
 
 /**
  * `<LoginConnected>` connects the Login
@@ -30,8 +27,5 @@ Login.propTypes = {
  */
 /* istanbul ignore next */
 export function LoginConnected() {
-  return (
-    <Login
-    />
-  );
+  return <Login />;
 }

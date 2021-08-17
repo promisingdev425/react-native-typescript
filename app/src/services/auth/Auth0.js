@@ -1,14 +1,15 @@
 import * as AuthSessionNew from "expo-auth-session";
 import jwtDecode from "jwt-decode";
-import { ServiceBase } from '@thesoulfresh/utils';
-import { VERBOSE, AUTH_DOMAIN, AUTH_CLIENT_ID } from '@env';
+import { ServiceBase } from "@thesoulfresh/utils";
+import { VERBOSE, AUTH_DOMAIN, AUTH_CLIENT_ID } from "@env";
 
 // TODO Use library for this
 const toQueryString = (params) =>
   "?" +
   Object.entries(params)
     .map(
-      ([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+      ([key, value]) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
     )
     .join("&");
 
@@ -38,7 +39,7 @@ export class Auth0 extends ServiceBase {
     // NOTE The following auth response is for illustration
     // purposes only. Your implementation can return whatever
     // you need it to.
-    return Promise.resolve({user: 'Bob'});
+    return Promise.resolve({ user: "Bob" });
     // return Promise.resolve(null);
   }
 
@@ -46,14 +47,14 @@ export class Auth0 extends ServiceBase {
    * Authenticate the user.
    */
   authenticate() {
-    return Promise.resolve({user: 'Bob'});
+    return Promise.resolve({ user: "Bob" });
   }
 
   async login(settings) {
     // Retrieve the redirect URL, add this to the callback URL list
     // of your Auth0 application.
     const redirectUrl = AuthSessionNew.getRedirectUrl();
-    this.debug('[Auth] redirectUrl', redirectUrl);
+    this.debug("[Auth] redirectUrl", redirectUrl);
 
     // Structure the auth parameters and URL
     const params = {
@@ -66,7 +67,7 @@ export class Auth0 extends ServiceBase {
       // TODO Do I need to change this?
       nonce: "nonce", // ideally, this will be a random value
       rememberLastLogin: true,
-      ...settings
+      ...settings,
     };
 
     const queryParams = toQueryString(params);
@@ -77,7 +78,7 @@ export class Auth0 extends ServiceBase {
     // const response = await WebBrowser.openAuthSessionAsync(authUrl, {showInRecents: true});
     const response = await AuthSessionNew.startAsync({
       authUrl,
-      showInRecents: true
+      showInRecents: true,
     });
 
     // const response = await startAuth(authUrl);
@@ -85,26 +86,24 @@ export class Auth0 extends ServiceBase {
   }
 
   onLogin(response) {
-    console.log('[Auth] handleLoginResponse');
+    console.log("[Auth] handleLoginResponse");
     if (response.error || response.type !== "success") {
-      console.error('[Auth] authentication failed');
+      console.error("[Auth] authentication failed");
       return;
     }
 
     const decodedJwtIdToken = jwtDecode(response.params.id_token);
     const fullName = decodedJwtIdToken["https://crm.kb.com/name"];
-    console.log('[Auth] authentication success', fullName);
+    console.log("[Auth] authentication success", fullName);
     return {
       ...decodedJwtIdToken,
       name: fullName,
       // TODO Does this work or do I need lodash.words?
-      firstName: fullName.split(' ')[0],
+      firstName: fullName.split(" ")[0],
       meta: decodedJwtIdToken["https://crm.kb.com/"],
-      primaryUserId: decodedJwtIdToken.sub
+      primaryUserId: decodedJwtIdToken.sub,
     };
   }
 
-  logout() {
-  }
+  logout() {}
 }
-

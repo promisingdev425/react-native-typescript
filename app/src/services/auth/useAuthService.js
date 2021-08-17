@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import { Auth0 } from './Auth0.js';
+import { Auth0 } from "./Auth0.js";
 
 /**
  * This hook stores the user's authenticated state and provides
@@ -9,9 +9,7 @@ import { Auth0 } from './Auth0.js';
  *
  * @param {*} [authService] - overrides the default auth service instance.
  */
-export function useAuthService(
-  authService,
-) {
+export function useAuthService(authService) {
   // Either use the auth service provided (for testing)
   // or generate one that gets reused between calls.
   const [service] = React.useState(() => authService || new Auth0());
@@ -70,13 +68,13 @@ export function useAuthService(
   };
 
   const onForgotLogin = () => {
-    console.log('Not yet implemented 🤬');
+    console.log("Not yet implemented 🤬");
   };
 
   // Do whatever is necessary to get the user's
   // initial authenticated state.
   React.useEffect(() => {
-    service.getUser().then(response => {
+    service.getUser().then((response) => {
       // TODO Ensure all of these updates are batched.
       // If the user is authenticated, set the correct state
       // so the app removes the login window and shows the
