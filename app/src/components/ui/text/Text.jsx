@@ -32,9 +32,9 @@ Text.defaultProps = {
   allowFontScaling: false,
   bg: 'clear',
   color: 'textPrimary',
-  fontSize: 3,
+  fontSize: 2,
   fontFamilyGroup: 'group.sfProDisplay',
-  fontFamilyStyle: 'style.bold',
+  fontFamilyStyle: 'style.regular',
 }
 
 export { Text }
