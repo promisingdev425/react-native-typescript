@@ -65,7 +65,7 @@ The following commands are available through yarn:
 ### Util
 
 - `yarn generate` Generate a new component or page. Follow the instructions or read the
-   Plop.js docs for more info.
+  Plop.js docs for more info.
 - `yarn lint` Lint the code. This is also run during `yarn validate`.
 
 ### Build
@@ -106,4 +106,3 @@ Here are the supported environments:
 - `state` Build the application to connect to the staging APIs.
 - `prod` Build the application to connect to production APIs.
   Equivalent to the standard "production" environmnet.
-

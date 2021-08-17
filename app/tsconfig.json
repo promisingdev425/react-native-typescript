@@ -6,5 +6,5 @@
     }
   },
   "extends": "expo/tsconfig.base",
-  "jsx": "react-native",
+  "jsx": "react-native"
 }
