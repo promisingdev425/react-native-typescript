@@ -38,6 +38,7 @@
     "@types/styled-system": "^5.1.12",
     "expo": "~42.0.0",
     "expo-auth-session": "^3.3.1",
+    "expo-linear-gradient": "~9.2.0",
     "expo-random": "^11.2.0",
     "expo-status-bar": "~1.0.4",
     "jwt-decode": "^3.1.2",
