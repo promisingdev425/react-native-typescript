@@ -1,5 +1,7 @@
 # snapshot-ui
 
+[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
+
 This repo contains the Mobile and Web Snapshot UI. It is built with
 Expo for mobile and web deployment and with Storybook for component
 documentation. See the `app/` folder for more detailed information

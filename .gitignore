@@ -12,6 +12,7 @@ yarn-error.log
 *.orig.*
 web-build/
 storybook/storyLoader.js
+reports
 
 # macOS
 .DS_Store

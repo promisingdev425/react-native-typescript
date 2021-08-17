@@ -28,6 +28,7 @@ Login.propTypes = {
  * @param {object} props
  * @return {React.ReactNode}
  */
+/* istanbul ignore next */
 export function LoginConnected() {
   return (
     <Login
