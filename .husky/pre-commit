@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Keeping this pretty light so it doesn't slow down our
+# development workflow and we have the CI environment to
+# do the time intensive tasks for us.
 npx pretty-quick --staged
