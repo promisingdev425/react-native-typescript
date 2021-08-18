@@ -19,6 +19,6 @@ describe('Splash', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContain(screen.getByTestId('Splash'));
+      .toContainElement(screen.getByTestId('Splash'));
   });
 });

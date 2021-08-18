@@ -19,6 +19,6 @@ describe('{{pascalCase name}}', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContain(screen.getByTestId('{{pascalCase name}}'));
+      .toContainElement(screen.getByTestId('{{pascalCase name}}'));
   });
 });

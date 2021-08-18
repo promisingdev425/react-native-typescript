@@ -13,7 +13,7 @@ export function Splash({
   ...rest
 }) {
   return (
-    <Container>
+    <Container testID="Splash">
       <LogoImage />
     </Container>
   );
