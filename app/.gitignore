@@ -1,4 +1,5 @@
 # Build files
 App.jsx
-coverage
+reports
 storybook-static
+junit.xml

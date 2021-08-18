@@ -1,0 +1,168 @@
+# yamllint disable rule:document-start rule:line-length
+# https://circleci.com/docs/2.0/configuration-reference/
+version: 2.1
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:14.17.5-browsers
+    working_directory: ~/apartment-snapshot
+
+commands:
+  set_deploy_key:
+    description: Sets the ssh key to allow pushing to GitHub branches
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '51:54:62:57:f5:e5:ab:fe:97:8d:4c:6d:13:cd:2e:33'
+
+  # gcloud_auth:
+  #   description: "Authenticate the Google Cloud SDK"
+  #   parameters:
+  #     keyfile:
+  #       type: string
+  #       default: "GCP_DEV_KEY"
+  #   steps:
+  #     - run:
+  #         name: "Activate GCP Service Account"
+  #         command: |
+  #           # https://github.com/firebase/firebase-tools/issues/825
+  #           # https://developers.google.com/accounts/docs/application-default-credentials
+  #           echo ${<< parameters.keyfile >>} | base64 -d > ${HOME}/gcloud-service-key.json
+  #           echo 'export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud-service-key.json"' >> $BASH_ENV
+
+  install_dependencies:
+    description: 'Install dependencies with caching.'
+    parameters:
+      cache_id:
+        type: string
+        default: v1
+    steps:
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # https://circleci.com/docs/2.0/caching/#yarn-node
+            - << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+            - << parameters.cache_id >>-streetwise-
+      - run:
+          name: "Install Dependencies"
+          command: |
+            yarn install
+
+  save_dependency_cache:
+    description: "Caching Dependencies"
+    parameters:
+      cache_id:
+        type: string
+        default: v1
+    steps:
+      - save_cache:
+          key: << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.nvm
+            - ./node_modules
+            - ./app/node_modules
+            - ./storybook/node_modules
+
+  save_logs:
+    description: 'Save logs.'
+    steps:
+      - store_artifacts:
+          path: ~/.npm/_logs
+
+jobs:
+  test:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: "Validate the Build"
+          command: yarn validate
+      - save_logs
+      - store_test_results:
+          path: reports/coverage
+      # https://circleci.com/docs/2.0/artifacts/
+      - store_artifacts:
+          path: reports
+      - save_dependency_cache
+
+  # deploy-dev:
+  #   executor: node
+  #   steps:
+  #     - checkout
+  #     - gcloud_auth
+  #     - install_dependencies
+  #     - run:
+  #         name: "Build for Dev"
+  #         command: yarn build-dev
+  #     - run:
+  #         name: "Deploy to Dev"
+  #         command: yarn deploy-dev
+  #     - save_logs
+
+  deploy-storybook:
+    executor: node
+    steps:
+      - set_deploy_key
+      - run:
+          name: "Ensure Correct Node Path"
+          command: npm config set scripts-prepend-node-path auto
+      - checkout
+      - install_dependencies
+      - run: yarn deploy-storybook-ci
+      - save_logs
+
+  # deploy-prod:
+  #   executor: node
+  #   steps:
+  #     - checkout
+  #     - gcloud_auth:
+  #         keyfile: "GCP_PROD_KEY"
+  #     - install_dependencies
+  #     - run:
+  #         name: "Build for Prod"
+  #         command: yarn build
+  #     - run:
+  #         name: "Deploy to Prod"
+  #         command: yarn deploy-prod
+  #     - save_logs
+
+# https://circleci.com/docs/2.0/workflows/
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: gh-pages
+            # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
+            tags:
+              only: /.*/
+
+      # - deploy-dev:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
+      #         ignore: gh-pages
+
+      # This requires paying for a Team license on GitHub
+      # - deploy-storybook:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
+
+      # - deploy-prod:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /release\/[0-9]+(\.[0-9]+)*/
