@@ -7,6 +7,7 @@ import { Text } from '../text'
  * `<Title>`
  *
  * @param {object} props
+ * @param {string} props.variant - Font size, family and styles can be changed by variant.
  * @return {React.ReactNode}
  */
 const Title = ({ variant, ...rest }) => {
