@@ -15,6 +15,7 @@
     "test": "yarn workspace @apartmentsnapshot/snapshot-ui test",
     "lint": "yarn workspace @apartmentsnapshot/snapshot-ui lint",
     "validate": "yarn workspace @apartmentsnapshot/snapshot-ui validate",
+    "prettier": "yarn pretty-quick --no-semi --single-quote",
     "postinstall": "patch-package",
     "prepare": "husky install"
   },
