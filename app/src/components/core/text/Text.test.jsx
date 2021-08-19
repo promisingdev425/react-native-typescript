@@ -1,24 +1,25 @@
 import React from 'react';
 import { View } from 'react-native';
-import { render, screen } from '@testing-library/react-native';
-
+import { render } from '@testing-library/react-native';
+import { withTheme } from '~/theme/hocs'
 import { Text } from './Text.jsx';
 
 describe('Text', function() {
   let screen;
 
   beforeEach(() => {
-    screen = render(
-      <View testID="Root">
-        <Text
-          testID="Text"
-        />
+    const InnerScreen = () => (
+      <View testID="RootText">
+        <Text testID="Text" />
       </View>
-    );
+    )
+    const Themed = withTheme(InnerScreen)
+
+    screen = render(<Themed />);
   });
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContain(screen.getByTestId('Text'));
+    expect(screen.getByTestId('RootText'))
+      .toContainElement(screen.getByTestId('Text'));
   });
 });

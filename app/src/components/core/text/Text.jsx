@@ -30,8 +30,8 @@ Text.propTypes = {
 Text.defaultProps = {
   ...TextRN.defaultProps,
   allowFontScaling: false,
-  bg: 'colors.clear',
-  color: 'colors.textPrimary',
+  bg: 'clear',
+  color: 'textPrimary',
   fontSize: 2,
   fontFamilyGroup: 'group.sfProDisplay',
   fontFamilyStyle: 'style.regular',

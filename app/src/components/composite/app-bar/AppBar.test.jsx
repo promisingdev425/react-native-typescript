@@ -19,6 +19,6 @@ describe('AppBar', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContain(screen.getByTestId('AppBar'));
+      .toContainElement(screen.getByTestId('AppBar'));
   });
 });
