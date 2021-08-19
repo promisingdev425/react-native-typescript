@@ -1,17 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
-import { render } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import { withTheme } from '~/theme/hocs'
 
-import { Login } from './Login.jsx';
+import { Splash } from './Splash.jsx';
 
-describe('Login', function() {
+describe('Splash', function() {
   let screen;
 
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <Login testID="Login" />
+        <Splash testID="Splash" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -21,6 +21,6 @@ describe('Login', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('Login'));
+      .toContainElement(screen.getByTestId('Splash'));
   });
 });

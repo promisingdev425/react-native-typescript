@@ -17,6 +17,7 @@ export const fontFamilyComposite = mapProps((props) => {
   const fStyle = getTypography(props.fontFamilyStyle)(props)
   const fSeparator = getTypography(`separator.${fGroup}`)(props)
 
+  /* istanbul ignore next */
   if (!fGroup || !fStyle) {
     return props
   }

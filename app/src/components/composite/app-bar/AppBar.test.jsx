@@ -2,16 +2,17 @@ import React from 'react';
 import { View } from 'react-native';
 import { render } from '@testing-library/react-native';
 import { withTheme } from '~/theme/hocs'
+import { PropertyIcon } from '~/assets/images'
 
-import { Login } from './Login.jsx';
+import { AppBar } from './AppBar.jsx';
 
-describe('Login', function() {
+describe('AppBar', function() {
   let screen;
 
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <Login testID="Login" />
+        <AppBar testID="AppBar" leftItem={<PropertyIcon/>} rightItem={<PropertyIcon/>}/>
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -21,6 +22,6 @@ describe('Login', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('Login'));
+      .toContainElement(screen.getByTestId('AppBar'));
   });
 });

@@ -3,15 +3,15 @@ import { View } from 'react-native';
 import { render } from '@testing-library/react-native';
 import { withTheme } from '~/theme/hocs'
 
-import { Login } from './Login.jsx';
+import { Text } from './Text.jsx';
 
-describe('Login', function() {
+describe('Text', function() {
   let screen;
 
   beforeEach(() => {
     const InnerScreen = () => (
-      <View testID="Root">
-        <Login testID="Login" />
+      <View testID="RootText">
+        <Text testID="Text" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -20,7 +20,7 @@ describe('Login', function() {
   });
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('Login'));
+    expect(screen.getByTestId('RootText'))
+      .toContainElement(screen.getByTestId('Text'));
   });
 });

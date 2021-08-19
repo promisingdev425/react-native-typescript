@@ -1,40 +1,38 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text } from '~/components'
-import { TabBrowseIcon } from '~/assets/images'
-// import PropTypes from 'prop-types';
+
+import { Container, LogoImage } from './styles'
 
 /**
- * `<Login>`
+ * `<Splash>`
  *
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function Login({
+export function Splash({
   ...rest
 }) {
   return (
-    <View {...rest}>
-      <Text p={5}>Login Page</Text>
-      <TabBrowseIcon />
-    </View>
+    <Container {...rest}>
+      <LogoImage />
+    </Container>
   );
 }
 
-Login.propTypes = {
+Splash.propTypes = {
 };
 
 /**
- * `<LoginConnected>` connects the Login
+ * `<SplashConnected>` connects the Splash
  * component with the rest of the app (ie. routing, services, store, etc.).
  *
  * @param {object} props
  * @return {React.ReactNode}
  */
 /* istanbul ignore next */
-export function LoginConnected() {
+export function SplashConnected() {
   return (
-    <Login
+    <Splash
     />
   );
 }
