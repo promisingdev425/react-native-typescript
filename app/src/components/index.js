@@ -1,3 +1,3 @@
 /* PLOP_INJECT_EXPORT */
-export * from './block';
-export * from './ui';
+export * from './composite';
+export * from './core';
