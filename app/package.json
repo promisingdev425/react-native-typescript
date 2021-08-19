@@ -112,7 +112,7 @@
       "/node_modules/",
       "<rootDir>/src/assets/",
       "<rootDir>/src/theme/hooks",
-      "<rootDir>/src/theme/themes/light/metrics"
+      "<rootDir>/src/theme/themes"
     ]
   },
   "jest-junit": {
