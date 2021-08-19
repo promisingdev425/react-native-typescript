@@ -15,6 +15,7 @@ describe('Title', function() {
         <Title testID="Title2" variant="header" color="positive" pt={3}>This is [header] title</Title>
         <Title testID="Title3" variant="section" color="warning" pt={3}>This is [section] title</Title>
         <Title testID="Title4" variant="body" color="negative" pt={3}>This is [body] title</Title>
+        <Title testID="Title5" color="textSecondary" pt={3}>This is [body] title</Title>
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -29,5 +30,7 @@ describe('Title', function() {
       .toContainElement(screen.getByTestId('Title3'));
     expect(screen.getByTestId('RootTitle'))
       .toContainElement(screen.getByTestId('Title4'));
+    expect(screen.getByTestId('RootTitle'))
+      .toContainElement(screen.getByTestId('Title5'));
   });
 });

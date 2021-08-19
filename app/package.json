@@ -107,7 +107,13 @@
         "lines": 90,
         "statements": 90
       }
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/assets/",
+      "<rootDir>/src/theme/hooks",
+      "<rootDir>/src/theme/themes/light/metrics"
+    ]
   },
   "jest-junit": {
     "outputDirectory": "../reports/coverage"

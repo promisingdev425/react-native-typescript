@@ -24,10 +24,9 @@ const Title = ({ variant, ...rest }) => {
       size = 5
       break
     case 'body':
+    default:
       style = 'style.regular'
       break
-    default:
-      break;
   }
 
   return (

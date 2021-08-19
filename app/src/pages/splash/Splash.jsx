@@ -29,6 +29,7 @@ Splash.propTypes = {
  * @param {object} props
  * @return {React.ReactNode}
  */
+/* istanbul ignore next */
 export function SplashConnected() {
   return (
     <Splash
