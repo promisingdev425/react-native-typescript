@@ -20,6 +20,7 @@
     "test-ci": "yarn setup && jest --watchAll=false --runInBand --coverage=true  --reporters=default --reporters=jest-junit",
     "validate": "yarn setup && yarn lint-ci && yarn test-ci && yarn build-storybook",
     "generate": "plop --plopfile ./scripts/plopfile.js",
+    "coverage": "yarn test-ci && open ../reports/coverage/lcov-report/index.html",
     "clean": "rimraf .expo/web/cache web-build App.jsx ../reports",
     "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
