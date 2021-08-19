@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Login } from '~/pages'
 
 /**
  * <WithServer> is used to provide live versions of all
@@ -8,5 +8,7 @@ import { Text } from 'react-native'
  * @param {string} [props.className]
  */
 export function WithServer({}) {
-  return <Text>With Server!!</Text>
+  return (
+    <Login />
+  );
 }

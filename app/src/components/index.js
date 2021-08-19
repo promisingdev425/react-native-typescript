@@ -1,2 +1,3 @@
 /* PLOP_INJECT_EXPORT */
-export * from './loader'
+export * from './core';
+export * from './composite';

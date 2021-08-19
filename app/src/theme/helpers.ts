@@ -20,6 +20,7 @@ export const mapProps = (mapper: any) => {
   }
 }
 
+/* istanbul ignore next */
 export const mapToTheme = (key: string, prop = 'variant') => {
   return (props?: string) => {
     return theme(key, prop)(props)(props)(props)
@@ -38,6 +39,7 @@ export const getSpace = (key: string) => {
   return themeGet(`space.${key}`)
 }
 
+/* istanbul ignore next */
 export const getRadii = (key: string) => {
   return themeGet(`radii.${key}`)
 }
@@ -46,6 +48,7 @@ export const getTypography = (key: string) => {
   return themeGet(`typography.${key}`)
 }
 
+/* istanbul ignore next */
 export const getFontSize = (key: string) => {
   return themeGet(`fontSizes.${key}`)
 }

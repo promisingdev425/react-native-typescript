@@ -22,4 +22,6 @@ export default {
   statusBarHeight: STATUS_BAR_HEIGHT,
   statusBarUnsafeHeight: STATUS_BAR_UNSAFE_HEIGHT,
   bottomSpace: BOTTOM_SPACE,
+
+  appBarHeight: 60,
 }

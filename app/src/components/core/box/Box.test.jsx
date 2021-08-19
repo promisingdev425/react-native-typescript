@@ -2,16 +2,16 @@ import React from 'react';
 import { View } from 'react-native';
 import { render, screen } from '@testing-library/react-native';
 
-import { {{pascalCase name}} } from './{{pascalCase name}}.jsx';
+import { Box } from './Box.jsx';
 
-describe('{{pascalCase name}}', function() {
+describe('Box', function() {
   let screen;
 
   beforeEach(() => {
     screen = render(
       <View testID="Root">
-        <{{pascalCase name}}
-          testID="{{pascalCase name}}"
+        <Box
+          testID="Box"
         />
       </View>
     );
@@ -19,6 +19,6 @@ describe('{{pascalCase name}}', function() {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('{{pascalCase name}}'));
+      .toContainElement(screen.getByTestId('Box'));
   });
 });

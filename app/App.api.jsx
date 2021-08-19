@@ -1,6 +1,9 @@
 import React from 'react'
+import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthService } from '~/services/auth'
+import { themes } from '~/theme'
+import useFonts from '~/assets/fonts/useFonts'
 
 import { PageLoader } from './src/components'
 import { LoginConnected } from './src/pages/login'
@@ -33,6 +36,9 @@ export default function App({
     onLogout,
   } = useAuthService(authService)
 
+  const theme = themes['light']
+  const fontsLoaded = useFonts()
+
   const props = {
     ...rest,
     onSuccess: () => console.log('Authentication not implemented yet.'),
@@ -46,15 +52,15 @@ export default function App({
 
   // Render the login overlay above the main app.
   return (
-    <>
-      {!authenticated && (
+    <ThemeProvider theme={theme}>
+      {!authenticated && fontsLoaded &&
         <LoginConnected onLogin={onLogin} onForgotLogin={onForgotLogin} />
-      )}
-      {initialized && (
+      }
+      {initialized && fontsLoaded &&
         <React.Suspense fallback={<PageLoader />}>
           {children ? children : <WithServer {...props} />}
         </React.Suspense>
-      )}
-    </>
-  )
+      }
+    </ThemeProvider>
+  );
 }
