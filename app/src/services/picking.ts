@@ -22,7 +22,10 @@ const forPlatform = (platform: any, fallback?: any) => {
   const groupKey = getPlatformGroup()
   const defaultKey = 'default'
 
-  return find([platform[OSKey], platform[groupKey], platform[defaultKey], fallback], negate(isNil))
+  return find(
+    [platform[OSKey], platform[groupKey], platform[defaultKey], fallback],
+    negate(isNil)
+  )
 }
 
 export default {

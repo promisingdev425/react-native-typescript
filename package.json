@@ -15,7 +15,9 @@
     "test": "yarn workspace @apartmentsnapshot/snapshot-ui test",
     "lint": "yarn workspace @apartmentsnapshot/snapshot-ui lint",
     "validate": "yarn workspace @apartmentsnapshot/snapshot-ui validate",
-    "postinstall": "patch-package"
+    "prettier": "yarn pretty-quick --no-semi --single-quote",
+    "postinstall": "patch-package",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,10 @@
   },
   "homepage": "https://github.com/Apartment-Snapshot/snapshot-ui#readme",
   "devDependencies": {
+    "husky": "^7.0.0",
     "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0"
+    "postinstall-postinstall": "^2.1.0",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1"
   }
 }

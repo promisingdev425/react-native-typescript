@@ -4,8 +4,6 @@ import { Title } from './Title.jsx';
 
 <Meta
   title="Components/Title"
-  argTypes={{
-  }}
 />
 
 # Title
@@ -14,30 +12,31 @@ import { Title } from './Title.jsx';
 
 export const Template = props => <Title {...props} />;
 
-<Canvas>
+<Canvas isColumn>
   <Story name="Navigation Title" args={{
     variant: 'navigation',
+    children: 'This is the [navigation] title',
   }}>
     {Template.bind({})}
   </Story>
-
   <Story name="Success colored Header Title" args={{
     variant: 'header',
     color: 'positive',
+    children: 'This is the [header] title',
   }}>
     {Template.bind({})}
   </Story>
-
   <Story name="Warning colored Section Title" args={{
     variant: 'section',
     color: 'warning',
+    children: 'This is the [section] title',
   }}>
     {Template.bind({})}
   </Story>
-
   <Story name="Negative colored Body Title" args={{
     variant: 'body',
     color: 'negative',
+    children: 'This is the [body] title',
   }}>
     {Template.bind({})}
   </Story>

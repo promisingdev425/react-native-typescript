@@ -1,9 +1,6 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import React from 'react'
+import { storiesOf } from '@storybook/react-native'
 
-import { Login } from './Login.jsx';
+import { Login } from './Login.jsx'
 
-storiesOf('Login Page', module)
-  .add('default', () => (
-    <Login />
-  ));
+storiesOf('Login Page', module).add('default', () => <Login />)

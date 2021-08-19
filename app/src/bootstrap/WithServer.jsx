@@ -1,5 +1,4 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from 'react'
 import { Login } from '~/pages'
 
 /**
@@ -8,10 +7,8 @@ import { Login } from '~/pages'
  * @param {object} props
  * @param {string} [props.className]
  */
-export function WithServer({
-}) {
+export function WithServer({}) {
   return (
     <Login />
   );
 }
-

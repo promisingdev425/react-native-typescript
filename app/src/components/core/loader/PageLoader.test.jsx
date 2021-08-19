@@ -1,28 +1,23 @@
 import React from 'react'
 import { View } from 'react-native'
 import { render } from '@testing-library/react-native'
-import { withTheme } from '~/theme/hocs'
 
-import { Login } from './Login.jsx'
+import { PageLoader } from './PageLoader.jsx'
 
-describe('Login', function () {
+describe('PageLoader', function () {
   let screen
 
   beforeEach(() => {
-    const InnerScreen = () => (
+    screen = render(
       <View testID="Root">
-        <Login testID="Login" />
+        <PageLoader testID="PageLoader" />
       </View>
     )
-
-    const Themed = withTheme(InnerScreen)
-
-    screen = render(<Themed />);
-  });
+  })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('Login')
+      screen.getByTestId('PageLoader')
     )
   })
 })

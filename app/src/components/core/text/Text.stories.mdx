@@ -12,13 +12,12 @@ import { Text } from './Text.jsx';
 
 <Description of={ Text } />
 
-export const Template = props => <Text {...props} />;
+export const Template = props => <Text {...props}>This is a generic text component</Text>;
 
 <Canvas>
   <Story
     name="Text"
-    args={{
-    }}
+    args={{}}
   >
     {Template.bind({})}
   </Story>

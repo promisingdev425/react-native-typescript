@@ -1,1 +1,1 @@
-export * from './Centered.jsx';
+export * from './Centered.jsx'

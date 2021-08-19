@@ -1,0 +1,25 @@
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
+
+import { PageLoader } from './PageLoader.jsx'
+
+<Meta title="Components/PageLoader" argTypes={{}} />
+
+# PageLoader
+
+<Description of={PageLoader} />
+
+export const Template = (props) => <PageLoader {...props} />
+
+<Canvas>
+  <Story name="PageLoader" args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PageLoader} />

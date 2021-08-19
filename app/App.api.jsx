@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 import { ThemeProvider } from 'styled-components/native'
 
-import { useAuthService } from '~/services/auth';
+import { useAuthService } from '~/services/auth'
 import { themes } from '~/theme'
 import useFonts from '~/assets/fonts/useFonts'
 
-import { PageLoader } from './src/components';
-import { LoginConnected } from './src/pages/login';
-import { WithServer } from './src/bootstrap/WithServer.jsx';
+import { PageLoader } from './src/components'
+import { LoginConnected } from './src/pages/login'
+import { WithServer } from './src/bootstrap/WithServer.jsx'
 
 /**
  * If <App> is used as the entry point to the application,
@@ -33,11 +33,12 @@ export default function App({
     authenticated,
     onLogin,
     onForgotLogin,
-    onLogout
-  } = useAuthService(authService);
-  
+    onLogout,
+  } = useAuthService(authService)
+
   const theme = themes['light']
   const fontsLoaded = useFonts()
+
   const props = {
     ...rest,
     onSuccess: () => console.log('Authentication not implemented yet.'),
@@ -47,7 +48,7 @@ export default function App({
     // but you may need to handle this differently based on
     // your authentication mechanism.
     onAuthFailure: onLogout,
-  };
+  }
 
   // Render the login overlay above the main app.
   return (
@@ -57,10 +58,7 @@ export default function App({
       }
       {initialized && fontsLoaded &&
         <React.Suspense fallback={<PageLoader />}>
-          { children
-            ? children
-            : <WithServer {...props} />
-          }
+          {children ? children : <WithServer {...props} />}
         </React.Suspense>
       }
     </ThemeProvider>

@@ -1,5 +1,8 @@
 import { Dimensions } from 'react-native'
-import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from 'react-native-iphone-x-helper'
 
 const windowSize = Dimensions.get('window')
 const width = windowSize.width || 375
