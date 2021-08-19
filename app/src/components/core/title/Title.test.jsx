@@ -11,7 +11,10 @@ describe('Title', function() {
   it('should render', () => {
     const InnerScreen = () => (
       <View testID="RootTitle">
-        <Title testID="Title" />
+        <Title testID="Title1" variant="navigation" pt={3}>This is [navigation] title</Title>
+        <Title testID="Title2" variant="header" color="positive" pt={3}>This is [header] title</Title>
+        <Title testID="Title3" variant="section" color="warning" pt={3}>This is [section] title</Title>
+        <Title testID="Title4" variant="body" color="negative" pt={3}>This is [body] title</Title>
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -19,6 +22,12 @@ describe('Title', function() {
     screen = render(<Themed />);
 
     expect(screen.getByTestId('RootTitle'))
-      .toContainElement(screen.getByTestId('Title'));
+      .toContainElement(screen.getByTestId('Title1'));
+    expect(screen.getByTestId('RootTitle'))
+      .toContainElement(screen.getByTestId('Title2'));
+    expect(screen.getByTestId('RootTitle'))
+      .toContainElement(screen.getByTestId('Title3'));
+    expect(screen.getByTestId('RootTitle'))
+      .toContainElement(screen.getByTestId('Title4'));
   });
 });
