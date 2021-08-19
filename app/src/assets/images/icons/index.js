@@ -1,3 +1,4 @@
+import PropertyIcon from './property'
 import TabBrowseIcon from './tabBrowse'
 import TabBrowseActiveIcon from './tabBrowseActive'
 import TabLeaderboardIcon from './tabLeaderboard'
@@ -6,6 +7,7 @@ import TabSummaryIcon from './tabSummary'
 import TabSummaryActiveIcon from './tabSummaryActive'
 
 export {
+  PropertyIcon,
   TabBrowseIcon,
   TabBrowseActiveIcon,
   TabLeaderboardIcon,

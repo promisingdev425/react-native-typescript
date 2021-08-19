@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { render } from '@testing-library/react-native';
 import { withTheme } from '~/theme/hocs'
+
 import { Text } from './Text.jsx';
 
 describe('Text', function() {

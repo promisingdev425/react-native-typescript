@@ -6,8 +6,8 @@ function TabBrowseActiveIcon(props, svgRef) {
     <title>browse active - icon</title>
     <defs>
         <linearGradient x1="37.6916726%" y1="26.12221%" x2="55.5489063%" y2="60.042042%" id="linearGradient-1">
-            <stop stop-color=${color || "#FF7F40"} offset="0%"></stop>
-            <stop stop-color=${color || "#F44C7F"} offset="100%"></stop>
+            <stop stop-color="${color || '#FF7F40'}" offset="0%"></stop>
+            <stop stop-color="${color || '#F44C7F'}" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { render, screen } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
+import { withTheme } from '~/theme/hocs'
 
 import { AppBar } from './AppBar.jsx';
 
@@ -8,13 +9,14 @@ describe('AppBar', function() {
   let screen;
 
   beforeEach(() => {
-    screen = render(
+    const InnerScreen = () => (
       <View testID="Root">
-        <AppBar
-          testID="AppBar"
-        />
+        <AppBar testID="AppBar" />
       </View>
-    );
+    )
+    const Themed = withTheme(InnerScreen)
+
+    screen = render(<Themed />);
   });
 
   it('should render', () => {
