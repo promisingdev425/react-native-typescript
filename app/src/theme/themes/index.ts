@@ -1,5 +1,5 @@
-import light from "./light";
+import light from './light'
 
 export const themes = {
   light,
-};
+}

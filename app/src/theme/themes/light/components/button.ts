@@ -1,14 +1,14 @@
-import { getColor } from "../../../helpers";
+import { getColor } from '../../../helpers'
 
 export default {
   innerGradient: {
     bg: {
       color1: {
-        primary: getColor("brandOrange"),
+        primary: getColor('brandOrange'),
       },
 
       color2: {
-        primary: getColor("brandPink"),
+        primary: getColor('brandPink'),
       },
     },
   },
@@ -16,8 +16,8 @@ export default {
   isPressed: {
     inner: {
       bg: {
-        primary: getColor("brandPink"),
+        primary: getColor('brandPink'),
       },
     },
   },
-};
+}

@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text } from "react-native";
-import PropTypes from "prop-types";
+import React from 'react'
+import { View, Text } from 'react-native'
+import PropTypes from 'prop-types'
 
 /**
  * `<PageLoader>`
@@ -13,7 +13,7 @@ export function PageLoader({ ...rest }) {
     <View {...rest}>
       <Text>Loading...</Text>
     </View>
-  );
+  )
 }
 
-PageLoader.propTypes = {};
+PageLoader.propTypes = {}

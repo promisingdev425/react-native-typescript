@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "react-native";
+import React from 'react'
+import { Text } from 'react-native'
 
 /**
  * <WithMocks> is used to provide mock implementations
@@ -12,5 +12,5 @@ export function WithMocks({}) {
     <>
       <Text>Yay MOCKS!!!!!!!!!</Text>
     </>
-  );
+  )
 }

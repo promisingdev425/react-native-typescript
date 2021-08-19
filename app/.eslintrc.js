@@ -1,8 +1,8 @@
 // TODO Add no-focused-tests rule
 module.exports = {
-  extends: ["./src/.eslintrc.js"],
+  extends: ['./src/.eslintrc.js'],
   rules: {
-    "no-debugger": "error",
-    "jest/no-focused-tests": "error",
+    'no-debugger': 'error',
+    'jest/no-focused-tests': 'error',
   },
-};
+}
