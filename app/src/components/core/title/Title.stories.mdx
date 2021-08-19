@@ -15,11 +15,30 @@ import { Title } from './Title.jsx';
 export const Template = props => <Title {...props} />;
 
 <Canvas>
-  <Story
-    name="Title"
-    args={{
-    }}
-  >
+  <Story name="Navigation Title" args={{
+    variant: 'navigation',
+  }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story name="Success colored Header Title" args={{
+    variant: 'header',
+    color: 'positive',
+  }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story name="Warning colored Section Title" args={{
+    variant: 'section',
+    color: 'warning',
+  }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story name="Negative colored Body Title" args={{
+    variant: 'body',
+    color: 'negative',
+  }}>
     {Template.bind({})}
   </Story>
 </Canvas>
