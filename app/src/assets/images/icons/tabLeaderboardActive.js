@@ -20,7 +20,7 @@ function TabLeaderboardActiveIcon(props, svgRef) {
 
   const SvgImage = () => <SvgXml xml={svgMarkup} ref={svgRef} {...props} />
 
-  return <SvgImage />;
+  return <SvgImage />
 }
 
 const ForwardRef = forwardRef(TabLeaderboardActiveIcon)

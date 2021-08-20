@@ -8,7 +8,5 @@ import { Login } from '~/pages'
  * @param {string} [props.className]
  */
 export function WithServer({}) {
-  return (
-    <Login />
-  );
+  return <Login />
 }

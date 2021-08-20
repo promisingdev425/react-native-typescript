@@ -2,22 +2,22 @@ import React from 'react'
 import { View } from 'react-native'
 import { render } from '@testing-library/react-native'
 
-import { PageLoader } from './PageLoader.jsx'
+import { GradientButton } from './GradientButton.jsx'
 
-describe('PageLoader', function () {
+describe('GradientButton', function () {
   let screen
 
   beforeEach(() => {
     screen = render(
       <View testID="Root">
-        <PageLoader testID="PageLoader" />
+        <GradientButton testID="GradientButton" />
       </View>,
     )
   })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('PageLoader'),
+      screen.getByTestId('GradientButton'),
     )
   })
 })

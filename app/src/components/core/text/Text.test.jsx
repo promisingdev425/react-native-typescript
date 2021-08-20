@@ -1,12 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
-import { render } from '@testing-library/react-native';
+import React from 'react'
+import { View } from 'react-native'
+import { render } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 
-import { Text } from './Text.jsx';
+import { Text } from './Text.jsx'
 
-describe('Text', function() {
-  let screen;
+describe('Text', function () {
+  let screen
 
   beforeEach(() => {
     const InnerScreen = () => (
@@ -16,11 +16,12 @@ describe('Text', function() {
     )
     const Themed = withTheme(InnerScreen)
 
-    screen = render(<Themed />);
-  });
+    screen = render(<Themed />)
+  })
 
   it('should render', () => {
-    expect(screen.getByTestId('RootText'))
-      .toContainElement(screen.getByTestId('Text'));
-  });
-});
+    expect(screen.getByTestId('RootText')).toContainElement(
+      screen.getByTestId('Text'),
+    )
+  })
+})

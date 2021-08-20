@@ -1,6 +1,14 @@
 import { Text as TextRN } from 'react-native'
 import styled from 'styled-components/native'
-import { space, color, backgroundColor, typography, layout, flexbox, position } from 'styled-system'
+import {
+  space,
+  color,
+  backgroundColor,
+  typography,
+  layout,
+  flexbox,
+  position,
+} from 'styled-system'
 import PropTypes from 'prop-types'
 
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'

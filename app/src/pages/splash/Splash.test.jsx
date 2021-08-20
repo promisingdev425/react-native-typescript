@@ -1,12 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
-import { render, screen } from '@testing-library/react-native';
+import React from 'react'
+import { View } from 'react-native'
+import { render, screen } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 
-import { Splash } from './Splash.jsx';
+import { Splash } from './Splash.jsx'
 
-describe('Splash', function() {
-  let screen;
+describe('Splash', function () {
+  let screen
 
   beforeEach(() => {
     const InnerScreen = () => (
@@ -16,11 +16,12 @@ describe('Splash', function() {
     )
     const Themed = withTheme(InnerScreen)
 
-    screen = render(<Themed />);
-  });
+    screen = render(<Themed />)
+  })
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('Splash'));
-  });
-});
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('Splash'),
+    )
+  })
+})

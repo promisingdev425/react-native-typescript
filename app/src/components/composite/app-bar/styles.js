@@ -16,8 +16,8 @@ export const Container = styled(Box).attrs((props) => ({
 
 export const Title = styled(TitleCore)`
   position: absolute;
-  left: ${props => getSpace('10')(props)}px;
-  right: ${props => getSpace('10')(props)}px;
+  left: ${(props) => getSpace('10')(props)}px;
+  right: ${(props) => getSpace('10')(props)}px;
   text-align: center;
-  line-height: ${props => getLineHeight('2')(props)}px;
+  line-height: ${(props) => getLineHeight('2')(props)}px;
 `

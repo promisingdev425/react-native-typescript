@@ -1,2 +1,2 @@
 /* PLOP_INJECT_EXPORT */
-export * from './Text.jsx';
+export * from './Text.jsx'

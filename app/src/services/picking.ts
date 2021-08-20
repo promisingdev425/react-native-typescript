@@ -24,7 +24,7 @@ const forPlatform = (platform: any, fallback?: any) => {
 
   return find(
     [platform[OSKey], platform[groupKey], platform[defaultKey], fallback],
-    negate(isNil)
+    negate(isNil),
   )
 }
 

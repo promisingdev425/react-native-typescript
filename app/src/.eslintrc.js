@@ -1,7 +1,6 @@
 module.exports = {
-  extends: ['react-app'],
+  // extends: ['react-app'],
   plugins: ['jest'],
-  env: {},
   rules: {
     'default-case': 0,
     'no-sequences': 0,

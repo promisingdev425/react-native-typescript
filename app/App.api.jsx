@@ -53,14 +53,14 @@ export default function App({
   // Render the login overlay above the main app.
   return (
     <ThemeProvider theme={theme}>
-      {!authenticated && fontsLoaded &&
+      {!authenticated && fontsLoaded && (
         <LoginConnected onLogin={onLogin} onForgotLogin={onForgotLogin} />
-      }
-      {initialized && fontsLoaded &&
+      )}
+      {initialized && fontsLoaded && (
         <React.Suspense fallback={<PageLoader />}>
           {children ? children : <WithServer {...props} />}
         </React.Suspense>
-      }
+      )}
     </ThemeProvider>
-  );
+  )
 }

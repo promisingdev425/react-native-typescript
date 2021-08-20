@@ -15,6 +15,8 @@
     "build:ios": "expo build:ios --no-publish",
     "build:android": "expo build:android --no-publish",
     "lint": "yarn eslint && prettier --check .",
+    "lint:fix": "yarn lint --fix .",
+    "prettier:fix": "prettier --config .prettierrc --write .",
     "lint-ci": "yarn eslint --format junit -o ../reports/lint/js-lint-results.xml",
     "test": "jest --watch",
     "test-ci": "yarn setup && jest --watchAll=false --runInBand --coverage=true  --reporters=default --reporters=jest-junit",
@@ -61,6 +63,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@expo/webpack-config": "^0.13.1",
+    "@react-native-community/eslint-config": "^3.0.0",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
@@ -69,19 +72,28 @@
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-native": "^7.2.0",
     "@types/react-native": "~0.63.2",
-    "@typescript-eslint/parser": "^4.29.1",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.6.0",
     "colors": "^1.4.0",
     "cpr": "^3.0.1",
     "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "expo-cli": "^4.10.0",
     "expo-yarn-workspaces": "^1.5.2",
     "jest-expo": "^42.0.1",
     "jest-junit": "^12.2.0",
+    "lint-staged": "^11.1.2",
     "plop": "^2.7.4",
     "react-native-dotenv": "^3.1.1",
     "react-test-renderer": "^17.0.2",
@@ -119,5 +131,16 @@
   },
   "jest-junit": {
     "outputDirectory": "../reports/coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "yarn lint:fix",
+      "prettier --config .prettierrc --write"
+    ]
   }
 }

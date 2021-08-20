@@ -1,18 +1,20 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
-import { Box } from './Box.jsx';
+import { Box } from './Box.jsx'
 
-<Meta
-  title="Components/Box"
-  argTypes={{
-  }}
-/>
+<Meta title="Components/Box" argTypes={{}} />
 
 # Box
 
-<Description of={ Box } />
+<Description of={Box} />
 
-export const Template = props => <Box {...props} />;
+export const Template = (props) => <Box {...props} />
 
 <Canvas>
   <Story name="Pink colored Box" args={{
@@ -32,4 +34,4 @@ export const Template = props => <Box {...props} />;
   </Story>
 </Canvas>
 
-<ArgsTable of={ Box } />
+<ArgsTable of={Box} />

@@ -1,2 +1,2 @@
 /* PLOP_INJECT_EXPORT */
-export * from './Splash.jsx';
+export * from './Splash.jsx'
