@@ -4,6 +4,7 @@ export default {
   white: '#FFFFFF',
   clear: 'rgba(0, 0, 0, 0)',
   overlay: 'rgba(0, 0, 0, 0.4)',
+  lightGray: '#F4F4F5',
 
   // Brand colors
   brandOrange: '#FF7F40',
@@ -23,5 +24,5 @@ export default {
 
   // Text colors
   textPrimary: '#1F326C',
-  textSecondary: '#8F94A2',
+  textSecondary: '#BCBEC7',
 }

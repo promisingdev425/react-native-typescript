@@ -7,6 +7,7 @@ import {
   border,
   position,
   backgroundColor,
+  borderColor,
 } from 'styled-system'
 
 const Box = styled.View`
@@ -17,6 +18,7 @@ const Box = styled.View`
   ${position}
   ${space}
   ${backgroundColor}
+  ${borderColor}
 `
 
 export { Box }
