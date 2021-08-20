@@ -15,8 +15,8 @@
     "build:ios": "expo build:ios --no-publish",
     "build:android": "expo build:android --no-publish",
     "lint": "yarn eslint && prettier --check .",
-    "lint:fix": "yarn lint --fix .",
-    "prettier:fix": "prettier --config .prettierrc --write .",
+    "lint:fix": "yarn lint --fix . && prettier --config ../.prettierrc.json --write .",
+    "prettier:fix": "prettier --config ../.prettierrc.json --write .",
     "lint-ci": "yarn eslint --format junit -o ../reports/lint/js-lint-results.xml",
     "test": "jest --watch",
     "test-ci": "yarn setup && jest --watchAll=false --runInBand --coverage=true  --reporters=default --reporters=jest-junit",
@@ -132,15 +132,10 @@
   "jest-junit": {
     "outputDirectory": "../reports/coverage"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "yarn lint:fix",
-      "prettier --config .prettierrc --write"
+      "prettier --config ../.prettierrc.json --write"
     ]
   }
 }

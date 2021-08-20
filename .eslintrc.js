@@ -1,11 +1,13 @@
 const fs = require('fs')
 
-const prettierOptions = JSON.parse(fs.readFileSync('./.prettierrc.json', 'utf8'))
+const prettierOptions = JSON.parse(
+  fs.readFileSync('./.prettierrc.json', 'utf8'),
+)
 
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['./app/.eslintrc.js', 'airbnb', 'prettier', 'prettier/react'],
-  plugins: ['prettier', 'json', 'react', 'react-hooks'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  plugins: ['prettier', 'json', 'react', 'react-hooks', 'jest'],
   env: {
     es6: true,
     jest: true,
@@ -28,8 +30,15 @@ module.exports = {
     __DEV__: true,
     fetch: true,
     window: true,
+    any: 'readonly',
   },
   rules: {
+    'default-case': 0,
+    'no-sequences': 0,
+    'jest/no-disabled-tests': 0,
+    'jest/no-focused-tests': 0,
+    'jest/no-identical-title': 0,
+    'no-debugger': 'error',
     'arrow-body-style': 'off',
     'brace-style': ['error', '1tbs'],
     'func-names': 'off',
@@ -47,14 +56,7 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': 'off',
-    'react/jsx-sort-default-props': 'error',
     'react/no-unused-prop-types': 'error',
-    'react/sort-prop-types': [
-      'error',
-      {
-        callbacksLast: true,
-      },
-    ],
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
   },
