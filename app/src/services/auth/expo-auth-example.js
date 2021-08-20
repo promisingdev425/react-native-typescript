@@ -29,7 +29,7 @@ const toQueryString = (params) =>
   Object.entries(params)
     .map(
       ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
     )
     .join('&')
 
@@ -39,7 +39,7 @@ const logout = async () => {
 
 console.log(
   '[Auth] AuthSessionNew.getRedirectUrl',
-  AuthSessionNew.getRedirectUrl()
+  AuthSessionNew.getRedirectUrl(),
 )
 
 const login = async (settings) => {

@@ -17,12 +17,12 @@ describe('Login', function () {
 
     const Themed = withTheme(InnerScreen)
 
-    screen = render(<Themed />);
-  });
+    screen = render(<Themed />)
+  })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('Login')
+      screen.getByTestId('Login'),
     )
   })
 })

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
 
 import { Container, LogoImage } from './styles'
 
@@ -9,18 +9,15 @@ import { Container, LogoImage } from './styles'
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function Splash({
-  ...rest
-}) {
+export function Splash({ ...rest }) {
   return (
     <Container {...rest}>
       <LogoImage />
     </Container>
-  );
+  )
 }
 
-Splash.propTypes = {
-};
+Splash.propTypes = {}
 
 /**
  * `<SplashConnected>` connects the Splash
@@ -31,8 +28,5 @@ Splash.propTypes = {
  */
 /* istanbul ignore next */
 export function SplashConnected() {
-  return (
-    <Splash
-    />
-  );
+  return <Splash />
 }

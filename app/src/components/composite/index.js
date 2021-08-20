@@ -1,2 +1,3 @@
 /* PLOP_INJECT_EXPORT */
-export * from './app-bar';
+export * from './gradient-button'
+export * from './app-bar'

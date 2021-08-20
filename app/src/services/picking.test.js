@@ -1,4 +1,4 @@
-import pickingService from './picking';
+import pickingService from './picking'
 
 jest.mock('react-native', () => ({
   Platform: {
@@ -13,14 +13,14 @@ jest.mock('react-native-iphone-x-helper', () => ({
 
 describe('PickingService', function () {
   it('should get Platform OS', () => {
-    expect(pickingService.getPlatformOS()).toBe('ios');
+    expect(pickingService.getPlatformOS()).toBe('ios')
   })
 
   it('should get Platform Version', () => {
-    expect(pickingService.getPlatformVersion()).toBe(1);
+    expect(pickingService.getPlatformVersion()).toBe(1)
   })
 
   it('should get Platform Group', () => {
-    expect(pickingService.getPlatformGroup()).toBe('iPhoneX');
+    expect(pickingService.getPlatformGroup()).toBe('iPhoneX')
   })
-});
+})

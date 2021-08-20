@@ -1,26 +1,27 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
-import { Text } from './Text.jsx';
+import { Text } from './Text.jsx'
 
-<Meta
-  title="Components/Text"
-  argTypes={{
-  }}
-/>
+<Meta title="Components/Text" argTypes={{}} />
 
 # Text
 
-<Description of={ Text } />
+<Description of={Text} />
 
-export const Template = props => <Text {...props}>This is a generic text component</Text>;
+export const Template = (props) => (
+  <Text {...props}>This is a generic text component</Text>
+)
 
 <Canvas>
-  <Story
-    name="Text"
-    args={{}}
-  >
+  <Story name="Text" args={{}}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={ Text } />
+<ArgsTable of={Text} />

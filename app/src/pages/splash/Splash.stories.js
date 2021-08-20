@@ -1,10 +1,7 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import React from 'react'
+import { storiesOf } from '@storybook/react-native'
 
-import { Splash } from './Splash.jsx';
+import { Splash } from './Splash.jsx'
 
 // Component Native Stories
-storiesOf('Splash Screen', module)
-  .add('light theme', () => (
-    <Splash />
-  ));
+storiesOf('Splash Screen', module).add('light theme', () => <Splash />)

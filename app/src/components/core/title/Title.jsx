@@ -11,7 +11,9 @@ import { Text } from '../text'
  * @return {React.ReactNode}
  */
 const Title = ({ variant, ...rest }) => {
-  let size = 4, style = 'style.bold', family = 'group.sfProDisplay'
+  let size = 4,
+    style = 'style.bold',
+    family = 'group.sfProDisplay'
 
   switch (variant) {
     case 'navigation':
