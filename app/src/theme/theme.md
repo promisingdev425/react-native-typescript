@@ -10,21 +10,21 @@
 
 ### getPx
 
-▸ `Const` **getPx**(`n`, `scale`): `string` \| `0`
+▸ `Const` **getPx**(`n`, `scale`): `string` \| ``0``
 
 Get the value in pixels.
 
 #### Parameters
 
-| Name    | Type       | Description                 |
-| :------ | :--------- | :-------------------------- |
-| `n`     | `any`      | not sure what this is       |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `n` | `any` | not sure what this is |
 | `scale` | `number`[] | some way to scale the value |
 
 #### Returns
 
-`string` \| `0`
+`string` \| ``0``
 
 #### Defined in
 
-[theme/helpers.ts:16](https://github.com/Apartment-Snapshot/snapshot-ui/blob/46bc539/app/src/theme/helpers.ts#L16)
+[theme/helpers.ts:16](https://github.com/Apartment-Snapshot/snapshot-ui/blob/490754e/app/src/theme/helpers.ts#L16)

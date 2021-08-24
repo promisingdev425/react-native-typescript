@@ -10,5 +10,5 @@ __generated__
 scripts
 
 # Auto generated markdown files
-src/theme/theme.md
-src/services/services.md
+app/src/theme/theme.md
+app/src/services/services.md

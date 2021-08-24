@@ -13,4 +13,7 @@ yarn typedoc --out docs ./src/theme/index.ts ./src/services/index.ts
 mv docs/modules/services.md src/services
 mv docs/modules/theme.md src/theme
 
+# Clean up the docs folder since we no longer need it
+yarn rimraf docs
+
 echo 'Donzo 💪'
