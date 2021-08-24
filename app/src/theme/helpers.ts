@@ -8,6 +8,11 @@ const px = (n: number) => {
   return isNumber(n) && n !== 0 ? `${n}px` : n;
 };
 
+/**
+ * Get the value in pixels.
+ * @param {*} n - not sure what this is
+ * @param {number[]} scale - some way to scale the value
+ */
 export const getPx = (n: any, scale: number[]) => {
   return px(get(scale, n));
 };
