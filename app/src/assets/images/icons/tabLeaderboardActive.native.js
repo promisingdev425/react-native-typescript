@@ -2,7 +2,9 @@ import React, { forwardRef, memo } from 'react'
 import { SvgXml } from 'react-native-svg'
 
 function TabLeaderboardActiveIcon(props, svgRef) {
-  const color = props.color
+  // eslint-disable-next-line react/prop-types
+  const { color } = props
+
   const svgMarkup = `<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>leaderboard active - icon</title>
     <defs>
