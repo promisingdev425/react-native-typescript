@@ -8,3 +8,7 @@ __generated__
 .expo
 .storybook
 scripts
+
+# Auto generated markdown files
+src/theme/theme.md
+src/services/services.md
