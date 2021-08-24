@@ -1,5 +1,14 @@
-.expo
-.git
-node_modules
+App.jsx
 reports
-storybook
+storybook-static
+junit.xml
+node_modules
+web-build
+__generated__
+.expo
+.storybook
+scripts
+
+# Auto generated markdown files
+src/theme/theme.md
+src/services/services.md

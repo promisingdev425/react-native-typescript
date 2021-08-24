@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { Auth0 } from "./Auth0.js";
+import { Auth0 } from './Auth0.js'
 
 /**
  * This hook stores the user's authenticated state and provides
@@ -12,10 +12,10 @@ import { Auth0 } from "./Auth0.js";
 export function useAuthService(authService) {
   // Either use the auth service provided (for testing)
   // or generate one that gets reused between calls.
-  const [service] = React.useState(() => authService || new Auth0());
-  const [initialized, setInitialized] = React.useState(false);
-  const [authResponse, setAuthResponse] = React.useState();
-  const [loading, setLoading] = React.useState(true);
+  const [service] = React.useState(() => authService || new Auth0())
+  const [initialized, setInitialized] = React.useState(false)
+  const [authResponse, setAuthResponse] = React.useState()
+  const [loading, setLoading] = React.useState(true)
 
   const onLogout = () => {
     // Do any logout work you need to perform here...
@@ -25,27 +25,27 @@ export function useAuthService(authService) {
     // We chould use an object to store these state variables
     // in a single state value.
     // Clear the auth data.
-    setAuthResponse(null);
+    setAuthResponse(null)
     // Ensure that the initialized state is reset so that
     // no state is leaked to the next user.
-    setInitialized(false);
-  };
+    setInitialized(false)
+  }
 
   const onLogin = async (...args) => {
     // FYI, the loading state is not managed in this
     // function because it is dependent on the design of the login
     // page so it needs to be the Login page's responsibility.
-    const response = await service.login(...args);
+    const response = await service.login(...args)
 
     if (response) {
       // TODO Ensure these are batched.
-      setAuthResponse(response);
+      setAuthResponse(response)
       // We have been authenticated at least once now.
-      setInitialized(true);
+      setInitialized(true)
     } else {
-      setAuthResponse(null);
+      setAuthResponse(null)
     }
-  };
+  }
 
   // This is similar to `onLogin` but should be used when
   // the user's session expires and you are using the `<LoginOverlay>`
@@ -56,20 +56,20 @@ export function useAuthService(authService) {
     // Clearing the auth flag?
     // setAuthResponse(null);
 
-    const response = await service.login(...args);
+    const response = await service.login(...args)
 
     // TODO Ensure these are batched
     if (response) {
-      setAuthResponse(response);
+      setAuthResponse(response)
       // FYI Do NOT flip the `initialized` flag here.
     } else {
-      setAuthResponse(null);
+      setAuthResponse(null)
     }
-  };
+  }
 
   const onForgotLogin = () => {
-    console.log("Not yet implemented 🤬");
-  };
+    console.log('Not yet implemented 🤬')
+  }
 
   // Do whatever is necessary to get the user's
   // initial authenticated state.
@@ -80,9 +80,9 @@ export function useAuthService(authService) {
       // so the app removes the login window and shows the
       // main app.
       if (response) {
-        setLoading(false);
-        setInitialized(true);
-        setAuthResponse(response);
+        setLoading(false)
+        setInitialized(true)
+        setAuthResponse(response)
       }
       // If the user is not authenticated, ensure that
       // the login page is shown and the loader is removed.
@@ -90,18 +90,18 @@ export function useAuthService(authService) {
       // unless you specifically want to reset the
       // full application state.
       else {
-        setLoading(false);
+        setLoading(false)
         // If they are not authenticated, ensure the
         // auth response data is cleaned up.
-        setAuthResponse(null);
+        setAuthResponse(null)
       }
-    });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    })
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Here we use the presence of auth response data
   // to indicate whether the user is currently authenticated
   // but this will vary based on your needs.
-  const authenticated = !!authResponse;
+  const authenticated = !!authResponse
 
   // How you implement authentication is up to you but
   // the following API is expected.
@@ -140,5 +140,5 @@ export function useAuthService(authService) {
     // help logging in. For example, this might send a
     // forgot password email or sms.
     onForgotLogin,
-  };
+  }
 }

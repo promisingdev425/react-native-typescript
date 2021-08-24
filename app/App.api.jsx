@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react'
+import { ThemeProvider } from 'styled-components/native'
 
-import { useAuthService } from "~/services/auth";
+import { useAuthService } from '~/services/auth'
+import { themes } from '~/theme'
+import useFonts from '~/assets/fonts/useFonts'
 
-import { PageLoader } from "./src/components";
-import { LoginConnected } from "./src/pages/login";
-import { WithServer } from "./src/bootstrap/WithServer.jsx";
+import { PageLoader } from './src/components'
+import { LoginConnected } from './src/pages/login'
+import { WithServer } from './src/bootstrap/WithServer.jsx'
 
 /**
  * If <App> is used as the entry point to the application,
@@ -25,31 +28,39 @@ export default function App({
   // Anything else should be passed through to WithServer
   ...rest
 }) {
-  const { initialized, authenticated, onLogin, onForgotLogin, onLogout } =
-    useAuthService(authService);
+  const {
+    initialized,
+    authenticated,
+    onLogin,
+    onForgotLogin,
+    onLogout,
+  } = useAuthService(authService)
+
+  const theme = themes['light']
+  const fontsLoaded = useFonts()
 
   const props = {
     ...rest,
-    onSuccess: () => console.log("Authentication not implemented yet."),
+    onSuccess: () => console.log('Authentication not implemented yet.'),
     // Use this callback to handle the case that the user
     // made a request and their authentication is no longer
     // valid. By default, this will simply log out the user
     // but you may need to handle this differently based on
     // your authentication mechanism.
     onAuthFailure: onLogout,
-  };
+  }
 
   // Render the login overlay above the main app.
   return (
-    <>
-      {!authenticated && (
+    <ThemeProvider theme={theme}>
+      {!authenticated && fontsLoaded && (
         <LoginConnected onLogin={onLogin} onForgotLogin={onForgotLogin} />
       )}
-      {initialized && (
+      {initialized && fontsLoaded && (
         <React.Suspense fallback={<PageLoader />}>
           {children ? children : <WithServer {...props} />}
         </React.Suspense>
       )}
-    </>
-  );
+    </ThemeProvider>
+  )
 }

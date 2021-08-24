@@ -1,24 +1,24 @@
 module.exports = function (api) {
-  api.cache(true);
+  api.cache(true)
   return {
-    presets: ["babel-preset-expo"],
+    presets: ['babel-preset-expo'],
     plugins: [
       [
-        "module:react-native-dotenv",
+        'module:react-native-dotenv',
         {
           safe: true,
           allowUndefined: true,
         },
       ],
       [
-        "module-resolver",
+        'module-resolver',
         {
-          extensions: [".js", ".jsx", "ts", "tsx"],
+          extensions: ['.js', '.jsx', 'ts', 'tsx'],
           alias: {
-            "~": "./src",
+            '~': './src',
           },
         },
       ],
     ],
-  };
-};
+  }
+}

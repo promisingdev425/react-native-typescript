@@ -1,6 +1,9 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react'
+import { View } from 'react-native'
 // import PropTypes from 'prop-types';
+
+import { Text } from '~/components'
+import { TabBrowseIcon } from '~/assets/images'
 
 /**
  * `<Login>`
@@ -11,12 +14,13 @@ import { View, Text } from "react-native";
 export function Login({ ...rest }) {
   return (
     <View {...rest}>
-      <Text>Login Page</Text>
+      <Text p={5}>Login Page</Text>
+      <TabBrowseIcon />
     </View>
-  );
+  )
 }
 
-Login.propTypes = {};
+Login.propTypes = {}
 
 /**
  * `<LoginConnected>` connects the Login
@@ -27,5 +31,5 @@ Login.propTypes = {};
  */
 /* istanbul ignore next */
 export function LoginConnected() {
-  return <Login />;
+  return <Login />
 }

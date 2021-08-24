@@ -1,12 +1,12 @@
-import { themeGet } from "@styled-system/theme-get";
-import { mapToTheme as theme } from "styled-map";
+import { themeGet } from '@styled-system/theme-get'
+import { mapToTheme as theme } from 'styled-map'
 
-import get from "lodash/get";
-import isNumber from "lodash/isNumber";
+import get from 'lodash/get'
+import isNumber from 'lodash/isNumber'
 
 const px = (n: number) => {
-  return isNumber(n) && n !== 0 ? `${n}px` : n;
-};
+  return isNumber(n) && n !== 0 ? `${n}px` : n
+}
 
 /**
  * Get the value in pixels.
@@ -14,47 +14,50 @@ const px = (n: number) => {
  * @param {number[]} scale - some way to scale the value
  */
 export const getPx = (n: any, scale: number[]) => {
-  return px(get(scale, n));
-};
+  return px(get(scale, n))
+}
 
 export const mapProps = (mapper: any) => {
   return (func: any) => {
     return (props: any) => {
-      return func(mapper(props));
-    };
-  };
-};
+      return func(mapper(props))
+    }
+  }
+}
 
-export const mapToTheme = (key: string, prop = "variant") => {
+/* istanbul ignore next */
+export const mapToTheme = (key: string, prop = 'variant') => {
   return (props?: string) => {
-    return theme(key, prop)(props)(props)(props);
-  };
-};
+    return theme(key, prop)(props)(props)(props)
+  }
+}
 
 export const getColor = (key: string) => {
-  return themeGet(`colors.${key}`);
-};
+  return themeGet(`colors.${key}`)
+}
 
 export const getMetrics = (key: string) => {
-  return themeGet(`metrics.${key}`);
-};
+  return themeGet(`metrics.${key}`)
+}
 
 export const getSpace = (key: string) => {
-  return themeGet(`space.${key}`);
-};
+  return themeGet(`space.${key}`)
+}
 
+/* istanbul ignore next */
 export const getRadii = (key: string) => {
-  return themeGet(`radii.${key}`);
-};
+  return themeGet(`radii.${key}`)
+}
 
 export const getTypography = (key: string) => {
-  return themeGet(`typography.${key}`);
-};
+  return themeGet(`typography.${key}`)
+}
 
+/* istanbul ignore next */
 export const getFontSize = (key: string) => {
-  return themeGet(`fontSizes.${key}`);
-};
+  return themeGet(`fontSizes.${key}`)
+}
 
 export const getLineHeight = (key: string) => {
-  return themeGet(`lineHeights.${key}`);
-};
+  return themeGet(`lineHeights.${key}`)
+}

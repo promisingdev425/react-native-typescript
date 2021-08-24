@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import { Auth0Mock } from "~/services/auth/mock";
-import MainApp from "./App.api";
+import { Auth0Mock } from '~/services/auth/mock'
+import MainApp from './App.api'
 
-import { WithMocks } from "./src/bootstrap/WithMocks.jsx";
+import { WithMocks } from './src/bootstrap/WithMocks.jsx'
 
 /**
  * If this version of <App> is used as the application
@@ -31,5 +31,5 @@ export default function App({
       */}
       <WithMocks {...rest} />
     </MainApp>
-  );
+  )
 }

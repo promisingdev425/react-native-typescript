@@ -1,0 +1,25 @@
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
+
+import { Splash } from './Splash.jsx'
+
+<Meta title="Pages/Splash" argTypes={{}} />
+
+# Splash
+
+<Description of={Splash} />
+
+export const Template = (props) => <Splash {...props} />
+
+<Canvas>
+  <Story name="Splash" args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Splash} />
