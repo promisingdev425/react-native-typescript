@@ -28,4 +28,4 @@ an auth service to perform the authentication steps.
 
 #### Defined in
 
-[services/auth/useAuthService.js:12](https://github.com/Apartment-Snapshot/snapshot-ui/blob/e9f4cdd/app/src/services/auth/useAuthService.js#L12)
+[services/auth/useAuthService.js:12](https://github.com/Apartment-Snapshot/snapshot-ui/blob/d54cb4c/app/src/services/auth/useAuthService.js#L12)
