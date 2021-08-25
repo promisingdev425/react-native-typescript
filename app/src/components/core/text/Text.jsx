@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 import {
   space,
   color,
-  backgroundColor,
   typography,
   layout,
   flexbox,
@@ -27,7 +26,6 @@ import { fontFamilyComposite, lineHeightComposite } from '~/theme'
  */
 const Text = styled.Text`
   ${space}
-  ${backgroundColor}
   ${color}
   ${typography}
   ${layout}
