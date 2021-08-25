@@ -24,4 +24,6 @@ describe('HeaderBar', function () {
       screen.getByTestId('HeaderBar'),
     )
   })
+
+  // TODO: write test case after implement <Avatar /> component.
 })
