@@ -23,14 +23,10 @@ const GradientButton = ({ active, title, description, onPress, ...rest }) => {
     setIsPressed(false)
   }, [setIsPressed])
 
-  const handlePress = useCallback(() => {
-    if (onPress) onPress()
-  }, [onPress])
-
   return (
     <Container
       active={active}
-      onPress={handlePress}
+      onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       isPressed={isPressed}
