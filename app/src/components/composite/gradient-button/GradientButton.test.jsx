@@ -48,10 +48,11 @@ describe('GradientButton', function () {
 
   it('should click', () => {
     fireEvent.press(button)
-    expect(handlePress).toHaveBeenCalled()
+    expect(handlePress).toHaveBeenCalledTimes(1)
   })
 
   it('should trigger PressIn and PressOut events', async () => {
+    // TODO: check innerbase working fine.
     fireEvent(button, 'pressIn')
     await waitFor(() => fireEvent(button, 'pressOut'))
   })

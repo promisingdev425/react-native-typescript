@@ -32,14 +32,26 @@ const GradientButton = ({ active, title, description, onPress, ...rest }) => {
       isPressed={isPressed}
       {...rest}
     >
-      <InnerBase isPressed={isPressed} active={active}>
+      <InnerBase
+        testID={`ButtonInner${active ? 1 : 0}`}
+        isPressed={isPressed}
+        active={active}
+      >
         {active && <Background active={active} isPressed={isPressed} />}
 
-        <Title variant="header" color={active ? 'white' : 'textSecondary'}>
+        <Title
+          testID={`ButtonTitle${active ? 1 : 0}`}
+          variant="header"
+          color={active ? 'white' : 'textSecondary'}
+        >
           {title}
         </Title>
 
-        <Text fontSize={2} color={active ? 'white' : 'textSecondary'}>
+        <Text
+          testID={`ButtonDescription${active ? 1 : 0}`}
+          fontSize={2}
+          color={active ? 'white' : 'textSecondary'}
+        >
           {description}
         </Text>
       </InnerBase>

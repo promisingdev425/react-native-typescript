@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import { TouchableWithoutFeedback } from 'react-native'
+import { View, TouchableWithoutFeedback } from 'react-native'
 import { space, border } from 'styled-system'
 import { LinearGradient } from 'expo-linear-gradient'
 
@@ -24,7 +24,8 @@ export const Container = styled(TouchableWithoutFeedback)`
   ${space}
 `
 
-export const InnerBase = styled.View.attrs(() => ({
+export const InnerBase = styled(View).attrs((props) => ({
+  ...props,
   p: 5,
   borderRadius: 3,
 }))`
