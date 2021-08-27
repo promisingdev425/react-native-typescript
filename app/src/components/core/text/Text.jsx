@@ -7,6 +7,7 @@ import {
   layout,
   flexbox,
   position,
+  lineHeight,
 } from 'styled-system'
 import PropTypes from 'prop-types'
 
@@ -29,6 +30,7 @@ const Text = styled.Text`
   ${color}
   ${typography}
   ${layout}
+  ${lineHeight}
   ${flexbox}
   ${position}
   ${fontFamilyComposite}
@@ -40,9 +42,9 @@ Text.propTypes = {
   allowFontScaling: PropTypes.bool,
   bg: PropTypes.string,
   color: PropTypes.string,
-  fontSize: PropTypes.number,
   fontFamilyGroup: PropTypes.string,
   fontFamilyStyle: PropTypes.string,
+  fontSize: PropTypes.number,
 }
 
 Text.defaultProps = {
@@ -50,9 +52,9 @@ Text.defaultProps = {
   allowFontScaling: false,
   bg: 'clear',
   color: 'textPrimary',
-  fontSize: 2,
   fontFamilyGroup: 'group.sfProDisplay',
   fontFamilyStyle: 'style.regular',
+  fontSize: 2,
 }
 
 export { Text }

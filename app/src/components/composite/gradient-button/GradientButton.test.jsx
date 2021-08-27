@@ -1,23 +1,59 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
+
+import { withTheme } from '~/theme/hocs'
 
 import { GradientButton } from './GradientButton.jsx'
 
 describe('GradientButton', function () {
   let screen
+  let button
+  let handlePress
 
   beforeEach(() => {
-    screen = render(
+    handlePress = jest.fn()
+
+    const InnerScreen = () => (
       <View testID="Root">
-        <GradientButton testID="GradientButton" />
-      </View>,
+        <GradientButton
+          testID="GradientButtonActive"
+          title="15"
+          description="KPI SCORE"
+          onPress={handlePress}
+          active
+        />
+        <GradientButton
+          testID="GradientButtonInActive"
+          title="12"
+          description="POINTS AWARD"
+        />
+      </View>
     )
+    const Themed = withTheme(InnerScreen)
+
+    screen = render(<Themed />)
+    button = screen.getByTestId('GradientButtonActive')
   })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('GradientButton'),
+      screen.getByTestId('GradientButtonActive'),
     )
+
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('GradientButtonInActive'),
+    )
+  })
+
+  it('should click', () => {
+    fireEvent.press(button)
+    expect(handlePress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should trigger PressIn and PressOut events', async () => {
+    // TODO: check innerbase working fine.
+    fireEvent(button, 'pressIn')
+    await waitFor(() => fireEvent(button, 'pressOut'))
   })
 })
