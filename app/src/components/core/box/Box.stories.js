@@ -7,10 +7,10 @@ import { Centered } from '~/storybook-utils'
 
 import { Box } from './Box.jsx'
 
-const Container = styled(Box).attrs((props) => ({
+const Container = styled(Box).attrs({
   bg: 'negative',
   p: 6,
-}))``
+})``
 
 // Component Native Stories
 storiesOf('Box', module)
