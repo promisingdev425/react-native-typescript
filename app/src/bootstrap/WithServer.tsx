@@ -7,6 +7,6 @@ import { Login } from '~/pages'
  * @param {object} props
  * @param {string} [props.className]
  */
-export function WithServer({}) {
-  return <Login />
-}
+const WithServer = () => <Login />
+
+export { WithServer }

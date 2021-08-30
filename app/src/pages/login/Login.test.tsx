@@ -1,14 +1,17 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
+import { withTestProps } from '~/utils'
 
-import { Login } from './Login.jsx'
+import { Login as LoginScreen } from './Login'
 
 describe('Login', function () {
-  let screen
+  let screen: RenderAPI
 
   beforeEach(() => {
+    const Login = withTestProps(LoginScreen)
+
     const InnerScreen = () => (
       <View testID="Root">
         <Login testID="Login" />
