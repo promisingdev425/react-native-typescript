@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Auth0Mock } from '~/services/auth/mock'
 import MainApp from './App.api'
 
-import { WithMocks } from './src/bootstrap/WithMocks.jsx'
+import { WithMocks } from './src/bootstrap/WithMocks'
 
 /**
  * If this version of <App> is used as the application
