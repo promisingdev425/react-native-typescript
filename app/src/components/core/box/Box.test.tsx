@@ -1,11 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
 
-import { Box } from './Box.jsx'
+import { Box } from './Box'
 
 describe('Box', function () {
-  let screen
+  let screen: RenderAPI
 
   beforeEach(() => {
     screen = render(

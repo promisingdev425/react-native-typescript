@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import PropTypes from 'prop-types'
 
 /**
  * `<PageLoader>`
@@ -8,7 +7,7 @@ import PropTypes from 'prop-types'
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function PageLoader({ ...rest }) {
+const PageLoader: React.FC = ({ ...rest }) => {
   return (
     <View {...rest}>
       <Text>Loading...</Text>
@@ -16,4 +15,4 @@ export function PageLoader({ ...rest }) {
   )
 }
 
-PageLoader.propTypes = {}
+export { PageLoader }

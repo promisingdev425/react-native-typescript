@@ -1,16 +1,19 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
+import { withTestProps } from '~/utils'
 
-import { PageLoader } from './PageLoader.jsx'
+import { PageLoader } from './PageLoader'
+
+const WrappedPageLoader = withTestProps(PageLoader)
 
 describe('PageLoader', function () {
-  let screen
+  let screen: RenderAPI
 
   beforeEach(() => {
     screen = render(
       <View testID="Root">
-        <PageLoader testID="PageLoader" />
+        <WrappedPageLoader testID="PageLoader" />
       </View>,
     )
   })
