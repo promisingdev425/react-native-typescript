@@ -16,12 +16,7 @@ export interface IAppBar {
  * @param {string} props.rightItem - Right widget(button/icon/etc) component to render
  * @return {React.ReactNode}
  */
-const AppBar: React.FC<IAppBar> = ({
-  title,
-  leftItem = null,
-  rightItem = null,
-  ...rest
-}) => (
+const AppBar: React.FC<IAppBar> = ({ title, leftItem, rightItem, ...rest }) => (
   <Container {...rest}>
     {leftItem}
     <Title variant="navigation">Bellaire Ranch</Title>

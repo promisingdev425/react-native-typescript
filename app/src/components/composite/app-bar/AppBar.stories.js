@@ -6,7 +6,14 @@ import { AppBar } from './AppBar'
 
 // Component Native Stories
 storiesOf('AppBar', module)
-  .add('Has Left icon', () => (
+  .add('Has left and right icons', () => (
+    <AppBar
+      title="Appbar header"
+      leftItem={<PropertyIcon />}
+      rightItem={<PropertyIcon />}
+    />
+  ))
+  .add('Has left icon', () => (
     <AppBar title="Appbar header" leftItem={<PropertyIcon />} />
   ))
-  .add('Has Left icon', () => <AppBar title="Header title" />)
+  .add('Title only', () => <AppBar title="Header title" />)

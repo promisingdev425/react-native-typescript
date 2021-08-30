@@ -18,6 +18,13 @@ import { AppBar } from './AppBar'
 export const Template = (props) => <AppBar {...props} />
 
 <Canvas>
+  <Story name="AppBar with left and right icons" args={{
+    title: "Appbar header",
+    leftItem: <PropertyIcon />,
+    rightItem: <PropertyIcon />
+  }}>
+    {Template.bind({})}
+  </Story>
   <Story name="AppBar with title and left icon" args={{
     title: "Appbar header",
     leftItem: <PropertyIcon />
