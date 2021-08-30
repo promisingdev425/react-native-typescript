@@ -2,13 +2,15 @@ import React from 'react'
 import { View } from 'react-native'
 import { render } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
+import { withTestProps } from '~/utils'
 
-import { Text } from './Text.jsx'
+import { Text as TextComp } from './Text'
 
 describe('Text', function () {
   let screen
 
   beforeEach(() => {
+    const Text = withTestProps(TextComp)
     const InnerScreen = () => (
       <View testID="RootText">
         <Text testID="Text" />

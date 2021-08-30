@@ -97,6 +97,7 @@ module.exports = {
     "prettier/prettier": ["error", prettierOptions],
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
+    "import/no-anonymous-default-export": "off",
     "react/jsx-boolean-value": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",

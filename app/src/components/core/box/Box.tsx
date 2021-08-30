@@ -16,12 +16,12 @@ import {
 } from 'styled-system'
 
 const Box = styled(View)<
-  | BorderProps
-  | ColorProps
-  | FlexboxProps
-  | PositionProps
-  | LayoutProps
-  | SpaceProps
+  BorderProps &
+    ColorProps &
+    FlexboxProps &
+    PositionProps &
+    LayoutProps &
+    SpaceProps
 >`
   ${border}
   ${color}

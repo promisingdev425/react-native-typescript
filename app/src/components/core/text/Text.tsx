@@ -1,17 +1,40 @@
+import React from 'react'
 import { Text as TextRN } from 'react-native'
 import styled from 'styled-components/native'
 import {
   space,
-  color,
+  color as colorStyle,
   typography,
   layout,
   flexbox,
   position,
   lineHeight,
+  SpaceProps,
+  ColorProps,
+  TypographyProps,
+  LayoutProps,
+  FlexboxProps,
+  PositionProps,
+  LineHeightProps,
 } from 'styled-system'
-import PropTypes from 'prop-types'
 
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'
+
+interface IText
+  extends SpaceProps,
+    ColorProps,
+    TypographyProps,
+    LayoutProps,
+    FlexboxProps,
+    PositionProps,
+    LineHeightProps {
+  allowFontScaling: boolean
+  bg: string
+  color: string
+  fontFamilyGroup: string
+  fontFamilyStyle: string
+  fontSize: number
+}
 
 /**
  * `<Title>`
@@ -25,9 +48,9 @@ import { fontFamilyComposite, lineHeightComposite } from '~/theme'
  * @param {string} props.fontFamilyStyle - Font family style (regular | bold | semiBold | ... )
  * @return {React.ReactNode}
  */
-const Text = styled.Text`
+const StyledText = styled(TextRN)<IText>`
   ${space}
-  ${color}
+  ${colorStyle}
   ${typography}
   ${layout}
   ${lineHeight}
@@ -37,24 +60,24 @@ const Text = styled.Text`
   ${lineHeightComposite}
 `
 
-Text.propTypes = {
-  ...TextRN.propTypes,
-  allowFontScaling: PropTypes.bool,
-  bg: PropTypes.string,
-  color: PropTypes.string,
-  fontFamilyGroup: PropTypes.string,
-  fontFamilyStyle: PropTypes.string,
-  fontSize: PropTypes.number,
-}
-
-Text.defaultProps = {
-  ...TextRN.defaultProps,
-  allowFontScaling: false,
-  bg: 'clear',
-  color: 'textPrimary',
-  fontFamilyGroup: 'group.sfProDisplay',
-  fontFamilyStyle: 'style.regular',
-  fontSize: 2,
-}
+const Text: React.FC<IText> = ({
+  allowFontScaling = false,
+  bg = 'clear',
+  color = 'textPrimary',
+  fontFamilyGroup = 'group.sfProDisplay',
+  fontFamilyStyle = 'style.regular',
+  fontSize = 2,
+  ...rest
+}) => (
+  <StyledText
+    allowFontScaling={allowFontScaling}
+    bg={bg}
+    color={color}
+    fontFamilyGroup={fontFamilyGroup}
+    fontFamilyStyle={fontFamilyStyle}
+    fontSize={fontSize}
+    {...rest}
+  />
+)
 
 export { Text }
