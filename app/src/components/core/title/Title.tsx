@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Text, IText } from '../text'
 
-interface ITitle extends IText {
+export interface ITitle extends IText {
   variant?: 'navigation' | 'header' | 'section' | 'body'
 }
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 import { withTestProps } from '~/utils'
 
 import { Text as TextComp } from './Text'
 
 describe('Text', function () {
-  let screen
+  let screen: RenderAPI
 
   beforeEach(() => {
     const Text = withTestProps(TextComp)
