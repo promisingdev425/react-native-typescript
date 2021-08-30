@@ -20,7 +20,7 @@ import {
 
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'
 
-interface IText
+export interface IText
   extends SpaceProps,
     ColorProps,
     TypographyProps,
@@ -28,12 +28,12 @@ interface IText
     FlexboxProps,
     PositionProps,
     LineHeightProps {
-  allowFontScaling: boolean
-  bg: string
-  color: string
-  fontFamilyGroup: string
-  fontFamilyStyle: string
-  fontSize: number
+  allowFontScaling?: boolean
+  bg?: string
+  color?: string
+  fontFamilyGroup?: string
+  fontFamilyStyle?: string
+  fontSize?: number
 }
 
 /**

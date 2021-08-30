@@ -2,13 +2,16 @@ import React from 'react'
 import { View } from 'react-native'
 import { render } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
+import { withTestProps } from '~/utils'
 
-import { Title } from './Title.jsx'
+import { Title as TitleComp } from './Title'
 
 describe('Title', function () {
   let screen
 
   it('should render', () => {
+    const Title = withTestProps(TitleComp)
+
     const InnerScreen = () => (
       <View testID="RootTitle">
         <Title testID="Title1" variant="navigation" pt={3}>
