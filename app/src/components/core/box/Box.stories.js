@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
 
-import { Box } from './Box.jsx'
+import { Box } from './Box'
 
 // Component Native Stories
 storiesOf('Box', module)
