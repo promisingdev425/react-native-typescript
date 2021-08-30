@@ -1,18 +1,29 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render, fireEvent, waitFor } from '@testing-library/react-native'
-
+import {
+  render,
+  fireEvent,
+  waitFor,
+  RenderAPI,
+} from '@testing-library/react-native'
+import { ReactTestInstance } from 'react-test-renderer'
 import { withTheme } from '~/theme/hocs'
+import { withTestProps } from '~/utils'
 
-import { GradientButton } from './GradientButton.jsx'
+import {
+  IGradientButton,
+  GradientButton as GradientButtonComp,
+} from './GradientButton'
 
 describe('GradientButton', function () {
-  let screen
-  let button
-  let handlePress
+  let screen: RenderAPI
+  let button: ReactTestInstance
+  let handlePress: jest.Mock
 
   beforeEach(() => {
     handlePress = jest.fn()
+
+    const GradientButton = withTestProps<IGradientButton>(GradientButtonComp)
 
     const InnerScreen = () => (
       <View testID="Root">

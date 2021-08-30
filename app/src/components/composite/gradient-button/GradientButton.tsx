@@ -1,9 +1,25 @@
 import React, { useState, useCallback } from 'react'
-import PropTypes from 'prop-types'
 import noop from 'lodash/noop'
-import { Title, Text } from '~/components/core'
+import {
+  ITitle,
+  IText,
+  Title as TitleComp,
+  Text as TextComp,
+} from '~/components/core'
+import { withTestProps } from '~/utils'
 
-import { Container, InnerBase, Background } from './styles'
+import { Container, InnerBase, GradientBack } from './styles'
+
+export interface IGradientButton {
+  active?: boolean
+  title: string
+  description: string
+  onPress?: () => void
+}
+
+// Wrapped 2 components to add `testID` prop
+const Title = withTestProps<ITitle>(TitleComp)
+const Text = withTestProps<IText>(TextComp)
 
 /**
  * `<GradientButton>`
@@ -12,7 +28,13 @@ import { Container, InnerBase, Background } from './styles'
  * @param {boolean} props.active - Button's state.
  * @return {React.ReactNode}
  */
-const GradientButton = ({ active, title, description, onPress, ...rest }) => {
+const GradientButton: React.FC<IGradientButton> = ({
+  active = false,
+  title,
+  description,
+  onPress = noop,
+  ...rest
+}) => {
   const [isPressed, setIsPressed] = useState(false)
 
   const handlePressIn = useCallback(() => {
@@ -29,15 +51,10 @@ const GradientButton = ({ active, title, description, onPress, ...rest }) => {
       onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      isPressed={isPressed}
       {...rest}
     >
-      <InnerBase
-        testID={`ButtonInner${active ? 1 : 0}`}
-        isPressed={isPressed}
-        active={active}
-      >
-        {active && <Background active={active} isPressed={isPressed} />}
+      <InnerBase isPressed={isPressed} active={active}>
+        {active && <GradientBack />}
 
         <Title
           testID={`ButtonTitle${active ? 1 : 0}`}
@@ -57,18 +74,6 @@ const GradientButton = ({ active, title, description, onPress, ...rest }) => {
       </InnerBase>
     </Container>
   )
-}
-
-GradientButton.propTypes = {
-  active: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  onPress: PropTypes.func,
-}
-
-GradientButton.defaultProps = {
-  active: false,
-  onPress: noop,
 }
 
 export { GradientButton }

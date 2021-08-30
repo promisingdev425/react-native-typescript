@@ -1,10 +1,14 @@
 import React from 'react'
-import { Image } from 'react-native'
-import PropTypes from 'prop-types'
+import { Image, ImageSourcePropType } from 'react-native'
 
 import { userPlaceholder } from '~/assets/images'
 
 import { Container, Title } from './styles'
+
+export interface IHeaderBar {
+  title: string
+  image?: ImageSourcePropType
+}
 
 /**
  * `<HeaderBar>`
@@ -12,23 +16,17 @@ import { Container, Title } from './styles'
  * @param {object} props
  * @return {React.ReactNode}
  */
-const HeaderBar = ({ title, image, ...rest }) => {
+const HeaderBar: React.FC<IHeaderBar> = ({
+  title,
+  image = userPlaceholder,
+  ...rest
+}) => {
   return (
     <Container {...rest}>
       <Title variant="header">{title}</Title>
       <Image source={image} />
     </Container>
   )
-}
-
-HeaderBar.propTypes = {
-  title: PropTypes.string,
-  image: Image.propTypes.source,
-}
-
-HeaderBar.defaultProps = {
-  title: '',
-  image: userPlaceholder,
 }
 
 export { HeaderBar }

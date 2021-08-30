@@ -1,14 +1,16 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
+import { withTestProps } from '~/utils'
 
-import { HeaderBar } from './HeaderBar.jsx'
+import { IHeaderBar, HeaderBar as HeaderBarComp } from './HeaderBar'
 
 describe('HeaderBar', function () {
-  let screen
+  let screen: RenderAPI
 
   beforeEach(() => {
+    const HeaderBar = withTestProps<IHeaderBar>(HeaderBarComp)
     const InnerScreen = () => (
       <View testID="Root">
         <HeaderBar testID="HeaderBar" title="Property Leaderboard" />

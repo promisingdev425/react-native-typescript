@@ -9,7 +9,7 @@ export const Container = styled(TouchableWithoutFeedback)`
   height: 80px;
   justify-content: center;
 
-  ${(props) => {
+  ${(props: { active: boolean }) => {
     if (!props.active) {
       return css`
         border-width: 1px;
@@ -34,7 +34,7 @@ export const InnerBase = styled(View).attrs((props) => ({
   justify-content: center;
   overflow: hidden;
 
-  ${(props) => {
+  ${(props: { active: boolean; isPressed: boolean }) => {
     return css`
       opacity: ${props.isPressed ? 0.6 : 1};
     `
@@ -51,7 +51,7 @@ export const InnerBase = styled(View).attrs((props) => ({
   ${space}
 `
 
-export const Background = styled(LinearGradient).attrs((props) => ({
+export const GradientBack = styled(LinearGradient).attrs((props) => ({
   colors: [getColor('brandOrange')(props), getColor('brandPink')(props)],
   start: [0.1, 0.45],
   end: [0.9, 0.55],
