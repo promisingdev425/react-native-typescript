@@ -22,7 +22,7 @@ module.exports = {
       },
       "node": {
         "moduleDirectory": ["node_modules", "app"],
-        "extensions": [".js", ".json", ".android.js", ".ios.js", ".ts", ".android.ts", ".ios.ts"]
+        "extensions": [".js", ".json", ".web.js", ".android.js", ".ios.js", ".ts", ".web.js", ".android.ts", ".ios.ts"]
       }
     }
   },
