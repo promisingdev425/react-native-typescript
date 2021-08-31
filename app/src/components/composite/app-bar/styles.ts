@@ -1,12 +1,12 @@
 import styled from 'styled-components/native'
 
-import { getMetrics, getLineHeight, getSpace } from '~/theme'
+import { getMetrics } from '~/theme'
 
 import { Box, Title as TitleCore } from '../../core'
 
 export const Container = styled(Box).attrs((props) => ({
   bg: 'white',
-  px: 5,
+  px: 'sm',
   height: getMetrics('appBarHeight')(props),
 }))`
   flex-direction: row;
@@ -16,8 +16,7 @@ export const Container = styled(Box).attrs((props) => ({
 
 export const Title = styled(TitleCore)`
   position: absolute;
-  left: ${(props) => getSpace('10')(props)}px;
-  right: ${(props) => getSpace('10')(props)}px;
+  left: 56px;
+  right: 56px;
   text-align: center;
-  line-height: ${(props) => getLineHeight('2')(props)}px;
 `

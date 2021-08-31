@@ -9,22 +9,22 @@ import { Title } from './Title'
 storiesOf('Title', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
   .add('Navigation(Default)', () => (
-    <Title variant="navigation" pt={3}>
+    <Title variant="navigation" pt="xs">
       This is [navigation] title
     </Title>
   ))
   .add('Header(Positive)', () => (
-    <Title variant="header" color="positive" pt={3}>
+    <Title variant="header" color="positive" pt="xs">
       This is [header] title
     </Title>
   ))
   .add('Section(Warning)', () => (
-    <Title variant="section" color="warning" pt={3}>
+    <Title variant="section" color="warning" pt="xs">
       This is [section] title
     </Title>
   ))
   .add('Body(Negative)', () => (
-    <Title variant="body" color="negative" pt={3}>
+    <Title variant="body" color="negative" pt="xs">
       This is [body] title
     </Title>
   ))
