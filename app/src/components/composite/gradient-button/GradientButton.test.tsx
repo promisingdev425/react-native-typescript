@@ -8,12 +8,8 @@ import {
 } from '@testing-library/react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 import { withTheme } from '~/theme/hocs'
-import { withTestProps } from '~/utils'
 
-import {
-  IGradientButton,
-  GradientButton as GradientButtonComp,
-} from './GradientButton'
+import { GradientButton } from './GradientButton'
 
 describe('GradientButton', function () {
   let screen: RenderAPI
@@ -23,37 +19,30 @@ describe('GradientButton', function () {
   beforeEach(() => {
     handlePress = jest.fn()
 
-    const GradientButton = withTestProps<IGradientButton>(GradientButtonComp)
-
     const InnerScreen = () => (
       <View testID="Root">
         <GradientButton
-          testID="GradientButtonActive"
           title="15"
           description="KPI SCORE"
           onPress={handlePress}
           active
         />
-        <GradientButton
-          testID="GradientButtonInActive"
-          title="12"
-          description="POINTS AWARD"
-        />
+        <GradientButton title="12" description="POINTS AWARD" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
 
     screen = render(<Themed />)
-    button = screen.getByTestId('GradientButtonActive')
+    button = screen.getByTestId('ButtonInner1')
   })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('GradientButtonActive'),
+      screen.getByText('KPI SCORE'),
     )
 
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('GradientButtonInActive'),
+      screen.getByText('POINTS AWARD'),
     )
   })
 

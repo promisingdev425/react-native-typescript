@@ -19,7 +19,7 @@ export interface IAppBar {
 const AppBar: React.FC<IAppBar> = ({ title, leftItem, rightItem, ...rest }) => (
   <Container {...rest}>
     {leftItem}
-    <Title variant="navigation">Bellaire Ranch</Title>
+    <Title variant="navigation">{title}</Title>
     {rightItem}
   </Container>
 )

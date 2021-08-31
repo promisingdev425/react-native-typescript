@@ -2,32 +2,29 @@ import React from 'react'
 import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
-import { withTestProps } from '~/utils'
 
-import { ITitle, Title as TitleComp } from './Title'
+import { Title } from './Title'
 
 describe('Title', function () {
   let screen: RenderAPI
 
   it('should render', () => {
-    const Title = withTestProps<ITitle>(TitleComp)
-
     const InnerScreen = () => (
       <View testID="RootTitle">
-        <Title testID="Title1" variant="navigation" pt={3}>
+        <Title variant="navigation" pt={3}>
           This is [navigation] title
         </Title>
-        <Title testID="Title2" variant="header" color="positive" pt={3}>
+        <Title variant="header" color="positive" pt={3}>
           This is [header] title
         </Title>
-        <Title testID="Title3" variant="section" color="warning" pt={3}>
+        <Title variant="section" color="warning" pt={3}>
           This is [section] title
         </Title>
-        <Title testID="Title4" variant="body" color="negative" pt={3}>
+        <Title variant="body" color="negative" pt={3}>
           This is [body] title
         </Title>
-        <Title testID="Title5" color="textSecondary" pt={3}>
-          This is [body] title
+        <Title color="textSecondary" pt={3}>
+          This is [body-secondary] title
         </Title>
       </View>
     )
@@ -36,19 +33,19 @@ describe('Title', function () {
     screen = render(<Themed />)
 
     expect(screen.getByTestId('RootTitle')).toContainElement(
-      screen.getByTestId('Title1'),
+      screen.getByText('This is [navigation] title'),
     )
     expect(screen.getByTestId('RootTitle')).toContainElement(
-      screen.getByTestId('Title2'),
+      screen.getByText('This is [header] title'),
     )
     expect(screen.getByTestId('RootTitle')).toContainElement(
-      screen.getByTestId('Title3'),
+      screen.getByText('This is [section] title'),
     )
     expect(screen.getByTestId('RootTitle')).toContainElement(
-      screen.getByTestId('Title4'),
+      screen.getByText('This is [body] title'),
     )
     expect(screen.getByTestId('RootTitle')).toContainElement(
-      screen.getByTestId('Title5'),
+      screen.getByText('This is [body-secondary] title'),
     )
   })
 })

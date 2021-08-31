@@ -2,16 +2,13 @@ import React from 'react'
 import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
-import { withTestProps } from '~/utils'
 
-import { Splash as SplashScreen } from './Splash'
+import { Splash } from './Splash'
 
 describe('Splash', function () {
   let screen: RenderAPI
 
   beforeEach(() => {
-    const Splash = withTestProps(SplashScreen)
-
     const InnerScreen = () => (
       <View testID="Root">
         <Splash testID="Splash" />
