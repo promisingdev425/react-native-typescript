@@ -54,7 +54,7 @@ const GradientButton: React.FC<IGradientButton> = ({
           {title}
         </Title>
 
-        <Text fontSize={2} color={active ? 'white' : 'textSecondary'}>
+        <Text fontSize="body1" color={active ? 'white' : 'textSecondary'}>
           {description}
         </Text>
       </InnerBase>

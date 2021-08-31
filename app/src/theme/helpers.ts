@@ -36,12 +36,12 @@ export const getMetrics = (key: string) => {
 }
 
 export const getSpace = (key: string) => {
-  return themeGet(`space.${key}`)
+  return themeGet(`spaces.${key}`)
 }
 
 /* istanbul ignore next */
 export const getRadii = (key: string) => {
-  return themeGet(`radii.${key}`)
+  return themeGet(`radiis.${key}`)
 }
 
 export const getTypography = (key: string) => {
