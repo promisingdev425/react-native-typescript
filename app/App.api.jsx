@@ -8,7 +8,7 @@ import useFonts from '~/assets/fonts/useFonts'
 
 import { PageLoader } from './src/components'
 import { LoginConnected } from './src/pages/login'
-import { WithServer } from './src/bootstrap/WithServer.jsx'
+import { WithServer } from './src/bootstrap/WithServer'
 
 /**
  * If <App> is used as the entry point to the application,

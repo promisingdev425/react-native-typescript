@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 
-import { GradientButton } from './GradientButton.jsx'
+import { GradientButton } from './GradientButton'
 
 // Component Native Stories
 storiesOf('GradientButton', module)

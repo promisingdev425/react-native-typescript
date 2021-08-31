@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
 
-import { HeaderBar } from './HeaderBar.jsx'
+import { HeaderBar } from './HeaderBar'
 
 // Component Native Stories
 storiesOf('HeaderBar', module)

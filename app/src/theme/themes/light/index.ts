@@ -1,11 +1,9 @@
 import colors from './colors'
-import components from './components'
 import metrics from './metrics'
 import typography from './typography'
 
 export default {
   colors,
-  components,
   metrics,
   typography,
   name: 'Snapshot light theme',
