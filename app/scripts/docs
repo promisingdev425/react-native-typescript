@@ -4,16 +4,6 @@ set -e
 
 echo 'Building Docs 🚀'
 
-# TypeDoc is used to generate a full documentation site in markdown
-# for our non-component code.
-yarn typedoc --out docs ./src/theme/index.ts ./src/services/index.ts
+node ./scripts/typedocs/index.js build src/services/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+node ./scripts/typedocs/index.js build src/theme/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
 
-# We then move the API documentation for each package next to its
-# associated code so we can import it into Storybook.
-mv docs/modules/services.md src/services
-mv docs/modules/theme.md src/theme
-
-# Clean up the docs folder since we no longer need it
-yarn rimraf docs
-
-echo 'Donzo 💪'
