@@ -1,6 +1,9 @@
 import PickingService from '~/services/picking'
 
 const group = PickingService.forPlatform({
+  web: {
+    sfProDisplay: 'SFProDisplay',
+  },
   ios: {
     sfProDisplay: 'SFProDisplay',
   },

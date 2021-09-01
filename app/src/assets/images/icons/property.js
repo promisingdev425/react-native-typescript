@@ -2,7 +2,9 @@ import React, { forwardRef, memo } from 'react'
 import { SvgXml } from 'react-native-svg'
 
 function PropertyIcon(props, svgRef) {
-  const color = props.color
+  // eslint-disable-next-line react/prop-types
+  const { color } = props
+
   const svgMarkup = `<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>properties-icon</title>
     <defs>

@@ -5,8 +5,9 @@ import {
   ArgsTable,
   Description,
 } from '@storybook/addon-docs'
+import { PropertyIcon } from '~/assets/images'
 
-import { AppBar } from './AppBar.jsx'
+import { AppBar } from './AppBar'
 
 <Meta title="Components/AppBar" argTypes={{}} />
 
@@ -17,7 +18,22 @@ import { AppBar } from './AppBar.jsx'
 export const Template = (props) => <AppBar {...props} />
 
 <Canvas>
-  <Story name="AppBar" args={{}}>
+  <Story name="AppBar with left and right icons" args={{
+    title: "Appbar header",
+    leftItem: <PropertyIcon />,
+    rightItem: <PropertyIcon />
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="AppBar with title and left icon" args={{
+    title: "Appbar header",
+    leftItem: <PropertyIcon />
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="AppBar with title only" args={{
+    title: "Header title",
+  }}>
     {Template.bind({})}
   </Story>
 </Canvas>

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthService } from '~/services/auth'
@@ -7,7 +8,7 @@ import useFonts from '~/assets/fonts/useFonts'
 
 import { PageLoader } from './src/components'
 import { LoginConnected } from './src/pages/login'
-import { WithServer } from './src/bootstrap/WithServer.jsx'
+import { WithServer } from './src/bootstrap/WithServer'
 
 /**
  * If <App> is used as the entry point to the application,
@@ -28,15 +29,10 @@ export default function App({
   // Anything else should be passed through to WithServer
   ...rest
 }) {
-  const {
-    initialized,
-    authenticated,
-    onLogin,
-    onForgotLogin,
-    onLogout,
-  } = useAuthService(authService)
+  const { initialized, authenticated, onLogin, onForgotLogin, onLogout } =
+    useAuthService(authService)
 
-  const theme = themes['light']
+  const theme = themes.light
   const fontsLoaded = useFonts()
 
   const props = {
@@ -58,9 +54,19 @@ export default function App({
       )}
       {initialized && fontsLoaded && (
         <React.Suspense fallback={<PageLoader />}>
-          {children ? children : <WithServer {...props} />}
+          {children || <WithServer {...props} />}
         </React.Suspense>
       )}
     </ThemeProvider>
   )
+}
+
+App.propTypes = {
+  authService: PropTypes.object,
+  children: React.ReactElement,
+}
+
+App.defaultProps = {
+  authService: null,
+  children: null,
 }

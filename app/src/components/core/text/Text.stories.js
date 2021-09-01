@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
 
-import { Text } from './Text.jsx'
+import { Text } from './Text'
 
 // Component Native Stories
 storiesOf('Text', module)

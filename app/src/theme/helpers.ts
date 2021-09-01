@@ -4,6 +4,7 @@ import { mapToTheme as theme } from 'styled-map'
 import get from 'lodash/get'
 import isNumber from 'lodash/isNumber'
 
+/* istanbul ignore next */
 const px = (n: number) => {
   return isNumber(n) && n !== 0 ? `${n}px` : n
 }
@@ -40,6 +41,7 @@ export const getMetrics = (key: string) => {
   return themeGet(`metrics.${key}`)
 }
 
+/* istanbul ignore next */
 export const getSpace = (key: string) => {
   return themeGet(`space.${key}`)
 }
@@ -58,6 +60,7 @@ export const getFontSize = (key: string) => {
   return themeGet(`fontSizes.${key}`)
 }
 
+/* istanbul ignore next */
 export const getLineHeight = (key: string) => {
   return themeGet(`lineHeights.${key}`)
 }
