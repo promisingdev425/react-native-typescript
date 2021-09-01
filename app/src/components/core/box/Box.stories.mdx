@@ -6,7 +6,7 @@ import {
   Description,
 } from '@storybook/addon-docs'
 
-import { Box } from './Box.jsx'
+import { Box } from './Box'
 
 <Meta title="Components/Box" argTypes={{}} />
 
@@ -16,19 +16,18 @@ import { Box } from './Box.jsx'
 
 export const Template = (props) => <Box {...props} />
 
-<Canvas>
-  <Story name="Pink colored Box" args={{
+<Canvas isColumn>
+  <Story name="Pink box" args={{
     bg: 'brandPink',
-    p:5,
-    borderRadius: 5,
+    p: 5,
+    br: 5,
   }}>
     {Template.bind({})}
   </Story>
-
-  <Story name="Orange colored Box" args={{
+  <Story name="Orange box" args={{
     bg: 'brandOrange',
-    p:5,
-    borderRadius: 5,
+    p: 5,
+    br: 5,
   }}>
     {Template.bind({})}
   </Story>

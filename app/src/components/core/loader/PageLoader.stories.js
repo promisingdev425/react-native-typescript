@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
 
-import { PageLoader } from './PageLoader.jsx'
+import { PageLoader } from './PageLoader'
 
 storiesOf('Loader', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
