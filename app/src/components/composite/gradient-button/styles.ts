@@ -26,8 +26,8 @@ export const Container = styled(TouchableWithoutFeedback)`
 
 export const InnerBase = styled(View).attrs((props) => ({
   ...props,
-  p: 5,
-  borderRadius: 3,
+  p: 'sm',
+  borderRadius: 'sm',
 }))`
   height: 80px;
   min-width: 80px;

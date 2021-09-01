@@ -33,7 +33,7 @@ export interface IText
   color?: string
   fontFamilyGroup?: string
   fontFamilyStyle?: string
-  fontSize?: number
+  fontSize?: string
 }
 
 /**
@@ -43,7 +43,7 @@ export interface IText
  * @param {string} props.allowFontScaling - Allow font sizes inside app should be scaled by system settings.
  * @param {string} props.bg - Background color from `theme/${current theme}/colors`
  * @param {string} props.color - Text color from `theme/${current theme}/colors`
- * @param {number} props.fontSize - Index value of font sizes from `theme/${current theme}/index.ts`
+ * @param {string} props.fontSize - Index value of font sizes from `theme/${current theme}/index.ts`
  * @param {string} props.fontFamilyGroup - Font family name
  * @param {string} props.fontFamilyStyle - Font family style (regular | bold | semiBold | ... )
  * @return {React.ReactNode}
@@ -66,7 +66,7 @@ const Text: React.FC<IText> = ({
   color = 'textPrimary',
   fontFamilyGroup = 'group.sfProDisplay',
   fontFamilyStyle = 'style.regular',
-  fontSize = 2,
+  fontSize = 'body1',
   ...rest
 }) => (
   <StyledText

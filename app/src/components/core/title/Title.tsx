@@ -14,19 +14,19 @@ export interface ITitle extends IText {
  * @return {React.ReactNode}
  */
 const Title: React.FC<ITitle> = ({ variant = 'body', ...rest }) => {
-  let size = 4
+  let size = 'h3'
   let style = 'style.bold'
   const family = 'group.sfProDisplay'
 
   switch (variant) {
-    case 'navigation':
-      size = 4
-      break
     case 'header':
-      size = 7
+      size = 'h1'
       break
     case 'section':
-      size = 5
+      size = 'h2'
+      break
+    case 'navigation':
+      size = 'h3'
       break
     case 'body':
     default:

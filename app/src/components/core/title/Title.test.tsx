@@ -11,19 +11,19 @@ describe('Title', function () {
   it('should render', () => {
     const InnerScreen = () => (
       <View testID="RootTitle">
-        <Title variant="navigation" pt={3}>
+        <Title variant="navigation" pt="xs">
           This is [navigation] title
         </Title>
-        <Title variant="header" color="positive" pt={3}>
+        <Title variant="header" color="positive" pt="xs">
           This is [header] title
         </Title>
-        <Title variant="section" color="warning" pt={3}>
+        <Title variant="section" color="warning" pt="xs">
           This is [section] title
         </Title>
-        <Title variant="body" color="negative" pt={3}>
+        <Title variant="body" color="negative" pt="xs">
           This is [body] title
         </Title>
-        <Title color="textSecondary" pt={3}>
+        <Title color="textSecondary" pt="xs">
           This is [body-secondary] title
         </Title>
       </View>
