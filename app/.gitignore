@@ -3,3 +3,5 @@ App.jsx
 reports
 storybook-static
 web-build
+dist
+docs

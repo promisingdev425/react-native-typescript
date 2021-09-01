@@ -1,0 +1,14 @@
+App.jsx
+reports
+storybook-static
+junit.xml
+node_modules
+web-build
+__generated__
+.expo
+.storybook
+scripts
+
+# Auto generated markdown files
+app/src/theme/theme.md
+app/src/services/services.md
