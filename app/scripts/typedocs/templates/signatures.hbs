@@ -1,3 +1,3 @@
 {{#each item.signatures}}
-▸ **{{name}}**({{#each parameters}}`{{name}}`{{#unless @last}}, {{/unless}}{{/each}}): `{{type.name}}`
+▸ **{{name}}**({{#each parameters}}`{{name}}`{{#unless @last}}, {{/unless}}{{/each}}): {{#if type.name}}`{{type.name}}`{{/if}}
 {{/each}}
