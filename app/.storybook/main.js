@@ -2,7 +2,10 @@ const path = require("path");
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-styled-components-themes/register'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+  ],
   webpackFinal: async (config) => ({
     ...config,
     resolve: {
