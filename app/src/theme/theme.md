@@ -27,4 +27,4 @@ Get the value in pixels.
 
 #### Defined in
 
-[theme/helpers.ts:16](https://github.com/Apartment-Snapshot/snapshot-ui/blob/490754e/app/src/theme/helpers.ts#L16)
+theme/helpers.ts:17

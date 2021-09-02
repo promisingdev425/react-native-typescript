@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { themes } from '~/theme'
 
-export const withTheme = (Component, name = 'light') => {
+export const withTheme = (Component: React.FC, name = 'light') => {
   const theme = themes[name]
 
   return () => {
