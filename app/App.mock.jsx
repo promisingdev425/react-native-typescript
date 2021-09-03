@@ -34,10 +34,4 @@ export default function App({
     </MainApp>
   )
 }
-App.propTypes = {
-  authService: PropTypes.object,
-}
 
-App.defaultProps = {
-  authService: null,
-}
