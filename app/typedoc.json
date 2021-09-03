@@ -1,5 +1,4 @@
 {
-  "hideBreadcrumbs": true,
   "excludeNotDocumented": true,
   "readme": "none",
   "exclude": "**/*(index|.stories|.test).(ts|js)"
