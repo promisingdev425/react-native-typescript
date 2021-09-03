@@ -3,4 +3,4 @@
 node_modules
 storybook
 reports
-app/scripts/**/*
+app/scripts
