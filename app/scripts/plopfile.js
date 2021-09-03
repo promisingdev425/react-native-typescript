@@ -14,7 +14,7 @@ function makeFolderPath(...args) {
  * @param {object} plop - The Plop.js API
  */
 function makeComponentActions(componentType, pageSpecific, fullName, plop) {
-  const root = pageSpecific ? 'page' : 'component'
+  let root = pageSpecific ? 'page' : 'component'
   let name
   let subPackage = []
   const p = fullName.split('/')
@@ -22,7 +22,12 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
   if (p.length > 1) subPackage = p.slice(0, p.length - 1)
 
   const src = makeFolderPath(process.cwd(), 'src')
-  const rootDir = `${root}s`
+  let rootDir = `${root}s`
+  if (componentType === 'component-core') {
+    rootDir = 'components/core'
+  } else if (componentType === 'component-composite') {
+    rootDir = 'components/composite'
+  }
   const dir = makeFolderPath(src, rootDir, ...subPackage)
 
   const data = { name, subPackage, componentType }
@@ -34,8 +39,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       data: data,
       // Plop will create directories for us if they do not exist
       // so it's okay to add files in nested locations.
-      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.jsx`,
-      templateFile: `plop-templates/component/{{pascalCase '${componentType}'}}.jsx.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.tsx`,
+      templateFile: `plop-templates/component/Component.tsx.hbs`,
     },
     // {
     //   // Name.module.scss
@@ -48,8 +53,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       // Name.test.jsx
       type: 'add',
       data: data,
-      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.test.jsx`,
-      templateFile: `plop-templates/component/Component.test.jsx.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.test.tsx`,
+      templateFile: `plop-templates/component/Component.test.tsx.hbs`,
     },
     {
       // Name.stories.js (Native on device stories)
@@ -69,8 +74,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       // components/name/index.js
       type: 'add',
       data: data,
-      path: `${dir}/{{dashCase '${name}'}}/index.js`,
-      templateFile: `plop-templates/component/component-index.js.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/index.ts`,
+      templateFile: `plop-templates/component/component-index.ts.hbs`,
     },
   ]
 
@@ -93,7 +98,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     const currentDirectory = makeFolderPath(
       src,
       rootDir,
-      ...currentPackageFolders
+      ...currentPackageFolders,
     )
     const nextImport =
       i === folders.length - 1
@@ -104,8 +109,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     actions.push({
       type: 'add',
       data: data,
-      path: `${currentDirectory}/index.js`,
-      templateFile: `plop-templates/injectable-index.js.hbs`,
+      path: `${currentDirectory}/index.ts`,
+      templateFile: `plop-templates/injectable-index.ts.hbs`,
       // If index.js already exists in this location, skip this action
       skipIfExists: true,
     })
@@ -115,7 +120,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       actions,
       `${currentDirectory}/index.js`,
       `export * from './${nextImport}';`,
-      data
+      data,
     )
   })
 
@@ -129,7 +134,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     actions,
     `${componentTypeFolder}/index.js`,
     `export * from './${rootImport}';`,
-    data
+    data,
   )
 
   return actions
@@ -137,13 +142,14 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
 
 module.exports = (plop) => {
   // Create generic components under either the `components/` or `pages/` folder.
-  plop.setGenerator('component', {
-    description: 'Create a reusable component in the "components/" folder',
+  plop.setGenerator('core component', {
+    description:
+      'Create a core(/generic) component in the "components/core/" folder',
     prompts: [
       {
         name: 'fullName',
         message: `What is your component name? This can include the subpackage name (ex. ${colors.green(
-          'foo/bar/my-component'
+          'foo/bar/my-component',
         )})`,
         type: 'input',
       },
@@ -157,7 +163,36 @@ module.exports = (plop) => {
       },
     ],
     actions: (data) =>
-      makeComponentActions('component', data.type, data.fullName, plop),
+      makeComponentActions('component-core', data.type, data.fullName, plop),
+  })
+
+  plop.setGenerator('composite component', {
+    description:
+      'Create a composite component in the "components/composite/" folder',
+    prompts: [
+      {
+        name: 'fullName',
+        message: `What is your component name? This can include the subpackage name (ex. ${colors.green(
+          'foo/bar/my-component',
+        )})`,
+        type: 'input',
+      },
+      {
+        name: 'type',
+        message:
+          'Is this a page specific component?' +
+          ' If yes, then it will be created in the page package'.green,
+        type: 'confirm',
+        default: false,
+      },
+    ],
+    actions: (data) =>
+      makeComponentActions(
+        'component-composite',
+        data.type,
+        data.fullName,
+        plop,
+      ),
   })
 
   // Create Page components in the `pages/` folder.
