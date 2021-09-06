@@ -18,6 +18,14 @@ export const Template = props => <ToggleGroup {...props} />;
   <Story
     name="ToggleGroup"
     args={{
+      height: 32,
+      options: [
+        { id: 'w', value: 'week', label: 'W' },
+        { id: 'm', value: 'month', label: 'M' },
+        { id: 'q', value: 'quater', label: 'Q' },
+        { id: 'y', value: 'year', label: 'Y' },
+      ],
+      onChange: ({ value }) => console.log('click', value)
     }}
   >
     {Template.bind({})}

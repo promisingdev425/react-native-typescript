@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import throttle from 'lodash/throttle'
 
-import { ButtonContainer, Title } from './styles'
+import { ButtonContainer, ButtonBack, Title } from './styles'
 
 export interface IToggleOption {
   id: string
@@ -26,13 +27,19 @@ export const ToggleButton: React.FC<IToggleButton> = ({
   onPress,
   ...rest
 }) => {
-  const handlePress = () => {
-    onPress(data)
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handlePress = useCallback(
+    throttle(() => {
+      onPress(data)
+    }, 500),
+    [],
+  )
 
   return (
     <ButtonContainer {...rest} onPress={handlePress}>
-      <Title {...rest}>{data.label}</Title>
+      <ButtonBack {...rest}>
+        <Title {...rest}>{data.label}</Title>
+      </ButtonBack>
     </ButtonContainer>
   )
 }

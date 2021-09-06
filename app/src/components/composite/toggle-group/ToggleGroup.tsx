@@ -5,6 +5,7 @@ import { Container } from './styles'
 import { IToggleOption, ToggleButton } from './ToggleButton'
 
 export interface IToggleGroup {
+  testID: string
   height?: number
   options: IToggleOption[]
   onChange: (option: IToggleOption) => void
@@ -25,10 +26,6 @@ export const ToggleGroup: React.FC<IToggleGroup> = ({
   const [activeValue, setActiveValue] = useState(options[0].value)
 
   const handlePress = (option: IToggleOption) => {
-    if (activeValue === option.value) {
-      return
-    }
-
     setActiveValue(option.value)
     onChange(option)
   }
