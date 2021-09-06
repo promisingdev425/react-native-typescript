@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthService } from '~/services/auth'
@@ -59,14 +59,4 @@ export default function App({
       )}
     </ThemeProvider>
   )
-}
-
-App.propTypes = {
-  authService: PropTypes.object,
-  children: React.ReactElement,
-}
-
-App.defaultProps = {
-  authService: null,
-  children: null,
 }

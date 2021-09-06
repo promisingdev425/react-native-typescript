@@ -1,13 +1,13 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import React from 'react'
+import { storiesOf } from '@storybook/react-native'
 
-import { Centered } from '~/storybook-utils';
+import { Centered } from '~/storybook-utils'
 
-import { {{pascalCase name}} } from './{{pascalCase name}}.jsx';
+import { {{pascalCase name}} } from './{{pascalCase name}}'
 
 // Component Native Stories
 storiesOf('{{pascalCase name}}', module)
   .addDecorator(cb => <Centered>{cb()}</Centered>)
   .add('default', () => (
     <{{pascalCase name}} />
-  ));
+  ))

@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components/native'
-import { View, TouchableWithoutFeedback } from 'react-native'
-import { space, border } from 'styled-system'
+import { TouchableWithoutFeedback } from 'react-native'
+import { space } from 'styled-system'
 import { LinearGradient } from 'expo-linear-gradient'
 
 import { getColor } from '~/theme'
+
+import { Box } from '../../core'
 
 export const Container = styled(TouchableWithoutFeedback)`
   height: 80px;
@@ -24,11 +26,10 @@ export const Container = styled(TouchableWithoutFeedback)`
   ${space}
 `
 
-export const InnerBase = styled(View).attrs((props) => ({
-  ...props,
-  p: 'sm',
+export const InnerBase = styled(Box).attrs({
+  px: 'sm',
   borderRadius: 'sm',
-}))`
+})`
   height: 80px;
   min-width: 80px;
   justify-content: center;
@@ -46,9 +47,6 @@ export const InnerBase = styled(View).attrs((props) => ({
       border-color: ${getColor('lightGray')(props)};
     `
   }}
-
-  ${border}
-  ${space}
 `
 
 export const GradientBack = styled(LinearGradient).attrs((props) => ({
@@ -62,6 +60,4 @@ export const GradientBack = styled(LinearGradient).attrs((props) => ({
   right: 0;
   top: 0;
   bottom: 0;
-
-  ${space}
 `

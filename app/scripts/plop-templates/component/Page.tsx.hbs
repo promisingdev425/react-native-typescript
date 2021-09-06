@@ -1,6 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { View } from 'react-native'
 
 /**
  * `<{{pascalCase name}}>`
@@ -8,17 +7,14 @@ import PropTypes from 'prop-types';
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function {{pascalCase name}}({
+export const {{pascalCase name}}: React.FC = ({
   ...rest
-}) {
+}) => {
   return (
     <View {...rest}>
     </View>
-  );
+  )
 }
-
-{{pascalCase name}}.propTypes = {
-};
 
 /**
  * `<{{pascalCase name}}Connected>` connects the {{pascalCase name}}
@@ -27,9 +23,8 @@ export function {{pascalCase name}}({
  * @param {object} props
  * @return {React.ReactNode}
  */
-export function {{pascalCase name}}Connected() {
+export const {{pascalCase name}}Connected = (props) {
   return (
-    <{{pascalCase name}}
-    />
-  );
+    <{{pascalCase name}} {...props} />
+  )
 }
