@@ -7,8 +7,10 @@ import { ToggleGroup } from './ToggleGroup'
 
 describe('ToggleGroup', function () {
   let screen: RenderAPI
+  let handlePress: jest.Mock
 
   beforeEach(() => {
+    handlePress = jest.fn()
     const InnerScreen = () => (
       <View testID="Root">
         <ToggleGroup
@@ -18,6 +20,7 @@ describe('ToggleGroup', function () {
             { id: 'm', value: 'month', label: 'M' },
             { id: 'q', value: 'quater', label: 'Q' },
           ]}
+          onChange={handlePress}
         />
       </View>
     )
