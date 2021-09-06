@@ -1,12 +1,13 @@
 import React from 'react'
-import { Image, ImageSourcePropType } from 'react-native'
+import { ImageSourcePropType } from 'react-native'
 
 import { userPlaceholder } from '~/assets/images'
 
-import { Container, Title } from './styles'
+import { Container, Title, Avatar } from './styles'
 
 export interface IHeaderBar {
   title: string
+  size?: string
   image?: ImageSourcePropType
 }
 
@@ -18,13 +19,15 @@ export interface IHeaderBar {
  */
 const HeaderBar: React.FC<IHeaderBar> = ({
   title,
+  size = 'sm',
   image = userPlaceholder,
   ...rest
 }) => {
   return (
     <Container {...rest}>
       <Title variant="header">{title}</Title>
-      <Image source={image} />
+
+      <Avatar source={image} size={size} />
     </Container>
   )
 }

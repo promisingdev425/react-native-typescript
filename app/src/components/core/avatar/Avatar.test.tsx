@@ -14,6 +14,10 @@ describe('Avatar', function () {
     const InnerScreen = () => (
       <View testID="Root">
         <Avatar testID="Avatar" source={userPlaceholder} />
+        <Avatar testID="AvatarXS" source={userPlaceholder} size="xs" />
+        <Avatar testID="AvatarSM" source={userPlaceholder} size="sm" />
+        <Avatar testID="AvatarMD" source={userPlaceholder} size="md" />
+        <Avatar testID="AvatarLG" source={userPlaceholder} size="lg" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -23,7 +27,7 @@ describe('Avatar', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('Avatar'),
+      screen.getByTestId('AvatarSM'),
     )
   })
 })
