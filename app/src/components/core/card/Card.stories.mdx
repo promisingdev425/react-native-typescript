@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+
+import { Card } from './Card';
+
+<Meta
+  title="Components/Card"
+  argTypes={{
+  }}
+/>
+
+# Card
+
+<Description of={ Card } />
+
+export const Template = props => <Card {...props} />;
+
+<Canvas>
+  <Story
+    name="Card"
+    args={{
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ Card } />
