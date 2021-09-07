@@ -12,7 +12,7 @@ storiesOf('Card', module)
     </Card>
   ))
   .add('No title', () => (
-    <InnerCard bg="lightGray">
-      <Text color="brandPink">Test</Text>
+    <InnerCard bg="lightGray" m="sm">
+      <Text color="brandOrange">Test</Text>
     </InnerCard>
   ))

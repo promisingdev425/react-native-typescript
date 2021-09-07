@@ -24,7 +24,11 @@ describe('Card', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('Card'),
+      screen.getByText('title'),
+    )
+
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByText('Test1'),
     )
   })
 })

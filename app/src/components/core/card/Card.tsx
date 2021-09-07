@@ -5,14 +5,15 @@ import { Title } from '../title'
 
 export interface ICard {
   title?: string
-  children: React.ReactNode
+  bg?: string
+  children?: React.ReactNode
 }
 
-export const InnerCard = styled(Box).attrs({
-  bg: 'white',
+export const InnerCard = styled(Box).attrs((props: ICard) => ({
+  bg: props.bg || 'white',
   borderRadius: 'sm',
   p: 'sm',
-})``
+}))``
 
 /**
  * `<Card>`

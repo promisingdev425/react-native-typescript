@@ -1,10 +1,15 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
-import { Card } from './Card';
+import { Card, InnerCard } from './Card'
+import { Text } from '../text'
 
 <Meta
   title="Components/Card"
   argTypes={{
+    bg: {
+      options: ['background', 'lightGray', 'orangeOverlay', 'pinkOverlay'],
+      control: { type: 'select' },
+    }
   }}
 />
 
@@ -12,15 +17,34 @@ import { Card } from './Card';
 
 <Description of={ Card } />
 
-export const Template = props => <Card {...props} />;
+export const Template = props => (
+  <Card {...props}>
+    <Text color="brandPink">Test</Text>
+  </Card>
+)
+
+export const NoHeaderTemplate = props => (
+  <InnerCard {...props}>
+    <Text color="brandPink">Test</Text>
+  </InnerCard>
+)
 
 <Canvas>
   <Story
     name="Card"
     args={{
+      title: 'Card 1 - Header'
     }}
   >
     {Template.bind({})}
+  </Story>
+  <Story
+    name="Card(No header)"
+    args={{
+      title: 'Card 2 - No Header'
+    }}
+  >
+    {NoHeaderTemplate.bind({})}
   </Story>
 </Canvas>
 
