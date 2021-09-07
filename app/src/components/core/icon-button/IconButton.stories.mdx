@@ -1,10 +1,16 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
-import { IconButton } from './IconButton';
+import { CircularArrow } from '~/assets/images'
+
+import { IconButton } from './IconButton'
 
 <Meta
   title="Components/IconButton"
   argTypes={{
+    m: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' },
+    }
   }}
 />
 
@@ -12,12 +18,18 @@ import { IconButton } from './IconButton';
 
 <Description of={ IconButton } />
 
-export const Template = props => <IconButton {...props} />;
+export const Template = props => (
+  <IconButton {...props}>
+    <CircularArrow />
+  </IconButton>
+)
 
 <Canvas>
   <Story
     name="IconButton"
     args={{
+      onPress: () => console.log('hit Circular arrow button'),
+      m: 'sm',
     }}
   >
     {Template.bind({})}
