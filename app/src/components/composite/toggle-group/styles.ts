@@ -1,6 +1,5 @@
 import styled from 'styled-components/native'
 import { border } from 'styled-system'
-import { TouchableWithoutFeedback } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
 import { getColor } from '~/theme'
@@ -8,6 +7,8 @@ import { getColor } from '~/theme'
 import { IToggleGroup } from './ToggleGroup'
 import { IToggleButton } from './ToggleButton'
 import { Box, Title as TitleCore } from '../../core'
+
+export { TouchableWithoutFeedback as ButtonContainer } from 'react-native'
 
 export const Container = styled(Box).attrs((props: IToggleGroup) => ({
   bg: 'clear',
@@ -20,7 +21,7 @@ export const Container = styled(Box).attrs((props: IToggleGroup) => ({
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: ${(props) => props.height || 32}px;
+  height: ${(props) => props.height}px;
 `
 
 export const Title = styled(TitleCore).attrs((props: IToggleButton) => ({
@@ -30,8 +31,6 @@ export const Title = styled(TitleCore).attrs((props: IToggleButton) => ({
   flex: 1;
   text-align: center;
 `
-
-export const ButtonContainer = styled(TouchableWithoutFeedback)``
 
 export const ButtonBack = styled(LinearGradient).attrs(
   (props: IToggleButton) => ({

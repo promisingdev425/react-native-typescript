@@ -36,7 +36,11 @@ export const ToggleButton: React.FC<IToggleButton> = ({
   )
 
   return (
-    <ButtonContainer {...rest} onPress={handlePress}>
+    <ButtonContainer
+      {...rest}
+      onPress={handlePress}
+      testID={`ToggleButton-${data.id}`}
+    >
       <ButtonBack {...rest}>
         <Title {...rest}>{data.label}</Title>
       </ButtonBack>

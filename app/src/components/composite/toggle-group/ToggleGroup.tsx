@@ -5,7 +5,6 @@ import { Container } from './styles'
 import { IToggleOption, ToggleButton } from './ToggleButton'
 
 export interface IToggleGroup {
-  testID: string
   height?: number
   options: IToggleOption[]
   onChange: (option: IToggleOption) => void
@@ -34,7 +33,7 @@ export const ToggleGroup: React.FC<IToggleGroup> = ({
     <Container height={height} {...rest}>
       {map(options, (option: IToggleOption) => (
         <ToggleButton
-          key={option.id}
+          key={`toggle-butotn--${option.id}`}
           data={option}
           onPress={handlePress}
           active={option.value === activeValue}

@@ -13,5 +13,6 @@ storiesOf('ToggleGroup', module).add('default', () => (
       { id: 'y', value: 'year', label: 'Y' },
     ]}
     onChange={({ value }) => console.log('click', value)}
+    mx="md"
   />
 ))
