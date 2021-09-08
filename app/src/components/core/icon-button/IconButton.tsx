@@ -3,10 +3,10 @@ import React from 'react'
 import { Container } from './styles'
 
 export interface IIconButton {
-  testID: string
   onPress: () => void
   children?: React.ReactNode
   style?: object
+  testID?: string
 }
 
 /**
