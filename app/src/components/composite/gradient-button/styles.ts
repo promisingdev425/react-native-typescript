@@ -3,6 +3,7 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { space } from 'styled-system'
 import { LinearGradient } from 'expo-linear-gradient'
 
+import PickingService from '~/services/picking'
 import { getColor } from '~/theme'
 
 import { Box } from '../../core'
@@ -34,7 +35,12 @@ export const InnerBase = styled(Box).attrs({
   min-width: 80px;
   justify-content: center;
   overflow: hidden;
-  cursor: pointer;
+
+  ${PickingService.forPlatform({
+    web: css`
+      cursor: pointer;
+    `,
+  })}
 
   ${(props: { active: boolean; isPressed: boolean }) => {
     return css`

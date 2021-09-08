@@ -1,12 +1,13 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 import { border } from 'styled-system'
 import { LinearGradient } from 'expo-linear-gradient'
 
+import PickingService from '~/services/picking'
 import { getColor } from '~/theme'
 
+import { Box, Title as TitleCore } from '../../core'
 import { IToggleGroup } from './ToggleGroup'
 import { IToggleButton } from './ToggleButton'
-import { Box, Title as TitleCore } from '../../core'
 
 export { TouchableWithoutFeedback as ButtonContainer } from 'react-native'
 
@@ -44,7 +45,12 @@ export const ButtonBack = styled(LinearGradient).attrs(
   }),
 )`
   flex: 1;
-  cursor: pointer;
+
+  ${PickingService.forPlatform({
+    web: css`
+      cursor: pointer;
+    `,
+  })}
 
   ${border}
 `

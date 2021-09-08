@@ -18,6 +18,7 @@ import {
   LineHeightProps,
 } from 'styled-system'
 
+import PickingService from '~/services/picking'
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'
 
 export interface IText
@@ -52,14 +53,16 @@ export interface IText
 const StyledText = styled(TextRN)<IText>`
   ${(props) => {
     if (props.noselect) {
-      return css`
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      `
+      return PickingService.forPlatform({
+        web: css`
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        `,
+      })
     }
 
     return null
