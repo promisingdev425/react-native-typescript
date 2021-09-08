@@ -1,15 +1,19 @@
+const colors = require('colors');
 
 /**
  * This module outputs markdown from the given
  * Typedoc JSON.
  */
 module.exports = {
-  format: (json) => {
+  format: (json, debug = false) => {
     const docs = require(json);
 
     const modulePackage = (m) => {
       let name = '';
       if (m.sources) {
+        // Get the path to the file and use that as the
+        // module name. Files in the root of the entry
+        // point will be named "".
         name = m.sources[0].fileName
           .split('/')
           .slice(0, -1)
@@ -28,25 +32,23 @@ module.exports = {
       const currentName = parts[0];
       const next = parts.slice(1).join('.');
 
-      if (currentName) {
-        let current = package.find(n => n.name === currentName);
+      let current = package.find(n => n.name === currentName);
 
-        if (!current) {
-          current = {
-            name: currentName,
-            kind: 1,
-            kindString: "Module",
-            children: [],
-          };
-          package.push(current);
-        }
+      if (!current) {
+        current = {
+          name: currentName,
+          kind: 1,
+          kindString: "Module",
+          children: [],
+        };
+        package.push(current);
+      }
 
-        if (next) {
-          addToPackage(next, m, current.children, path, debug);
-        }
-        else {
-          current.children.push(debug ? m.name : m);
-        }
+      if (next) {
+        addToPackage(next, m, current.children, path, debug);
+      }
+      else {
+        current.children.push(m);
       }
     }
 
@@ -66,6 +68,7 @@ module.exports = {
 
       switch(m.kindString) {
         case 'Module':
+        case 'Project':
         case undefined:
           recurse();
         break;
@@ -81,7 +84,9 @@ module.exports = {
       return package;
     }
 
-    return parseModule(docs, []);
+    const result = parseModule(docs, []);
+    if (debug) console.log(JSON.stringify(result, null, 2));
+    return result;
   },
 };
 

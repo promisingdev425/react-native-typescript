@@ -4,6 +4,13 @@ set -e
 
 echo 'Building Docs 🚀'
 
-node ./scripts/typedocs/index.js build src/services/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+# Services
+node ./scripts/typedocs/index.js build src/services/auth/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+node ./scripts/typedocs/index.js build src/services/graphql-utils/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+node ./scripts/typedocs/index.js build src/services/graphql-utils/mocks/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+node ./scripts/typedocs/index.js build src/services/report-api/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+node ./scripts/typedocs/index.js build src/services/report-api/mocks/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
+
+# Theming
 node ./scripts/typedocs/index.js build src/theme/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
 

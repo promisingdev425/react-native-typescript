@@ -1,6 +1,7 @@
-const path = require('path');
-const { readFileSync } = require('fs');
-const Handlebars = require('handlebars');
+const path = require('path')
+const { readFileSync } = require('fs')
+const Handlebars = require('handlebars')
+const objectGet = require('lodash/get')
 
 module.exports = {
   generate: (package, repository) => {
@@ -8,22 +9,22 @@ module.exports = {
      * Get or compile a Handlebars partial.
      */
     const getPartial = (name) => {
-      let partial = Handlebars.partials[name];
+      let partial = Handlebars.partials[name]
       if (typeof partial !== 'function') {
-        partial = Handlebars.compile(partial);
+        partial = Handlebars.compile(partial)
       }
-      return partial;
+      return partial
     }
 
     /**
      * Add padding to the front of a string.
      */
     const pad = (count, text = '  ') => {
-      let out = '';
+      let out = ''
       for (let i = 0; i < count; i++) {
-        out += text;
+        out += text
       }
-      return out;
+      return out
     }
 
     /**
@@ -32,91 +33,123 @@ module.exports = {
      * variables by using the replacement parameter.
      */
     const registerPartial = (name, file, replacements) => {
-      const data = readFileSync(path.resolve(__dirname, 'templates', file));
-      let template = `${data}`;
+      const data = readFileSync(path.resolve(__dirname, 'templates', file))
+      let template = `${data}`.trim()
 
       if (replacements) {
-        if (!Array.isArray(replacements)) replacements = [replacements];
-        replacements.forEach(({search, replacement}) => {
-          const exp = new RegExp(search, 'g');
-          template = template.replace(exp, replacement);
-        });
+        if (!Array.isArray(replacements)) replacements = [replacements]
+        replacements.forEach(({ search, replacement }) => {
+          const exp = new RegExp(search, 'g')
+          template = template.replace(exp, replacement)
+        })
       }
 
-      Handlebars.registerPartial(name, template);
-    };
+      Handlebars.registerPartial(name, template)
+    }
 
-    registerPartial('toc-item', 'toc-item.hbs');
-    registerPartial('signatures', 'signatures.hbs');
-    registerPartial('description', 'description.hbs');
-    registerPartial('parameters', 'parameters.hbs');
-    registerPartial('return', 'return.hbs');
-    registerPartial('files', 'files.hbs', [{search: '{{repository}}', replacement: repository}]);
-    registerPartial('doc-function', 'doc-function.hbs');
-    registerPartial('main', 'main.hbs');
+    // TODO Auto register all templates in the folder
+    registerPartial('toc-item', 'toc-item.hbs')
+    registerPartial('signatures', 'signatures.hbs')
+    registerPartial('description', 'description.hbs')
+    registerPartial('parameters', 'parameters.hbs')
+    registerPartial('return', 'return.hbs')
+    registerPartial('type', 'type.hbs')
+    registerPartial('callback', 'callback.hbs')
+    registerPartial('files', 'files.hbs', [
+      { search: '{{repository}}', replacement: repository },
+    ])
+    registerPartial('doc-function', 'doc-function.hbs')
+    registerPartial('doc-class', 'doc-class.hbs')
+    registerPartial('doc-constructor', 'doc-constructor.hbs')
+    registerPartial('doc-variable', 'doc-variable.hbs')
+    registerPartial('doc-module', 'doc-module.hbs')
+    registerPartial('main', 'main.hbs')
 
-    // TODO Create these templates
-    Handlebars.registerPartial('doc-module', '');
-    Handlebars.registerPartial('doc-class', '');
-    Handlebars.registerPartial('doc-constructor', '');
-
-    Handlebars.registerHelper('pad', (count, text = ' ') => pad(count, text));
-    Handlebars.registerHelper('lowercase', function(options) {
-      return options.fn(this).toLowerCase();
-    });
-    Handlebars.registerHelper("raw-helper", function (options) {
-      return new Handlebars.SafeString( options.fn(this) );
-    });
-    Handlebars.registerHelper('hasDocs', (m) =>
-      m.kindString === 'Function' ||
-      m.kindString === 'Constructor'
-    );
+    // HELPERS
+    Handlebars.registerHelper('pad', (count, text = ' ') => pad(count, text))
+    Handlebars.registerHelper('lowercase', function (options) {
+      return options.fn(this).toLowerCase()
+    })
+    Handlebars.registerHelper('raw-helper', function (options) {
+      return new Handlebars.SafeString(options.fn(this))
+    })
+    Handlebars.registerHelper(
+      'hasDocs',
+      (m) =>
+        m.kindString === 'Function' ||
+        m.kindString === 'Constructor' ||
+        m.kindString === 'Variable',
+    )
+    Handlebars.registerHelper('log', (...variables) =>
+      console.log('>', ...variables.slice(0, -1)),
+    )
+    Handlebars.registerHelper('logJSON', (variable) =>
+      console.log('>', JSON.stringify(variable, null, 2)),
+    )
+    Handlebars.registerHelper('eq', (a, b) => a === b)
+    Handlebars.registerHelper('ifEqual', function (a, b, options) {
+      if (a === b) options.fn(this)
+    })
+    Handlebars.registerHelper('array-index', (list, index) => list[index])
+    Handlebars.registerHelper('with', function (path) {
+      return objectGet(this, path)
+    })
+    Handlebars.registerHelper('context', function (path, options) {
+      const context = objectGet(this, path)
+      if (context) return options.fn(context)
+      else return undefined
+    })
 
     Handlebars.registerHelper('toc', (package) => {
-      const partial = getPartial('toc-item');
+      const partial = getPartial('toc-item')
 
       const renderModule = (m, indent = '') => {
-        let out = indent + partial(m);
-        if (m.children?.length > 0) {
-          out += m.children.map(c => renderModule(c, indent + '  '))
-            .join('');
+        let out = '';
+
+        // If the module has a name, output an item for the current
+        // module depth. Otherwise, this is the root module and we
+        // don't need its name in the list.
+        if (m.name) {
+          out = indent + partial(m)
+          indent += ' '
         }
-        return new Handlebars.SafeString(out);
+
+        if (m.children?.length > 0) {
+          out += m.children.map((c) => renderModule(c, indent)).join('')
+        }
+        return new Handlebars.SafeString(out)
       }
 
-      const result = package.map(m => {
-        return renderModule(m);
-      }).join('');
-      return new Handlebars.SafeString(result);
-    });
-
-    // Keep this custom partial here because it's tied to the
-    // `module-docs` helper.
-    Handlebars.registerPartial('doc-item', '{{> (partialName)}}');
+      const result = package
+        .map((m) => {
+          return renderModule(m)
+        })
+        .join('')
+      return new Handlebars.SafeString(result)
+    })
 
     Handlebars.registerHelper('module-docs', (package) => {
-      const partial = getPartial('doc-item');
-
       const renderModule = (m, level = 1) => {
-        const context = {
-          item: m,
-          level: level + 1,
-          partialName: () => `doc-${m.kindString.toLowerCase()}`,
-        };
+        const partialName = `doc-${m.kindString.toLowerCase()}`
+        try {
+          const partial = getPartial(partialName)
 
-        let out = partial(context);
-        if (m.children?.length > 0) {
-          out += m.children.map(c => renderModule(c, level + 1)).join('');
+          let out = partial({ ...m, leve: level + 1 })
+          if (m.children?.length > 0) {
+            out += m.children.map((c) => renderModule(c, level + 1)).join('')
+          }
+          return out
+        } catch (e) {
+          console.warn(`Failed to load partial ${partialName}`)
         }
-        return out;
-      };
+      }
 
       return new Handlebars.SafeString(
-        package.map(m => renderModule(m, 1)).join('')
-      );
-    });
+        package.map((m) => renderModule(m, 1)).join(''),
+      )
+    })
 
-    const render = Handlebars.compile('{{> main}}');
-    return render({package});
+    const render = Handlebars.compile('{{> main}}')
+    return render({ package })
   },
-};
+}

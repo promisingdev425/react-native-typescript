@@ -2,5 +2,5 @@
 | Name | Type | Default Value |
 | :--- | :--- | :------------ |
 {{#each parameters}}
-| {{name}} | `{{type.name}}` | {{#if defaultValue}}`{{defaultValue}}`{{else}}*-*{{/if}} |
+| {{name}} | {{>type type}} | {{#if defaultValue}}`{{defaultValue}}`{{else}}*-*{{/if}} |
 {{/each}}
