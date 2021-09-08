@@ -8,8 +8,12 @@ import { Avatar } from './Avatar'
 // Component Native Stories
 storiesOf('Avatar', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
-  .add('default', () => (
+  .add('Image from url', () => (
     <Avatar
-      source={{ uri: 'https://avatars.githubusercontent.com/u/20338216?v=4' }}
+      name="John Doe"
+      size="md"
+      image="https://avatars.githubusercontent.com/u/20338216?v=4"
+      bg="brandPink"
     />
   ))
+  .add('Placeholder', () => <Avatar name="John Doe" bg="lightGray" size="md" />)

@@ -3,11 +3,13 @@ import { ImageSourcePropType } from 'react-native'
 
 import { userPlaceholder } from '~/assets/images'
 
+import { IAvatar } from '../../core'
+
 import { Container, Title, Avatar } from './styles'
 
 export interface IHeaderBar {
   title: string
-  size?: string
+  avatar?: IAvatar
   image?: ImageSourcePropType
 }
 
@@ -19,7 +21,7 @@ export interface IHeaderBar {
  */
 const HeaderBar: React.FC<IHeaderBar> = ({
   title,
-  size = 'sm',
+  avatar,
   image = userPlaceholder,
   ...rest
 }) => {
@@ -27,7 +29,7 @@ const HeaderBar: React.FC<IHeaderBar> = ({
     <Container {...rest}>
       <Title variant="header">{title}</Title>
 
-      <Avatar source={image} size={size} />
+      <Avatar {...avatar} />
     </Container>
   )
 }

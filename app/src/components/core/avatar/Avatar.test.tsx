@@ -13,11 +13,37 @@ describe('Avatar', function () {
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <Avatar testID="Avatar" source={userPlaceholder} />
-        <Avatar testID="AvatarXS" source={userPlaceholder} size="xs" />
-        <Avatar testID="AvatarSM" source={userPlaceholder} size="sm" />
-        <Avatar testID="AvatarMD" source={userPlaceholder} size="md" />
-        <Avatar testID="AvatarLG" source={userPlaceholder} size="lg" />
+        <Avatar testID="Avatar" name="John Doe" />
+        <Avatar
+          testID="AvatarXS"
+          name="John Doe"
+          size="xs"
+          source={userPlaceholder}
+        />
+        <Avatar
+          testID="AvatarSM"
+          name="John Doe"
+          size="sm"
+          image="https://avatars.githubusercontent.com/u/20338216?v=4"
+        />
+        <Avatar
+          testID="AvatarMD"
+          name="John Doe"
+          size="md"
+          image="https://avatars.githubusercontent.com/u/20338216?v=4"
+        />
+        <Avatar
+          testID="AvatarLG"
+          name="John Doe"
+          size="lg"
+          image="https://avatars.githubusercontent.com/u/20338216?v=4"
+        />
+        <Avatar
+          testID="AvatarLG"
+          name="John Doe"
+          size={100}
+          image="https://avatars.githubusercontent.com/u/20338216?v=4"
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)

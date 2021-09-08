@@ -11,7 +11,13 @@ describe('HeaderBar', function () {
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <HeaderBar title="Property Leaderboard" />
+        <HeaderBar
+          title="Property Leaderboard"
+          avatar={{
+            name: 'John Doe',
+            image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
+          }}
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)

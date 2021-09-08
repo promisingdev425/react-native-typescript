@@ -19,7 +19,11 @@ export const Template = props => <HeaderBar {...props} />;
     name="HeaderBar"
     args={{
       title: 'Leaderboard',
-      image: { uri: 'https://avatars.githubusercontent.com/u/20338216?v=4' },
+      avatar: {
+        name: 'John Doe',
+        image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
+        bg: 'lightGray',
+      }
     }}
   >
     {Template.bind({})}

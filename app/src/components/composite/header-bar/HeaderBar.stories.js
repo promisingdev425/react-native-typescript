@@ -11,6 +11,10 @@ storiesOf('HeaderBar', module)
   .add('default', () => (
     <HeaderBar
       title="Property Leaderboard"
-      image={{ uri: 'https://avatars.githubusercontent.com/u/20338216?v=4' }}
+      avatar={{
+        name: 'John Doe',
+        image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
+        bg: 'lightGray',
+      }}
     />
   ))
