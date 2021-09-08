@@ -13,6 +13,7 @@ yarn-error.log
 web-build/
 storybook/storyLoader.js
 reports
+.vscode
 
 # macOS
 .DS_Store
