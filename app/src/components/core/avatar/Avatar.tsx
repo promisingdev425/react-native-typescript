@@ -4,7 +4,6 @@ import { Image, ImageSourcePropType } from 'react-native'
 
 import { Box } from '../box'
 import { Text } from '../text'
-import { mapProps } from '~/theme'
 
 export interface IAvatar {
   name: string
