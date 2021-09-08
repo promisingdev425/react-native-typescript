@@ -34,8 +34,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       data: data,
       // Plop will create directories for us if they do not exist
       // so it's okay to add files in nested locations.
-      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.jsx`,
-      templateFile: `plop-templates/component/{{pascalCase '${componentType}'}}.jsx.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.tsx`,
+      templateFile: `plop-templates/component/{{pascalCase '${componentType}'}}.tsx.hbs`,
     },
     // {
     //   // Name.module.scss
@@ -48,8 +48,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       // Name.test.jsx
       type: 'add',
       data: data,
-      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.test.jsx`,
-      templateFile: `plop-templates/component/Component.test.jsx.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.test.tsx`,
+      templateFile: `plop-templates/component/Component.test.tsx.hbs`,
     },
     {
       // Name.stories.js (Native on device stories)
@@ -69,8 +69,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       // components/name/index.js
       type: 'add',
       data: data,
-      path: `${dir}/{{dashCase '${name}'}}/index.js`,
-      templateFile: `plop-templates/component/component-index.js.hbs`,
+      path: `${dir}/{{dashCase '${name}'}}/index.ts`,
+      templateFile: `plop-templates/component/component-index.ts.hbs`,
     },
   ]
 
@@ -93,7 +93,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     const currentDirectory = makeFolderPath(
       src,
       rootDir,
-      ...currentPackageFolders
+      ...currentPackageFolders,
     )
     const nextImport =
       i === folders.length - 1
@@ -104,8 +104,8 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     actions.push({
       type: 'add',
       data: data,
-      path: `${currentDirectory}/index.js`,
-      templateFile: `plop-templates/injectable-index.js.hbs`,
+      path: `${currentDirectory}/index.ts`,
+      templateFile: `plop-templates/injectable-index.ts.hbs`,
       // If index.js already exists in this location, skip this action
       skipIfExists: true,
     })
@@ -113,9 +113,9 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     // Append to the current sub package index file.
     appendIfUnique(
       actions,
-      `${currentDirectory}/index.js`,
+      `${currentDirectory}/index.ts`,
       `export * from './${nextImport}';`,
-      data
+      data,
     )
   })
 
@@ -127,9 +127,9 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
   // Append to the root package index file.
   appendIfUnique(
     actions,
-    `${componentTypeFolder}/index.js`,
+    `${componentTypeFolder}/index.ts`,
     `export * from './${rootImport}';`,
-    data
+    data,
   )
 
   return actions
@@ -143,7 +143,7 @@ module.exports = (plop) => {
       {
         name: 'fullName',
         message: `What is your component name? This can include the subpackage name (ex. ${colors.green(
-          'foo/bar/my-component'
+          'foo/bar/my-component',
         )})`,
         type: 'input',
       },

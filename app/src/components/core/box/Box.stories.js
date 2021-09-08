@@ -10,12 +10,12 @@ import { Box } from './Box'
 storiesOf('Box', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
   .add('Pink', () => (
-    <Box bg="brandPink" p={5} borderRadius={5}>
+    <Box bg="brandPink" p="lg" borderRadius="sm">
       <Text>This is a brandPink Box</Text>
     </Box>
   ))
   .add('Orange', () => (
-    <Box bg="brandOrange" p={5} borderRadius={5}>
+    <Box bg="brandOrange" p="md" borderRadius="sm">
       <Text>This is a brandOrange Box</Text>
     </Box>
   ))
