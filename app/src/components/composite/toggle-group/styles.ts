@@ -44,6 +44,7 @@ export const ButtonBack = styled(LinearGradient).attrs(
   }),
 )`
   flex: 1;
+  cursor: pointer;
 
   ${border}
 `

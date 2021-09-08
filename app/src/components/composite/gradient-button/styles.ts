@@ -34,6 +34,7 @@ export const InnerBase = styled(Box).attrs({
   min-width: 80px;
   justify-content: center;
   overflow: hidden;
+  cursor: pointer;
 
   ${(props: { active: boolean; isPressed: boolean }) => {
     return css`

@@ -42,7 +42,9 @@ export const ToggleButton: React.FC<IToggleButton> = ({
       testID={`ToggleButton-${data.id}`}
     >
       <ButtonBack {...rest}>
-        <Title {...rest}>{data.label}</Title>
+        <Title noselect {...rest}>
+          {data.label}
+        </Title>
       </ButtonBack>
     </ButtonContainer>
   )
