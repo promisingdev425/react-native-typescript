@@ -4,7 +4,7 @@ import { render, fireEvent, RenderAPI } from '@testing-library/react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { withTheme } from '~/theme/hocs'
-import { CircularArrow } from '~/assets/images'
+import { CircularArrowIcon } from '~/assets/images'
 
 import { IconButton } from './IconButton'
 
@@ -19,7 +19,7 @@ describe('IconButton', function () {
     const InnerScreen = () => (
       <View testID="Root">
         <IconButton onPress={handlePress}>
-          <CircularArrow testID="IconButton" />
+          <CircularArrowIcon testID="IconButton" />
         </IconButton>
       </View>
     )
