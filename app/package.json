@@ -29,7 +29,7 @@
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
     "storybook": "start-storybook -p 7007",
     "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook storybook",
-    "build-storybook": "yarn docs && build-storybook",
+    "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
     "download-hasura-metadata": "curl -d'{\"type\": \"export_metadata\", \"args\": {}}' https://schema.somewhere.com/v1/query -H 'X-Hasura-Admin-Secret: password' -o ./src/graphql-collection-metadata.json",
