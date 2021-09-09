@@ -39,7 +39,7 @@ export class Auth0 extends ServiceBase {
     // NOTE The following auth response is for illustration
     // purposes only. Your implementation can return whatever
     // you need it to.
-    return Promise.resolve({ user: 'Bob' })
+    return Promise.resolve({ user: 'Bob', token: 'abc123' })
     // return Promise.resolve(null);
   }
 

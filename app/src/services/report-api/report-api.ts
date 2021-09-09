@@ -10,12 +10,13 @@ import {
 import { RetryLink } from '@apollo/client/link/retry';
 import { ServiceBase } from '@thesoulfresh/utils';
 
-import { VERBOSE, REPORT_GRAPH_API } from '@env';
+import { env } from '~/env';
 
 import { LoggingLink, makeGraphQLErrorLink } from '../graphql-utils';
+import { fromReportGraph /*, toReportGraph*/ } from './transform';
 import { makeReportAPICacheClient } from './cache';
 
-// import * as graph from './report-api-definitions';
+import * as graph from './report-api-definitions';
 
 type ReportAPIOptions = {
   /**
@@ -31,6 +32,10 @@ type ReportAPIOptions = {
    */
   client?: ApolloClient<any>,
   /**
+   * The URL of the Report API.
+   */
+  url?: string,
+  /**
    * Whether to enable verbose logging.
    */
   debug?: boolean,
@@ -43,14 +48,18 @@ type ReportAPIOptions = {
  * by the Apollo client configuration.
  */
 export class ReportAPI extends ServiceBase {
-  client: any;
-
-  constructor({onAuthFailure, authToken, client, debug = true}: ReportAPIOptions) {
+  constructor({
+    onAuthFailure,
+    authToken,
+    client,
+    url = env.reportGraphAPI,
+    debug = true
+  }: ReportAPIOptions) {
     if (!client) {
       const retry = new RetryLink();
 
       const http = new HttpLink({
-        uri: REPORT_GRAPH_API,
+        uri: url,
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
@@ -60,7 +69,7 @@ export class ReportAPI extends ServiceBase {
 
       const links = [errorLink, retry, http];
 
-      if (VERBOSE) links.unshift(new LoggingLink());
+      if (env.verbose) links.unshift(new LoggingLink());
 
       client = new ApolloClient({
         link: ApolloLink.from(links),
@@ -70,8 +79,7 @@ export class ReportAPI extends ServiceBase {
 
     super(client, debug);
 
-    // @ts-ignore
-    this.info('created with API', REPORT_GRAPH_API);
+    this.info('created with API', env.reportGraphAPI);
   }
 
   /**
@@ -143,6 +151,20 @@ export class ReportAPI extends ServiceBase {
   //     error: err => o.error(err),
   //   }));
   // }
+
+  getProperties() {
+    this.debug('getProperties');
+
+    return this.client.query({
+      query: graph.GET_PROPERTIES,
+    }).then(results => {
+      const properties = results.data.apt_snapshot_property;
+      // Transform the data into the format used by the UI
+      const out = properties?.length ? properties.map(fromReportGraph.property) : [];
+      this.info('getProperties SUCCESS', out);
+      return out;
+    });
+  }
 
   // Example of how to get data from the GraphQL API.
   // getUser(email) {

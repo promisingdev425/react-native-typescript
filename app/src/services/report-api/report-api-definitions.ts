@@ -37,3 +37,13 @@ import { gql } from '@apollo/client';
 //   }
 // `;
 
+export const GET_PROPERTIES = gql`
+  query getProperties {
+    apt_snapshot_property {
+      name
+      ownership_group_id
+      property_id
+    }
+  }
+`;
+

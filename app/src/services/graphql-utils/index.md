@@ -46,6 +46,6 @@ global error handler.
 
 
 #### Defined in
-- *[errors.ts:70](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/graphql-utils/errors.ts#L70)*
+- *[errors.ts:73](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/graphql-utils/errors.ts#L73)*
 
 <br/>

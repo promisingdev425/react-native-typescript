@@ -8,7 +8,7 @@
 <br/><br/>
 ## fromReportGraph
 
-`fromGraph` allows you to transform data from
+`fromReportGraph` allows you to transform data from
 the relational data model returned from GraphQL into
 the application domain model used in the client code.
 This sheilds the application from relational data changes
@@ -19,11 +19,11 @@ that don't affect the application's logic or data structure.
 
 
 #### Defined in
-- *[transform/fromReportGraph.ts:9](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/report-api/transform/fromReportGraph.ts#L9)*
+- *[transform/fromReportGraph.ts:16](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/report-api/transform/fromReportGraph.ts#L16)*
 
 <br/>## toReportGraph
 
-`toCollectionGraph` allows transforming data
+`toReportGraph` allows transforming data
 from the application domain model to
 the relational data model used in GraphQL.
 
@@ -32,7 +32,7 @@ the relational data model used in GraphQL.
 
 
 #### Defined in
-- *[transform/toReportGraph.ts:9](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/report-api/transform/toReportGraph.ts#L9)*
+- *[transform/toReportGraph.ts:10](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/report-api/transform/toReportGraph.ts#L10)*
 
 <br/>## collapseNestedRelationships
 

@@ -42,7 +42,7 @@ export function createGraphClientMock(
   /** The GraphQL schema string to load */
   schema: GraphQLSchema,
   /** The Apollo Error link to handle errors. */
-  errorLink: Function,
+  errorLink: ApolloLink,
   /** The Apollo Cache client. */
   cache = new InMemoryCache(),
   /** Whether to perform verbose logging */

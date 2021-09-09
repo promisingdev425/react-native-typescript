@@ -54,7 +54,10 @@ export function graphQLErrorHandler({
     }
   } else if (networkError) {
     console.error('[Network error]:', networkError);
-    if ((<ServerError>networkError).statusCode && (<ServerError>networkError).statusCode === 401) {
+    if (
+      (<ServerError>networkError).statusCode &&
+      (<ServerError>networkError).statusCode === 401
+    ) {
       onAuthFailure();
 
       // TODO After login, modify the operation context with

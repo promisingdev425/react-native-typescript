@@ -40,7 +40,7 @@ return createGraphClientMock(errorLink, schema, cache);
 | Name | Type | Default Value |
 | :--- | :--- | :------------ |
 | schema | `GraphQLSchema` | *-* |
-| errorLink | `Function` | *-* |
+| errorLink | `ApolloLink` | *-* |
 | cache | `InMemoryCache` | `...` |
 | debug | `boolean` | `false` |
 
