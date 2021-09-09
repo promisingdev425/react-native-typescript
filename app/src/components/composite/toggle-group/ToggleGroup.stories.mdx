@@ -20,10 +20,10 @@ export const Template = props => <ToggleGroup {...props} />;
     args={{
       height: 32,
       options: [
-        { id: 'w', value: 'week', label: 'W' },
-        { id: 'm', value: 'month', label: 'M' },
-        { id: 'q', value: 'quater', label: 'Q' },
-        { id: 'y', value: 'year', label: 'Y' },
+        { id: 'w', value: 'week', label: 'W', accessibilityLabel: 'Press Week' },
+        { id: 'm', value: 'month', label: 'M', accessibilityLabel: 'Press Month' },
+        { id: 'q', value: 'quater', label: 'Q', accessibilityLabel: 'Press Quater' },
+        { id: 'y', value: 'year', label: 'Y', accessibilityLabel: 'Press Year' },
       ],
       onChange: ({ value }) => console.log('click', value)
     }}

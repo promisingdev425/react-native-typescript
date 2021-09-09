@@ -6,17 +6,16 @@ import PickingService from '~/services/picking'
 import { getColor } from '~/theme'
 
 import { Box, Title as TitleCore } from '../../core'
-import { IToggleGroup } from './ToggleGroup'
-import { IToggleButton } from './ToggleButton'
+import { IToggleButtonBase } from './ToggleButton'
 
 export { TouchableWithoutFeedback as ButtonContainer } from 'react-native'
 
-export const Container = styled(Box).attrs((props: IToggleGroup) => ({
+export const Container = styled(Box).attrs((props: IToggleButtonBase) => ({
   bg: 'clear',
   borderRadius: props.height / 2,
   borderWidth: 1,
   borderColor: 'lightGray',
-}))`
+}))<IToggleButtonBase>`
   position: relative;
   display: flex;
   flex-direction: row;
@@ -25,25 +24,25 @@ export const Container = styled(Box).attrs((props: IToggleGroup) => ({
   height: ${(props) => props.height}px;
 `
 
-export const Title = styled(TitleCore).attrs((props: IToggleButton) => ({
+export const Title = styled(TitleCore).attrs((props: IToggleButtonBase) => ({
   color: props.active ? 'white' : 'textSecondary',
   lineHeight: `${props.height - 2}px`,
-}))`
+}))<IToggleButtonBase>`
   flex: 1;
   text-align: center;
 `
 
 export const ButtonBack = styled(LinearGradient).attrs(
-  (props: IToggleButton) => ({
+  (props: IToggleButtonBase) => ({
     colors: [
       getColor(props.active ? 'brandOrange' : 'clear')(props),
       getColor(props.active ? 'brandPink' : 'clear')(props),
     ],
     start: [0.1, 0.45],
     end: [0.9, 0.55],
-    borderRadius: `${props.height / 2}px`,
+    borderRadius: props.height / 2,
   }),
-)`
+)<IToggleButtonBase>`
   flex: 1;
 
   ${PickingService.forPlatform({

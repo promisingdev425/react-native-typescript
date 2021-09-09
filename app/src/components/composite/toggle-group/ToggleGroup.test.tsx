@@ -17,9 +17,9 @@ describe('ToggleGroup', function () {
       <View testID="Root">
         <ToggleGroup
           options={[
-            { id: 'w', value: 'week', label: 'W' },
-            { id: 'm', value: 'month', label: 'M' },
-            { id: 'q', value: 'quater', label: 'Q' },
+            { id: 'w', value: 'week', label: 'W', a11yLabel: 'Press Week' },
+            { id: 'm', value: 'month', label: 'M', a11yLabel: 'Press Month' },
+            { id: 'q', value: 'quater', label: 'Q', a11yLabel: 'Press Quater' },
           ]}
           onChange={handlePress}
         />
@@ -32,10 +32,18 @@ describe('ToggleGroup', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(screen.getByText('W'))
+    expect(screen.getByTestId('Root')).toContainElement(screen.getByText('M'))
+    expect(screen.getByTestId('Root')).toContainElement(screen.getByText('Q'))
   })
 
   it('should click', () => {
     weekButton = screen.getByTestId('ToggleButton-w')
     fireEvent.press(weekButton)
+    expect(handlePress).toHaveBeenCalledTimes(1)
+    expect(handlePress).toHaveBeenCalledWith({
+      id: 'w',
+      value: 'week',
+      label: 'W',
+    })
   })
 })

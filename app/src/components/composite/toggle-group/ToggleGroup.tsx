@@ -38,7 +38,6 @@ export const ToggleGroup: React.FC<IToggleGroup> = ({
           onPress={handlePress}
           active={option.value === activeValue}
           height={height}
-          {...rest}
         />
       ))}
     </Container>

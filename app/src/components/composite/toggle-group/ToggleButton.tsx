@@ -7,11 +7,15 @@ export interface IToggleOption {
   id: string
   value: string
   label: string
+  a11yLabel?: string
 }
 
-export interface IToggleButton {
+export interface IToggleButtonBase {
   active?: boolean
-  height: number
+  height?: number
+}
+
+export interface IToggleButton extends IToggleButtonBase {
   data: IToggleOption
   onPress: (option: IToggleOption) => void
 }
@@ -25,6 +29,8 @@ export interface IToggleButton {
 export const ToggleButton: React.FC<IToggleButton> = ({
   data,
   onPress,
+  active,
+  height,
   ...rest
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,17 +38,20 @@ export const ToggleButton: React.FC<IToggleButton> = ({
     throttle(() => {
       onPress(data)
     }, 500),
-    [],
+    [onPress],
   )
 
   return (
     <ButtonContainer
-      {...rest}
-      onPress={handlePress}
       testID={`ToggleButton-${data.id}`}
+      onPress={handlePress}
+      accessible
+      accessibilityRole="button"
+      accessibilityLabel={data.a11yLabel || data.value}
+      {...rest}
     >
-      <ButtonBack {...rest}>
-        <Title noselect {...rest}>
+      <ButtonBack height={height} active={active}>
+        <Title height={height} active={active} noselect>
           {data.label}
         </Title>
       </ButtonBack>
