@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { View } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import {
   space,
   color,
@@ -21,7 +21,8 @@ const Box = styled(View)<
     FlexboxProps &
     PositionProps &
     LayoutProps &
-    SpaceProps
+    SpaceProps &
+    ViewProps
 >`
   ${border}
   ${color}

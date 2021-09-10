@@ -50,11 +50,21 @@ const GradientButton: React.FC<IGradientButton> = ({
       >
         {active && <GradientBack />}
 
-        <Title variant="header" color={active ? 'white' : 'textSecondary'}>
+        <Title
+          variant="header"
+          color={active ? 'white' : 'textSecondary'}
+          zIndex={1}
+          noselect
+        >
           {title}
         </Title>
 
-        <Text fontSize="body1" color={active ? 'white' : 'textSecondary'}>
+        <Text
+          fontSize="body1"
+          color={active ? 'white' : 'textSecondary'}
+          zIndex={1}
+          noselect
+        >
           {description}
         </Text>
       </InnerBase>
