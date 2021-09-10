@@ -1,28 +1,24 @@
 import React from 'react'
 import { View } from 'react-native'
 import { fireEvent, render, RenderAPI } from '@testing-library/react-native'
-import { ReactTestInstance } from 'react-test-renderer'
 import { withTheme } from '~/theme/hocs'
 
 import { ToggleGroup } from './ToggleGroup'
 
 describe('ToggleGroup', function () {
   let screen: RenderAPI
-  let weekButton: ReactTestInstance
   let handlePress: jest.Mock
+  const options = [
+    { id: 'w', value: 'week', label: 'W', a11yLabel: 'Press Week' },
+    { id: 'm', value: 'month', label: 'M', a11yLabel: 'Press Month' },
+    { id: 'q', value: 'quater', label: 'Q' },
+  ]
 
   beforeEach(async () => {
     handlePress = jest.fn()
     const InnerScreen = () => (
       <View testID="Root">
-        <ToggleGroup
-          options={[
-            { id: 'w', value: 'week', label: 'W', a11yLabel: 'Press Week' },
-            { id: 'm', value: 'month', label: 'M', a11yLabel: 'Press Month' },
-            { id: 'q', value: 'quater', label: 'Q', a11yLabel: 'Press Quater' },
-          ]}
-          onChange={handlePress}
-        />
+        <ToggleGroup options={options} onChange={handlePress} />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -37,13 +33,16 @@ describe('ToggleGroup', function () {
   })
 
   it('should click', () => {
-    weekButton = screen.getByTestId('ToggleButton-w')
-    fireEvent.press(weekButton)
-    expect(handlePress).toHaveBeenCalledTimes(1)
-    expect(handlePress).toHaveBeenCalledWith({
-      id: 'w',
-      value: 'week',
-      label: 'W',
+    const toggleButtons = options.map(({ id }) =>
+      screen.getByTestId(`ToggleButton-${id}`),
+    )
+
+    // Press all toggle buttons
+    toggleButtons.map((button, index) => {
+      fireEvent.press(button)
+      return expect(handlePress).toHaveBeenCalledWith(options[index])
     })
+
+    expect(handlePress).toHaveBeenCalledTimes(options.length)
   })
 })
