@@ -10,7 +10,7 @@ export const addMonths = (date: Date, months: number) => {
 export const formatDate = (
   date: Date,
   options?: Intl.DateTimeFormatOptions,
-  locale?: Intl.UnicodeBCP47LocaleIdentifier,
+  locale?: string,
 ) => {
   options = options || {
     year: 'numeric',

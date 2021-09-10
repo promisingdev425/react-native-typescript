@@ -3,33 +3,25 @@ import { View, ViewProps } from 'react-native'
 import {
   space,
   color,
-  layout,
-  flexbox,
+  background,
   border,
-  position,
   SpaceProps,
   ColorProps,
-  LayoutProps,
-  FlexboxProps,
+  BackgroundProps,
   BorderProps,
-  PositionProps,
 } from 'styled-system'
 
-const Box = styled(View)<
-  BorderProps &
-    ColorProps &
-    FlexboxProps &
-    PositionProps &
-    LayoutProps &
-    SpaceProps &
-    ViewProps
->`
-  ${border}
-  ${color}
-  ${flexbox}
-  ${layout}
-  ${position}
+export type IBox = ViewProps &
+  SpaceProps &
+  ColorProps &
+  BackgroundProps &
+  BorderProps
+
+const Box = styled(View)<IBox>`
   ${space}
+  ${color}
+  ${background}
+  ${border}
 `
 
 export { Box }

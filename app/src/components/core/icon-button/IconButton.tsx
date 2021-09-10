@@ -21,7 +21,7 @@ export const IconButton: React.FC<IIconButton> = ({
   children,
   ...rest
 }) => (
-  <Container onPress={onPress} {...rest}>
+  <Container onPress={onPress} accessibilityRole="button" {...rest}>
     {children}
   </Container>
 )

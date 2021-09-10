@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { CircularArrowIcon, CalendarIcon } from '~/assets/images'
 import { now, addMonths, formatDate } from '~/utils/date'
 
-import { Box, IconButton, Text } from '../../core'
+import { Box, IBox, IconButton, Text } from '../../core'
 
-export interface IDateSelect {
+export interface IDateSelect extends IBox {
   onChange: (date: Date) => void
 }
 
@@ -47,7 +47,11 @@ export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
 
   return (
     <Container {...rest}>
-      <IconButton accessibilityLabel="Prev Button" onPress={handlePrevPress}>
+      <IconButton
+        accessibilityLabel="Prev Button"
+        accessibilityHint="Get previous month"
+        onPress={handlePrevPress}
+      >
         <CircularArrowIcon />
       </IconButton>
 
@@ -66,6 +70,7 @@ export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
 
       <IconButton
         accessibilityLabel="Next Button"
+        accessibilityHint="Get next month"
         onPress={handleNextPress}
         style={{ transform: [{ rotate: '180deg' }] }}
       >

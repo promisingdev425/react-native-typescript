@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Box } from '../box'
+
+import { Box, IBox } from '../box'
 import { Title } from '../title'
 
-export interface ICard {
+export interface ICard extends IBox {
   title?: string
-  bg?: string
-  children?: React.ReactNode
 }
 
 export const InnerCard = styled(Box).attrs((props: ICard) => ({
