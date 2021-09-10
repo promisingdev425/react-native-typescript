@@ -17,7 +17,14 @@ export const Template = props => <HeaderBar {...props} />;
 <Canvas>
   <Story
     name="HeaderBar"
-    args={{title: 'Leaderboard'}}
+    args={{
+      title: 'Leaderboard',
+      avatar: {
+        name: 'John Doe',
+        image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
+        bg: 'lightGray',
+      }
+    }}
   >
     {Template.bind({})}
   </Story>

@@ -3,21 +3,18 @@ import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 
-import { HeaderBar } from './HeaderBar'
+import { Card } from './Card'
+import { Text } from '../text'
 
-describe('HeaderBar', function () {
+describe('Card', function () {
   let screen: RenderAPI
 
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <HeaderBar
-          title="Property Leaderboard"
-          avatar={{
-            name: 'John Doe',
-            image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
-          }}
-        />
+        <Card title="title">
+          <Text>Test1</Text>
+        </Card>
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -27,9 +24,11 @@ describe('HeaderBar', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByText('Property Leaderboard'),
+      screen.getByText('title'),
+    )
+
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByText('Test1'),
     )
   })
-
-  // TODO: write test case after implement <Avatar /> component.
 })
