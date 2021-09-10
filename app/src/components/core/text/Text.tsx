@@ -34,7 +34,7 @@ export interface IText
   color?: string
   fontFamilyGroup?: string
   fontFamilyStyle?: string
-  fontSize?: string
+  fontSize?: string | number
   noselect?: boolean
 }
 

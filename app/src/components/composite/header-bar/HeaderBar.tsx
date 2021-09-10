@@ -1,12 +1,13 @@
 import React from 'react'
-import { Image, ImageSourcePropType } from 'react-native'
+import { ImageSourcePropType } from 'react-native'
 
-import { userPlaceholder } from '~/assets/images'
+import { IAvatar } from '../../core'
 
-import { Container, Title } from './styles'
+import { Container, Title, Avatar } from './styles'
 
 export interface IHeaderBar {
   title: string
+  avatar?: IAvatar
   image?: ImageSourcePropType
 }
 
@@ -16,15 +17,12 @@ export interface IHeaderBar {
  * @param {object} props
  * @return {React.ReactNode}
  */
-const HeaderBar: React.FC<IHeaderBar> = ({
-  title,
-  image = userPlaceholder,
-  ...rest
-}) => {
+const HeaderBar: React.FC<IHeaderBar> = ({ title, avatar, image, ...rest }) => {
   return (
     <Container {...rest}>
       <Title variant="header">{title}</Title>
-      <Image source={image} />
+
+      <Avatar {...avatar} />
     </Container>
   )
 }
