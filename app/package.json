@@ -24,7 +24,7 @@
     "validate": "yarn setup && yarn lint-ci && yarn test-ci && yarn build:web && yarn build-storybook",
     "generate": "plop --plopfile ./scripts/plopfile.js",
     "docs": "./scripts/docs",
-    "coverage": "yarn test-ci && open ../reports/coverage/lcov-report/index.html",
+    "coverage": "yarn test-ci --coverageThreshold '{}' && open ../reports/coverage/lcov-report/index.html",
     "clean": "rimraf .expo/web/cache web-build App.jsx ../reports docs ../node_modules/.cache/babel-loader temp.json",
     "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
@@ -151,9 +151,13 @@
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
+      "<rootDir>/src/test",
       "<rootDir>/src/assets/",
       "<rootDir>/src/theme/hooks",
-      "<rootDir>/src/theme/themes"
+      "<rootDir>/src/theme/themes",
+      "<rootDir>/src/services/auth/mocks",
+      "<rootDir>/src/services/graphql-utils/mocks",
+      "<rootDir>/src/services/report-api/mocks"
     ]
   },
   "jest-junit": {

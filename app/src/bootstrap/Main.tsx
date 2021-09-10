@@ -13,6 +13,7 @@ type MainProps = {
 export function Main({}: MainProps) {
   const api = useReportAPI();
 
+  /* istanbul ignore next: temporary code */
   React.useEffect(() => {
     api.getProperties()
       .then((properties: Property[]) => console.log('Properties:', properties))

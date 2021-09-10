@@ -20,6 +20,7 @@ import {
  * - `src/@types/env.d.ts`
  * - `.env` (and other associated environment files)
  */
+/* istanbul ignore next: not much here */
 export const env = {
   get verbose() {
     return VERBOSE === 'true';

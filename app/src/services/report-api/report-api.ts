@@ -55,6 +55,7 @@ export class ReportAPI extends ServiceBase {
     url = env.reportGraphAPI,
     debug = true
   }: ReportAPIOptions) {
+    /* istanbul ignore next: never use the live api during testing */
     if (!client) {
       const retry = new RetryLink();
 
