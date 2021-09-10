@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text as TextRN } from 'react-native'
+import { Text as TextRN, TextProps } from 'react-native'
 import styled, { css } from 'styled-components/native'
 import {
   space,
@@ -22,7 +22,8 @@ import PickingService from '~/services/picking'
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'
 
 export interface IText
-  extends SpaceProps,
+  extends TextProps,
+    SpaceProps,
     ColorProps,
     TypographyProps,
     LayoutProps,
