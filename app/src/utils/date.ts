@@ -20,3 +20,8 @@ export const formatDate = (
 
   return Intl.DateTimeFormat('en-US', options).format(date)
 }
+
+export const now = () => {
+  const date = new Date().getTime()
+  return new Date(date - (date % 60000))
+}

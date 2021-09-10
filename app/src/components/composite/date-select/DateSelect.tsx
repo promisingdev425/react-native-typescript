@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
-import { DateTime } from 'luxon'
 
 import { CircularArrowIcon, CalendarIcon } from '~/assets/images'
+import { now, addMonths, formatDate } from '~/utils/date'
 
 import { Box, IconButton, Text } from '../../core'
 
 export interface IDateSelect {
-  onChange: (date: DateTime) => void
+  onChange: (date: Date) => void
 }
 
 const Container = styled(Box)`
@@ -31,28 +31,28 @@ const Selector = styled(Box)`
  * @return {React.ReactNode}
  */
 export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
-  const [date, setDate] = useState(DateTime.now().endOf('month'))
+  const [date, setDate] = useState(now())
 
   const handlePrevPress = () => {
-    const prevMonth = date.minus({ months: 1 })
+    const prevMonth = addMonths(date, -1)
     setDate(prevMonth)
     onChange(prevMonth)
   }
 
   const handleNextPress = () => {
-    const nextMonth = date.plus({ months: 1 })
+    const nextMonth = addMonths(date, 1)
     setDate(nextMonth)
     onChange(nextMonth)
   }
 
   return (
     <Container {...rest}>
-      <IconButton testID="date-select-prev" onPress={handlePrevPress}>
+      <IconButton accessibilityLabel="Prev Button" onPress={handlePrevPress}>
         <CircularArrowIcon />
       </IconButton>
 
       <Selector>
-        <CalendarIcon size={16} />
+        <CalendarIcon />
 
         <Text
           fontSize="subtitle2"
@@ -60,12 +60,12 @@ export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
           lineHeight="21px"
           ml="xs"
         >
-          {date.toFormat('LLL yyyy')}
+          {formatDate(date)}
         </Text>
       </Selector>
 
       <IconButton
-        testID="date-select-next"
+        accessibilityLabel="Next Button"
         onPress={handleNextPress}
         style={{ transform: [{ rotate: '180deg' }] }}
       >

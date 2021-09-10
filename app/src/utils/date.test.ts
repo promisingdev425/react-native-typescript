@@ -1,4 +1,4 @@
-import { addMonths, formatDate } from './date'
+import { now, addMonths, formatDate } from './date'
 
 describe('Date Utils', function () {
   it('should test add Month working fine', () => {
@@ -16,6 +16,10 @@ describe('Date Utils', function () {
   })
 
   it('should format date ', () => {
-    expect(formatDate(new Date(Date.UTC(2021, 8, 1)))).toEqual('Sep 2021')
+    expect(formatDate(new Date(Date.UTC(2021, 8, 10)))).toEqual('Sep 2021')
+  })
+
+  it('should show current time without seconds', () => {
+    expect(formatDate(now())).toEqual(formatDate(new Date()))
   })
 })

@@ -1,8 +1,9 @@
 import React from 'react'
+import { TouchableWithoutFeedbackProps } from 'react-native'
 
 import { Container } from './styles'
 
-export interface IIconButton {
+export interface IIconButton extends TouchableWithoutFeedbackProps {
   onPress: () => void
   children?: React.ReactNode
   style?: object

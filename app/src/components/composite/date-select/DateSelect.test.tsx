@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { render, fireEvent, RenderAPI } from '@testing-library/react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 import { withTheme } from '~/theme/hocs'
+import { now, addMonths } from '~/utils/date'
 
 import { DateSelect } from './DateSelect'
 
@@ -23,8 +24,8 @@ describe('DateSelect', function () {
     const Themed = withTheme(InnerScreen)
 
     screen = render(<Themed />)
-    prevButton = screen.getByTestId('date-select-prev')
-    nextButton = screen.getByTestId('date-select-next')
+    prevButton = screen.getByA11yLabel('Prev Button')
+    nextButton = screen.getByA11yLabel('Next Button')
   })
 
   it('should render', () => {
@@ -34,7 +35,11 @@ describe('DateSelect', function () {
 
   it('should trigger prev and next button', async () => {
     fireEvent.press(prevButton)
+    expect(handleChange).toHaveBeenLastCalledWith(addMonths(now(), -1))
     fireEvent.press(nextButton)
-    expect(handleChange).toHaveBeenCalledTimes(2)
+    expect(handleChange).toHaveBeenLastCalledWith(now())
+    fireEvent.press(nextButton)
+    expect(handleChange).toHaveBeenLastCalledWith(addMonths(now(), 1))
+    expect(handleChange).toHaveBeenCalledTimes(3)
   })
 })
