@@ -9,19 +9,28 @@ export const addMonths = (date: Date, months: number) => {
 
 export const formatDate = (
   date: Date,
+  locale?: string | Array<string>,
   options?: Intl.DateTimeFormatOptions,
-  locale?: string,
 ) => {
   options = options || {
     year: 'numeric',
     month: 'short',
   }
-  locale = locale || 'en-US'
+  // if locale is not defined, set it as an empty array
+  if (!locale) locale = []
 
-  return Intl.DateTimeFormat('en-US', options).format(date)
+  // standardize locale to an array format
+  locale = typeof locale === 'string' ? [locale] : locale
+
+  try {
+    return Intl.DateTimeFormat(locale, options).format(date)
+  } catch {
+    // date format with `en-US` locale as a fallback language
+    return Intl.DateTimeFormat('en-US', options).format(date)
+  }
 }
 
-export const now = () => {
+export const nowInMinutes = () => {
   const date = new Date().getTime()
   return new Date(date - (date % 60000))
 }

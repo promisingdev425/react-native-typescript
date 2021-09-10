@@ -1,4 +1,4 @@
-import { now, addMonths, formatDate } from './date'
+import { nowInMinutes, addMonths, formatDate } from './date'
 
 describe('Date Utils', function () {
   it('should test add Month working fine', () => {
@@ -20,6 +20,16 @@ describe('Date Utils', function () {
   })
 
   it('should show current time without seconds', () => {
-    expect(formatDate(now())).toEqual(formatDate(new Date()))
+    expect(formatDate(nowInMinutes())).toEqual(formatDate(new Date()))
+  })
+
+  it('should test locales', () => {
+    expect(formatDate(new Date('2021-09-30'), 'zh-CN')).toEqual('2021年9月')
+    expect(formatDate(new Date('2021-09-30'), ['zh_cn', 'it_IT'])).toEqual(
+      'Sep 2021',
+    )
+    expect(formatDate(new Date('2021-09-30'), ['zh_cn', 'es-ES'])).toEqual(
+      'Sep 2021',
+    )
   })
 })

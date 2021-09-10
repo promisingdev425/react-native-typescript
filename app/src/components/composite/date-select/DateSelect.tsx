@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { CircularArrowIcon, CalendarIcon } from '~/assets/images'
-import { now, addMonths, formatDate } from '~/utils/date'
+import { nowInMinutes, addMonths, formatDate } from '~/utils/date'
 
 import { Box, IBox, IconButton, Text } from '../../core'
 
@@ -31,7 +31,7 @@ const Selector = styled(Box)`
  * @return {React.ReactNode}
  */
 export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
-  const [date, setDate] = useState(now())
+  const [date, setDate] = useState(nowInMinutes())
 
   const handlePrevPress = () => {
     const prevMonth = addMonths(date, -1)
