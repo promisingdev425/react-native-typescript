@@ -1,7 +1,7 @@
 #### Defined in
 {{#each sources}}
-{{#if "${repository}"}}
-- *[{{fileName}}:{{line}}]({{repository}}/{{fileName}}#L{{line}})*
+{{#if (repository-url)}}
+- *[{{fileName}}:{{line}}]({{repository-url}}/{{fileName}}#L{{line}})*
 {{else}}
 - *{{fileName}}:{{line}}*
 {{/if}}

@@ -48,6 +48,11 @@ yargs(hideBin(process.argv))
             type: 'boolean',
             default: false,
           },
+          force: {
+            describe: 'Force re-generating the TypeDoc info even if an existing typedoc.json file is found in the working directory.',
+            type: 'string',
+            default: false,
+          },
           // TODO Allow overriding templates
           // 'templates': {
           //   describe: 'A folder containing templates to override the default templates provided by this project.',
@@ -55,7 +60,7 @@ yargs(hideBin(process.argv))
           //   default: undefined,
           // }
         }),
-    async ({ entry, out, repo, debug }) => {
+    async ({ entry, out, repo, debug, force }) => {
       const file = path.parse(entry)
 
       // Determine the output file.
@@ -74,7 +79,8 @@ yargs(hideBin(process.argv))
         console.log(`Parsing documentation from ${entry.white}...`.green)
 
         const temp = path.resolve('./temp.json')
-        if (!fs.existsSync(temp)) {
+        if (force || !fs.existsSync(temp)) {
+          console.log(`Generating TypeDocs...`.grey)
           // Generate JSON docs from the given source file.
           await parse(entry, temp, debug)
         }

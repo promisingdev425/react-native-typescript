@@ -3,13 +3,21 @@ import { getOperationAST } from 'graphql';
 
 import { loggerMixin } from '@thesoulfresh/utils';
 
+type level = 'debug' | 'info' | 'warn' | 'error';
+
 /**
  * Apollo link object that will log GraphQL requests.
+ * @private
  */
 /* istanbul ignore next: Not important to test */
 export class LoggingLink extends ApolloLink {
   level: string;
-  constructor(level = 'debug') {
+  constructor(
+    /**
+     * The level at which to perform debug logging.
+     */
+    level: level = 'debug'
+  ) {
     super();
 
     this.level = level;

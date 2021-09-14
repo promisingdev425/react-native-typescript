@@ -1,1 +1,14 @@
-{{log '[TypeDoc]' this.name 'Constructor templates unimplemented'}}
+{{#each signatures}}
+{{#if (eq kindString 'Constructor signature')}}
+### {{name}}( {{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}} )
+{{else}}
+### {{className}}.{{name}}
+{{/if}}
+
+{{#if comment}}{{> description}}{{/if}}
+
+{{#if parameters}}{{> parameters}}{{/if}}
+{{/each}}
+
+{{#if sources}}{{> files}}{{/if}}
+<br/>
