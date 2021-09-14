@@ -9,3 +9,8 @@ import { Text } from './Text'
 storiesOf('Text', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
   .add('default', () => <Text>This is generic text component</Text>)
+  .add('fontSize: 16, style: Bold', () => (
+    <Text fontSize="subtitle2" fontFamilyStyle="style.bold">
+      This is generic text component
+    </Text>
+  ))

@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+
+import { ToggleGroup } from './ToggleGroup';
+
+<Meta
+  title="Components/ToggleGroup"
+  argTypes={{
+  }}
+/>
+
+# ToggleGroup
+
+<Description of={ ToggleGroup } />
+
+export const Template = props => <ToggleGroup {...props} />;
+
+<Canvas>
+  <Story
+    name="ToggleGroup"
+    args={{
+      height: 32,
+      options: [
+        { id: 'w', value: 'week', label: 'W', a11yLabel: 'Press Week Button' },
+        { id: 'm', value: 'month', label: 'M', a11yLabel: 'Press Month Button' },
+        { id: 'q', value: 'quater', label: 'Q', a11yLabel: 'Press Quater Button' },
+        { id: 'y', value: 'year', label: 'Y', a11yLabel: 'Press Year Button' },
+      ],
+      onChange: ({ value }) => console.log('click', value)
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ ToggleGroup } />

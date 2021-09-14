@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text as TextRN } from 'react-native'
-import styled from 'styled-components/native'
+import { Text as TextRN, TextProps } from 'react-native'
+import styled, { css } from 'styled-components/native'
 import {
   space,
   color as colorStyle,
@@ -18,10 +18,12 @@ import {
   LineHeightProps,
 } from 'styled-system'
 
+import PickingService from '~/services/picking'
 import { fontFamilyComposite, lineHeightComposite } from '~/theme'
 
 export interface IText
-  extends SpaceProps,
+  extends TextProps,
+    SpaceProps,
     ColorProps,
     TypographyProps,
     LayoutProps,
@@ -33,7 +35,8 @@ export interface IText
   color?: string
   fontFamilyGroup?: string
   fontFamilyStyle?: string
-  fontSize?: string
+  fontSize?: string | number
+  noselect?: boolean
 }
 
 /**
@@ -49,6 +52,23 @@ export interface IText
  * @return {React.ReactNode}
  */
 const StyledText = styled(TextRN)<IText>`
+  ${(props) => {
+    if (props.noselect) {
+      return PickingService.forPlatform({
+        web: css`
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        `,
+      })
+    }
+
+    return null
+  }}
+
   ${space}
   ${colorStyle}
   ${typography}
@@ -67,6 +87,7 @@ const Text: React.FC<IText> = ({
   fontFamilyGroup = 'group.sfProDisplay',
   fontFamilyStyle = 'style.regular',
   fontSize = 'body1',
+  noselect = false,
   ...rest
 }) => (
   <StyledText
@@ -76,6 +97,7 @@ const Text: React.FC<IText> = ({
     fontFamilyGroup={fontFamilyGroup}
     fontFamilyStyle={fontFamilyStyle}
     fontSize={fontSize}
+    noselect={noselect}
     {...rest}
   />
 )

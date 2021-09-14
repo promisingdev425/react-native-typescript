@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+
+import { DateSelect } from './DateSelect';
+
+<Meta
+  title="Components/DateSelect"
+  argTypes={{
+    onChange: { action: 'onChange' }
+  }}
+/>
+
+# DateSelect
+
+<Description of={ DateSelect } />
+
+export const Template = props => <DateSelect {...props} />;
+
+<Canvas>
+  <Story
+    name="DateSelect"
+    args={{
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ DateSelect } />
