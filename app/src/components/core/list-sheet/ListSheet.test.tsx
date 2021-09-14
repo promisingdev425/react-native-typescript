@@ -28,6 +28,7 @@ describe('ListSheet', function () {
     const InnerScreen = () => (
       <View testID="Root">
         <ListSheet
+          testID="ListSheet"
           title="Leasing Reports"
           options={options}
           itemHeight={48}

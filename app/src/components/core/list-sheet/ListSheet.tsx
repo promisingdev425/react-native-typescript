@@ -5,7 +5,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react'
-import { Modal, Animated, Easing, ViewStyle } from 'react-native'
+import { Modal, Animated, Easing, ViewStyle, ViewProps } from 'react-native'
 import map from 'lodash/map'
 
 import { Title } from '../title'
@@ -26,7 +26,7 @@ type AnimatedViewStyle = Animated.WithAnimatedValue<ViewStyle>
 type IListSheetRef = {
   show?: () => void
 }
-export interface IListSheet {
+export interface IListSheet extends ViewProps {
   title?: string
   options: IOptionData[]
   itemHeight?: number
@@ -143,7 +143,7 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
       onRequestClose={handleCancel}
       transparent
     >
-      <Container>
+      <Container {...rest}>
         <Overlay onPress={handleCancel}>
           <OverlayBackground
             as={Animated.View}

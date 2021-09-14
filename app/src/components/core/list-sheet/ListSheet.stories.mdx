@@ -1,5 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 
+import { ApplicationIcon } from '~/assets/images'
+
 import { ListSheet } from './ListSheet'
 
 <Meta
@@ -23,11 +25,11 @@ export const Template = props => <ListSheet {...props} />
       options: [
         {
           Icon: ApplicationIcon,
-          value: 'application',
-          label: 'Engagement Score',
+        value: 'application',
+            label: 'Engagement Score',
         },
         {
-          Icon: ApplicationIcon,
+      Icon: ApplicationIcon,
           value: 'responsiveness',
           label: 'Responsiveness',
         },
