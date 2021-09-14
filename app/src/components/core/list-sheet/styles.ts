@@ -1,19 +1,20 @@
 import styled from 'styled-components/native'
-import { TouchableWithoutFeedbackProps } from 'react-native'
+import { TouchableWithoutFeedbackProps, Dimensions } from 'react-native'
 
 import { getMetrics, getSpace } from '~/theme'
 
 import { Box, IBox } from '../box'
 
-export const getBottomSpace = (props, isExtra) => {
+export const getMaxHeight = (props) => {
+  const { height } = Dimensions.get('window')
+  return props.maxHeight || height * 0.9
+}
+
+export const getBottomSpace = (props, isExtra = false) => {
   const bottomSpace = getMetrics('bottomSpace')(props)
   const contentBottomSpace = bottomSpace > 0 ? 0 : getSpace('sm')(props)
 
   return isExtra ? bottomSpace + contentBottomSpace : contentBottomSpace
-}
-
-export const getMaxHeight = (props) => {
-  return props.maxHeight || getMetrics('screenHeight')(props) * 0.9
 }
 
 export const Container = styled.View`
@@ -50,12 +51,10 @@ export const Header = styled(Box).attrs({
   align-items: center;
 `
 
-export const Content = styled.ScrollView.attrs((props) => {
-  return {
-    keyboardShouldPersistTaps: 'handled',
+export const Content = styled.ScrollView.attrs((props) => ({
+  keyboardShouldPersistTaps: 'handled',
 
-    contentContainerStyle: {
-      paddingBottom: getBottomSpace(props, false),
-    },
-  }
-})``
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace(props),
+  },
+}))``
