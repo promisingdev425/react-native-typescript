@@ -1,5 +1,6 @@
 {
-  "excludeNotDocumented": true,
+  "excludeNotDocumented": false,
+  "excludePrivate": true,
   "readme": "none",
   "exclude": "**/*(index|.stories|.test|.spec).(ts|js|tsx|jsx)"
 }
