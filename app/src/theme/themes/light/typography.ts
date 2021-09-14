@@ -13,6 +13,9 @@ const group = PickingService.forPlatform({
 })
 
 const separator = PickingService.forPlatform({
+  web: {
+    [group.sfProDisplay]: '-',
+  },
   ios: {
     [group.sfProDisplay]: '-',
   },
