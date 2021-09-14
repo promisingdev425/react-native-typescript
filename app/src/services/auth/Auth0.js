@@ -4,6 +4,7 @@ import { ServiceBase } from '@thesoulfresh/utils'
 import { VERBOSE, AUTH_DOMAIN, AUTH_CLIENT_ID } from '@env'
 
 // TODO Use library for this
+/* istanbul ignore next: TODO Remove this once auth is working */
 const toQueryString = (params) =>
   '?' +
   Object.entries(params)
@@ -13,6 +14,7 @@ const toQueryString = (params) =>
     )
     .join('&')
 
+/* istanbul ignore next: TODO Remove this once auth is complete */
 export class Auth0 extends ServiceBase {
   /**
    * NOTE
@@ -39,7 +41,7 @@ export class Auth0 extends ServiceBase {
     // NOTE The following auth response is for illustration
     // purposes only. Your implementation can return whatever
     // you need it to.
-    return Promise.resolve({ user: 'Bob' })
+    return Promise.resolve({ user: 'Bob', token: 'abc123' })
     // return Promise.resolve(null);
   }
 

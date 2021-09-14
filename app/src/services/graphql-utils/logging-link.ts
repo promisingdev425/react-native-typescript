@@ -6,6 +6,7 @@ import { loggerMixin } from '@thesoulfresh/utils';
 /**
  * Apollo link object that will log GraphQL requests.
  */
+/* istanbul ignore next: Not important to test */
 export class LoggingLink extends ApolloLink {
   level: string;
   constructor(level = 'debug') {

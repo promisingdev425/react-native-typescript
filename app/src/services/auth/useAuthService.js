@@ -9,6 +9,7 @@ import { Auth0 } from './Auth0.js'
  *
  * @param {*} [authService] - overrides the default auth service instance.
  */
+/* istanbul ignore next: TODO Remove this once working */
 export function useAuthService(authService) {
   // Either use the auth service provided (for testing)
   // or generate one that gets reused between calls.

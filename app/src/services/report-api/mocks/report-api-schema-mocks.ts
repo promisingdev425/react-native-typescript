@@ -1,61 +1,115 @@
+import { ApolloLink } from '@apollo/client';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { addMocksToSchema } from '@graphql-tools/mock';
+import merge from 'lodash/merge';
+import faker from 'faker';
 
 import { createGraphClientMock } from '../../graphql-utils/mocks';
 
-// import { generate } from './graph-generate';
+import { generate } from './report-api-generate';
 
-import schemaDefinition from '~/graphql-schema.graphql';
+import schemaDefinition from '~/graphql-report-schema.graphql';
+
+type Bag = {[key: string]: any};
 
 /**
- * Generates a mock client that will auto generate fake data
- * for requests against it using the mocks defined in `graphql-mocks.js`.
- * Used to serve a static version of the site for development
- * and can be used to generate data for the storybook.
+ * Creates a mock Apollo client that will auto generate fake data
+ * for requests against it using the mocks returned by `createGraphMocks`.
+ * You can use this function to create Apollo clients that
+ * return mock data during testing, the mock server or Storybook.
  *
- * You can get an errorLink that will trigger the global
- * error handler by importing `createErrorLink` from `Home.jsx`.
+ * For information on how the schema mocks, see
+ * https://www.graphql-tools.com/docs/mocking#mocking-custom-scalar-types
  */
-export function createReportAPIClientMock(
-  /** Apollo Error Link instance */
+export function createReportAPIClientMock({
+  /**
+   * Apollo Error Link instance to pass to the Apollo client.
+   * You can get an `errorLink` that will trigger the global
+   * error handler by importing `createErrorLink` from `Home.jsx`.
+   */
   errorLink,
-  /** Apollo Cache Link instance */
+  /** Apollo Cache Link instance to pass to the Apollo client. */
   cache,
   /** Any additional mocks you wish to merge into the default mocks */
-  additionalMocks,
+  mocks,
   /** Options to pass to the generator methods (ie. graph-generate) */
   generatorOptions,
+  /** Resolvers to use as described at https://www.graphql-tools.com/docs/mocking#mockstore */
+  resolvers,
   /** Whether to perform verbose logging */
   debug = false,
-) {
-  const mocks = createGraphMocks(generatorOptions);
+}: {
+  errorLink?: ApolloLink,
+  cache?: any,
+  mocks?: Bag,
+  generatorOptions?: Bag,
+  resolvers?: any,
+  debug?: boolean,
+} = {}) {
+  const defaultMocks = createGraphMocks(generatorOptions);
   const schema = makeExecutableSchema({ typeDefs: schemaDefinition });
-  addMocksToSchema({
+
+  const schemaWithMocks = addMocksToSchema({
     schema,
-    mocks: {
-      ...mocks,
-      ...additionalMocks
-    }
+    preserveResolvers: false,
+    mocks: merge(defaultMocks, mocks),
+    resolvers,
+    // If you need to access data from the mock store in
+    // your generators, you can use the resolvers key as
+    // described here:
+    // https://www.graphql-tools.com/docs/mocking#mockstore
+    // resolvers: resolvers || (store) => ({
+    //   query_root: {
+    //     apt_snapshot_property: (/*_, variables*/) => {}
+    //   },
+    // }),
   });
 
-  return createGraphClientMock(schema, errorLink, cache, debug);
+  return createGraphClientMock(schemaWithMocks, errorLink, cache, debug);
 };
 
 /**
- * Create the mock definitions based on the given options.
- * @see https://www.graphql-tools.com/docs/mocking#mocking-custom-scalar-types
+ * Create the mock definitions used by `createReportAPIClientMock`
+ * and as described in the
+ * [`graphql-tools` docs](https://www.graphql-tools.com/docs/mocking#mocking-custom-scalar-types).
+ * You generally won't need to use this function directly as
+ * `createReportAPIClientMock` is more useful for testing.
+ * Each property on the returned object is a factory function
+ * that can be used to create objects matching the shape of
+ * that type in the GraphQL schema. You can customize the
+ * factories by passing an options object which will in turn
+ * be used by the factories when generating data.
+ *
+ * @param options - Any options accepted by the various methods in
+ * `report-api/mocks/report-api-generate`. The options
+ * will be passed through to the individual type factories
+ * returned by this function.
  */
-export function createGraphMocks(options = {}) {
+function createGraphMocks({
+  includeId = true,
+  propertyCount = faker.datatype.number({min: 1, max: 10}),
+  ...rest
+}:Bag = {},
+) {
   // Generator options to pass to `generate` method calls.
-  options = {includeId: true, ...options};
+  const options = {includeId, ...rest};
 
   return {
+    // Proxy the factories on generate so they pass our
+    // generator options
+    ...Object.keys(generate).reduce((acc, key) => {
+      acc[key] = () => generate[key](options);
+      return acc;
+    }, {}),
+
+    // GraphQL queries
     query_root: () => ({
+      apt_snapshot_property: () => [...new Array(propertyCount)],
     }),
 
-    mutation_root: () => ({
-    }),
-
-    bigint: () => Math.floor(Math.random() * 10000),
+    // GraphQL mutations
+    // mutation_root: () => ({
+    // }),
   }
 }
+

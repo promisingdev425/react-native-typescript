@@ -19,13 +19,14 @@ function useReportAPIClient(authResponse, onAuthFailure, reportAPIClient) {
     }
     else if (authResponse?.token) {
       return new ReportAPI({
-        client: createReportAPIClientMock(
-          makeGraphQLErrorLink(onAuthFailure),
-          makeReportAPICacheClient(),
-          {}, // Extra mocks
-          {}, // Generator options
-          env.verbose
-        ),
+        client: createReportAPIClientMock({
+          errorLink: makeGraphQLErrorLink(onAuthFailure),
+          cache: makeReportAPICacheClient(),
+          mocks: {}, // Extra mocks
+          generatorOptions: {}, // Generator options
+          debug: env.verbose
+        }),
+        debug: env.verbose
       });
     }
     else {

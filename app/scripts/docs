@@ -14,3 +14,5 @@ node ./scripts/typedocs/index.js build src/services/report-api/mocks/index.ts --
 # Theming
 node ./scripts/typedocs/index.js build src/theme/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
 
+# Testing
+node ./scripts/typedocs/index.js build src/test/index.ts --repo https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app
