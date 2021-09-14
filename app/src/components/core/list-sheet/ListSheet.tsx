@@ -12,6 +12,7 @@ import { Title } from '../title'
 import { IOptionData, Option } from './option'
 import {
   getMaxHeight,
+  getBottomSpace,
   Container,
   Overlay,
   OverlayBackground,
@@ -49,11 +50,11 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
   let isScrollEnabled = false
 
   const getSheetHeight = () => {
-    console.log('Props:', rest)
     const header = 60
-    const scrollContent = itemHeight * options.length
+    const contentHeight = itemHeight * options.length
+    const bottomSpace = getBottomSpace(rest)
+    const height = header + contentHeight + bottomSpace
     const maxHeight = getMaxHeight(rest)
-    const height = header * 2 + scrollContent
 
     isScrollEnabled = height > maxHeight
 
@@ -61,7 +62,7 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
   }
 
   let translateY = getSheetHeight()
-  const sheetAnimation = useRef(new Animated.Value(0)).current
+  const sheetAnimation = useRef(new Animated.Value(translateY)).current
   const overlayAnimation = useRef(new Animated.Value(0)).current
 
   const showSheet = () => {

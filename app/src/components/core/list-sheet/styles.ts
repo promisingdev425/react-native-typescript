@@ -1,7 +1,8 @@
 import styled from 'styled-components/native'
 import { TouchableWithoutFeedbackProps, Dimensions } from 'react-native'
+import { getBottomSpace as getBottomSpaceX } from 'react-native-iphone-x-helper'
 
-import { getMetrics, getSpace } from '~/theme'
+import { getMetrics } from '~/theme'
 
 import { Box, IBox } from '../box'
 
@@ -10,11 +11,13 @@ export const getMaxHeight = (props) => {
   return props.maxHeight || height * 0.9
 }
 
-export const getBottomSpace = (props, isExtra = false) => {
-  const bottomSpace = getMetrics('bottomSpace')(props)
-  const contentBottomSpace = bottomSpace > 0 ? 0 : getSpace('sm')(props)
+export const getBottomSpace = (props) => {
+  let bottomSpace = getMetrics('bottomSpace')(props)
+  if (!bottomSpace) {
+    bottomSpace = getBottomSpaceX()
+  }
 
-  return isExtra ? bottomSpace + contentBottomSpace : contentBottomSpace
+  return bottomSpace
 }
 
 export const Container = styled.View`
