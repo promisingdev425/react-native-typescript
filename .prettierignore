@@ -3,3 +3,13 @@
 node_modules
 storybook
 reports
+app/scripts
+__generated__
+web-build
+storybook-static
+
+app/App.jsx
+
+# Auto generated markdown files
+app/src/theme/index.md
+app/src/services/index.md

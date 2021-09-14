@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthService } from '~/services/auth'
@@ -29,7 +28,7 @@ export default function App({
   // Anything else should be passed through to WithServer
   ...rest
 }) {
-  const { initialized, authenticated, onLogin, onForgotLogin, onLogout } =
+  const { initialized, authenticated, onLogin, onForgotLogin, onLogout, authResponse } =
     useAuthService(authService)
 
   const theme = themes.light
@@ -44,6 +43,7 @@ export default function App({
     // but you may need to handle this differently based on
     // your authentication mechanism.
     onAuthFailure: onLogout,
+    authResponse,
   }
 
   // Render the login overlay above the main app.
@@ -54,9 +54,13 @@ export default function App({
       )}
       {initialized && fontsLoaded && (
         <React.Suspense fallback={<PageLoader />}>
-          {children || <WithServer {...props} />}
+          { children
+            ? React.cloneElement(children, props)
+            : <WithServer {...props} />
+          }
         </React.Suspense>
       )}
     </ThemeProvider>
   )
 }
+

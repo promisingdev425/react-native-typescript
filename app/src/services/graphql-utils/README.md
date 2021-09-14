@@ -1,0 +1,1 @@
+This module contains general GraphQL tools that can be reused between our services.

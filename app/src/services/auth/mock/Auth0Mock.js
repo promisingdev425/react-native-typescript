@@ -1,6 +1,6 @@
 export class Auth0Mock {
   getUser() {
-    return Promise.resolve({ user: 'Bob' })
+    return Promise.resolve({ user: 'Bob', token: 'authtokenvalue' })
     // return Promise.resolve(null);
   }
 

@@ -67,6 +67,13 @@ The following commands are available through yarn:
 - `yarn generate` Generate a new component or page. Follow the instructions or read the
   Plop.js docs for more info.
 - `yarn lint` Lint the code. This is also run during `yarn validate`.
+- `yarn lint:fix` Fix all lint and prettier errors that can be autofixed. This is also
+  done for you on commit.
+- `yarn coverage` Generate and open a code coverage report.
+- `yarn update-graphql-metadata` Update metadata about the GraphQL endpoints so the mocks
+  match the current production schema.
+- `yarn docs` Regenerate all non-component docs as markdown files. This is also handled
+  for you when you run `yarn storybook`.
 
 ### Build
 
@@ -103,6 +110,6 @@ Here are the supported environments:
 - `test` Equivalent to the standard test
 - `mock` Build the application with mock data. This prevents the app from making
   any API requests.
-- `state` Build the application to connect to the staging APIs.
+- `stage` Build the application to connect to the staging APIs.
 - `prod` Build the application to connect to production APIs.
   Equivalent to the standard "production" environmnet.

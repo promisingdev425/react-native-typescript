@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 import { Auth0Mock } from '~/services/auth/mock'
 import MainApp from './App.api'
@@ -34,3 +33,4 @@ export default function App({
     </MainApp>
   )
 }
+
