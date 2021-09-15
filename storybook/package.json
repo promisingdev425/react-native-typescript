@@ -1,5 +1,5 @@
 {
-  "name": "@apartmentsnapshot/snapshot-ui-storybook6",
+  "name": "@apartmentsnapshot/snapshot-ui-storybook",
   "version": "0.0.1",
   "main": "__generated__/AppEntry.js",
   "private": true,
