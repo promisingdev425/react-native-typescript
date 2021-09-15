@@ -25,10 +25,10 @@ const separator = PickingService.forPlatform({
 })
 
 const style = {
-  bold: 'Bold',
   light: 'Light',
   regular: 'Regular',
   semiBold: 'Semibold',
+  bold: 'Bold',
 }
 
 export default {
