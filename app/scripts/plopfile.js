@@ -58,13 +58,13 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
       path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.stories.js`,
       templateFile: `plop-templates/component/Component.stories.js.hbs`,
     },
-    {
-      // Name.stories.mdx (Web component documentation)
-      type: 'add',
-      data: data,
-      path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.stories.mdx`,
-      templateFile: `plop-templates/component/Component.stories.mdx.hbs`,
-    },
+    // {
+    //   // Name.stories.mdx (Web component documentation)
+    //   type: 'add',
+    //   data: data,
+    //   path: `${dir}/{{dashCase '${name}'}}/{{pascalCase '${name}'}}.stories.mdx`,
+    //   templateFile: `plop-templates/component/Component.stories.mdx.hbs`,
+    // },
     {
       // components/name/index.js
       type: 'add',
