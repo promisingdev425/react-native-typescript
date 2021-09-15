@@ -1,43 +1,40 @@
 {
-  "name": "@apartmentsnapshot/snapshot-ui-storybook",
+  "name": "@apartmentsnapshot/snapshot-ui-storybook6",
   "version": "0.0.1",
   "main": "__generated__/AppEntry.js",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "@storybook/core"
-    ]
-  },
   "scripts": {
-    "storybook": "yarn setup && expo start -c",
-    "clean": "rimraf .expo storyLoader.js",
-    "setup": "yarn clean && rnstl --searchDir ../app/src --pattern '**/*.stories.js' --outputFile ./storyLoader.js",
+    "start": "expo start -c",
+    "android": "expo start --android -c",
+    "ios": "expo start --ios -c",
+    "prestart": "sbn-get-stories",
+    "storybook-watcher": "sbn-watcher",
     "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
-    "@apartmentsnapshot/snapshot-ui": "0.0.1"
-  },
-  "devDependencies": {
-    "@expo/webpack-config": "^0.14.0",
-    "@storybook/addon-actions": "^5.3",
-    "@storybook/addon-knobs": "^5.3",
-    "@storybook/addon-links": "^5.3",
-    "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-ondevice-actions": "^5.3.23",
-    "@storybook/addon-ondevice-knobs": "^5.3.25",
-    "@storybook/addon-ondevice-notes": "^5.3.23",
-    "@storybook/core": "^5.3",
-    "@storybook/react-native": "^5.3.25",
-    "@storybook/react-native-server": "^5.3.23",
-    "babel-loader": "^8.2.2",
-    "expo": "~42.0.0",
+    "expo": "~42.0.1",
     "expo-status-bar": "~1.0.4",
-    "expo-yarn-workspaces": "^1.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-storybook-loader": "^2.0.4",
-    "react-native-web": "~0.13.12",
-    "rimraf": "^3.0.2"
+    "react-native-web": "~0.13.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "@react-native-community/datetimepicker": "3.5.2",
+    "@react-native-community/slider": "3.0.3",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-controls": "^6.3.8",
+    "@storybook/addon-ondevice-actions": "^6.0.1-alpha.3",
+    "@storybook/addon-ondevice-backgrounds": "^6.0.1-alpha.3",
+    "@storybook/addon-ondevice-controls": "^6.0.1-alpha.3",
+    "@storybook/addon-ondevice-notes": "^6.0.1-alpha.3",
+    "@storybook/react-native": "^6.0.1-alpha.3",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
+    "expo-yarn-workspaces": "^1.5.2",
+    "react-native-dotenv": "^3.2.0",
+    "typescript": "~4.0.0"
   }
 }
