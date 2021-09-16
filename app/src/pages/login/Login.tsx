@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 
 import { Text, ListSheet, GradientButton } from '~/components'
@@ -14,15 +14,17 @@ const BottomSelector = styled(ListSheet)``
  * @return {React.ReactNode}
  */
 export const Login = ({ ...rest }) => {
-  type ListSheetRefType = React.ElementRef<typeof ListSheet>
-  const sheetRef = useRef<ListSheetRefType>()
+  const [isSheetOpen, toggleSheet] = useState(false)
 
-  const handleChange = (data) => console.log(data)
+  const handleChange = (data) => console.log('data before hide:', data)
+
+  const handleChangeAfterHide = (data) => {
+    console.log('data after hide:', data)
+    toggleSheet(false)
+  }
 
   const handlePress = () => {
-    if (!sheetRef) return
-
-    sheetRef.current.show()
+    toggleSheet(!isSheetOpen)
   }
 
   return (
@@ -36,7 +38,7 @@ export const Login = ({ ...rest }) => {
       />
 
       <BottomSelector
-        ref={sheetRef}
+        open={isSheetOpen}
         title="Leasing Reports"
         options={[
           {
@@ -52,6 +54,8 @@ export const Login = ({ ...rest }) => {
         ]}
         itemHeight={48}
         onChange={handleChange}
+        onChangeAfterHide={handleChangeAfterHide}
+        isHideAfterChoose
       />
     </View>
   )

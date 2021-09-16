@@ -7,7 +7,8 @@ import { ListSheet } from './ListSheet'
 <Meta
   title="Components/ListSheet"
   argTypes={{
-    onChange: { action: 'onChange' }
+    onChange: { action: 'onChange' },
+    onChangeAfterHide: { action: 'onChange' }
   }}
 />
 
@@ -21,6 +22,7 @@ export const Template = props => <ListSheet {...props} />
   <Story
     name="ListSheet"
     args={{
+      open: true,
       title: 'Leasing Reports',
       options: [
         {
@@ -35,6 +37,7 @@ export const Template = props => <ListSheet {...props} />
         },
       ],
       height: 48,
+      isHideAfterChoose: true,
     }}
   >
     {Template.bind({})}

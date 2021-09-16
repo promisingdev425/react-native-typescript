@@ -11,6 +11,7 @@ storiesOf('ListSheet', module)
   .addDecorator((cb) => <Centered>{cb()}</Centered>)
   .add('default', () => (
     <ListSheet
+      open
       title="Leasing Reports"
       options={[
         {
@@ -26,5 +27,6 @@ storiesOf('ListSheet', module)
       ]}
       itemHeight={48}
       onChange={(data) => console.log(data)}
+      onChangeAfterHide={(data) => console.log(data)}
     />
   ))

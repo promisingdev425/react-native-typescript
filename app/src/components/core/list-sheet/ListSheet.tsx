@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-} from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Modal, Animated, Easing, ViewStyle, ViewProps } from 'react-native'
 import map from 'lodash/map'
 
@@ -22,15 +16,14 @@ import {
 } from './styles'
 
 type AnimatedViewStyle = Animated.WithAnimatedValue<ViewStyle>
-
-type IListSheetRef = {
-  show?: () => void
-}
 export interface IListSheet extends ViewProps {
+  open: boolean
   title?: string
   options: IOptionData[]
   itemHeight?: number
-  onChange: (data: IOptionData) => void
+  isHideAfterChoose?: boolean
+  onChange?: (data: IOptionData) => void
+  onChangeAfterHide: (data: IOptionData) => void
 }
 
 /**
@@ -39,14 +32,16 @@ export interface IListSheet extends ViewProps {
  * @param {object} props
  * @return {React.ReactNode}
  */
-const ListSheetComponent: React.ForwardRefRenderFunction<
-  IListSheetRef,
-  IListSheet
-> = (
-  { title, options, itemHeight = 48, onChange, ...rest },
-  ref,
-): React.ReactElement => {
-  const [visible, setVisible] = useState(false)
+export const ListSheet: React.FC<IListSheet> = ({
+  open,
+  title,
+  options,
+  itemHeight = 48,
+  isHideAfterChoose = false,
+  onChange,
+  onChangeAfterHide,
+  ...rest
+}) => {
   let isScrollEnabled = false
 
   const getSheetHeight = () => {
@@ -86,8 +81,8 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
     hide(null)
   }
 
-  const handleHideCallback = () => {
-    setVisible(false)
+  const handleHideCallback = (data) => () => {
+    onChangeAfterHide(data)
   }
 
   const hide = (data) => {
@@ -102,29 +97,29 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
         duration: 200,
         useNativeDriver: true,
       }),
-    ]).start(handleHideCallback)
+    ]).start(handleHideCallback(data))
 
-    if (data) {
+    if (data && onChange) {
       onChange(data)
     }
   }
 
   const handleChange = (option) => {
-    hide(option)
+    if (isHideAfterChoose) {
+      hide(option)
+    } else if (onChange) {
+      onChange(option)
+    }
   }
 
   useEffect(() => {
-    if (visible) {
+    if (open) {
       showSheet()
+    } else {
+      handleCancel()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
-
-  useImperativeHandle(ref, () => ({
-    show() {
-      setVisible(true)
-    },
-  }))
+  }, [open])
 
   const bodyStyle: AnimatedViewStyle = {
     height: translateY,
@@ -138,7 +133,7 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
 
   return (
     <Modal
-      visible={visible}
+      visible={open}
       animationType="none"
       onRequestClose={handleCancel}
       transparent
@@ -172,5 +167,3 @@ const ListSheetComponent: React.ForwardRefRenderFunction<
     </Modal>
   )
 }
-
-export const ListSheet = forwardRef(ListSheetComponent)
