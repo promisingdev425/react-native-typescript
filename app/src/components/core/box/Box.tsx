@@ -5,23 +5,27 @@ import {
   color,
   background,
   border,
+  layout,
   SpaceProps,
   ColorProps,
   BackgroundProps,
   BorderProps,
+  LayoutProps,
 } from 'styled-system'
 
 export type IBox = ViewProps &
   SpaceProps &
   ColorProps &
   BackgroundProps &
-  BorderProps
+  BorderProps &
+  LayoutProps
 
 const Box = styled(View)<IBox>`
   ${space}
   ${color}
   ${background}
   ${border}
+  ${layout}
 `
 
 export { Box }
