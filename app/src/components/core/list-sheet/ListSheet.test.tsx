@@ -10,7 +10,7 @@ import {
 import { withTheme } from '~/theme/hocs'
 import { ApplicationIcon } from '~/assets/images'
 
-import { IOptionData } from './Option'
+import { IOptionData } from './option'
 import { ListSheet } from './ListSheet'
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
