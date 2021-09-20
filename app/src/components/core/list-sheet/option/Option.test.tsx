@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render, fireEvent } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 import { ApplicationIcon } from '~/assets/images'
 
@@ -17,6 +17,8 @@ describe('Option', function () {
   }
 
   beforeEach(() => {
+    handlePress = jest.fn()
+
     const InnerScreen = () => (
       <View testID="Root">
         <Option option={option} onPress={handlePress} height={48} />
@@ -38,5 +40,16 @@ describe('Option', function () {
   it('should click option item', () => {
     fireEvent.press(optionButton)
     expect(handlePress).toHaveBeenLastCalledWith(option)
+  })
+
+  it('should click option item', () => {
+    fireEvent.press(optionButton)
+    expect(handlePress).toHaveBeenLastCalledWith(option)
+  })
+
+  it('should trigger PressIn and PressOut events', async () => {
+    // TODO: check innerbase working fine.
+    fireEvent(optionButton, 'pressIn')
+    await waitFor(() => fireEvent(optionButton, 'pressOut'))
   })
 })

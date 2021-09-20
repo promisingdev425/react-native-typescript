@@ -34,10 +34,12 @@ export const Login = ({ ...rest }) => {
         title="15"
         description="KPI SCORE"
         onPress={handlePress}
+        accessibilityLabel="ButtonForToggleSheet"
         active
       />
 
       <BottomSelector
+        testID="BottomSelector"
         open={isSheetOpen}
         title="Leasing Reports"
         options={[

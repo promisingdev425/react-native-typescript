@@ -13,6 +13,7 @@ export const getMaxHeight = (props) => {
 
 export const getBottomSpace = (props) => {
   let bottomSpace = getMetrics('bottomSpace')(props)
+  /* istanbul ignore next */
   if (!bottomSpace) {
     bottomSpace = getBottomSpaceX()
   }

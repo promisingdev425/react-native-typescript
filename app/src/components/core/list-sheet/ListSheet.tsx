@@ -77,6 +77,7 @@ export const ListSheet: React.FC<IListSheet> = ({
     ]).start()
   }
 
+  /* istanbul ignore next */
   const handleCancel = () => {
     hide(null)
   }
@@ -105,18 +106,12 @@ export const ListSheet: React.FC<IListSheet> = ({
   }
 
   const handleChange = (option) => {
-    if (isHideAfterChoose) {
-      hide(option)
-    } else if (onChange) {
-      onChange(option)
-    }
+    isHideAfterChoose ? hide(option) : onChange && onChange(option)
   }
 
   useEffect(() => {
     if (open) {
       showSheet()
-    } else {
-      handleCancel()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
