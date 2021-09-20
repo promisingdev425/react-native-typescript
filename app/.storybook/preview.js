@@ -1,22 +1,8 @@
-import React from 'react'
-import { ThemeProvider } from "styled-components/native";
-
-import { themes } from '~/theme'
-import useFonts from '~/assets/fonts/useFonts'
-
-const FontLoader = ({children}) => {
-  useFonts();
-  return children;
-}
+import { theme, fonts } from '~/storybook-utils'
 
 // Define global decorators.
 // https://storybook.js.org/docs/react/writing-stories/decorators
-export const decorators = [
-  (story) => (
-    <ThemeProvider theme={themes.light}>{story()}</ThemeProvider>
-  ),
-  (story) => <FontLoader>{story()}</FontLoader>,
-];
+export const decorators = [theme, fonts]
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -27,7 +13,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'dark',
+    default: 'light',
     values: [
       {
         name: 'white',
@@ -42,5 +28,5 @@ export const parameters = {
         value: '#555',
       },
     ],
-  }
+  },
 }
