@@ -1,8 +1,8 @@
 # snapshot-ui
 
-[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
+[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg&circle-token=5f9116bf15cb022131e2fb948c277f27b16c0075)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
 
-The Mobile and Web Snapshot UI
+Welcome to the Mobile and Web UI for the **@apartmentsnapshot/snapshot-ui** project.
 
 ## Tools and Frameworks
 
@@ -15,8 +15,8 @@ the following tools and frameworks:
 - [Expo](https://docs.expo.io/) for cross device development environment and libraries (web, iOS, Android)
 - [Storybook](https://storybook.js.org/) for component development and documentation
 - [Auth0](https://auth0.com/) for authentication
-- [Firebase](https://firebase.google.com/) for data integration
-- [React Navigation](https://reactnavigation.org/) navigation/routing library
+- [Hasura](https://hasura.io/) for GraphQL backend API
+- [Apollo](https://www.apollographql.com/docs/react/) for frontend GraphQL requests
 - [Polp](https://plopjs.com/) For scaffolding/generating components
 
 ## Install
@@ -30,16 +30,6 @@ If you do not want to install the expo-cli globally, you can always install
 it locally and the prefix any expo commads with `npx`.
 
     npx expo start
-
-## Expo Setup
-
-Some features of this project (specifically authentication during development)
-require you to have an Expo account and to be
-logged in. To do this, simply create an Expo account for yourself at https://expo.io/.
-
-You can then login from the commandline using:
-
-    expo login
 
 ## Available Commands
 
@@ -86,6 +76,16 @@ The following commands are available through yarn:
 
 - `yarn validate` Validate the build on a CI environment. This is also useful
   to run before opening a PR or merging to master.
+
+## Expo Setup
+
+Some features of this project (specifically authentication during development)
+require you to have an Expo account and to be
+logged in. To do this, simply create an Expo account for yourself at https://expo.io/.
+
+You can then login from the commandline using:
+
+    expo login
 
 ## Debugging the Simulator
 

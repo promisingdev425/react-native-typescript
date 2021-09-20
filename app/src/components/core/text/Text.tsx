@@ -80,6 +80,10 @@ const StyledText = styled(TextRN)<IText>`
   ${lineHeightComposite}
 `
 
+/**
+ * `<Text>` is the generic component you can use to
+ * display text using any styles from our theme.
+ */
 const Text: React.FC<IText> = ({
   allowFontScaling = false,
   bg = 'clear',

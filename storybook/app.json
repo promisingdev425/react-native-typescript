@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "storybook-native",
-    "slug": "storybook-native",
+    "name": "snapshot-ui-storybook",
+    "slug": "snapshot-ui-storybook",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
