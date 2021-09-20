@@ -1,6 +1,6 @@
 # snapshot-ui
 
-[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
+[![CircleCI](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main.svg?style=svg&circle-token=5f9116bf15cb022131e2fb948c277f27b16c0075)](https://circleci.com/gh/Apartment-Snapshot/snapshot-ui/tree/main)
 
 This repo contains the Mobile and Web Snapshot UI. It is built with
 Expo for mobile and web deployment and with Storybook for component
@@ -44,11 +44,16 @@ the `app/` directory.
 
 The `storybook/` subpackage is used to build an on device version of our
 storybook. This separate package is required because `@storybook/react-native`
-depends on an older version of `@storybook/core` than our primary storybook
-environment. Utilizing Yarn workspaces allows us to install both versions
-of `@storybook` dependencies. You should never need to work within the
+does not provide full Storybook support (such as MDX support). In order to
+achieve the best of both worlds, we use two separate storybook
+builds/configurations. You should never need to work within the
 `storybook/` folder as the `yarn storybook:native` commands are available
 within the project root and `app/` subpackage.
 
 For further documentation on the individual subpackages, see those packages directly.
 
+The following articles were useful in acheiving the structure described:
+
+- https://joaoportela.com/blog/react-native-isolation-storybook-expo-workspaces
+- https://github.com/expo/expo/tree/master/packages/expo-yarn-workspaces
+- https://stackoverflow.com/questions/59920012/monorepo-expo-with-yarn-workspace-and-using-expo-install
