@@ -5,10 +5,33 @@ import { Image, ImageSourcePropType } from 'react-native'
 import { Box } from '../box'
 import { Text } from '../text'
 
-export interface IAvatar {
+export interface IAvatar extends IBox {
+  /**
+   * The name of the user. This will be used
+   * to generate their initials should the
+   * profile image not exist.
+   */
   name: string
+  /**
+   * The size variations of the component.
+   * If you pass a number, it will be used as
+   * a pixel dimension.
+   */
   size?: 'xs' | 'sm' | 'md' | 'lg' | number
+  /**
+   * The URL of the user's profile image. You
+   * can pass either this prop or the `source`
+   * prop.
+   */
   image?: string
+  /**
+   * The source prop for the underlying `Image`
+   * component. Using this prop allows you to
+   * access additional functionality of the image
+   * such as passing multiple image dimensions or
+   * controlling caching.
+   * @see https://docs.expo.dev/versions/latest/react-native/image/#source
+   */
   source?: ImageSourcePropType
   testID?: string
 }
@@ -34,11 +57,25 @@ const Container = styled(Box)`
   justify-content: center;
 `
 
+/**
+ * The `Avatar` component can be used to show a user's
+ * profile image or their initials if they don't have a profile
+ * image. For the profile image, you can either pass a
+ * URL to the `image` prop or you can pass the `source`
+ * prop which will be passed directly to the underlying
+ * `react-native` `Image` component.
+ */
 export const Avatar: React.FC<IAvatar> = ({
   name,
   size,
   image,
   source,
+  // TODO Figure out how to document this. `extends IBox` didn't
+  // do the trick.
+  /**
+   * Any other props you pass will be passed along
+   * to the wrapping `Box` element.
+   */
   ...rest
 }) => {
   const getSize = () => {
@@ -80,7 +117,11 @@ export const Avatar: React.FC<IAvatar> = ({
 
   const avatarEl =
     source || image ? (
-      <AvatarImage source={getSource()} size={getSize()} />
+      <AvatarImage
+        accessibilityLabel={`${getPlaceholder()} profile picture`}
+        source={getSource()}
+        size={getSize()}
+      />
     ) : (
       <Text fontSize={getFontSize()} fontFamilyStyle="style.bold">
         {getPlaceholder()}
