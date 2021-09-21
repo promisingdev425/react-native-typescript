@@ -2,24 +2,32 @@ import React from 'react'
 import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
-import { ApplicationIcon } from '~/assets/images'
 
-import { LeaderboardItem } from './LeaderboardItem'
+import { ILeaderboardItemData, LeaderboardItem } from './LeaderboardItem'
 
 describe('LeaderboardItem', function () {
   let screen: RenderAPI
   let handlePress: jest.Mock
   let leaderboardItem
-  const option = {
-    Icon: ApplicationIcon,
-    value: 'application',
-    label: 'Engagement Score',
+  const data: ILeaderboardItemData = {
+    name: 'Bellaire Ranch',
+    categories: [
+      { name: 'Occupancy', awarded: 40, possible: 50 },
+      { name: 'Leasing', awarded: 40, possible: 50 },
+      { name: 'Rents', awarded: 40, possible: 50 },
+      { name: 'Renewals', awarded: 40, possible: 50 },
+      { name: 'Marketing', awarded: 40, possible: 50 },
+      { name: 'Maintenance', awarded: 40, possible: 50 },
+      { name: 'Satisfaction', awarded: 40, possible: 50 },
+      { name: 'Financials', awarded: 40, possible: 50 },
+    ],
+    rank: 1,
   }
 
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <LeaderboardItem option={option} onPress={handlePress} height={48} />
+        <LeaderboardItem data={data} onPress={handlePress} />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -31,7 +39,7 @@ describe('LeaderboardItem', function () {
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(leaderboardItem)
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByText(option.label),
+      screen.getByText(data.name),
     )
   })
 })

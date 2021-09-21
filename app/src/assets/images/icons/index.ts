@@ -3,6 +3,7 @@ import ArrowIcon from './arrow'
 import CalendarIcon from './calendar'
 import CircularArrowIcon from './circularArrow'
 import PropertyIcon from './property'
+import StarIcon from './star'
 import TabBrowseIcon from './tabBrowse'
 import TabBrowseActiveIcon from './tabBrowseActive'
 import TabLeaderboardIcon from './tabLeaderboard'
@@ -16,6 +17,7 @@ export {
   CalendarIcon,
   CircularArrowIcon,
   PropertyIcon,
+  StarIcon,
   TabBrowseIcon,
   TabBrowseActiveIcon,
   TabLeaderboardIcon,

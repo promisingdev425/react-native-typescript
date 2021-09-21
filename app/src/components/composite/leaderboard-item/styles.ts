@@ -18,7 +18,8 @@ export const Touchable = styled(TouchableWithoutFeedback).attrs({
 
 export const Container = styled(Box).attrs((props: IPressState) => ({
   bg: props.isPressed ? 'lightGray' : 'white',
-  px: 'md',
+  p: 'sm',
+  borderRadius: 'sm',
 }))<IBox & IPressState>`
   position: relative;
   flex-direction: row;
@@ -36,9 +37,31 @@ export const BorderLine = styled(Box).attrs({
 `
 
 export const Label = styled(Text).attrs({
-  fontSize: 'subtitle2',
   px: 'sm',
   noselect: true,
 })`
   flex: 1;
 `
+
+export const TopRank = styled(Box).attrs({
+  width: 48,
+  height: 45,
+})`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const TopRankLabel = styled(Text).attrs({
+  fontSize: 'subtitle1',
+  color: 'white',
+  fontFamilyStyle: 'style.bold',
+})`
+  position: absolute;
+`
+
+export const RankLabel = styled(Text).attrs({
+  fontSize: 'subtitle2',
+  fontFamilyStyle: 'style.bold',
+})``

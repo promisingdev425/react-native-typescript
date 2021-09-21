@@ -1,20 +1,34 @@
 import React, { useState } from 'react'
-import { ArrowIcon } from '~/assets/images'
+import { StarIcon } from '~/assets/images'
 
-import { IBox } from '../../core'
-import { Touchable, Container, Label, BorderLine } from './styles'
+import { Box, Text } from '../../core'
+import {
+  Touchable,
+  Container,
+  Label,
+  TopRank,
+  TopRankLabel,
+  RankLabel,
+} from './styles'
 
-export type ILeaderboardItemData = {
-  value: string
-  label: string
-  Icon: React.FC
-  accessibilityLabel?: string
+type ILeaderboardCategory = {
+  name: string
+  awarded: number
+  possible: number
+  score?: number
 }
 
-export interface ILeaderboardItem extends IBox {
+export type ILeaderboardItemData = {
+  name: string
+  accessibilityLabel?: string
+  categories: Array<ILeaderboardCategory>
+  rank: 1
+}
+
+export interface ILeaderboardItem {
   isLast?: boolean
-  option: ILeaderboardItemData
-  height: number
+  data: ILeaderboardItemData
+  disabled?: boolean
   onPress: (data: ILeaderboardItemData) => void
 }
 
@@ -25,13 +39,26 @@ export interface ILeaderboardItem extends IBox {
  * @return {React.ReactNode}
  */
 export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
-  option,
-  height,
+  data,
   onPress,
   isLast = false,
+  ...rest
 }) => {
   const [isPressed, setIsPressed] = useState(false)
-  const { Icon } = option
+  const labelFontSize = data.rank <= 3 ? 'subtitle2' : 'h3'
+  const scoreFontSize = data.rank <= 3 ? 'body1' : 'h3'
+
+  const score = () => {
+    const { categories } = data
+    const [totalAwarded, totalPossible] = categories.reduce(
+      (acc, cur) => {
+        return [acc[0] + cur.awarded, acc[1] + cur.possible]
+      },
+      [0, 0],
+    )
+
+    return (totalAwarded / totalPossible) * 100
+  }
 
   const handlePressIn = () => {
     setIsPressed(true)
@@ -42,7 +69,43 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
   }
 
   const handlePress = () => {
-    onPress(option)
+    onPress(data)
+  }
+
+  const renderLeftIcon = () => {
+    const { rank } = data
+    let content = <RankLabel>{rank}</RankLabel>
+    if (rank <= 3) {
+      content = (
+        <TopRank>
+          <Box position="absolute">
+            <StarIcon />
+          </Box>
+
+          <TopRankLabel>{rank}</TopRankLabel>
+        </TopRank>
+      )
+    }
+
+    return content
+  }
+
+  const renderDot = () => {
+    const percentage = score()
+    let color = 'negative'
+
+    if (percentage >= 90) color = 'positive'
+    else if (percentage >= 80) color = 'warning'
+
+    return (
+      <Box
+        ml="xxs"
+        width={6}
+        height={6}
+        borderRadius={3}
+        backgroundColor={color}
+      />
+    )
   }
 
   return (
@@ -51,16 +114,19 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       isPressed={isPressed}
-      accessibilityLabel={option.accessibilityLabel}
+      accessibilityLabel={data.accessibilityLabel}
+      {...rest}
     >
-      <Container isPressed={isPressed} height={height}>
-        <Icon />
+      <Container isPressed={isPressed}>
+        {renderLeftIcon()}
 
-        <Label>{option.label}</Label>
+        <Label fontSize={labelFontSize}>{data.name}</Label>
 
-        <ArrowIcon />
+        <Text fontSize={scoreFontSize} color="textGray">
+          {score()}
+        </Text>
 
-        {!isLast && <BorderLine />}
+        {renderDot()}
       </Container>
     </Touchable>
   )

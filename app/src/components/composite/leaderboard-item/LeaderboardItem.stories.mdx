@@ -5,6 +5,7 @@ import { LeaderboardItem } from './LeaderboardItem'
 <Meta
   title="Components/LeaderboardItem"
   argTypes={{
+    onPress: { action: 'onPress' }
   }}
 />
 
@@ -18,6 +19,20 @@ export const Template = props => <LeaderboardItem {...props} />
   <Story
     name="LeaderboardItem"
     args={{
+      data: {
+        name: 'Bellaire Ranch',
+        categories: [
+          { name: 'Occupancy', awarded: 40, possible: 50 },
+          { name: 'Leasing', awarded: 40, possible: 50 },
+          { name: 'Rents', awarded: 40, possible: 50 },
+          { name: 'Renewals', awarded: 40, possible: 50 },
+          { name: 'Marketing', awarded: 40, possible: 50 },
+          { name: 'Maintenance', awarded: 40, possible: 50 },
+          { name: 'Satisfaction', awarded: 40, possible: 50 },
+          { name: 'Financials', awarded: 40, possible: 50 },
+        ],
+        rank: 1,
+      }
     }}
   >
     {Template.bind({})}

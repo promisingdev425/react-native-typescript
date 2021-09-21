@@ -25,4 +25,5 @@ export default {
   // Text colors
   textPrimary: '#1F326C',
   textSecondary: '#BCBEC7',
+  textGray: '#8F94A2',
 }
