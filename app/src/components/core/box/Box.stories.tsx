@@ -10,6 +10,9 @@ import {
   backgroundArgTypes,
   borderArgTypes,
   viewArgTypes,
+  flexboxArgTypes,
+  layoutArgTypes,
+  positionArgTypes,
 } from '~/storybook-utils';
 
 export const boxArgTypes = {
@@ -18,6 +21,9 @@ export const boxArgTypes = {
   ...backgroundColorArgTypes,
   ...borderArgTypes,
   ...backgroundArgTypes,
+  ...layoutArgTypes,
+  ...flexboxArgTypes,
+  ...positionArgTypes,
 }
 
 export default {
@@ -40,7 +46,7 @@ Template.parameters = {
 }
 Template.args = {
   border: '1px dashed black',
-  p: 'sm',
+  padding: 'sm',
   children: <Text>This is a box with Text children</Text>,
 }
 

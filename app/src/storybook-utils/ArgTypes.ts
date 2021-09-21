@@ -11,8 +11,8 @@ export const viewArgTypes = {
   accessibilityLabel: {
     description: 'react-native [aria-label prop](https://docs.expo.dev/versions/latest/react-native/view/#accessibilitylabel)',
   },
-  'other view props...': {
-    description: 'react-native [view props](https://docs.expo.dev/versions/latest/react-native/text/#props)',
+  'View props...': {
+    description: 'react-native [View component props](https://docs.expo.dev/versions/latest/react-native/text/#props)',
   }
 }
 
@@ -43,17 +43,17 @@ export const textArgTypes = {
 
 /** styled-system space props */
 export const spaceArgTypes = {
-  m: {
+  'margin props...': {
     options: [undefined].concat(Object.keys(themes.light.space)),
     control: 'select',
-    description: 'styled-components ' +
+    description: 'styled-system ' +
       '[margin props](https://styled-system.com/api#space). ' +
       'Includes props like `margin`, `marginTop`, etc.',
   },
-  p: {
+  'padding props...': {
     options: [undefined].concat(Object.keys(themes.light.space)),
     control: 'select',
-    description: 'styled-components ' +
+    description: 'styled-system ' +
       '[padding props](https://styled-system.com/api#space). ' +
       'Includes props like `padding`, `paddingTop`, etc.',
   }
@@ -64,7 +64,7 @@ export const colorArgTypes = {
   color: {
     options: [undefined].concat(Object.keys(themes.light.colors)),
     control: 'select',
-    description: 'styled-components ' +
+    description: 'styled-system ' +
       '[color props](https://styled-system.com/api#color). ' +
       'Used for setting the text color of an element.',
   },
@@ -74,7 +74,7 @@ export const backgroundColorArgTypes = {
   bg: {
     options: [undefined].concat(Object.keys(themes.light.colors)),
     control: 'select',
-    description: 'styled-components ' +
+    description: 'styled-system ' +
       '[background color props](https://styled-system.com/api#color). ' +
       'Used for setting the background color of the component.',
   }
@@ -82,8 +82,8 @@ export const backgroundColorArgTypes = {
 
 /** styled-system background props */
 export const backgroundArgTypes = {
-  'background*': {
-    description: 'styled-components ' +
+  'background props...': {
+    description: 'styled-system ' +
       '[background utility props](https://styled-system.com/api#background). ' +
       'Includes props like `backgroundImage`, `backgroundPosition`, `backgroundRepeat`, etc.',
   },
@@ -91,10 +91,38 @@ export const backgroundArgTypes = {
 
 /** styled-system border props */
 export const borderArgTypes = {
-  border: {
+  'border props...': {
     control: 'text',
-    description: 'styled-components ' +
+    description: 'styled-system ' +
       '[border props](https://styled-system.com/api#border). ' +
       'Includes props like `border`, `borderWidth`, `borderStyle`, `borderRadius`.',
   }
 }
+
+/** styled-system layout props */
+export const layoutArgTypes = {
+  'layout props...': {
+    description: 'styled-system ' +
+      '[layout props](https://styled-system.com/api#layout). ' +
+      'Includes props like `width`, `display`, `overflow`, etc.'
+  }
+}
+
+/** styled-system flex props */
+export const flexboxArgTypes = {
+  'flexbox props...': {
+    description: 'styled-system ' +
+      '[flexbox props](https://styled-system.com/api#flexboxk). ' +
+      'Includes props like `flex`, `flexDirection`, `alignItems`, etc.'
+  }
+}
+
+/** styled-system position props */
+export const positionArgTypes = {
+  'position props...': {
+    description: 'styled-system ' +
+      '[position props](https://styled-system.com/api#position). ' +
+      'Includes props like `position`, `top`, `zIndex`, etc.'
+  }
+}
+
