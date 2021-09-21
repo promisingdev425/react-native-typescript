@@ -17,11 +17,15 @@ export type IBox = ViewProps &
   BackgroundProps &
   BorderProps
 
-const Box = styled(View)<IBox>`
+/**
+ * `<Box>` wraps the `react-native.View` component
+ * in our theme with `styled-system` props.
+ * Use `Box` in place of the standard `View` component.
+ */
+export const Box = styled(View)<IBox>`
   ${space}
   ${color}
   ${background}
   ${border}
 `
 
-export { Box }

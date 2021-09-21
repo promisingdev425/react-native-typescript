@@ -90,6 +90,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-import-graphql": "^2.8.1",
     "babel-plugin-inline-dotenv": "^1.6.0",
+    "babel-plugin-styled-components": "^1.13.2",
     "colors": "^1.4.0",
     "cpr": "^3.0.1",
     "eslint": "^7.31.0",

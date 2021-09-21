@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { flexbox } from 'styled-system'
 
 import { Avatar } from './Avatar'
 import { Box } from '../box'
@@ -19,6 +18,11 @@ export default {
     size: 'sm',
     image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
     bg: 'lightGray',
+  },
+  argTypes: {
+    'Box props...': {
+      description: 'You can pass any props of [Box](/?path=/docs/components-core-box--template)',
+    }
   },
   parameters: {
     backgrounds: {

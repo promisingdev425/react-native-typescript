@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Image, ImageSourcePropType } from 'react-native'
 
-import { Box } from '../box'
+import { Box, IBox } from '../box'
 import { Text } from '../text'
 
 export interface IAvatar extends IBox {
