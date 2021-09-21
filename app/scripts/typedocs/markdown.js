@@ -72,6 +72,8 @@ module.exports = {
     Handlebars.registerHelper('pad', (count, text = ' ') => pad(count, text))
     /** Add two numbers together */
     Handlebars.registerHelper('add', (a, b) => Number(a) + Number(b))
+    /** Trim whitespace from a value */
+    Handlebars.registerHelper('trim', a => String(a).trim())
     /** Convert the given text to lower case */
     Handlebars.registerHelper('lowercase', function (options) {
       return options.fn(this).toLowerCase()
