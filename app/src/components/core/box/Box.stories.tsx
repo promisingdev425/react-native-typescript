@@ -3,7 +3,6 @@ import { Text } from 'react-native'
 
 import { Box, IBox } from './Box'
 
-import { themes } from '~/theme';
 import {
   spaceArgTypes,
   backgroundColorArgTypes,
@@ -13,7 +12,7 @@ import {
   flexboxArgTypes,
   layoutArgTypes,
   positionArgTypes,
-} from '~/storybook-utils';
+} from '~/storybook-utils'
 
 export const boxArgTypes = {
   ...viewArgTypes,
@@ -37,16 +36,18 @@ export default {
     ...boxArgTypes,
   },
   excludeStories: /.*ArgTypes/,
+  parameters: {
+    controls: { sort: 'requiredFirst' },
+  }
 }
 
 export const Template = (props: IBox) => <Box {...props} />
 Template.storyName = 'Box'
 Template.parameters = {
-  docs: {source: {state: 'open'}},
+  docs: { source: { state: 'open' } },
 }
 Template.args = {
   border: '1px dashed black',
   padding: 'sm',
   children: <Text>This is a box with Text children</Text>,
 }
-

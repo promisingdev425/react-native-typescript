@@ -1,7 +1,8 @@
-- <a href="#generate">generate</a>
-- <a href="#createreportapiclientmock">createReportAPIClientMock</a>
+- root
+  - <a href="#generate">generate</a>
+  - <a href="#createreportapiclientmock">createReportAPIClientMock</a>
 
-<br/><br/>
+
 ## generate
 
 `generate` provides factories for generating each
@@ -42,13 +43,16 @@ file and should return a value matching that type.
 
 
 
+
 `any`
 
 #### Defined in
 - *[report-api-generate.ts:47](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/report-api/mocks/report-api-generate.ts#L47)*
 
-<br/>## createReportAPIClientMock
+<br/>
+## createReportAPIClientMock
 
+  ▸ **createReportAPIClientMock**(`__namedParameters`) => `ApolloClient`
 
 Creates a mock Apollo client that will auto generate fake data
 for requests against it using the mocks returned by `createGraphMocks`.
@@ -60,6 +64,7 @@ https://www.graphql-tools.com/docs/mocking#mocking-custom-scalar-types
 
 
 
+
 #### Parameters
 | Name | Type | Default Value |
 | :--- | :--- | :------------ |
@@ -67,7 +72,7 @@ https://www.graphql-tools.com/docs/mocking#mocking-custom-scalar-types
 
 
 #### Returns
-`ApolloClient`
+`ApolloClient` 
 
 
 #### Defined in

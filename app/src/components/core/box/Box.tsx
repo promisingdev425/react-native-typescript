@@ -40,4 +40,3 @@ export const Box = styled(View)<IBox>`
   ${flexbox}
   ${position}
 `
-

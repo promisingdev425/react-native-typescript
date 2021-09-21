@@ -2,12 +2,16 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 
 import { themes } from '~/theme'
-import { textArgTypes, colorArgTypes, backgroundColorArgTypes } from '~/storybook-utils'
+import {
+  textArgTypes,
+  colorArgTypes,
+  backgroundColorArgTypes,
+} from '~/storybook-utils'
 
 import { Box } from '../box'
 import { Text } from './Text'
 
-console.log('themes?', themes.light);
+console.log('themes?', themes.light)
 
 export default {
   title: 'Components/Core/Text',
@@ -17,13 +21,17 @@ export default {
     ...colorArgTypes,
     ...backgroundColorArgTypes,
     'Text props...': {
-      description: 'You can also pass any props of the react-native ' +
+      description:
+        'You can also pass any props of the react-native ' +
         '[Text component](https://docs.expo.dev/versions/latest/react-native/text/#props)',
-    }
+    },
   },
   args: {
     children: 'Use the Text component to display text',
   },
+  parameters: {
+    controls: { sort: 'requiredFirst' },
+  }
 }
 
 export const Template = (props) => <Text {...props} />

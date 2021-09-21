@@ -22,7 +22,8 @@ export default {
   },
   argTypes: {
     'Box props...': {
-      description: 'You can pass any props of [Box](/?path=/docs/components-core-box--template)',
+      description:
+        'You can pass any props of [Box](/?path=/docs/components-core-box--template)',
     },
     size: {
       options: ['xs', 'sm', 'md', 'lg'],
@@ -32,26 +33,29 @@ export default {
   },
   parameters: {
     backgrounds: {
-      default: 'white'
-    }
-  }
+      default: 'white',
+    },
+    controls: { sort: 'requiredFirst' },
+  },
 }
 
-export const Template = props => <Avatar {...props} />;
-Template.storyName = 'Avatar';
+export const Template = (props) => <Avatar {...props} />
+Template.storyName = 'Avatar'
 Template.parameters = {
-  docs: {source: {state: 'open'}},
+  docs: { source: { state: 'open' } },
 }
 
-export const WithoutProfileImage = Template.bind({});
-WithoutProfileImage.args = {image: undefined};
+export const WithoutProfileImage = Template.bind({})
+WithoutProfileImage.args = { image: undefined }
 
-export const SizeVariations = props =>
-  ['xs', 'sm', 'md', 'lg'].map(size =>
+export const SizeVariations = (props) =>
+  ['xs', 'sm', 'md', 'lg'].map((size) => (
     <Row m={10} key={size}>
-      <Text width={100} fontSize="h3">Size: { size }</Text>
+      <Text width={100} fontSize="h3">
+        Size: {size}
+      </Text>
       <Avatar {...props} size={size} m={10} />
       <Avatar {...props} image={undefined} size={size} m={10} />
     </Row>
-  );
-SizeVariations.args = {size: undefined};
+  ))
+SizeVariations.args = { size: undefined }
