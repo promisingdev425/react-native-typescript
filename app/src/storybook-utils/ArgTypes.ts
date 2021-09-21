@@ -1,3 +1,5 @@
+import { themes } from '~/theme';
+
 // This file contains Storybook ArgType definitions that it's
 // unable to automatically detect.
 
@@ -14,54 +16,85 @@ export const viewArgTypes = {
   }
 }
 
+/** styled-system typography props */
+export const textArgTypes = {
+  fontSize: {
+    options: Object.keys(themes.light.fontSizes),
+    control: 'select',
+    description: 'styled-system ' +
+      '[fontSize prop](https://styled-system.com/api#typography). ' +
+      '`fontSize` can accept an arbitrary pixel value or CSS text value ' +
+      'but it is preferred that you use a value from the theme.',
+  },
+  fontFamilyStyle: {
+    control: 'select',
+    options: Object.keys(themes.light.typography.style).map(s => `style.${s}`),
+    description: 'styled-system ' +
+      '[fontWeight prop](https://styled-system.com/api#typography). ' +
+      'This needs to be one of the font weights loaded for our available fonts.',
+  },
+  fontFamilyGroup: {
+    control: 'select',
+    options: Object.keys(themes.light.typography.group).map(s => `group.${s}`),
+    description: 'styled-system ' +
+      '[fontFamily prop](https://styled-system.com/api#typography). '
+  }
+}
+
 /** styled-system space props */
 export const spaceArgTypes = {
   m: {
-    description: 'styled-components [margin props](https://styled-system.com/api#space)',
-    control: 'text'
+    options: [undefined].concat(Object.keys(themes.light.space)),
+    control: 'select',
+    description: 'styled-components ' +
+      '[margin props](https://styled-system.com/api#space). ' +
+      'Includes props like `margin`, `marginTop`, etc.',
   },
   p: {
-    description: 'styled-components [padding props](https://styled-system.com/api#space)',
-    control: 'text'
+    options: [undefined].concat(Object.keys(themes.light.space)),
+    control: 'select',
+    description: 'styled-components ' +
+      '[padding props](https://styled-system.com/api#space). ' +
+      'Includes props like `padding`, `paddingTop`, etc.',
   }
 }
 
 /** styled-system color props */
 export const colorArgTypes = {
   color: {
-    description: 'styled-components [color props](https://styled-system.com/api#color)',
-    control: 'text'
+    options: [undefined].concat(Object.keys(themes.light.colors)),
+    control: 'select',
+    description: 'styled-components ' +
+      '[color props](https://styled-system.com/api#color). ' +
+      'Used for setting the text color of an element.',
   },
+}
+
+export const backgroundColorArgTypes = {
   bg: {
-    description: 'styled-components [background color props](https://styled-system.com/api#color)',
-    control: 'text'
+    options: [undefined].concat(Object.keys(themes.light.colors)),
+    control: 'select',
+    description: 'styled-components ' +
+      '[background color props](https://styled-system.com/api#color). ' +
+      'Used for setting the background color of the component.',
   }
 }
 
 /** styled-system background props */
 export const backgroundArgTypes = {
-  'backgroundImage': {
-    description: 'styled-components [background utility props](https://styled-system.com/api#background)',
-    control: 'text',
-  },
-  'backgroundSize': {
-    description: 'styled-components [background utility props](https://styled-system.com/api#background)',
-    control: 'text',
-  },
-  'backgroundPosition': {
-    description: 'styled-components [background utility props](https://styled-system.com/api#background)',
-    control: 'text',
-  },
-  'backgroundRepeat': {
-    description: 'styled-components [background utility props](https://styled-system.com/api#background)',
-    control: 'text',
+  'background*': {
+    description: 'styled-components ' +
+      '[background utility props](https://styled-system.com/api#background). ' +
+      'Includes props like `backgroundImage`, `backgroundPosition`, `backgroundRepeat`, etc.',
   },
 }
 
 /** styled-system border props */
 export const borderArgTypes = {
   border: {
-    description: 'styled-components [border props](https://styled-system.com/api#border)',
     control: 'text',
+    description: 'styled-components ' +
+      '[border props](https://styled-system.com/api#border). ' +
+      'Includes props like `border`, `borderWidth`, `borderStyle`, `borderRadius`.',
   }
 }

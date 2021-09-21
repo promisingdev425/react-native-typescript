@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { backgroundColorArgTypes } from '~/storybook-utils'
 import { Avatar } from './Avatar'
 import { Box } from '../box'
 import { Text } from '../text'
@@ -22,7 +23,12 @@ export default {
   argTypes: {
     'Box props...': {
       description: 'You can pass any props of [Box](/?path=/docs/components-core-box--template)',
-    }
+    },
+    size: {
+      options: ['xs', 'sm', 'md', 'lg'],
+      controle: 'select',
+    },
+    ...backgroundColorArgTypes,
   },
   parameters: {
     backgrounds: {
@@ -33,6 +39,9 @@ export default {
 
 export const Template = props => <Avatar {...props} />;
 Template.storyName = 'Avatar';
+Template.parameters = {
+  docs: {source: {state: 'open'}},
+}
 
 export const WithoutProfileImage = Template.bind({});
 WithoutProfileImage.args = {image: undefined};

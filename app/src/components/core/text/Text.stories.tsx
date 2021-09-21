@@ -2,28 +2,24 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 
 import { themes } from '~/theme'
-import { centered } from '~/storybook-utils'
+import { textArgTypes, colorArgTypes, backgroundColorArgTypes } from '~/storybook-utils'
 
 import { Box } from '../box'
 import { Text } from './Text'
+
+console.log('themes?', themes.light);
 
 export default {
   title: 'Components/Core/Text',
   component: Text,
   argTypes: {
-    fontSize: {
-      options: Object.keys(themes.light.fontSizes),
-      control: { type: 'select' },
-    },
-    fontFamilyStyle: {
-      options: Object.keys(themes.light.typography.style).map(
-        (s) => `style.${s}`,
-      ),
-      control: { type: 'select' },
-    },
-    color: {
-      control: { type: 'color' },
-    },
+    ...textArgTypes,
+    ...colorArgTypes,
+    ...backgroundColorArgTypes,
+    'Text props...': {
+      description: 'You can also pass any props of the react-native ' +
+        '[Text component](https://docs.expo.dev/versions/latest/react-native/text/#props)',
+    }
   },
   args: {
     children: 'Use the Text component to display text',
@@ -32,7 +28,6 @@ export default {
 
 export const Template = (props) => <Text {...props} />
 Template.storyName = 'Text'
-Template.decorators = [centered]
 
 export const FontVariations = () => (
   <ScrollView>

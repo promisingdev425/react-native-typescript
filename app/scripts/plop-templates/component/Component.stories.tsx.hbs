@@ -20,6 +20,10 @@ export default {
 export const Template = (props) => <{{pascalCase name}} {...props} />
 Template.storyName = '{{pascalCase name}}'
 Template.decorators = [centered]
+Template.parameters = {
+  // Open the source code for the first story
+  docs: {source: {state: 'open'}},
+}
 
 // If your component has multiple variations, please export
 // additional stories that show those variations specifically.
