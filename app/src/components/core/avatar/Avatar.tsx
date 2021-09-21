@@ -70,8 +70,6 @@ export const Avatar: React.FC<IAvatar> = ({
   size,
   image,
   source,
-  // TODO Figure out how to document this. `extends IBox` didn't
-  // do the trick.
   /**
    * Any other props you pass will be passed along
    * to the wrapping `Box` element.
