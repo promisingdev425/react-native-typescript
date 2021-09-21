@@ -27,28 +27,31 @@ module.exports = {
      * the given module to that deeply nested object
      * while creating any nodes that don't exist yet.
      */
-    const addToPackage = (name, m, package, path, debug = false) => {
+    const addToPackage = (name, m, package, path, debug = false, blacklist = ['node_modules']) => {
       const parts = name.split('.');
       const currentName = parts[0];
-      const next = parts.slice(1).join('.');
 
-      let current = package.find(n => n.name === currentName);
+      if (!blacklist.includes(currentName)) {
+        const next = parts.slice(1).join('.');
 
-      if (!current) {
-        current = {
-          name: currentName,
-          kind: 1,
-          kindString: "Module",
-          children: [],
-        };
-        package.push(current);
-      }
+        let current = package.find(n => n.name === currentName);
 
-      if (next) {
-        addToPackage(next, m, current.children, path, debug);
-      }
-      else {
-        current.children.push(m);
+        if (!current) {
+          current = {
+            name: currentName,
+            kind: 1,
+            kindString: "Module",
+            children: [],
+          };
+          package.push(current);
+        }
+
+        if (next) {
+          addToPackage(next, m, current.children, path, debug);
+        }
+        else {
+          current.children.push(m);
+        }
       }
     }
 
