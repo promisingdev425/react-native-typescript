@@ -12,8 +12,6 @@ import { themes } from './index'
 
 <Meta title="Theming/Light Theme" />
 
-export const foo = console.log('theme?', themes.light)
-
 # Light Theme
 
 Below you will find all of the available settings from our light theme.
@@ -27,7 +25,7 @@ by its name.
 
 <Story
   name="Colors"
-  parameters={{controls: {hideNoControlsWarning: true, include: []}}}
+  parameters={{ controls: { hideNoControlsWarning: true, include: [] } }}
 >
   <ColorPalette>
     {Object.keys(themes.light.colors).map((c) => (
