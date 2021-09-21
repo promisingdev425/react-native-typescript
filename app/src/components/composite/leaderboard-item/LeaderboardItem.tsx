@@ -22,7 +22,7 @@ export type ILeaderboardItemData = {
   name: string
   accessibilityLabel?: string
   categories: Array<ILeaderboardCategory>
-  rank: 1
+  rank: number
 }
 
 export interface ILeaderboardItem {

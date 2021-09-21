@@ -4,8 +4,6 @@ import {
   TouchableWithoutFeedbackProps,
 } from 'react-native'
 
-import { getSpace } from '~/theme'
-
 import { Box, IBox, Text } from '../../core'
 
 interface IPressState {
@@ -24,16 +22,6 @@ export const Container = styled(Box).attrs((props: IPressState) => ({
   position: relative;
   flex-direction: row;
   align-items: center;
-`
-
-export const BorderLine = styled(Box).attrs({
-  bg: 'lightGray',
-})`
-  position: absolute;
-  bottom: 0;
-  left: ${(props) => getSpace('md')(props)}px;
-  right: ${(props) => getSpace('md')(props)}px;
-  height: 1px;
 `
 
 export const Label = styled(Text).attrs({
