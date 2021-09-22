@@ -4,35 +4,33 @@ import {
   ReportAPIProvider,
   ReportAPI,
   makeReportAPICacheClient,
-  makeGraphQLErrorLink
-} from '~/services';
-import { createReportAPIClientMock } from '~/services/report-api/mocks';
-import { Main } from './Main';
-import { WithServerProps } from './WithServer';
+  makeGraphQLErrorLink,
+} from '~/services'
+import { createReportAPIClientMock } from '~/services/report-api/mocks'
+import { Main } from './Main'
+import { WithServerProps } from './WithServer'
 
-import { env } from '~/env';
+import { env } from '~/env'
 
 function useReportAPIClient(authResponse, onAuthFailure, reportAPIClient) {
   return React.useMemo(() => {
     if (reportAPIClient) {
-      return reportAPIClient;
-    }
-    else if (authResponse?.token) {
+      return reportAPIClient
+    } else if (authResponse?.token) {
       return new ReportAPI({
         client: createReportAPIClientMock({
           errorLink: makeGraphQLErrorLink(onAuthFailure),
           cache: makeReportAPICacheClient(),
           mocks: {}, // Extra mocks
           generatorOptions: {}, // Generator options
-          debug: env.verbose
+          debug: env.verbose,
         }),
-        debug: env.verbose
-      });
+        debug: env.verbose,
+      })
+    } else {
+      return undefined
     }
-    else {
-      return undefined;
-    }
-  }, [authResponse, onAuthFailure, reportAPIClient]);
+  }, [authResponse, onAuthFailure, reportAPIClient])
 }
 
 /**
@@ -45,9 +43,10 @@ export function WithMocks({
   reportAPIClient,
 }: WithServerProps) {
   return (
-    <ReportAPIProvider value={useReportAPIClient(authResponse, onAuthFailure, reportAPIClient)}>
+    <ReportAPIProvider
+      value={useReportAPIClient(authResponse, onAuthFailure, reportAPIClient)}
+    >
       <Main />
     </ReportAPIProvider>
-  );
+  )
 }
-

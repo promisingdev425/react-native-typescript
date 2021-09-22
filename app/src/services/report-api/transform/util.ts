@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'lodash/cloneDeep'
 
 /**
  * Transform an object with nested object properties into
@@ -14,24 +14,24 @@ import cloneDeep from 'lodash/cloneDeep';
  *   be transformed into relationships.
  */
 export function prepareNestedRelationships(original: any) {
-  if (typeof(original) !== 'object') return original;
+  if (typeof original !== 'object') return original
 
   // const out = copy(original);
-  const out = cloneDeep(original);
+  const out = cloneDeep(original)
   for (let key in out) {
-    const current = out[key];
+    const current = out[key]
     if (Array.isArray(current)) {
       out[key] = {
-        data: current.map(i => prepareNestedRelationships(i))
-      };
-    } else if (current && typeof(current) === 'object') {
+        data: current.map((i) => prepareNestedRelationships(i)),
+      }
+    } else if (current && typeof current === 'object') {
       out[key] = {
-        data: prepareNestedRelationships(current)
-      };
+        data: prepareNestedRelationships(current),
+      }
     }
   }
-  return out;
-};
+  return out
+}
 
 /**
  * Perform the inverse of `prepareNestedRelationships`.
@@ -45,21 +45,20 @@ export function prepareNestedRelationships(original: any) {
  *   that should be collapsed into direct properties.
  */
 export function collapseNestedRelationships(original: any) {
-  if (typeof(original) !== 'object') return original;
+  if (typeof original !== 'object') return original
 
-  const out = cloneDeep(original);
+  const out = cloneDeep(original)
   for (let key in out) {
-    const current = out[key];
-    if (current && typeof(current) === 'object') {
+    const current = out[key]
+    if (current && typeof current === 'object') {
       if (Array.isArray(current)) {
-        out[key] = current.map(o => collapseNestedRelationships(o));
+        out[key] = current.map((o) => collapseNestedRelationships(o))
       } else if (current.data) {
-        out[key] = collapseNestedRelationships(current.data);
+        out[key] = collapseNestedRelationships(current.data)
       } else {
-        out[key] = collapseNestedRelationships(current);
+        out[key] = collapseNestedRelationships(current)
       }
     }
   }
-  return out;
+  return out
 }
-

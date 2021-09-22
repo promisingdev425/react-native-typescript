@@ -1,8 +1,14 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 import { userPlaceholder } from '~/assets/images'
 
 import { themes } from '~/theme'
-import { Avatar } from './Avatar';
+import { Avatar } from './Avatar'
 
 <Meta
   title="Components/Avatar"
@@ -14,15 +20,15 @@ import { Avatar } from './Avatar';
     bg: {
       options: Object.keys(themes.light.colors),
       control: { type: 'select' },
-    }
+    },
   }}
 />
 
 # Avatar
 
-<Description of={ Avatar } />
+<Description of={Avatar} />
 
-export const Template = props => <Avatar {...props} />;
+export const Template = (props) => <Avatar {...props} />
 
 <Canvas>
   <Story
@@ -31,11 +37,11 @@ export const Template = props => <Avatar {...props} />;
       image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
       size: 'sm',
       name: 'John Doe',
-      bg: 'lightGray'
+      bg: 'lightGray',
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={ Avatar } />
+<ArgsTable of={Avatar} />

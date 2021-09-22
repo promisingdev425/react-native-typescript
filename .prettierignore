@@ -7,9 +7,8 @@ app/scripts
 __generated__
 web-build
 storybook-static
+*.graphql
+index.md
 
 app/App.jsx
 
-# Auto generated markdown files
-app/src/theme/index.md
-app/src/services/index.md

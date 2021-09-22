@@ -1,1 +1,1 @@
-export * from './graph-client.mock';
+export * from './graph-client.mock'

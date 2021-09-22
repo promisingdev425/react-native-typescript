@@ -1,9 +1,9 @@
-import { ApolloLink, Observable } from '@apollo/client';
-import { getOperationAST } from 'graphql';
+import { ApolloLink, Observable } from '@apollo/client'
+import { getOperationAST } from 'graphql'
 
-import { loggerMixin } from '@thesoulfresh/utils';
+import { loggerMixin } from '@thesoulfresh/utils'
 
-type level = 'debug' | 'info' | 'warn' | 'error';
+type level = 'debug' | 'info' | 'warn' | 'error'
 
 /**
  * Apollo link object that will log GraphQL requests.
@@ -11,66 +11,70 @@ type level = 'debug' | 'info' | 'warn' | 'error';
  */
 /* istanbul ignore next: Not important to test */
 export class LoggingLink extends ApolloLink {
-  level: string;
+  level: string
   constructor(
     /**
      * The level at which to perform debug logging.
      */
-    level: level = 'debug'
+    level: level = 'debug',
   ) {
-    super();
+    super()
 
-    this.level = level;
+    this.level = level
 
     // Add logging functionality
-    loggerMixin(this, '[GRAPHQL]');
+    loggerMixin(this, '[GRAPHQL]')
   }
 
   logOperation(operation, type, ...rest) {
-    let args = [operation.operationName];
+    let args = [operation.operationName]
 
     if (operation.variables && Object.keys(operation.variables).length > 0) {
-      args.push(operation.variables);
+      args.push(operation.variables)
     }
 
     if (type) {
-      args.unshift(type);
+      args.unshift(type)
     }
 
     if (rest) {
-      args = args.concat(rest);
+      args = args.concat(rest)
     }
 
-    this[this.level].apply(this, args);
+    this[this.level].apply(this, args)
   }
 
   request(operation, forward) {
-    const operationAST = getOperationAST(operation.query, operation.operationName);
-    const isSubscription = !!operationAST && operationAST.operation === 'subscription';
+    const operationAST = getOperationAST(
+      operation.query,
+      operation.operationName,
+    )
+    const isSubscription =
+      !!operationAST && operationAST.operation === 'subscription'
     if (!isSubscription) {
-      this.logOperation(operation, 'START');
+      this.logOperation(operation, 'START')
     }
-    return new Observable(observer => {
+    return new Observable((observer) => {
       if (isSubscription) {
-        this.logOperation(operation, 'SUBSCRIBE');
+        this.logOperation(operation, 'SUBSCRIBE')
       }
       const sub = forward(operation).subscribe({
-        next: result => {
-          this.logOperation(operation, 'RESULT', result);
-          observer.next(result);
+        next: (result) => {
+          this.logOperation(operation, 'RESULT', result)
+          observer.next(result)
         },
-        error: error => {
-          this.logOperation(operation, 'ERROR', error);
-          observer.error(error);
+        error: (error) => {
+          this.logOperation(operation, 'ERROR', error)
+          observer.error(error)
         },
-        complete: observer.complete.bind(observer)
-      });
+        complete: observer.complete.bind(observer),
+      })
       return () => {
         if (isSubscription) {
-          this.logOperation(operation, 'UNSUBSCRIBE');
+          this.logOperation(operation, 'UNSUBSCRIBE')
         }
-        sub.unsubscribe();
-      };
-    });
+        sub.unsubscribe()
+      }
+    })
   }
 }

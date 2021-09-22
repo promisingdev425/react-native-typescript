@@ -1,4 +1,4 @@
-import { InMemoryCache } from '@apollo/client';
+import { InMemoryCache } from '@apollo/client'
 
 /**
  * Make an apollo cache client that can be used to cache results so they're
@@ -18,5 +18,5 @@ export function makeReportAPICacheClient() {
     typePolicies: {
       // Query: {},
     },
-  });
+  })
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   ApolloClient,
@@ -6,40 +6,40 @@ import {
   HttpLink,
   // gql,
   // Observable,
-} from '@apollo/client';
-import { RetryLink } from '@apollo/client/link/retry';
-import { ServiceBase } from '@thesoulfresh/utils';
+} from '@apollo/client'
+import { RetryLink } from '@apollo/client/link/retry'
+import { ServiceBase } from '@thesoulfresh/utils'
 
-import { env } from '~/env';
+import { env } from '~/env'
 
-import { LoggingLink, makeGraphQLErrorLink } from '../graphql-utils';
-import { fromReportGraph /*, toReportGraph*/ } from './transform';
-import { makeReportAPICacheClient } from './cache';
+import { LoggingLink, makeGraphQLErrorLink } from '../graphql-utils'
+import { fromReportGraph /*, toReportGraph*/ } from './transform'
+import { makeReportAPICacheClient } from './cache'
 
-import * as graph from './report-api-definitions';
+import * as graph from './report-api-definitions'
 
 type ReportAPIOptions = {
   /**
    * The authentication response from the auth service.
    */
-  onAuthFailure?: () => void,
+  onAuthFailure?: () => void
   /**
    * A function to call if network requests return an authentication error.
    */
-  authToken?: string,
+  authToken?: string
   /**
    * A preconfigured ReportAPIClient to use instead of creating one.
    */
-  client?: ApolloClient<any>,
+  client?: ApolloClient<any>
   /**
    * The URL of the Report API.
    */
-  url?: string,
+  url?: string
   /**
    * Whether to enable verbose logging.
    */
-  debug?: boolean,
-};
+  debug?: boolean
+}
 
 /*
  * Use this class to make GraphQL requests.
@@ -53,34 +53,34 @@ export class ReportAPI extends ServiceBase {
     authToken,
     client,
     url = env.reportGraphAPI,
-    debug = true
+    debug = true,
   }: ReportAPIOptions) {
     /* istanbul ignore next: never use the live api during testing */
     if (!client) {
-      const retry = new RetryLink();
+      const retry = new RetryLink()
 
       const http = new HttpLink({
         uri: url,
         headers: {
-          'Authorization': `Bearer ${authToken}`,
+          Authorization: `Bearer ${authToken}`,
         },
-      });
+      })
 
-      const errorLink = makeGraphQLErrorLink(onAuthFailure);
+      const errorLink = makeGraphQLErrorLink(onAuthFailure)
 
-      const links = [errorLink, retry, http];
+      const links = [errorLink, retry, http]
 
-      if (env.verbose) links.unshift(new LoggingLink());
+      if (env.verbose) links.unshift(new LoggingLink())
 
       client = new ApolloClient({
         link: ApolloLink.from(links),
         cache: makeReportAPICacheClient(),
-      });
+      })
     }
 
-    super(client, debug);
+    super(client, debug)
 
-    this.info('created with API', env.reportGraphAPI);
+    this.info('created with API', env.reportGraphAPI)
   }
 
   /**
@@ -92,7 +92,7 @@ export class ReportAPI extends ServiceBase {
    * https://www.apollographql.com/docs/react/caching/cache-interaction/#resetting-the-store
    */
   clear() {
-    return this.client.clearStore();
+    return this.client.clearStore()
   }
 
   // Example of how to get a collection from the cache
@@ -154,17 +154,21 @@ export class ReportAPI extends ServiceBase {
   // }
 
   getProperties() {
-    this.debug('getProperties');
+    this.debug('getProperties')
 
-    return this.client.query({
-      query: graph.GET_PROPERTIES,
-    }).then(results => {
-      const properties = results.data.apt_snapshot_property;
-      // Transform the data into the format used by the UI
-      const out = properties?.length ? properties.map(fromReportGraph.property) : [];
-      this.info('getProperties SUCCESS', out);
-      return out;
-    });
+    return this.client
+      .query({
+        query: graph.GET_PROPERTIES,
+      })
+      .then((results) => {
+        const properties = results.data.apt_snapshot_property
+        // Transform the data into the format used by the UI
+        const out = properties?.length
+          ? properties.map(fromReportGraph.property)
+          : []
+        this.info('getProperties SUCCESS', out)
+        return out
+      })
   }
 
   // Example of how to get data from the GraphQL API.
@@ -186,9 +190,9 @@ export class ReportAPI extends ServiceBase {
   // }
 }
 
-export const ReportAPIContext = React.createContext(undefined);
-export const ReportAPIProvider = ReportAPIContext.Provider;
+export const ReportAPIContext = React.createContext(undefined)
+export const ReportAPIProvider = ReportAPIContext.Provider
 
 export function useReportAPI() {
-  return React.useContext(ReportAPIContext);
+  return React.useContext(ReportAPIContext)
 }

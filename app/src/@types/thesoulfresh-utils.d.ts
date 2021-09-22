@@ -1,6 +1,6 @@
 declare module '@thesoulfresh/utils' {
   export class ServiceBase {
-    client: any;
+    client: any
     constructor(client: any, debug: boolean)
     debug(...args: any[]): void
     info(...args: any[]): void
@@ -8,5 +8,5 @@ declare module '@thesoulfresh/utils' {
     error(...args: any[]): void
   }
 
-  export function loggerMixin(item: any, prefix: string, debug?: boolean): void;
+  export function loggerMixin(item: any, prefix: string, debug?: boolean): void
 }

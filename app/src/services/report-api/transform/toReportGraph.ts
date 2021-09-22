@@ -1,4 +1,4 @@
-type Bag = {[key: string]: any};
+type Bag = { [key: string]: any }
 
 /**
  * `toReportGraph` allows transforming data
@@ -13,5 +13,4 @@ export const toReportGraph = {
     name: p.name,
     ownership_group_id: p.ownershipGroupId,
   }),
-};
-
+}

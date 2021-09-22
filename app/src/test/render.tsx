@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { render } from '@testing-library/react-native'
 import { ThemeProvider } from 'styled-components/native'
 
@@ -6,28 +6,20 @@ import {
   ReportAPIProvider,
   ReportAPI,
   makeReportAPICacheClient,
-  makeGraphQLErrorLink
-} from '~/services';
-import { createReportAPIClientMock } from '~/services/report-api/mocks';
+  makeGraphQLErrorLink,
+} from '~/services'
+import { createReportAPIClientMock } from '~/services/report-api/mocks'
 import { themes } from '~/theme'
-import { spyOnClassMethods } from './utils';
+import { spyOnClassMethods } from './utils'
 
-export * from '@testing-library/react-native';
+export * from '@testing-library/react-native'
 
+type Bag = { [key: string]: any }
 
-type Bag = {[key: string]: any};
-
-
-const ProvideAll = ({
-  children,
-  theme,
-  reportAPI,
-}) => {
+const ProvideAll = ({ children, theme, reportAPI }) => {
   return (
     <ReportAPIProvider value={reportAPI}>
-      <ThemeProvider theme={theme}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ReportAPIProvider>
   )
 }
@@ -46,17 +38,14 @@ const ProvideAll = ({
  */
 export const renderWithTheme = (
   ui: any,
-  {
-    theme = themes.light,
-    ...options
-  }: Bag = {}
+  { theme = themes.light, ...options }: Bag = {},
 ) => {
   const screen = render(
     <ThemeProvider theme={theme}>{ui}</ThemeProvider>,
     options,
-  );
+  )
 
-  return {...screen, theme};
+  return { ...screen, theme }
 }
 
 /**
@@ -91,20 +80,16 @@ export const renderWithAllDeps = (
       debug,
     }),
     ...options
-  }: Bag = {}
+  }: Bag = {},
 ) => {
-  spyOnClassMethods(reportAPI);
+  spyOnClassMethods(reportAPI)
 
   const screen = render(
-    <ProvideAll
-      theme={theme}
-      reportAPI={reportAPI}
-    >
+    <ProvideAll theme={theme} reportAPI={reportAPI}>
       {ui}
     </ProvideAll>,
-    options
-  );
+    options,
+  )
 
-  return {...screen, theme, reportAPI}
+  return { ...screen, theme, reportAPI }
 }
-

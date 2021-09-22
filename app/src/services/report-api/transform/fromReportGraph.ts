@@ -1,9 +1,9 @@
-type Bag = {[key: string]: any};
+type Bag = { [key: string]: any }
 
 export type Property = {
-  id: string,
-  name: string,
-  ownershipGroupId: string,
+  id: string
+  name: string
+  ownershipGroupId: string
 }
 
 /**
@@ -19,4 +19,4 @@ export const fromReportGraph = {
     name: p.name,
     ownershipGroupId: p.ownership_group_id,
   }),
-};
+}
