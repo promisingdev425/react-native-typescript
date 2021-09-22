@@ -33,10 +33,12 @@ export const Option: React.FC<IOption> = ({
   const [isPressed, setIsPressed] = useState(false)
   const { Icon } = option
 
+  /* istanbul ignore next */
   const handlePressIn = () => {
     setIsPressed(true)
   }
 
+  /* istanbul ignore next */
   const handlePressOut = () => {
     setIsPressed(false)
   }
