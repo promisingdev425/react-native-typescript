@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
+import { View } from 'react-native'
 
 import { ApplicationIcon } from '~/assets/images'
 
@@ -27,11 +28,11 @@ export const Template = props => <ListSheet {...props} />
       options: [
         {
           Icon: ApplicationIcon,
-        value: 'application',
-            label: 'Engagement Score',
+          value: 'application',
+          label: 'Engagement Score',
         },
         {
-      Icon: ApplicationIcon,
+          Icon: ApplicationIcon,
           value: 'responsiveness',
           label: 'Responsiveness',
         },
@@ -39,6 +40,9 @@ export const Template = props => <ListSheet {...props} />
       height: 48,
       isHideAfterChoose: true,
     }}
+    decorators={[
+      (sb) => <View style={{height: 300}}>{sb()}</View>
+    ]}
   >
     {Template.bind({})}
   </Story>
