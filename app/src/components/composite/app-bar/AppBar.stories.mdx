@@ -5,7 +5,7 @@ import {
   ArgsTable,
   Description,
 } from '@storybook/addon-docs'
-import { PropertyIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { AppBar } from './AppBar'
 
@@ -20,14 +20,14 @@ export const Template = (props) => <AppBar {...props} />
 <Canvas isColumn>
   <Story name="AppBar with left and right icons" args={{
     title: "Appbar header",
-    leftItem: <PropertyIcon />,
-    rightItem: <PropertyIcon />
+    leftItem: <Icons.Property />,
+    rightItem: <Icons.Property />
   }}>
     {Template.bind({})}
   </Story>
   <Story name="AppBar with title and left icon" args={{
     title: "Appbar header",
-    leftItem: <PropertyIcon />
+    leftItem: <Icons.Property />
   }}>
     {Template.bind({})}
   </Story>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PropertyIcon } from '~/assets/images';
+import { Icons } from '~/assets';
 import { AppBar } from '~/components';
 import { useReportAPI, Property } from '~/services';
 
@@ -22,7 +22,7 @@ export function Main({}: MainProps) {
 
   return (
     <AppBar
-      leftItem={<PropertyIcon />}
+      leftItem={<Icons.Property />}
       title="Foo Community"
     />
   );

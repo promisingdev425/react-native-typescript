@@ -3,7 +3,9 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      // Ensure propert naming of styled react components
       'babel-plugin-styled-components',
+      // Allow importing .graphql files
       'import-graphql',
       [
         'module:react-native-dotenv',

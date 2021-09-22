@@ -11,7 +11,7 @@ yarn-error.log
 *.mobileprovision
 *.orig.*
 web-build/
-storybook/storyLoader.js
+storybook.requires.js
 reports
 .vscode
 

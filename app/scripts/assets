@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo 'Building Assets 🚀'
+
+mkdir -p src/assets/images/icons/components
+
+ls -la ./svgo.config.js
+
+# Native build
+yarn svgr \
+  -d src/assets/images/icons/components \
+  --ignore-existing \
+  --typescript \
+  --native \
+  --memo \
+  --ref \
+  --title-prop \
+  src/assets/images/icons
+
+echo 'Donzo 🙌'

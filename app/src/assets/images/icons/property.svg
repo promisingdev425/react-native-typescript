@@ -13,16 +13,16 @@
       y2="65.1554274%"
       id="linearGradient-1"
     >
-      <stop stopColor="#FF7F40" offset="0%" />
-      <stop stopColor="#F44C7F" offset="100%" />
+      <stop stop-color="#FF7F40" offset="0%" />
+      <stop stop-color="#F44C7F" offset="100%" />
     </linearGradient>
   </defs>
   <g
     id="Design"
     stroke="none"
-    strokeWidth="1"
+    stroke-width="1"
     fill="none"
-    fillRule="evenodd"
+    fill-rule="evenodd"
   >
     <g
       id="Browse"

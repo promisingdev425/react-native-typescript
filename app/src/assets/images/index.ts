@@ -2,7 +2,8 @@
 import logoImage from './images/logo-image.png'
 
 /* ------------- Icons ------------- */
-export * from './icons'
+// TODO Not sure why the `index.ts` file is not auto discovered.
+export * from './icons/index'
 
 export {
   // Images
