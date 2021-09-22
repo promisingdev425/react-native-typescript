@@ -41,9 +41,4 @@ describe('Option', function () {
     fireEvent.press(optionButton)
     expect(handlePress).toHaveBeenLastCalledWith(option)
   })
-
-  it('should click option item', () => {
-    fireEvent.press(optionButton)
-    expect(handlePress).toHaveBeenLastCalledWith(option)
-  })
 })
