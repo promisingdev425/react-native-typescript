@@ -31,7 +31,7 @@
     "setup": "yarn clean && cpr App.api.jsx App.jsx -o",
     "setup:mock": "yarn clean && cpr App.mock.jsx App.jsx -o",
     "storybook": "start-storybook -p 7007",
-    "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook storybook",
+    "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook start",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
