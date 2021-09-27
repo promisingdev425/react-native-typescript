@@ -1,3 +1,5 @@
+import ApplicationIcon from './application'
+import ArrowIcon from './arrow'
 import CalendarIcon from './calendar'
 import CircularArrowIcon from './circularArrow'
 import PropertyIcon from './property'
@@ -9,6 +11,8 @@ import TabSummaryIcon from './tabSummary'
 import TabSummaryActiveIcon from './tabSummaryActive'
 
 export {
+  ApplicationIcon,
+  ArrowIcon,
   CalendarIcon,
   CircularArrowIcon,
   PropertyIcon,

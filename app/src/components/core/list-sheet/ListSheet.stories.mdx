@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
+import { View } from 'react-native'
+
+import { ApplicationIcon } from '~/assets/images'
+
+import { ListSheet } from './ListSheet'
+
+<Meta
+  title="Components/ListSheet"
+  argTypes={{
+    onChange: { action: 'onChange' },
+    onChangeAfterHide: { action: 'onChange' }
+  }}
+/>
+
+# ListSheet
+
+<Description of={ ListSheet } />
+
+export const Template = props => <ListSheet {...props} />
+
+<Canvas>
+  <Story
+    name="ListSheet"
+    args={{
+      open: true,
+      title: 'Leasing Reports',
+      options: [
+        {
+          Icon: ApplicationIcon,
+          value: 'application',
+          label: 'Engagement Score',
+        },
+        {
+          Icon: ApplicationIcon,
+          value: 'responsiveness',
+          label: 'Responsiveness',
+        },
+      ],
+      height: 48,
+      isHideAfterChoose: true,
+    }}
+    decorators={[
+      (sb) => <View style={{height: 300}}>{sb()}</View>
+    ]}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ ListSheet } />

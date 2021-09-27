@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+
+import { ApplicationIcon } from '~/assets/images'
+
+import { Option } from './Option';
+
+<Meta
+  title="Components/Option"
+  argTypes={{
+    onPress: { action: 'onPress' }
+  }}
+/>
+
+# Option
+
+<Description of={ Option } />
+
+export const Template = props => <Option {...props} />;
+
+<Canvas>
+  <Story
+    name="Option"
+    args={{
+      option: {
+        Icon: ApplicationIcon,
+        value: 'application',
+        label: 'Engagement Score'
+      },
+      height: 48,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ Option } />
