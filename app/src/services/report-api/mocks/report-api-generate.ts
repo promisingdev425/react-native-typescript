@@ -1,10 +1,10 @@
-import faker from 'faker';
+import faker from 'faker'
 
-let _id = 0;
+let _id = 0
 const id = (includeId = true) => {
   // The database uses uuids instead of auto-incrementing
   // ids so we'll fake that by returning a String.
-  if (includeId) return String(++_id);
+  if (includeId) return String(++_id)
 }
 
 /**
@@ -56,6 +56,5 @@ export const generate = {
     name = generate.property_name(),
     ownership_group_id = id(includeId),
     property_id = id(includeId),
-  } = {}) => ({name, ownership_group_id, property_id}),
-};
-
+  } = {}) => ({ name, ownership_group_id, property_id }),
+}

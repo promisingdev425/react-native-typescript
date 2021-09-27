@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react'
+import { TouchableWithoutFeedbackProps } from 'react-native'
 import noop from 'lodash/noop'
 import { Title, Text } from '~/components/core'
 
 import { Container, InnerBase, GradientBack } from './styles'
 
-export interface IGradientButton {
+export interface IGradientButton extends TouchableWithoutFeedbackProps {
   active?: boolean
   title: string
   description: string

@@ -1,12 +1,9 @@
-import {
-  ApolloClient,
-  ApolloLink,
-  InMemoryCache } from '@apollo/client';
-import { MockLink } from '@apollo/client/testing';
-import { SchemaLink } from '@apollo/client/link/schema';
-import { GraphQLSchema } from 'graphql';
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client'
+import { MockLink } from '@apollo/client/testing'
+import { SchemaLink } from '@apollo/client/link/schema'
+import { GraphQLSchema } from 'graphql'
 
-import { LoggingLink } from '../../graphql-utils/logging-link';
+import { LoggingLink } from '../../graphql-utils/logging-link'
 
 /**
  * Create a mock Apollo GraphQL client with the given mock schema.
@@ -48,20 +45,20 @@ export function createGraphClientMock(
   /** Whether to perform verbose logging */
   debug = false,
 ) {
-  const links = [];
+  const links = []
 
-  if (debug) links.push(new LoggingLink());
+  if (debug) links.push(new LoggingLink())
 
   // Add error linking
-  if (errorLink) links.push(errorLink);
+  if (errorLink) links.push(errorLink)
 
   // Add schema link
-  links.push(new SchemaLink({ schema }));
+  links.push(new SchemaLink({ schema }))
 
   return new ApolloClient({
     link: ApolloLink.from(links),
     cache,
-  });
+  })
 }
 
 /**
@@ -135,23 +132,22 @@ export function createTestClient(
    */
   errorLink,
   /** The cache client to use. */
-  cache = new InMemoryCache({addTypename: false}),
+  cache = new InMemoryCache({ addTypename: false }),
   /** Whether to perform verbose logging */
   debug = false,
 ) {
-  const links = [];
+  const links = []
 
-  if (debug) links.push(new LoggingLink());
+  if (debug) links.push(new LoggingLink())
 
   // Add error linking
-  if (errorLink) links.push(errorLink);
+  if (errorLink) links.push(errorLink)
 
   // Add schema link
-  links.push(new MockLink(mocks, false));
+  links.push(new MockLink(mocks, false))
 
   return new ApolloClient({
     link: ApolloLink.from(links),
     cache: cache,
-  });
+  })
 }
-

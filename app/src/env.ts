@@ -4,7 +4,7 @@ import {
   AUTH_DOMAIN,
   AUTH_CLIENT_ID,
   REPORT_GRAPH_API,
-} from '@env';
+} from '@env'
 
 /**
  * The `env` object allows access to the
@@ -23,7 +23,7 @@ import {
 /* istanbul ignore next: not much here */
 export const env = {
   get verbose() {
-    return VERBOSE === 'true';
+    return VERBOSE === 'true'
   },
 
   mocks: MOCKS,

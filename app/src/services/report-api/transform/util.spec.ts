@@ -1,14 +1,11 @@
-import {
-  prepareNestedRelationships,
-  collapseNestedRelationships,
-} from './util';
+import { prepareNestedRelationships, collapseNestedRelationships } from './util'
 
 describe('transform/util', () => {
   describe('prepareNestedRelationships', () => {
     describe('without relationships', () => {
       it('should be able to handle non-object values.', () => {
-        expect(prepareNestedRelationships('foo')).toEqual('foo');
-      });
+        expect(prepareNestedRelationships('foo')).toEqual('foo')
+      })
 
       it('should just make a copy of the original object', () => {
         const original = {
@@ -16,13 +13,13 @@ describe('transform/util', () => {
           bar: 2,
           baz: null,
           boz: true,
-        };
-        const result = prepareNestedRelationships(original);
+        }
+        const result = prepareNestedRelationships(original)
 
-        expect(result).not.toBe(original);
-        expect(result).toEqual(original);
-      });
-    });
+        expect(result).not.toBe(original)
+        expect(result).toEqual(original)
+      })
+    })
 
     describe('with nested relationships', () => {
       it('should be able to handle direct child relationships.', () => {
@@ -30,84 +27,85 @@ describe('transform/util', () => {
           child: {
             prop: 'foo',
           },
-        };
-        const result = prepareNestedRelationships(original);
+        }
+        const result = prepareNestedRelationships(original)
 
         expect(result).toEqual({
           ...original,
           child: jasmine.anything(),
-        });
+        })
 
         expect(result.child).toEqual({
           data: original.child,
-        });
-      });
+        })
+      })
 
       it('should be able to handle sub relationships.', () => {
         const original = {
           child: {
             subChild: {
               prop: 'foo',
-            }
-          }
-        };
-        const result = prepareNestedRelationships(original);
+            },
+          },
+        }
+        const result = prepareNestedRelationships(original)
 
         expect(result).toEqual({
           child: {
             data: {
               subChild: {
-                data: original.child.subChild
-              }
-            }
-          }
-        });
-      });
+                data: original.child.subChild,
+              },
+            },
+          },
+        })
+      })
 
       it('should be able to handle direct array relationships.', () => {
         const original = {
-          list: [
-            {foo: 'a'},
-            {foo: 'b'},
-          ]
-        };
-        const result = prepareNestedRelationships(original);
+          list: [{ foo: 'a' }, { foo: 'b' }],
+        }
+        const result = prepareNestedRelationships(original)
 
         expect(result).toEqual({
           list: {
             data: original.list,
-          }
-        });
-      });
+          },
+        })
+      })
 
       it('should be able to handle sub relationships inside of arrays.', () => {
         const original = {
-          list: [{
-            foo: {
-              bar: 'bar'
-            }
-          }]
-        };
-        const result = prepareNestedRelationships(original);
+          list: [
+            {
+              foo: {
+                bar: 'bar',
+              },
+            },
+          ],
+        }
+        const result = prepareNestedRelationships(original)
 
         expect(result).toEqual({
           list: {
-            data: [{
-              foo: {
-                data: original.list[0].foo,
-              }
-            }]
-          }
-        });
-      });
-    });
-  });
+            data: [
+              {
+                foo: {
+                  data: original.list[0].foo,
+                },
+              },
+            ],
+          },
+        })
+      })
+    })
+  })
 
   describe('collapseNestedRelationships', () => {
     describe('without relationships', () => {
       it('should be able to handle non-object values.', () => {
-        expect(collapseNestedRelationships('foo')).toEqual('foo');
-      });
+        expect(collapseNestedRelationships('foo')).toEqual('foo')
+      })
 
       it('should just copy the original.', () => {
         const original = {
@@ -116,28 +114,28 @@ describe('transform/util', () => {
           c: null,
           d: undefined,
           e: 7,
-        };
-        const result = collapseNestedRelationships(original);
+        }
+        const result = collapseNestedRelationships(original)
 
-        expect(result).toEqual(original);
-        expect(result).not.toBe(original);
-      });
-    });
+        expect(result).toEqual(original)
+        expect(result).not.toBe(original)
+      })
+    })
 
     describe('with nested relationships', () => {
       it('should be able to handle direct child relationships.', () => {
         const original = {
           child: {
             data: {
-              foo: 'bar'
-            }
-          }
-        };
-        const result = collapseNestedRelationships(original);
+              foo: 'bar',
+            },
+          },
+        }
+        const result = collapseNestedRelationships(original)
         expect(result).toEqual({
-          child: {foo: 'bar'}
-        });
-      });
+          child: { foo: 'bar' },
+        })
+      })
 
       it('should be able to handle deep relationships.', () => {
         const original = {
@@ -145,56 +143,57 @@ describe('transform/util', () => {
             data: {
               subChild: {
                 data: {
-                  foo: 'bar'
-                }
-              }
-            }
-          }
-        };
-        const result = collapseNestedRelationships(original);
+                  foo: 'bar',
+                },
+              },
+            },
+          },
+        }
+        const result = collapseNestedRelationships(original)
         expect(result).toEqual({
           child: {
-            subChild: {foo: 'bar'}
-          }
-        });
-      });
+            subChild: { foo: 'bar' },
+          },
+        })
+      })
 
       it('should be able to handle array relationships.', () => {
         const original = {
           list: {
-            data: [
-              {foo: 'a'},
-              {bar: 'b'}
-            ]
-          }
-        };
-        const result = collapseNestedRelationships(original);
+            data: [{ foo: 'a' }, { bar: 'b' }],
+          },
+        }
+        const result = collapseNestedRelationships(original)
         expect(result).toEqual({
-          list: original.list.data
-        });
-      });
+          list: original.list.data,
+        })
+      })
 
       it('should be able to handle nested relationships in arrays.', () => {
         const original = {
           list: {
-            data: [{
-              child: {
-                data: {
-                  foo: 'bar'
-                }
-              }
-            }]
-          }
-        };
-        const result = collapseNestedRelationships(original);
+            data: [
+              {
+                child: {
+                  data: {
+                    foo: 'bar',
+                  },
+                },
+              },
+            ],
+          },
+        }
+        const result = collapseNestedRelationships(original)
         expect(result).toEqual({
-          list: [{
-            child: {
-              foo: 'bar'
-            }
-          }]
-        });
-      });
-    });
-  });
-});
+          list: [
+            {
+              child: {
+                foo: 'bar',
+              },
+            },
+          ],
+        })
+      })
+    })
+  })
+})

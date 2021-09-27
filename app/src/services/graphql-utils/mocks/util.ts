@@ -1,4 +1,3 @@
-
 /**
  * Turn the given object into a generator
  * that returns the values defined on the object.
@@ -14,13 +13,12 @@
  *
  * @param target - An object with properties
  */
-export function toGenerator(
-  target: {[key: string]: any}
-): {[key: string]: () => any} {
-  const out = {};
-  for(let prop in target) {
-    out[prop] = () => target[prop];
+export function toGenerator(target: { [key: string]: any }): {
+  [key: string]: () => any
+} {
+  const out = {}
+  for (let prop in target) {
+    out[prop] = () => target[prop]
   }
-  return out;
+  return out
 }
-

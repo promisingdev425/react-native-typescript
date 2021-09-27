@@ -1,18 +1,20 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
-import { HeaderBar } from './HeaderBar';
+import { HeaderBar } from './HeaderBar'
 
-<Meta
-  title="Components/HeaderBar"
-  argTypes={{
-  }}
-/>
+<Meta title="Components/HeaderBar" argTypes={{}} />
 
 # HeaderBar
 
-<Description of={ HeaderBar } />
+<Description of={HeaderBar} />
 
-export const Template = props => <HeaderBar {...props} />;
+export const Template = (props) => <HeaderBar {...props} />
 
 <Canvas>
   <Story
@@ -23,11 +25,11 @@ export const Template = props => <HeaderBar {...props} />;
         name: 'John Doe',
         image: 'https://avatars.githubusercontent.com/u/20338216?v=4',
         bg: 'lightGray',
-      }
+      },
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={ HeaderBar } />
+<ArgsTable of={HeaderBar} />

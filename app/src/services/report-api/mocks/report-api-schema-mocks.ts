@@ -1,16 +1,16 @@
-import { ApolloLink } from '@apollo/client';
-import { makeExecutableSchema } from '@graphql-tools/schema';
-import { addMocksToSchema } from '@graphql-tools/mock';
-import merge from 'lodash/merge';
-import faker from 'faker';
+import { ApolloLink } from '@apollo/client'
+import { makeExecutableSchema } from '@graphql-tools/schema'
+import { addMocksToSchema } from '@graphql-tools/mock'
+import merge from 'lodash/merge'
+import faker from 'faker'
 
-import { createGraphClientMock } from '../../graphql-utils/mocks';
+import { createGraphClientMock } from '../../graphql-utils/mocks'
 
-import { generate } from './report-api-generate';
+import { generate } from './report-api-generate'
 
-import schemaDefinition from '~/graphql-report-schema.graphql';
+import schemaDefinition from '~/graphql-report-schema.graphql'
 
-type Bag = {[key: string]: any};
+type Bag = { [key: string]: any }
 
 /**
  * Creates a mock Apollo client that will auto generate fake data
@@ -39,15 +39,15 @@ export function createReportAPIClientMock({
   /** Whether to perform verbose logging */
   debug = false,
 }: {
-  errorLink?: ApolloLink,
-  cache?: any,
-  mocks?: Bag,
-  generatorOptions?: Bag,
-  resolvers?: any,
-  debug?: boolean,
+  errorLink?: ApolloLink
+  cache?: any
+  mocks?: Bag
+  generatorOptions?: Bag
+  resolvers?: any
+  debug?: boolean
 } = {}) {
-  const defaultMocks = createGraphMocks(generatorOptions);
-  const schema = makeExecutableSchema({ typeDefs: schemaDefinition });
+  const defaultMocks = createGraphMocks(generatorOptions)
+  const schema = makeExecutableSchema({ typeDefs: schemaDefinition })
 
   const schemaWithMocks = addMocksToSchema({
     schema,
@@ -63,10 +63,10 @@ export function createReportAPIClientMock({
     //     apt_snapshot_property: (/*_, variables*/) => {}
     //   },
     // }),
-  });
+  })
 
-  return createGraphClientMock(schemaWithMocks, errorLink, cache, debug);
-};
+  return createGraphClientMock(schemaWithMocks, errorLink, cache, debug)
+}
 
 /**
  * Create the mock definitions used by `createReportAPIClientMock`
@@ -87,19 +87,18 @@ export function createReportAPIClientMock({
  */
 function createGraphMocks({
   includeId = true,
-  propertyCount = faker.datatype.number({min: 1, max: 10}),
+  propertyCount = faker.datatype.number({ min: 1, max: 10 }),
   ...rest
-}:Bag = {},
-) {
+}: Bag = {}) {
   // Generator options to pass to `generate` method calls.
-  const options = {includeId, ...rest};
+  const options = { includeId, ...rest }
 
   return {
     // Proxy the factories on generate so they pass our
     // generator options
     ...Object.keys(generate).reduce((acc, key) => {
-      acc[key] = () => generate[key](options);
-      return acc;
+      acc[key] = () => generate[key](options)
+      return acc
     }, {}),
 
     // GraphQL queries
@@ -112,4 +111,3 @@ function createGraphMocks({
     // }),
   }
 }
-

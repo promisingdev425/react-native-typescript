@@ -28,8 +28,14 @@ export default function App({
   // Anything else should be passed through to WithServer
   ...rest
 }) {
-  const { initialized, authenticated, onLogin, onForgotLogin, onLogout, authResponse } =
-    useAuthService(authService)
+  const {
+    initialized,
+    authenticated,
+    onLogin,
+    onForgotLogin,
+    onLogout,
+    authResponse,
+  } = useAuthService(authService)
 
   const theme = themes.light
   const fontsLoaded = useFonts()
@@ -54,13 +60,13 @@ export default function App({
       )}
       {initialized && fontsLoaded && (
         <React.Suspense fallback={<PageLoader />}>
-          { children
-            ? React.cloneElement(children, props)
-            : <WithServer {...props} />
-          }
+          {children ? (
+            React.cloneElement(children, props)
+          ) : (
+            <WithServer {...props} />
+          )}
         </React.Suspense>
       )}
     </ThemeProvider>
   )
 }
-
