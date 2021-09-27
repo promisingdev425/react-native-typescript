@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components/native'
 
 /* istanbul ignore next */
 export const useTheme = () => {

@@ -21,7 +21,8 @@ export type IBox = ViewProps &
   BackgroundProps &
   BorderProps &
   LayoutProps &
-  PositionProps
+  PositionProps &
+  LayoutProps
 
 const Box = styled(View)<IBox>`
   ${space}

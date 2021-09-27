@@ -1,4 +1,10 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
 import { CircularArrowIcon } from '~/assets/images'
 
@@ -10,15 +16,15 @@ import { IconButton } from './IconButton'
     m: {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' },
-    }
+    },
   }}
 />
 
 # IconButton
 
-<Description of={ IconButton } />
+<Description of={IconButton} />
 
-export const Template = props => (
+export const Template = (props) => (
   <IconButton {...props}>
     <CircularArrowIcon />
   </IconButton>
@@ -36,4 +42,4 @@ export const Template = props => (
   </Story>
 </Canvas>
 
-<ArgsTable of={ IconButton } />
+<ArgsTable of={IconButton} />

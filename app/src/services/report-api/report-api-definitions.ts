@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 // Example of a summary definition
 // const imageSummary = `
@@ -45,5 +45,4 @@ export const GET_PROPERTIES = gql`
       property_id
     }
   }
-`;
-
+`

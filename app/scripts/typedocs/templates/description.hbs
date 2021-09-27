@@ -5,3 +5,9 @@
 {{#if comment.text}}
 {{{comment.text}}}
 {{/if}}
+
+{{#each comment.tags}}
+{{#if (eq tag 'see')}}
+__See:__ {{trim text}} <br/>
+{{/if}}
+{{/each}}

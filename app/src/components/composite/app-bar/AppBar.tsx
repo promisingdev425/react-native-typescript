@@ -21,11 +21,15 @@ export interface IAppBar {
  * `<AppBar>` component displays a title with optional React
  * elements to the left and right of the title.
  */
-export const AppBar: React.FC<IAppBar> = ({ title, leftItem, rightItem, ...rest }) => (
+export const AppBar: React.FC<IAppBar> = ({
+  title,
+  leftItem,
+  rightItem,
+  ...rest
+}) => (
   <Container {...rest}>
     {leftItem}
     <Title variant="navigation">{title}</Title>
     {rightItem}
   </Container>
 )
-

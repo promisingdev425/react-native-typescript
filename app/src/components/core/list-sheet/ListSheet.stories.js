@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
@@ -6,12 +6,12 @@ import { ApplicationIcon } from '~/assets/images'
 
 import { ListSheet } from './ListSheet'
 
-// Component Native Stories
-storiesOf('ListSheet', module)
-  .addDecorator((cb) => <Centered>{cb()}</Centered>)
-  .add('default', () => (
+const StatefulListSheet = () => {
+  const [open, hideSheet] = useState(true)
+
+  return (
     <ListSheet
-      open
+      open={open}
       title="Leasing Reports"
       options={[
         {
@@ -27,6 +27,12 @@ storiesOf('ListSheet', module)
       ]}
       itemHeight={48}
       onChange={(data) => console.log(data)}
-      onChangeAfterHide={(data) => console.log(data)}
+      onChangeAfterHide={(data) => hideSheet(false)}
     />
-  ))
+  )
+}
+
+// Component Native Stories
+storiesOf('ListSheet', module)
+  .addDecorator((cb) => <Centered>{cb()}</Centered>)
+  .add('default', () => <StatefulListSheet />)

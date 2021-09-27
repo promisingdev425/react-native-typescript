@@ -17,11 +17,14 @@ import { GradientButton } from './GradientButton'
 export const Template = (props) => <GradientButton {...props} />
 
 <Canvas>
-  <Story name="GradientButton" args={{
-    title: 'Title',
-    description: 'Description',
-    active: true,
-  }}>
+  <Story
+    name="GradientButton"
+    args={{
+      title: 'Title',
+      description: 'Description',
+      active: true,
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

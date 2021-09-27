@@ -17,18 +17,24 @@ import { Box } from './Box'
 export const Template = (props) => <Box {...props} />
 
 <Canvas isColumn>
-  <Story name="Pink box" args={{
-    bg: 'brandPink',
-    p: 'sm',
-    borderRadius: 'sm',
-  }}>
+  <Story
+    name="Pink box"
+    args={{
+      bg: 'brandPink',
+      p: 'sm',
+      borderRadius: 'sm',
+    }}
+  >
     {Template.bind({})}
   </Story>
-  <Story name="Orange box" args={{
-    bg: 'brandOrange',
-    p: 'sm',
-    borderRadius: 'sm',
-  }}>
+  <Story
+    name="Orange box"
+    args={{
+      bg: 'brandOrange',
+      p: 'sm',
+      borderRadius: 'sm',
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
