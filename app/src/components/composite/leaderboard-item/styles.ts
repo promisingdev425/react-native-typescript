@@ -15,7 +15,7 @@ export const Touchable = styled(TouchableWithoutFeedback).attrs({
 })<TouchableWithoutFeedbackProps & IPressState>``
 
 export const Container = styled(Box).attrs((props: IPressState) => ({
-  bg: props.isPressed ? 'lightGray' : 'white',
+  bg: props.isPressed ? 'lightGray' : 'pinkOverlay',
   p: 'sm',
   borderRadius: 'sm',
 }))<IBox & IPressState>`
@@ -29,6 +29,7 @@ export const Label = styled(Text).attrs({
   noselect: true,
 })`
   flex: 1;
+  line-height: 18px;
 `
 
 export const TopRank = styled(Box).attrs({
@@ -47,9 +48,13 @@ export const TopRankLabel = styled(Text).attrs({
   fontFamilyStyle: 'style.bold',
 })`
   position: absolute;
+  top: 0;
+  line-height: 45px;
 `
 
 export const RankLabel = styled(Text).attrs({
   fontSize: 'subtitle2',
   fontFamilyStyle: 'style.bold',
-})``
+})`
+  line-height: 18px;
+`

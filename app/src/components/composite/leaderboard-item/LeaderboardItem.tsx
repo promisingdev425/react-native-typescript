@@ -26,10 +26,14 @@ export type ILeaderboardItemData = {
 }
 
 export interface ILeaderboardItem {
+  id: string
+  name: string
+  rank: number
+  score: number
+  accessibilityLabel?: string
   isLast?: boolean
-  data: ILeaderboardItemData
   disabled?: boolean
-  onPress: (data: ILeaderboardItemData) => void
+  onPress: (id: string) => void
 }
 
 /**
@@ -39,41 +43,34 @@ export interface ILeaderboardItem {
  * @return {React.ReactNode}
  */
 export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
-  data,
+  id,
+  name,
+  rank,
+  score,
   onPress,
   isLast = false,
+  accessibilityLabel,
   ...rest
 }) => {
   const [isPressed, setIsPressed] = useState(false)
-  const labelFontSize = data.rank <= 3 ? 'subtitle2' : 'h3'
-  const scoreFontSize = data.rank <= 3 ? 'body1' : 'h3'
+  const labelFontSize = rank <= 3 ? 'subtitle2' : 'h3'
+  const scoreFontSize = rank <= 3 ? 'body1' : 'h3'
 
-  const score = () => {
-    const { categories } = data
-    const [totalAwarded, totalPossible] = categories.reduce(
-      (acc, cur) => {
-        return [acc[0] + cur.awarded, acc[1] + cur.possible]
-      },
-      [0, 0],
-    )
-
-    return (totalAwarded / totalPossible) * 100
-  }
-
+  /* istanbul ignore next */
   const handlePressIn = () => {
     setIsPressed(true)
   }
 
+  /* istanbul ignore next */
   const handlePressOut = () => {
     setIsPressed(false)
   }
 
   const handlePress = () => {
-    onPress(data)
+    onPress(id)
   }
 
   const renderLeftIcon = () => {
-    const { rank } = data
     let content = <RankLabel>{rank}</RankLabel>
     if (rank <= 3) {
       content = (
@@ -91,11 +88,10 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
   }
 
   const renderDot = () => {
-    const percentage = score()
     let color = 'negative'
 
-    if (percentage >= 90) color = 'positive'
-    else if (percentage >= 80) color = 'warning'
+    if (score >= 90) color = 'positive'
+    else if (score >= 80) color = 'warning'
 
     return (
       <Box
@@ -114,16 +110,16 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       isPressed={isPressed}
-      accessibilityLabel={data.accessibilityLabel}
+      accessibilityLabel={accessibilityLabel}
       {...rest}
     >
       <Container isPressed={isPressed}>
         {renderLeftIcon()}
 
-        <Label fontSize={labelFontSize}>{data.name}</Label>
+        <Label fontSize={labelFontSize}>{name}</Label>
 
         <Text fontSize={scoreFontSize} color="textGray">
-          {score()}
+          {score}
         </Text>
 
         {renderDot()}
