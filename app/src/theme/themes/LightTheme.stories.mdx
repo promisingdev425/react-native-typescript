@@ -1,0 +1,110 @@
+import {
+  Meta,
+  Story,
+  ColorPalette,
+  ColorItem,
+  Typeset,
+  Subheading,
+} from '@storybook/addon-docs'
+
+import { Box, Text, Title } from '~/components'
+import { themes } from './index'
+
+<Meta title="Theming/Light Theme" />
+
+# Light Theme
+
+Below you will find all of the available settings from our light theme.
+
+## Colors
+
+Use the `getColor` function from `~/theme` to easily get a color
+by its name.
+
+### Swatches
+
+<Story
+  name="Colors"
+  parameters={{ controls: { hideNoControlsWarning: true, include: [] } }}
+>
+  <ColorPalette>
+    {Object.keys(themes.light.colors).map((c) => (
+      <ColorItem title={c} colors={[themes.light.colors[c]]} key={c} />
+    ))}
+  </ColorPalette>
+</Story>
+
+## Typeography
+
+Below you will find all of the available fonts and their sizes. Use
+the `getFontSize` helper from `~/theme` to retrieve a font size by
+it's name (`sm`, `md`, `lg`, etc).
+
+<Story name="Fonts">
+  {Object.values(themes.light.typography.group).map((name) =>
+    Object.values(themes.light.typography.style).map((weight) => {
+      const font = `${name}${themes.light.typography.separator[name]}${weight}`
+      return (
+        <Box key={name + weight}>
+          <Subheading>{font}</Subheading>
+          <Typeset
+            fontFamily={font}
+            fontSizes={Object.values(themes.light.fontSizes)}
+          />
+        </Box>
+      )
+    }),
+  )}
+</Story>
+
+## Border Radius
+
+Below are the border radius settings available through the `getRadii`
+helper from `~/theme`.
+
+<Story name="Radius">
+  {Object.keys(themes.light.radii).map((radius) => (
+    <Box
+      borderRadius={radius}
+      bg="overlay"
+      p="sm"
+      display="inline-flex"
+      justifyContent="center"
+      alignItems="center"
+      width={60}
+      height={60}
+      key={radius}
+    >
+      <Title color="white" variant="navigation">
+        {radius}
+      </Title>
+    </Box>
+  ))}
+</Story>
+
+## Size/Spacing
+
+The following size/space measurements are available through the `getSpace`
+helper from `~/theme`.
+
+<Story name="Spacing">
+  {Object.keys(themes.light.space).map((space) => (
+    <Box margin="sm" flexDirection="row" alignItems="flex-end" key={space}>
+      <Box width={100}>
+        <Title variant="navigation">
+          {space}: {themes.light.space[space]}
+        </Title>
+      </Box>
+      <Box
+        borderBottomWidth={1}
+        borderLeftWidth={1}
+        borderRightWidth={1}
+        borderBottomColor="overlay"
+        borderLeftColor="overlay"
+        borderRightColor="overlay"
+        width={themes.light.space[space]}
+        height={3}
+      />
+    </Box>
+  ))}
+</Story>

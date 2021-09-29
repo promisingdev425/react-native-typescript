@@ -1,9 +1,11 @@
-- <a href="#creategraphclientmock">createGraphClientMock</a>
-- <a href="#createtestclient">createTestClient</a>
+- root
+  - <a href="#creategraphclientmock">createGraphClientMock</a>
+  - <a href="#createtestclient">createTestClient</a>
 
-<br/><br/>
+
 ## createGraphClientMock
 
+  ▸ **createGraphClientMock**(`schema`, `errorLink`, `cache`, `debug`) => `ApolloClient`
 
 Create a mock Apollo GraphQL client with the given mock schema.
 This is useful in situations where you want to provide a full
@@ -36,6 +38,7 @@ return createGraphClientMock(errorLink, schema, cache);
 
 
 
+
 #### Parameters
 | Name | Type | Default Value |
 | :--- | :--- | :------------ |
@@ -46,14 +49,16 @@ return createGraphClientMock(errorLink, schema, cache);
 
 
 #### Returns
-`ApolloClient`
+`ApolloClient` 
 
 
 #### Defined in
 - *[graph-client.mock.ts:41](https://github.com/Apartment-Snapshot/snapshot-ui/tree/main/app/src/services/graphql-utils/mocks/graph-client.mock.ts#L41)*
 
-<br/>## createTestClient
+<br/>
+## createTestClient
 
+  ▸ **createTestClient**(`mocks`, `errorLink`, `cache`, `debug`) => `ApolloClient`
 
 Generate a mock client for use in tests. This is most
 useful when you want to specifically control the responses
@@ -114,6 +119,7 @@ const apolloClient = createTestClient({}, errorLink);
 
 
 
+
 #### Parameters
 | Name | Type | Default Value |
 | :--- | :--- | :------------ |
@@ -124,7 +130,7 @@ const apolloClient = createTestClient({}, errorLink);
 
 
 #### Returns
-`ApolloClient`
+`ApolloClient` 
 
 
 #### Defined in

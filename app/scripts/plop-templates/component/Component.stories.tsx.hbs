@@ -14,12 +14,19 @@ export default {
   // Default props for your stories.
   // https://storybook.js.org/docs/react/writing-stories/args
   args: {},
+  parameters: {
+    controls: { sort: 'requiredFirst' },
+  },
 }
 
 // The first export will be used as the main story on the page.
 export const Template = (props) => <{{pascalCase name}} {...props} />
 Template.storyName = '{{pascalCase name}}'
 Template.decorators = [centered]
+Template.parameters = {
+  // Open the source code for the first story
+  docs: {source: {state: 'open'}},
+}
 
 // If your component has multiple variations, please export
 // additional stories that show those variations specifically.
