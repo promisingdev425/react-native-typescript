@@ -28,9 +28,9 @@ export const Dot = styled(Box).attrs(
       color =
         score >= benchmark.minPositive
           ? 'positive'
-          : benchmark.minWarning
+          : score >= benchmark.minWarning
           ? 'warning'
-          : benchmark.minNegative
+          : score >= benchmark.minNegative
           ? 'negative'
           : 'textGray'
     }

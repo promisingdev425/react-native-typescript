@@ -24,7 +24,7 @@ describe('LeaderboardItem', function () {
     id: 'leaderboard-item2',
     name: 'Stephen Curry',
     score: 88,
-    rank: 2,
+    rank: 3,
     benchmark: { minPositive: 90, minWarning: 80, minNegative: 40 },
     accessibilityLabel: 'LeaderboardRank2',
   }
@@ -33,7 +33,7 @@ describe('LeaderboardItem', function () {
     id: 'leaderboard-item3',
     name: 'Klay Thompson',
     score: 70,
-    rank: 3,
+    rank: 5,
     accessibilityLabel: 'LeaderboardRank3',
   }
 
