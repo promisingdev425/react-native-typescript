@@ -10,9 +10,14 @@ const px = (n: number) => {
 }
 
 /**
- * Get the value in pixels.
- * @param {*} n - not sure what this is
- * @param {number[]} scale - some way to scale the value
+ * Retrieve a value in pixels from the given scale array
+ * by it's name or index.
+ * @see https://styled-system.com/responsive-styles#responsive-styles
+ *
+ * @param n - The index or name of the item in the scale param
+ *   that you wish to retrieve.
+ * @param scale - An array of possible values from which
+ *   you wish to get a value.
  */
 export const getPx = (n: any, scale: number[]) => {
   return px(get(scale, n))
@@ -33,34 +38,104 @@ export const mapToTheme = (key: string, prop = 'variant') => {
   }
 }
 
+/**
+ * Get a function that will return a color from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the color in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getColor = (key: string) => {
   return themeGet(`colors.${key}`)
 }
 
+/**
+ * Get a function that will return a "metric" from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the metric in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getMetrics = (key: string) => {
   return themeGet(`metrics.${key}`)
 }
 
 /* istanbul ignore next */
+/**
+ * Get a function that will return a "space" from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the space/size in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getSpace = (key: string) => {
   return themeGet(`space.${key}`)
 }
 
 /* istanbul ignore next */
+/**
+ * Get a function that will return a radius from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the radius in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getRadii = (key: string) => {
   return themeGet(`radii.${key}`)
 }
 
+/**
+ * Get a function that will return a font from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the font in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getTypography = (key: string) => {
   return themeGet(`typography.${key}`)
 }
 
 /* istanbul ignore next */
+/**
+ * Get a function that will return a font size from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the font size in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getFontSize = (key: string) => {
   return themeGet(`fontSizes.${key}`)
 }
 
 /* istanbul ignore next */
+/**
+ * Get a function that will return a line height from the theme
+ * when you pass it the props of your component.
+ * @see https://styled-system.com/how-it-works#how-it-works
+ * @see https://www.npmjs.com/package/@styled-system/theme-get
+ *
+ * @param key - The name of the line height in the theme.
+ * @return {function} A function that you can use
+ * in a `styled-components` declaration.
+ */
 export const getLineHeight = (key: string) => {
   return themeGet(`lineHeights.${key}`)
 }

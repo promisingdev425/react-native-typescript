@@ -4,7 +4,7 @@ Theming refers to the customization of your UI/UX Design app to better reflect y
 
 ## Description
 
-Basically we ahve `light` and `dark` themes but it is designed for applying various themes very easily by customizing `default(light or dark)` theme. We defined the `colors`, `fontSizes`, `lineHeights`, `metrics`, `radiis`, `spaces`, and `typography` with the values which should be used in the app.
+Basically we have `light` and `dark` themes but it is designed for applying various themes very easily by customizing `default(light or dark)` theme. We defined the `colors`, `fontSizes`, `lineHeights`, `metrics`, `radiis`, `spaces`, and `typography` with the values which should be used in the app.
 
 ## Getting Started
 
