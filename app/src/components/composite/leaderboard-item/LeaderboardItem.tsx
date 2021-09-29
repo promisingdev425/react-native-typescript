@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { StarIcon } from '~/assets/images'
 
-import { Box, Text } from '../../core'
+import { Box } from '../../core'
+import { Benchmark, LeaderboardScore } from './leaderboard-score'
 import {
   Touchable,
   Container,
@@ -30,6 +31,8 @@ export interface ILeaderboardItem {
   name: string
   rank: number
   score: number
+  dotSize?: number
+  benchmark?: Benchmark
   accessibilityLabel?: string
   isLast?: boolean
   disabled?: boolean
@@ -47,6 +50,8 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
   name,
   rank,
   score,
+  dotSize = 6,
+  benchmark,
   onPress,
   isLast = false,
   accessibilityLabel,
@@ -87,23 +92,6 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
     return content
   }
 
-  const renderDot = () => {
-    let color = 'negative'
-
-    if (score >= 90) color = 'positive'
-    else if (score >= 80) color = 'warning'
-
-    return (
-      <Box
-        ml="xxs"
-        width={6}
-        height={6}
-        borderRadius={3}
-        backgroundColor={color}
-      />
-    )
-  }
-
   return (
     <Touchable
       onPress={handlePress}
@@ -118,11 +106,12 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
 
         <Label fontSize={labelFontSize}>{name}</Label>
 
-        <Text fontSize={scoreFontSize} color="textGray">
-          {score}
-        </Text>
-
-        {renderDot()}
+        <LeaderboardScore
+          fontSize={scoreFontSize}
+          dotSize={dotSize}
+          score={score}
+          benchmark={benchmark}
+        />
       </Container>
     </Touchable>
   )

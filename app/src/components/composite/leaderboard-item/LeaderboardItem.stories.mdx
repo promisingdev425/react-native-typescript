@@ -19,20 +19,12 @@ export const Template = props => <LeaderboardItem {...props} />
   <Story
     name="LeaderboardItem"
     args={{
-      data: {
-        name: 'Bellaire Ranch',
-        categories: [
-          { name: 'Occupancy', awarded: 40, possible: 50 },
-          { name: 'Leasing', awarded: 40, possible: 50 },
-          { name: 'Rents', awarded: 40, possible: 50 },
-          { name: 'Renewals', awarded: 40, possible: 50 },
-          { name: 'Marketing', awarded: 40, possible: 50 },
-          { name: 'Maintenance', awarded: 40, possible: 50 },
-          { name: 'Satisfaction', awarded: 40, possible: 50 },
-          { name: 'Financials', awarded: 40, possible: 50 },
-        ],
-        rank: 1,
-      }
+      id: "rank1",
+      name: "Stephen Curry",
+      rank: 1,
+      score: 90,
+      dotSize: 6,
+      benchmark: { minPositive: 90, minWarning: 80, minNegative: 40 },
     }}
   >
     {Template.bind({})}

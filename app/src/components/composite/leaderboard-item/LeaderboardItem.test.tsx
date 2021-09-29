@@ -16,6 +16,7 @@ describe('LeaderboardItem', function () {
     name: 'Bellaire Ranch',
     score: 92,
     rank: 1,
+    benchmark: { minPositive: 90, minWarning: 80, minNegative: 40 },
     accessibilityLabel: 'LeaderboardRank1',
   }
 
@@ -24,6 +25,7 @@ describe('LeaderboardItem', function () {
     name: 'Stephen Curry',
     score: 88,
     rank: 2,
+    benchmark: { minPositive: 90, minWarning: 80, minNegative: 40 },
     accessibilityLabel: 'LeaderboardRank2',
   }
 

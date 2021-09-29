@@ -7,39 +7,31 @@ import { LeaderboardItem } from './LeaderboardItem'
 storiesOf('LeaderboardItem', module)
   .add('Top rank', () => (
     <LeaderboardItem
-      data={{
-        name: 'Bellaire Ranch',
-        categories: [
-          { name: 'Occupancy', awarded: 40, possible: 50 },
-          { name: 'Leasing', awarded: 40, possible: 50 },
-          { name: 'Rents', awarded: 40, possible: 50 },
-          { name: 'Renewals', awarded: 40, possible: 50 },
-          { name: 'Marketing', awarded: 40, possible: 50 },
-          { name: 'Maintenance', awarded: 40, possible: 50 },
-          { name: 'Satisfaction', awarded: 40, possible: 50 },
-          { name: 'Financials', awarded: 40, possible: 50 },
-        ],
-        rank: 1,
-      }}
+      id="rank1"
+      name="Stephen Curry"
+      rank={1}
+      score={90}
+      benchmark={{ minPositive: 90, minWarning: 80, minNegative: 40 }}
       onPress={(data) => console.log(data)}
     />
   ))
   .add('General rank', () => (
     <LeaderboardItem
-      data={{
-        name: 'Bellaire Ranch',
-        categories: [
-          { name: 'Occupancy', awarded: 40, possible: 50 },
-          { name: 'Leasing', awarded: 30, possible: 50 },
-          { name: 'Rents', awarded: 40, possible: 50 },
-          { name: 'Renewals', awarded: 30, possible: 50 },
-          { name: 'Marketing', awarded: 20, possible: 50 },
-          { name: 'Maintenance', awarded: 40, possible: 50 },
-          { name: 'Satisfaction', awarded: 40, possible: 50 },
-          { name: 'Financials', awarded: 50, possible: 50 },
-        ],
-        rank: 4,
-      }}
+      id="rank2"
+      name="Klay Thompson"
+      rank={2}
+      score={85}
+      benchmark={{ minPositive: 90, minWarning: 80, minNegative: 40 }}
+      onPress={(data) => console.log(data)}
+    />
+  ))
+  .add('No Benchmark scores', () => (
+    <LeaderboardItem
+      id="rank3"
+      name="Klay Thompson"
+      rank={5}
+      score={85}
+      dotSize={10}
       onPress={(data) => console.log(data)}
     />
   ))
