@@ -53,7 +53,7 @@ export const textArgTypes = {
 
 /** styled-system space props */
 export const spaceArgTypes = {
-  'margin props...': {
+  'margin': {
     options: [undefined].concat(Object.keys(themes.light.space)),
     control: 'select',
     description:
@@ -61,7 +61,7 @@ export const spaceArgTypes = {
       '[margin props](https://styled-system.com/api#space). ' +
       'Includes props like `margin`, `marginTop`, etc.',
   },
-  'padding props...': {
+  'padding': {
     options: [undefined].concat(Object.keys(themes.light.space)),
     control: 'select',
     description:

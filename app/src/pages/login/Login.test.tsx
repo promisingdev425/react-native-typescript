@@ -7,7 +7,6 @@ import { Login } from './Login'
 
 describe('Login', function () {
   let screen: RenderAPI
-  let button
 
   beforeEach(() => {
     const InnerScreen = () => (
@@ -19,20 +18,11 @@ describe('Login', function () {
     const Themed = withTheme(InnerScreen)
 
     screen = render(<Themed />)
-    button = screen.getByA11yLabel('ButtonForToggleSheet')
   })
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
       screen.getByTestId('Login'),
     )
-
-    expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('BottomSelector'),
-    )
-  })
-
-  it('should click gradient button', () => {
-    fireEvent.press(button)
   })
 })

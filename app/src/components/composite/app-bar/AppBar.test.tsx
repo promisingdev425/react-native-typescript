@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 
 import { withTheme } from '~/theme/hocs'
-import { PropertyIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { AppBar } from './AppBar'
 
@@ -15,8 +15,8 @@ describe('AppBar', function () {
       <View testID="Root">
         <AppBar
           title="Appbar header title"
-          leftItem={<PropertyIcon />}
-          rightItem={<PropertyIcon />}
+          leftItem={<Icons.Property />}
+          rightItem={<Icons.Property />}
         />
       </View>
     )
