@@ -26,6 +26,7 @@ const getStories=() => {
 		require("../../app/src/components/composite/date-select/DateSelect.stories.js"), 
 		require("../../app/src/components/composite/gradient-button/GradientButton.stories.js"), 
 		require("../../app/src/components/composite/header-bar/HeaderBar.stories.js"), 
+		require("../../app/src/components/composite/leaderboard-item/leaderboard-score/LeaderboardScore.stories.tsx"), 
 		require("../../app/src/components/composite/leaderboard-item/LeaderboardItem.stories.js"), 
 		require("../../app/src/components/composite/toggle-group/ToggleGroup.stories.js"), 
 		require("../../app/src/components/core/avatar/Avatar.stories.js"), 

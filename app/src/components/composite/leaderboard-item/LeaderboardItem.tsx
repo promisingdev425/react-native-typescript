@@ -12,20 +12,6 @@ import {
   RankLabel,
 } from './styles'
 
-type ILeaderboardCategory = {
-  name: string
-  awarded: number
-  possible: number
-  score?: number
-}
-
-export type ILeaderboardItemData = {
-  name: string
-  accessibilityLabel?: string
-  categories: Array<ILeaderboardCategory>
-  rank: number
-}
-
 export interface ILeaderboardItem {
   id: string
   name: string
