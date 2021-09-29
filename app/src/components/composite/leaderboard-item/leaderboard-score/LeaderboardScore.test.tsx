@@ -13,6 +13,17 @@ describe('LeaderboardScore', function () {
       <View testID="Root">
         <LeaderboardScore
           testID="LeaderboardScore"
+          fontSize="body1"
+          dotSize={6}
+          score={10}
+          benchmark={{ minPositive: 90, minWarning: 80, minNegative: 40 }}
+        />
+
+        <LeaderboardScore
+          testID="LeaderboardScoreNoBenchmark"
+          dotSize={10}
+          fontSize="body1"
+          score={10}
         />
       </View>
     )
@@ -22,7 +33,12 @@ describe('LeaderboardScore', function () {
   })
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('LeaderboardScore'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('LeaderboardScore'),
+    )
+
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('LeaderboardScoreNoBenchmark'),
+    )
   })
 })

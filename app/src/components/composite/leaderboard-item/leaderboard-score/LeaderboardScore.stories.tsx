@@ -13,7 +13,12 @@ export default {
   argTypes: {},
   // Default props for your stories.
   // https://storybook.js.org/docs/react/writing-stories/args
-  args: {},
+  args: {
+    fontSize: 'body1',
+    dotSize: 6,
+    score: 10,
+    benchmark: { minPositive: 90, minWarning: 80, minNegative: 40 },
+  },
 }
 
 // The first export will be used as the main story on the page.
