@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { render, RenderAPI } from '@testing-library/react-native'
+import { render, fireEvent, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 
 import { Login } from './Login'

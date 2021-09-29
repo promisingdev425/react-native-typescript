@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 
 import { Icons } from '~/assets';
 import { AppBar } from '~/components';
 import { useReportAPI, Property } from '~/services';
 
-type MainProps = {
-};
+type MainProps = {}
 
 /**
  * The main application layout.
  */
 export function Main({}: MainProps) {
-  const api = useReportAPI();
+  const api = useReportAPI()
 
   /* istanbul ignore next: temporary code */
   React.useEffect(() => {
-    api.getProperties()
+    api
+      .getProperties()
       .then((properties: Property[]) => console.log('Properties:', properties))
-      .catch(e => console.error(e));
-  }, []);
+      .catch((e) => console.error(e))
+  }, [])
 
   return (
     <AppBar
@@ -27,4 +27,3 @@ export function Main({}: MainProps) {
     />
   );
 }
-

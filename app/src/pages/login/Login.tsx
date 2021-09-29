@@ -6,9 +6,6 @@ import { Icons } from '~/assets'
 
 /**
  * `<Login>`
- *
- * @param {object} props
- * @return {React.ReactNode}
  */
 export const Login = ({ ...rest }) => (
   <View {...rest}>
@@ -20,9 +17,6 @@ export const Login = ({ ...rest }) => (
 /**
  * `<LoginConnected>` connects the Login
  * component with the rest of the app (ie. routing, services, store, etc.).
- *
- * @param {object} props
- * @return {React.ReactNode}
  */
 /* istanbul ignore next */
 export const LoginConnected = () => <Login />

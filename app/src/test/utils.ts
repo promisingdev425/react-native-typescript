@@ -1,5 +1,4 @@
-
-type Bag = {[key: string]: any};
+type Bag = { [key: string]: any }
 
 /**
  * Spy on the methods of a class instance. Spies are
@@ -14,19 +13,19 @@ export function spyOnClassMethods(
   /**
    * A list of properties not to spy on.
    */
-  blacklist = ['constructor']
+  blacklist = ['constructor'],
 ) {
   if (classInstance?.constructor?.prototype) {
     Object.getOwnPropertyNames(classInstance.constructor.prototype)
-      .filter(m => !blacklist.includes(m))
-      .forEach(m => {
+      .filter((m) => !blacklist.includes(m))
+      .forEach((m) => {
         if (
           typeof classInstance[m] === 'function' &&
           jest &&
-          !jest.isMockFunction( classInstance[m] )
+          !jest.isMockFunction(classInstance[m])
         ) {
-          jest.spyOn(classInstance, m);
+          jest.spyOn(classInstance, m)
         }
-      });
+      })
   }
 }

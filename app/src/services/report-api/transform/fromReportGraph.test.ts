@@ -1,4 +1,4 @@
-import { fromReportGraph } from './fromReportGraph';
+import { fromReportGraph } from './fromReportGraph'
 
 describe('fromReportGraph', () => {
   it('property', () => {
@@ -8,15 +8,16 @@ describe('fromReportGraph', () => {
       ownershipGroupId: undefined,
     })
 
-    expect(fromReportGraph.property({
-      property_id: 'foo',
-      name: 'bar',
-      ownership_group_id: 'baz'
-    })).toEqual({
+    expect(
+      fromReportGraph.property({
+        property_id: 'foo',
+        name: 'bar',
+        ownership_group_id: 'baz',
+      }),
+    ).toEqual({
       id: 'foo',
       name: 'bar',
-      ownershipGroupId: 'baz'
+      ownershipGroupId: 'baz',
     })
-  });
-});
-
+  })
+})

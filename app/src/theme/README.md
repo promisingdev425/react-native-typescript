@@ -10,8 +10,8 @@ Basically we have `light` and `dark` themes but it is designed for applying vari
 
 ### Dependencies
 
-- [styled-components](https://styled-components.com/)
-- [styled-system](https://styled-system.com/)
+- [styeld-components](https://styled-components.com/)
+- [styeld-system](https://styled-system.com/)
 - [styled-map](https://github.com/scf4/styled-map)
 
 ### Structure

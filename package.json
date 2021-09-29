@@ -11,7 +11,7 @@
     "start": "yarn workspace @apartmentsnapshot/snapshot-ui start",
     "start:mock": "yarn workspace @apartmentsnapshot/snapshot-ui start:mock",
     "storybook": "yarn workspace @apartmentsnapshot/snapshot-ui storybook",
-    "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook storybook",
+    "storybook:native": "yarn workspace @apartmentsnapshot/snapshot-ui-storybook start",
     "test": "yarn workspace @apartmentsnapshot/snapshot-ui test",
     "lint": "yarn workspace @apartmentsnapshot/snapshot-ui lint",
     "validate": "yarn workspace @apartmentsnapshot/snapshot-ui validate",

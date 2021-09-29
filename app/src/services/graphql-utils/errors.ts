@@ -1,6 +1,6 @@
-import { ServerError, ServerParseError } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
-import { GraphQLError } from "graphql/error";
+import { ServerError, ServerParseError } from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
+import { GraphQLError } from 'graphql/error'
 
 /**
  * A global error handler used to handle GraphQL errors
@@ -22,43 +22,43 @@ export function graphQLErrorHandler({
    * Any network errors from the Apollo client.
    */
   networkError,
-  // operation,
-  // forward,
-  // response,
-}: {
-  onAuthFailure: Function,
-  graphQLErrors?: readonly GraphQLError[],
-  networkError?: Error | ServerError | ServerParseError,
+}: // operation,
+// forward,
+// response,
+{
+  onAuthFailure: Function
+  graphQLErrors?: readonly GraphQLError[]
+  networkError?: Error | ServerError | ServerParseError
 }) {
   if (graphQLErrors) {
-    console.error('[GRAPHQL ERROR]:', graphQLErrors);
+    console.error('[GRAPHQL ERROR]:', graphQLErrors)
     for (let err of graphQLErrors) {
       if (err.extensions) {
         switch (err.extensions.code) {
           case 'UNAUTHENTICATED':
           case 'invalid-jwt':
-            onAuthFailure();
+            onAuthFailure()
 
-            // TODO After login, modify the operation context with
-            // the new auth token and then retry the operation.
-            // const oldHeaders = operation.getContext().headers;
-            // operation.setContext({
-            //   headers: {
-            //     ...oldHeaders,
-            //     authorization: getNewToken(),
-            //   },
-            // });
-            // return forward(operation);
+          // TODO After login, modify the operation context with
+          // the new auth token and then retry the operation.
+          // const oldHeaders = operation.getContext().headers;
+          // operation.setContext({
+          //   headers: {
+          //     ...oldHeaders,
+          //     authorization: getNewToken(),
+          //   },
+          // });
+          // return forward(operation);
         }
       }
     }
   } else if (networkError) {
-    console.error('[Network error]:', networkError);
+    console.error('[Network error]:', networkError)
     if (
       (<ServerError>networkError).statusCode &&
       (<ServerError>networkError).statusCode === 401
     ) {
-      onAuthFailure();
+      onAuthFailure()
 
       // TODO After login, modify the operation context with
       // the new auth token and then retry the operation.
@@ -76,8 +76,7 @@ export function makeGraphQLErrorLink(
    * Use this to refresh the authentication token or ask the user
    * to login.
    */
-  onAuthFailure: () => void
+  onAuthFailure: () => void,
 ) {
-  return onError(error => graphQLErrorHandler({...error, onAuthFailure}));
+  return onError((error) => graphQLErrorHandler({ ...error, onAuthFailure }))
 }
-
