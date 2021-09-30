@@ -15,7 +15,7 @@ export const Touchable = styled(TouchableWithoutFeedback).attrs({
 })<TouchableWithoutFeedbackProps & IPressState>``
 
 export const Container = styled(Box).attrs((props: IPressState) => ({
-  bg: props.isPressed ? 'lightGray' : 'pinkOverlay',
+  bg: props.isPressed ? 'lightGray' : 'white',
   p: 'sm',
   borderRadius: 'sm',
 }))<IBox & IPressState>`
