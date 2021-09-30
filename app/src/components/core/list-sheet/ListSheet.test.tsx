@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react-native'
 
 import { withTheme } from '~/theme/hocs'
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { IOptionData } from './option'
 import { ListSheet } from './ListSheet'
@@ -22,12 +22,12 @@ describe('ListSheet', function () {
   let handleChangeAfterHide1: jest.Mock
   const options: IOptionData[] = [
     {
-      Icon: ApplicationIcon,
+      Icon: Icons.Application,
       value: 'application',
       label: 'Engagement Score',
     },
     {
-      Icon: ApplicationIcon,
+      Icon: Icons.Application,
       value: 'responsiveness',
       label: 'Responsiveness',
     },

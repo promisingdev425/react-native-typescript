@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets/images'
 
 import { ListSheet } from './ListSheet'
 
@@ -15,12 +15,12 @@ const StatefulListSheet = () => {
       title="Leasing Reports"
       options={[
         {
-          Icon: ApplicationIcon,
+          Icon: Icons.Application,
           value: 'application',
           label: 'Engagement Score',
         },
         {
-          Icon: ApplicationIcon,
+          Icon: Icons.Application,
           value: 'responsiveness',
           label: 'Responsiveness',
         },

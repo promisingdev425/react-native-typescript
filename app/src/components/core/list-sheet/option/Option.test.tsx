@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { render, fireEvent } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { Option } from './Option'
 
@@ -11,7 +11,7 @@ describe('Option', function () {
   let handlePress: jest.Mock
   let optionButton
   const option = {
-    Icon: ApplicationIcon,
+    Icon: Icons.Application,
     value: 'application',
     label: 'Engagement Score',
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 
 import { Centered } from '~/storybook-utils'
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { Option } from './Option'
 
@@ -13,7 +13,7 @@ storiesOf('Option', module)
     <Option
       height={48}
       option={{
-        Icon: ApplicationIcon,
+        Icon: Icons.Application,
         value: 'application',
         label: 'Engagement Score',
       }}

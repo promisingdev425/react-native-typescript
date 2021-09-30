@@ -71,6 +71,7 @@ The following commands are available through yarn:
 - `yarn build:ios` Build the production ios version of the application
 - `yarn build:android` Build the production android version of the application
 - `yarn clean` Remove all build artifacts.
+- `yarn clean:all` Remove all build artifacts including CI reports.
 
 ### CI
 

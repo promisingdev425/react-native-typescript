@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
 
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { Option } from './Option';
 
@@ -22,7 +22,7 @@ export const Template = props => <Option {...props} />;
     name="Option"
     args={{
       option: {
-        Icon: ApplicationIcon,
+        Icon: Icons.Application,
         value: 'application',
         label: 'Engagement Score'
       },

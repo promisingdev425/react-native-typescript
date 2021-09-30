@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { IBox } from '../../box'
 import { Touchable, Container, Label, BorderLine } from './styles'
@@ -60,7 +60,7 @@ export const Option: React.FC<IOption> = ({
 
         <Label>{option.label}</Label>
 
-        <ArrowIcon />
+        <Icons.Arrow />
 
         {!isLast && <BorderLine />}
       </Container>

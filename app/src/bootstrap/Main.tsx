@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { PropertyIcon } from '~/assets/images'
-import { AppBar } from '~/components'
-import { useReportAPI, Property } from '~/services'
+import { Icons } from '~/assets';
+import { AppBar } from '~/components';
+import { useReportAPI, Property } from '~/services';
 
 type MainProps = {}
 
@@ -20,5 +20,10 @@ export function Main({}: MainProps) {
       .catch((e) => console.error(e))
   }, [])
 
-  return <AppBar leftItem={<PropertyIcon />} title="Foo Community" />
+  return (
+    <AppBar
+      leftItem={<Icons.Property />}
+      title="Foo Community"
+    />
+  );
 }

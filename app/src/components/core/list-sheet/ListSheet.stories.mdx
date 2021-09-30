@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
 import { View } from 'react-native'
 
-import { ApplicationIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { ListSheet } from './ListSheet'
 
@@ -27,12 +27,12 @@ export const Template = props => <ListSheet {...props} />
       title: 'Leasing Reports',
       options: [
         {
-          Icon: ApplicationIcon,
+          Icon: Icons.Application,
           value: 'application',
           label: 'Engagement Score',
         },
         {
-          Icon: ApplicationIcon,
+          Icon: Icons.Application,
           value: 'responsiveness',
           label: 'Responsiveness',
         },

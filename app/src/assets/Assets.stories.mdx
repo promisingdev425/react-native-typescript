@@ -1,0 +1,127 @@
+import {
+  Meta,
+  Story,
+  Subheading,
+  ArgsTable,
+  Canvas,
+} from '@storybook/addon-docs'
+
+import AssetsMeta, { IconGallery, StyledExample } from './Assets.stories.native'
+
+import Icons from '~/assets/images/icons/styled'
+
+<Meta
+  title={AssetsMeta.title}
+  argTypes={AssetsMeta.argTypes}
+  args={AssetsMeta.args}
+/>
+
+# Icons
+
+The following icons are available from `~/assets`. All icons are `styled-components`
+with `styled-system` attributes connected to our theme.
+
+Unfortunately, due to the way the components are dynamically
+generated, you must reference the components on the `Icons` export as follows:
+
+```js
+import { Icons } from '~/assets'
+<Icons.Calendar />
+
+// The following will not work:
+import { Calendar } from '~/assets'
+<Calendar />
+```
+
+> NOTE: Some `styled-system` properties such as `padding` only work on web so you should
+> test your styling on both native and web to ensure the icons function as you expect.
+
+<Story name="Icons">
+  {IconGallery.bind({})}
+</Story>
+
+<ArgsTable story="Icons" />
+
+## Styled Example
+
+The following example shows many of the styled system attributes in action.
+You can compare this version to the one shown in `yarn storybook:native` to
+see which attributes only work on web.
+
+<Story name="Styled Example" args={StyledExample.args}>
+  {StyledExample.bind({})}
+</Story>
+
+## Adding New Icons
+
+1. To add new icons, simply add the `.svg` file into the `assets/images/icons` folder.
+2. Replace the main foreground colors in the SVG file with
+the value ["currentColor"](https://css-tricks.com/cascading-svg-fill-color/).
+3. Run `yarn build:icons`. This will generate a new icon component in the
+`assets/images/icons/components` folder for you and make it available on the
+`Icons` object.
+4. Commit the `.svg` file and the SVG component in the `icons/components` folder.
+Committing these files allows us to further customize those components if we need to.
+
+### Re-generating Existing Icons
+
+If an icon already exists in the `icons/components` folder, `yarn build:icons` will not touch it
+in case there are customizations in that file. To regenerate one of those icons,
+you'll need to remove the associated component file and re-run `yarn build:icons`.
+
+## Customizing Icons
+
+There are multiple ways you can customize our icons other than through props.
+
+### Customize The SVGs
+
+You may need to customize the `.svg` files you receive from designers before
+generating the SVG components. This is the preferred place to make changes to
+the SVG data.
+
+### Customize Icon Default Props
+
+To set the default props (ex default color) for a specific icon, you can add
+those to the `defaults` object defined in `assets/images/icons/styled.ts`.
+You can define any props of the icon there.
+
+```js
+const defaults = {
+  Application: {
+    color: 'brandOrange'
+    width: 20,
+    height: 20,
+    // etc.
+  },
+}
+```
+
+### Component Customizations
+
+If you need to customize more than just the default prop values, you can
+write a custom definition for the icon and attach it to the `Icons` object
+exported from `assets/images/icons/styled.ts`. This allows you write a fully
+custom component but then access it in the same manner as all other icon components.
+
+```jsx
+// inside icons/styled.ts
+const Icons = {} // Find this definition in the file
+
+// Attach your icon component to the Icons object so it gets exported.
+Icons.MyIcon = props => {
+  // You can write any custom component logic here,
+  // including using styled-components or styled-system.
+}
+```
+
+### Customized SVG Component
+
+All icon components should be committed after they are generated. This means
+you can customize the SVG component in the `icons/components` directory and
+commit those changes should you need to. It is preferred that you customize
+the underlying SVG file as a first option so your changes aren't lost if
+the SVG components are recreated.
+
+However, you may sometimes need to customize the SVGs to do things like take
+multiple color props, in which case customizing the SVG component is the way to go.
+

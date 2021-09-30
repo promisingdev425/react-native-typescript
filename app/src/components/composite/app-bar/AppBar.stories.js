@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import { PropertyIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { AppBar } from './AppBar'
 
@@ -9,11 +9,11 @@ storiesOf('AppBar', module)
   .add('Has left and right icons', () => (
     <AppBar
       title="Appbar header"
-      leftItem={<PropertyIcon />}
-      rightItem={<PropertyIcon />}
+      leftItem={<Icons.Property />}
+      rightItem={<Icons.Property />}
     />
   ))
   .add('Has left icon', () => (
-    <AppBar title="Appbar header" leftItem={<PropertyIcon />} />
+    <AppBar title="Appbar header" leftItem={<Icons.Property />} />
   ))
   .add('Title only', () => <AppBar title="Header title" />)

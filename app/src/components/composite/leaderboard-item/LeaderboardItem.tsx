@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StarIcon } from '~/assets/images'
+import { Icons } from '~/assets'
 
 import { Box } from '../../core'
 import { Benchmark, LeaderboardScore } from './leaderboard-score'
@@ -67,7 +67,7 @@ export const LeaderboardItem: React.FC<ILeaderboardItem> = ({
       content = (
         <TopRank>
           <Box position="absolute">
-            <StarIcon />
+            <Icons.Star />
           </Box>
 
           <TopRankLabel>{rank}</TopRankLabel>

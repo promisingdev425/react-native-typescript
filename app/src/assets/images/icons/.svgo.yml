@@ -1,0 +1,4 @@
+plugins:
+  - removeViewBox: false
+  - cleanupNumericValues:
+      floatPrecision: 1
