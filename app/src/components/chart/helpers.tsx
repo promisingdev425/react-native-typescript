@@ -3,6 +3,7 @@ import { G, Circle, Line } from 'react-native-svg'
 
 import { IDecorator, IGrid } from './types'
 
+/* istanbul ignore next */
 export const CircleDecorator = ({
   radius = 4,
   fill = 'white',
@@ -29,6 +30,7 @@ export const CircleDecorator = ({
   )
 }
 
+/* istanbul ignore next */
 export const Grid = ({
   x,
   y,
