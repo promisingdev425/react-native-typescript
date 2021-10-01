@@ -1,15 +1,15 @@
 import styled from 'styled-components/native'
-import { getColor } from '~/theme'
 import {
   LineChart as LineChartUI,
   XAxis as XAxisUI,
   YAxis as YAxisUI,
 } from 'react-native-svg-charts'
 
-import { IChart, IDecorator, IGrid } from '../types'
-import { CircleDecorator, Grid as GridUI } from '../helpers'
+import { getColor, getFontSize } from '~/theme'
 
 import { Box, IBox } from '../../core'
+import { IChart, IDecorator, IGrid, IAxis } from '../types'
+import { CircleDecorator, Grid as GridUI } from '../helpers'
 
 export const Container = styled(Box)<IBox>`
   display: flex;
@@ -24,13 +24,19 @@ export const Body = styled(Box)`
   flex-direction: row;
 `
 
-export const LineChartView = styled(LineChartUI).attrs((props: IChart) => ({
-  contentInset: { left: 5, right: 5, top: 5 },
-  svg: {
-    stroke: getColor(props.strokeColor)(props),
-    strokeWidth: props.strokeWidth,
-  },
-}))<IChart>`
+export const LineChartView = styled(LineChartUI).attrs(
+  ({ inset, strokeColor, strokeWidth, ...props }: IChart) => ({
+    contentInset: {
+      left: inset,
+      right: inset,
+      top: inset,
+    },
+    svg: {
+      stroke: getColor(strokeColor)(props),
+      strokeWidth,
+    },
+  }),
+)<IChart>`
   flex: 1;
 `
 
@@ -38,20 +44,36 @@ export const Decorator = styled(CircleDecorator).attrs((props: IDecorator) => ({
   strokeColor: getColor(props.strokeColor)(props),
 }))<IDecorator>``
 
-export const XAxis = styled(XAxisUI).attrs({
-  contentInset: { left: 5, right: 5 },
-  svg: { fontSize: 10, fill: 'black' },
-})`
-  margin-top: 5px;
-  height: 15px;
+export const XAxis = styled(XAxisUI).attrs(
+  ({ inset, textSize, textColor, ...props }: IAxis) => ({
+    contentInset: {
+      left: inset,
+      right: inset,
+    },
+    svg: {
+      fontSize: getFontSize(textSize || 'label2')(props),
+      fill: getColor(textColor || 'textSecondary')(props),
+    },
+  }),
+)<IAxis>`
+  margin-top: ${(props) => props.inset}px;
+  height: ${(props) => props.inset * 3}px;
 `
 
-export const YAxis = styled(YAxisUI).attrs({
-  contentInset: { top: 5, bottom: 5 },
-  svg: { fontSize: 10, fill: 'grey' },
-})`
-  margin-left: 10px;
-  margin-bottom: 15px;
+export const YAxis = styled(YAxisUI).attrs(
+  ({ inset, textSize, textColor, ...props }: IAxis) => ({
+    contentInset: {
+      top: inset,
+      bottom: inset,
+    },
+    svg: {
+      fontSize: getFontSize(textSize || 'label2')(props),
+      fill: getColor(textColor || 'textSecondary')(props),
+    },
+  }),
+)<IAxis>`
+  margin-left: ${(props) => props.inset * 2}px;
+  margin-bottom: ${(props) => props.inset * 3}px;
 `
 
 export const Grid = styled(GridUI).attrs((props: IGrid) => ({

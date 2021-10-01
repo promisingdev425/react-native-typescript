@@ -23,6 +23,7 @@ import {
 export const LineChart: React.FC<IChart> = ({
   title,
   values,
+  inset = 5,
   height = 300,
   strokeWidth = 2,
   strokeColor,
@@ -52,6 +53,7 @@ export const LineChart: React.FC<IChart> = ({
             strokeColor={strokeColor}
             strokeWidth={strokeWidth}
             numberOfTicks={numberOfTicks}
+            inset={inset}
           >
             <Grid
               strokeColor={gridColor}
@@ -65,12 +67,14 @@ export const LineChart: React.FC<IChart> = ({
 
           <XAxis
             data={chartData}
+            inset={inset}
             formatLabel={(value, index) => values[index].label}
           />
         </Box>
 
         <YAxis
           data={chartData}
+          inset={inset}
           numberOfTicks={numberOfTicks}
           formatLabel={(value, index) => (maxValue / numberOfTicks) * index}
         />
