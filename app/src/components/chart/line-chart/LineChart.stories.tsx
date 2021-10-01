@@ -1,22 +1,24 @@
 import React from 'react'
 
-import { centered } from '~/storybook-utils'
+import { centered, colorArgTypes } from '~/storybook-utils'
 
 import { LineChart } from './LineChart'
 
 export default {
   title: 'Components/LineChart',
   component: LineChart,
-  // You can use argTypes to further customize the controls
-  // in the storybook if you need.
-  // https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
-  // Default props for your stories.
-  // https://storybook.js.org/docs/react/writing-stories/args
+  argTypes: {
+    strokeColor: colorArgTypes.color,
+    gridColor: colorArgTypes.color,
+    activeGridColor: colorArgTypes.color,
+  },
   args: {
     title: 'Average Rent',
-    strokeColor: 'brandPink',
     strokeWidth: 2,
+    strokeColor: 'brandPink',
+    gridColor: 'lightGray',
+    activeGridColor: 'brandPink',
+    activeGridIndex: 3,
     values: [
       { value: 100, label: 'J' },
       { value: 120, label: 'F' },

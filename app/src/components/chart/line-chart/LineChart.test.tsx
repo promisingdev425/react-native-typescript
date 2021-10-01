@@ -31,6 +31,29 @@ describe('LineChart', function () {
             { value: 100, label: 'D' },
           ]}
         />
+
+        <LineChart
+          accessibilityLabel="LineChartActiveLine"
+          title="Average Rent"
+          strokeColor="brandOrange"
+          activeGridIndex={2}
+          activeGridColor="brandOrange"
+          strokeWidth={2}
+          values={[
+            { value: 100, label: 'J' },
+            { value: 120, label: 'F' },
+            { value: 120, label: 'M' },
+            { value: 130, label: 'A' },
+            { value: 140, label: 'M' },
+            { value: 110, label: 'J' },
+            { value: 120, label: 'J' },
+            { value: 130, label: 'A' },
+            { value: 140, label: 'S' },
+            { value: 150, label: 'O' },
+            { value: 110, label: 'N' },
+            { value: 100, label: 'D' },
+          ]}
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -41,6 +64,10 @@ describe('LineChart', function () {
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
       screen.getByA11yLabel('LineChart'),
+    )
+
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByA11yLabel('LineChartActiveLine'),
     )
   })
 })
