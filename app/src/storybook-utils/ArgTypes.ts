@@ -23,7 +23,7 @@ export const viewArgTypes = {
 export const textArgTypes = {
   fontSize: {
     options: Object.keys(themes.light.fontSizes),
-    control: 'select',
+    control: { type: 'select' },
     description:
       'styled-system ' +
       '[fontSize prop](https://styled-system.com/api#typography). ' +
@@ -31,7 +31,7 @@ export const textArgTypes = {
       'but it is preferred that you use a value from the theme.',
   },
   fontFamilyStyle: {
-    control: 'select',
+    control: { type: 'select' },
     options: Object.keys(themes.light.typography.style).map(
       (s) => `style.${s}`,
     ),
@@ -41,7 +41,7 @@ export const textArgTypes = {
       'This needs to be one of the font weights loaded for our available fonts.',
   },
   fontFamilyGroup: {
-    control: 'select',
+    control: { type: 'select' },
     options: Object.keys(themes.light.typography.group).map(
       (s) => `group.${s}`,
     ),
@@ -53,17 +53,17 @@ export const textArgTypes = {
 
 /** styled-system space props */
 export const spaceArgTypes = {
-  'margin': {
+  m: {
     options: [undefined].concat(Object.keys(themes.light.space)),
-    control: 'select',
+    control: { type: 'select' },
     description:
       'styled-system ' +
       '[margin props](https://styled-system.com/api#space). ' +
       'Includes props like `margin`, `marginTop`, etc.',
   },
-  'padding': {
+  p: {
     options: [undefined].concat(Object.keys(themes.light.space)),
-    control: 'select',
+    control: { type: 'select' },
     description:
       'styled-system ' +
       '[padding props](https://styled-system.com/api#space). ' +
@@ -75,7 +75,7 @@ export const spaceArgTypes = {
 export const colorArgTypes = {
   color: {
     options: [undefined].concat(Object.keys(themes.light.colors)),
-    control: 'select',
+    control: { type: 'select' },
     description:
       'styled-system ' +
       '[color props](https://styled-system.com/api#color). ' +
@@ -86,7 +86,7 @@ export const colorArgTypes = {
 export const backgroundColorArgTypes = {
   bg: {
     options: [undefined].concat(Object.keys(themes.light.colors)),
-    control: 'select',
+    control: { type: 'select' },
     description:
       'styled-system ' +
       '[background color props](https://styled-system.com/api#color). ' +

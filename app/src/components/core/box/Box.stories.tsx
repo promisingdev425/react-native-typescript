@@ -38,7 +38,7 @@ export default {
   excludeStories: /.*ArgTypes/,
   parameters: {
     controls: { sort: 'requiredFirst' },
-  }
+  },
 }
 
 export const Template = (props: IBox) => <Box {...props} />
@@ -48,6 +48,6 @@ Template.parameters = {
 }
 Template.args = {
   border: '1px dashed black',
-  padding: 'sm',
+  p: 'sm',
   children: <Text>This is a box with Text children</Text>,
 }
