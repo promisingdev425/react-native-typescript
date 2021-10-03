@@ -114,7 +114,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
     appendIfUnique(
       actions,
       `${currentDirectory}/index.ts`,
-      `export * from './${nextImport}';`,
+      `export * from './${nextImport}'`,
       data,
     )
   })
@@ -128,7 +128,7 @@ function makeComponentActions(componentType, pageSpecific, fullName, plop) {
   appendIfUnique(
     actions,
     `${componentTypeFolder}/index.ts`,
-    `export * from './${rootImport}';`,
+    `export * from './${rootImport}'`,
     data,
   )
 
