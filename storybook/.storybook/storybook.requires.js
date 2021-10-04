@@ -24,6 +24,7 @@ const getStories=() => {
   return [
 		require("../../app/src/assets/Assets.stories.native.tsx"), 
 		require("../../app/src/components/composite/app-bar/AppBar.stories.js"), 
+		require("../../app/src/components/composite/benchmark-chart/BenchmarkChart.stories.tsx"), 
 		require("../../app/src/components/composite/date-select/DateSelect.stories.js"), 
 		require("../../app/src/components/composite/gradient-button/GradientButton.stories.js"), 
 		require("../../app/src/components/composite/header-bar/HeaderBar.stories.js"), 
