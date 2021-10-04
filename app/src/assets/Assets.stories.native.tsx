@@ -11,7 +11,6 @@ import {
 } from '~/storybook-utils'
 
 import { Icons } from '~/assets/images/icons'
-import { themes} from '~/theme'
 
 import { Box, Title } from '~/components'
 
@@ -20,7 +19,8 @@ export default {
   argTypes: {
     title: {
       control: 'text',
-      description: 'Sets the `<title>` of the SVG. This should be used to ensure your icons are accessible.',
+      description:
+        'Sets the `<title>` of the SVG. This should be used to ensure your icons are accessible.',
     },
     width: {
       control: 'number',
@@ -38,25 +38,22 @@ export default {
     ...positionArgTypes,
     ...borderArgTypes,
     ref: {
-      description: 'You can use the `ref` prop to access the underlying SVG element.',
+      description:
+        'You can use the `ref` prop to access the underlying SVG element.',
     },
   },
 }
 
-const IconExample = ({name, children}) => (
-  <Box
-    m="sm"
-    alignItems="center"
-    justifyContent="center"
-  >
+const IconExample = ({ name, children }) => (
+  <Box m="sm" alignItems="center" justifyContent="center">
     <Box m="xs">{children}</Box>
     <Title>{name}</Title>
   </Box>
-);
+)
 
 export const IconGallery = (props) => (
   <Box flexDirection="row" flexWrap="wrap" alignItems="flex-end">
-    { Object.keys(Icons).map((name) => {
+    {Object.keys(Icons).map((name) => {
       const Icon = Icons[name]
       return (
         <IconExample name={name} key={name}>
@@ -67,7 +64,7 @@ export const IconGallery = (props) => (
   </Box>
 )
 
-const Template = props => <Icons.Calendar {...props} />
+const Template = (props) => <Icons.Calendar {...props} />
 
 export const StyledExample = Template.bind({})
 StyledExample.args = {
