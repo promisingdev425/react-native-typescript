@@ -1,7 +1,11 @@
+import styled from 'styled-components'
 import React from 'react'
 import { G, Circle, Line } from 'react-native-svg'
+import { XAxis as XAxisUI, YAxis as YAxisUI } from 'react-native-svg-charts'
 
-import { IDecorator, IGrid } from './types'
+import { getMetrics, getSpace, getFontSize, getColor } from '~/theme'
+
+import { IDecorator, IGrid, IAxis } from './types'
 
 /* istanbul ignore next */
 export const CircleDecorator = ({
@@ -39,37 +43,95 @@ export const Grid = ({
   strokeColor,
   activeIndex,
   activeColor,
-}: IGrid) => (
-  <G>
-    {ticks.map((tick: number) => (
+}: IGrid) => {
+  const xSpace = (x(1) - x(0)) / 2
+  return (
+    <G>
+      {ticks.map((tick: number) => (
+        <Line
+          key={tick}
+          x1={10}
+          x2="100%"
+          y1={y(tick)}
+          y2={y(tick)}
+          stroke={strokeColor}
+          transform="translate(-5, 0)"
+        />
+      ))}
+      {data.map((value: number, index: number) => (
+        <Line
+          key={index}
+          y1={'0%'}
+          y2={'100%'}
+          x1={x(index) - xSpace}
+          x2={x(index) - xSpace}
+          transform="translate(0, 5)"
+          stroke={strokeColor}
+          strokeDasharray={index === 0 ? 0 : 4}
+        />
+      ))}
       <Line
-        key={tick}
-        x1={10}
-        x2="100%"
-        y1={y(tick)}
-        y2={y(tick)}
-        stroke={strokeColor}
-        transform="translate(-5, 0)"
-      />
-    ))}
-    {data.map((value: number, index: number) => (
-      <Line
-        key={index}
+        key={data.length}
         y1={'0%'}
         y2={'100%'}
-        x1={x(index)}
-        x2={x(index)}
+        x1={x(data.length - 1) + xSpace}
+        x2={x(data.length - 1) + xSpace}
         transform="translate(0, 5)"
-        stroke={index === activeIndex ? activeColor : strokeColor}
-        strokeDasharray={
-          index === activeIndex || index === 0 || index === data.length - 1
-            ? 0
-            : 4
-        }
+        stroke={strokeColor}
       />
-    ))}
-  </G>
-)
+      {activeIndex !== undefined && (
+        <Line
+          key={`active-line`}
+          y1={'0%'}
+          y2={'100%'}
+          x1={x(activeIndex)}
+          x2={x(activeIndex)}
+          transform="translate(0, 5)"
+          stroke={activeColor || strokeColor}
+        />
+      )}
+    </G>
+  )
+}
+
+export const XAxis = styled(XAxisUI).attrs(
+  ({ data, inset, textSize, textColor, ...props }: IAxis) => {
+    const screenWidth = getMetrics('screenWidth')(props)
+    const elementWidth =
+      (screenWidth - getSpace('sm')(props) * 2 - 30) / (data.length || 1)
+
+    return {
+      contentInset: {
+        left: elementWidth / 2 + inset,
+        right: elementWidth / 2 + inset,
+      },
+      svg: {
+        fontSize: getFontSize(textSize || 'label2')(props),
+        fill: getColor(textColor || 'textSecondary')(props),
+      },
+    }
+  },
+)<IAxis>`
+  margin-top: ${(props) => props.inset}px;
+  height: ${(props) => props.inset * 3}px;
+`
+
+export const YAxis = styled(YAxisUI).attrs(
+  ({ data, inset, textSize, textColor, ...props }: IAxis) => ({
+    style: { width: 30 },
+    contentInset: {
+      top: inset,
+      bottom: inset,
+    },
+    svg: {
+      fontSize: getFontSize(textSize || 'label2')(props),
+      fill: getColor(textColor || 'textSecondary')(props),
+    },
+  }),
+)<IAxis>`
+  width: 30px;
+  margin-bottom: ${(props) => props.inset * 3}px;
+`
 
 export const getMaxValue = (numbers: Array<number>) => {
   const maxValue = Math.max(...numbers)

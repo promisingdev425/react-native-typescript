@@ -20,6 +20,7 @@ export interface IChart extends IBox, ICommonProps {
   gridColor?: string
   activeGridIndex?: number | undefined
   activeGridColor?: string | undefined
+  data?: Array<number>
   values?: Array<ChartData>
 }
 

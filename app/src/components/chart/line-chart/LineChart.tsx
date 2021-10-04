@@ -2,17 +2,9 @@ import React from 'react'
 
 import { Box, Title } from '../../core'
 import { IChart } from '../types'
-import { getMaxValue } from '../helpers'
+import { getMaxValue, XAxis, YAxis } from '../helpers'
 
-import {
-  Container,
-  Body,
-  LineChartView,
-  Decorator,
-  XAxis,
-  YAxis,
-  Grid,
-} from './styles'
+import { Container, Body, LineChartView, Decorator, Grid } from './styles'
 
 /**
  * `<LineChart>`
