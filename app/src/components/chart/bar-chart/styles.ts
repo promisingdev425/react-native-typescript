@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
-import { BarChart as BarChartUI } from 'react-native-svg-charts'
+import { LineChart as LineChartUI } from 'react-native-svg-charts'
 
-import { getColor } from '~/theme'
+import { getColor, getMetrics, getSpace } from '~/theme'
 
 import { Box, IBox } from '../../core'
 import { IChart, IGrid } from '../types'
@@ -20,14 +20,21 @@ export const Body = styled(Box)`
   flex-direction: row;
 `
 
-export const BarChartView = styled(BarChartUI).attrs(
+export const ChartView = styled(LineChartUI).attrs(
   ({ data, inset, strokeColor, strokeWidth, ...props }: IChart) => {
+    const screenWidth = getMetrics('screenWidth')(props)
+    const elementWidth =
+      (screenWidth - getSpace('sm')(props) * 2 - 30) / (data.length || 1)
+
     return {
-      animate: true,
       contentInset: {
-        left: inset,
-        right: inset,
+        left: elementWidth / 2 + inset,
+        right: elementWidth / 2 + inset,
         top: inset,
+      },
+      svg: {
+        stroke: getColor(strokeColor)(props),
+        strokeWidth,
       },
     }
   },

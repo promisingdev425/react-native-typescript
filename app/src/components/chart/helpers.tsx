@@ -67,8 +67,8 @@ export const Grid = ({
           {data.map((value: number, index: number) => (
             <Line
               key={index}
-              y1={'0%'}
-              y2={'100%'}
+              y1="0%"
+              y2="100%"
               x1={x(index) - (type === ChartType.Line ? xSpace : 0)}
               x2={x(index) - (type === ChartType.Line ? xSpace : 0)}
               transform="translate(0, 5)"
@@ -78,8 +78,8 @@ export const Grid = ({
           ))}
           <Line
             key={data.length}
-            y1={'0%'}
-            y2={'100%'}
+            y1="0%"
+            y2="100%"
             x1={
               type === ChartType.Line
                 ? x(data.length - 1) + xSpace
@@ -95,9 +95,9 @@ export const Grid = ({
           />
           {activeIndex !== undefined && (
             <Line
-              key={`active-line`}
-              y1={'0%'}
-              y2={'100%'}
+              key="active-line"
+              y1="0%"
+              y2="100%"
               x1={x(activeIndex)}
               x2={x(activeIndex)}
               transform="translate(0, 5)"

@@ -1,13 +1,13 @@
 import React from 'react'
-import { Defs, LinearGradient, Stop } from 'react-native-svg'
+import { Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
 
 import { themes } from '~/theme'
 
 import { Box, Title } from '../../core'
-import { IChart, ChartType } from '../types'
+import { IChart, IDecorator, ChartType } from '../types'
 import { XAxis, YAxis } from '../helpers'
 
-import { Container, Body, BarChartView, Grid } from './styles'
+import { Container, Body, ChartView, Grid } from './styles'
 
 /**
  * `<BarChart>`
@@ -38,6 +38,35 @@ export const BarChart: React.FC<IChart> = ({
     </Defs>
   )
 
+  const BarDecorator = ({ data, x, y }: IDecorator) => {
+    const { screenWidth } = themes.light.metrics
+    const { sm } = themes.light.space
+    const elementWidth = (screenWidth - sm * 2 - 30) / (data.length || 1)
+    const xSpace = elementWidth * 0.15
+
+    return (
+      <>
+        {data.map((value, index) => {
+          const baseY = y(0)
+          const barHeight = baseY - y(value)
+          return (
+            <Rect
+              key={index}
+              x={x(index) + xSpace - elementWidth / 2}
+              y={barHeight > 0 ? baseY - barHeight : baseY}
+              rx={5}
+              width={elementWidth - xSpace * 2}
+              height={Math.abs(barHeight)}
+              fill={
+                value >= 0 ? 'url(#default)' : themes.light.colors.lightGray
+              }
+            />
+          )
+        })}
+      </>
+    )
+  }
+
   return (
     <Container {...rest} p="sm">
       {title && (
@@ -50,15 +79,21 @@ export const BarChart: React.FC<IChart> = ({
         <YAxis data={chartData} inset={inset} />
 
         <Box flex={1}>
-          <BarChartView
+          <ChartView
             data={chartData}
-            spacingInner={0.1}
             inset={inset}
-            svg={{ fill: fillColor || 'url(#default)' }}
+            svg={{ strokeWidth: 1, stroke: '#333' }}
           >
-            <Grid strokeColor={gridColor} type={ChartType.Bar} belowChart />
+            <Grid
+              strokeColor={gridColor}
+              type={ChartType.Line}
+              direction="BOTH"
+              belowChart
+            />
+
             <GradientFill />
-          </BarChartView>
+            <BarDecorator />
+          </ChartView>
 
           <XAxis
             data={chartData}
