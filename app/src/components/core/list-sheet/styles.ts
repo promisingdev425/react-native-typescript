@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { TouchableWithoutFeedbackProps, Dimensions } from 'react-native'
+import { TouchableWithoutFeedbackProps, Dimensions, Platform } from 'react-native'
 import { getBottomSpace as getBottomSpaceX } from 'react-native-iphone-x-helper'
 
 import { getMetrics } from '~/theme'
@@ -21,6 +21,13 @@ export const getBottomSpace = (props) => {
   return bottomSpace
 }
 
+export const StyledModal = styled(Box).attrs({
+  position: (Platform.OS === 'web') ? 'fixed' : 'absolute'
+})`
+  bottom: 0;
+  width: 100%;
+`
+
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-end;
@@ -30,8 +37,8 @@ export const Overlay = styled.TouchableWithoutFeedback<TouchableWithoutFeedbackP
 
 export const OverlayBackground = styled(Box).attrs({
   bg: 'black',
+  position: (Platform.OS === 'web') ? 'fixed' : 'absolute'
 })<IBox>`
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -44,6 +51,8 @@ export const Body = styled(Box).attrs((props) => {
     bg: 'white',
     btlr: 3,
     btrr: 3,
+    margin: (Platform.OS === 'web') ? '0 auto' : 0,
+    minWidth: (Platform.OS === 'web') ? 300 : 'auto'
   }
 })``
 

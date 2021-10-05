@@ -7,6 +7,7 @@ import { IOptionData, Option } from './option'
 import {
   getMaxHeight,
   getBottomSpace,
+  StyledModal,
   Container,
   Overlay,
   OverlayBackground,
@@ -127,7 +128,7 @@ export const ListSheet: React.FC<IListSheet> = ({
   const overlayStyle: AnimatedViewStyle = { opacity: opacityInterpolation }
 
   return (
-    <Modal
+    <StyledModal as={Modal}
       visible={open}
       animationType="none"
       onRequestClose={handleCancel}
@@ -159,6 +160,6 @@ export const ListSheet: React.FC<IListSheet> = ({
           </Content>
         </Body>
       </Container>
-    </Modal>
+    </StyledModal>
   )
 }
