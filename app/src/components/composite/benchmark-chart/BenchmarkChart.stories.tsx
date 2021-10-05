@@ -8,28 +8,22 @@ import { BenchmarkChart } from './BenchmarkChart'
 export default {
   title: 'Components/BenchmarkChart',
   component: BenchmarkChart,
-  argTypes: {
-    isPercentage: {
-      description: 'appends percentage sign on number'
-    }
+  argTypes: {},
+  args: {
+    minimum: 0,
+    maximum: 100,
+    negative: 25,
+    positive: 75,
+    value: 30,
+    isPercentage: true
   },
-  args: {},
   parameters: {
     controls: { sort: 'requiredFirst' },
   },
 }
 
 // The first export will be used as the main story on the page.
-export const Template = (props) => (
-  <BenchmarkChart
-    minimum={0}
-    maximum={100}
-    negative={25}
-    positive={75}
-    value={30}
-    isPercentage={true}
-    {...props} />
-)
+export const Template = (props) => <BenchmarkChart {...props} />
 Template.storyName = 'BenchmarkChart'
 Template.decorators = [centered]
 Template.parameters = {

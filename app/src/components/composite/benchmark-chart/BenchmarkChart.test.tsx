@@ -5,23 +5,24 @@ import { withTheme } from '~/theme/hocs'
 
 import { BenchmarkChart, calculateValuePercentage } from './BenchmarkChart'
 
-const test_values = {
-  minimum: 12,
-  maximum: 95,
-  negative: 25,
-  positive: 75,
-  value: 30,
-  isPercentage: true
-}
-
 describe('BenchmarkChart', function () {
   let screen: RenderAPI
+  let testValues;
 
   beforeEach(() => {
+    testValues = {
+      minimum: 12,
+      maximum: 95,
+      negative: 25,
+      positive: 75,
+      value: 30,
+      isPercentage: true
+    }
+
     const InnerScreen = () => (
       <View testID="Root">
         <BenchmarkChart
-          {...test_values}
+          {...testValues}
           testID="BenchmarkChart"
         />
       </View>
@@ -43,18 +44,17 @@ describe('BenchmarkChart', function () {
   })
 
   it('should position the dot and indicator', () => {
-
-    const value_percentage = calculateValuePercentage(
-      test_values.minimum,
-      test_values.maximum,
-      test_values.value,
+    const valuePercentage = calculateValuePercentage(
+      testValues.minimum,
+      testValues.maximum,
+      testValues.value,
     )
 
     expect(screen.getByTestId('Dot'))
-      .toHaveStyle({left: value_percentage+'%'})
+      .toHaveStyle({left: valuePercentage + '%'})
 
     expect(screen.getByTestId('Indicator'))
-      .toHaveStyle({left: value_percentage+'%'})
+      .toHaveStyle({left: valuePercentage + '%'})
   })
 
 })

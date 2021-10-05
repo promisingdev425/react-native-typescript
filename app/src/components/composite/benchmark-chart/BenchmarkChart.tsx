@@ -4,11 +4,35 @@ import { Text } from '~/components/core'
 import { styles } from './styles'
 
 export interface IBenchmarkChart {
+
+  /**
+   * The minimum value of the chart.
+   */
   minimum?: number,
+
+  /**
+   * The maximum value of the chart.
+   */
   maximum?: number,
+
+  /**
+   * The threshold for negative scores.
+   */
   negative: number,
+
+  /**
+   * The threshold for positive scores.
+   */
   positive: number,
+
+  /**
+   * The value of the metric.
+   */
   value: number,
+
+  /**
+   * Appends percentage sign on number.
+   */
   isPercentage?: boolean,
 }
 
@@ -18,10 +42,11 @@ export const calculateValuePercentage = (minimum, maximum, value) => {
 }
 
 /**
- * `<BenchmarkChart>`
- *
- * @param {object} props
- * @return {React.ReactNode}
+ * `<BenchmarkChart>` is used to show what values are used to determine
+ *  the passing and failing states of a report. Use the negative and positive
+ *  props to set the report thresholds, use the minimum and maximum props
+ *  to specify the absolute range of the report and the value prop to
+ *  specify the current report value.
  */
 export const BenchmarkChart: React.FC<IBenchmarkChart> = ({
   minimum = 0,
