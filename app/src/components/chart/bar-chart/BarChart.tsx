@@ -29,6 +29,7 @@ export const BarChart: React.FC<IChart> = ({
 }) => {
   const chartData = values.map((item) => item.value)
 
+  /* istanbul ignore next */
   const GradientFill = () => (
     <Defs key={'default'}>
       <LinearGradient id="default" x1="0" y1="0%" x2="100%" y2="100%">
@@ -38,10 +39,11 @@ export const BarChart: React.FC<IChart> = ({
     </Defs>
   )
 
+  /* istanbul ignore next */
   const BarDecorator = ({ data, x, y }: IDecorator) => {
     const { screenWidth } = themes.light.metrics
     const { sm } = themes.light.space
-    const elementWidth = (screenWidth - sm * 2 - 30) / (data.length || 1)
+    const elementWidth = (screenWidth - sm * 2 - 30) / data.length
     const xSpace = elementWidth * 0.15
 
     return (

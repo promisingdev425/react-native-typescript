@@ -11,7 +11,18 @@ describe('BarChart', function () {
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <BarChart testID="BarChart" />
+        <BarChart
+          accessibilityLabel="BarChart"
+          title="Bar Chart"
+          gridColor="lightGray"
+          values={[
+            { value: 100, label: 'January' },
+            { value: 120, label: 'Februray' },
+            { value: -120, label: 'March' },
+            { value: 130, label: 'April' },
+            { value: 140, label: 'May' },
+          ]}
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -21,7 +32,7 @@ describe('BarChart', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByTestId('BarChart'),
+      screen.getByA11yLabel('BarChart'),
     )
   })
 })

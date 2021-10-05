@@ -114,7 +114,7 @@ export const XAxis = styled(XAxisUI).attrs(
   ({ data, inset, textSize, textColor, ...props }: IAxis) => {
     const screenWidth = getMetrics('screenWidth')(props)
     const elementWidth =
-      (screenWidth - getSpace('sm')(props) * 2 - 30) / (data.length || 1)
+      (screenWidth - getSpace('sm')(props) * 2 - 30) / data.length
 
     return {
       contentInset: {

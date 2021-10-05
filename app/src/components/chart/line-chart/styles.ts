@@ -24,7 +24,7 @@ export const LineChartView = styled(LineChartUI).attrs(
   ({ data, inset, strokeColor, strokeWidth, ...props }: IChart) => {
     const screenWidth = getMetrics('screenWidth')(props)
     const elementWidth =
-      (screenWidth - getSpace('sm')(props) * 2 - 30) / (data.length || 1)
+      (screenWidth - getSpace('sm')(props) * 2 - 30) / data.length
 
     return {
       contentInset: {
@@ -42,10 +42,12 @@ export const LineChartView = styled(LineChartUI).attrs(
   flex: 1;
 `
 
+/* istanbul ignore next */
 export const Decorator = styled(CircleDecorator).attrs((props: IDecorator) => ({
   strokeColor: getColor(props.strokeColor)(props),
 }))<IDecorator>``
 
+/* istanbul ignore next */
 export const Grid = styled(GridUI).attrs((props: IGrid) => ({
   strokeColor: getColor(props.strokeColor)(props),
   activeColor: getColor(props.activeColor)(props),

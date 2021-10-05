@@ -18,24 +18,14 @@ export default {
   // Default props for your stories.
   // https://storybook.js.org/docs/react/writing-stories/args
   args: {
-    strokeWidth: 2,
-    strokeColor: 'brandPink',
+    title: 'Bar Chart',
     gridColor: 'lightGray',
-    activeGridColor: 'brandPink',
-    activeGridIndex: 3,
     values: [
       { value: 100, label: 'January' },
       { value: 120, label: 'Februray' },
       { value: -120, label: 'March' },
       { value: 130, label: 'April' },
       { value: 140, label: 'May' },
-      // { value: -110, label: 'June' },
-      // { value: -120, label: 'July' },
-      // { value: 130, label: 'August' },
-      // { value: 140, label: 'September' },
-      // { value: 150, label: 'October' },
-      // { value: 110, label: 'November' },
-      // { value: 100, label: 'December' },
     ],
   },
   parameters: {
