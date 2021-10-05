@@ -13,10 +13,17 @@ export type ChartData = {
   label: string
 }
 
+export enum ChartType {
+  Bar,
+  Line,
+  Pie,
+}
+
 export interface IChart extends IBox, ICommonProps {
   title?: string
   height?: number
   numberOfTicks?: number
+  fillColor?: string
   gridColor?: string
   activeGridIndex?: number | undefined
   activeGridColor?: string | undefined
@@ -35,6 +42,7 @@ export interface IDecorator extends ICommonProps {
 export interface IGrid extends GridProps<number>, ICommonProps {
   activeIndex?: number
   activeColor?: string
+  type?: ChartType
   data?: Array<number>
 }
 

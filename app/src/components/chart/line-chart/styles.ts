@@ -25,7 +25,7 @@ export const LineChartView = styled(LineChartUI).attrs(
     const screenWidth = getMetrics('screenWidth')(props)
     const elementWidth =
       (screenWidth - getSpace('sm')(props) * 2 - 30) / (data.length || 1)
-    console.log('elementWidth', elementWidth)
+
     return {
       contentInset: {
         left: elementWidth / 2 + inset,
