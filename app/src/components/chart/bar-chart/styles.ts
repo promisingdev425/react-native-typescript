@@ -1,10 +1,11 @@
 import styled from 'styled-components/native'
-import { BarChart as BarChartUI, Grid as GridUI } from 'react-native-svg-charts'
+import { BarChart as BarChartUI } from 'react-native-svg-charts'
 
 import { getColor } from '~/theme'
 
 import { Box, IBox } from '../../core'
 import { IChart, IGrid } from '../types'
+import { Grid as GridUI } from '../helpers'
 
 export const Container = styled(Box)<IBox>`
   display: flex;
@@ -20,27 +21,21 @@ export const Body = styled(Box)`
 `
 
 export const BarChartView = styled(BarChartUI).attrs(
-  ({ inset, strokeColor, strokeWidth, ...props }: IChart) => ({
-    contentInset: {
-      left: inset,
-      right: inset,
-      top: inset,
-    },
-    svg: {
-      stroke: getColor(strokeColor)(props),
-      strokeWidth,
-      fill: 'rgba(134, 65, 244, 0.8)',
-    },
-    spacing: 0.2,
-  }),
+  ({ data, inset, strokeColor, strokeWidth, ...props }: IChart) => {
+    return {
+      animate: true,
+      contentInset: {
+        left: inset,
+        right: inset,
+        top: inset,
+      },
+    }
+  },
 )<IChart>`
   flex: 1;
 `
 
 export const Grid = styled(GridUI).attrs((props: IGrid) => ({
-  direction: GridUI.Direction.HORIZONTAL,
-  svg: {
-    stroke: '#333', // getColor(props.strokeColor)(props),
-    strokeWidth: 0.5,
-  },
+  strokeColor: getColor(props.strokeColor)(props),
+  activeColor: getColor(props.activeColor)(props),
 }))<IGrid>``

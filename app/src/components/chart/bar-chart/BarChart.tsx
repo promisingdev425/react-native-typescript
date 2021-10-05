@@ -1,8 +1,11 @@
 import React from 'react'
+import { Defs, LinearGradient, Stop } from 'react-native-svg'
+
+import { themes } from '~/theme'
 
 import { Box, Title } from '../../core'
-import { IChart } from '../types'
-import { getMaxValue, XAxis, YAxis } from '../helpers'
+import { IChart, ChartType } from '../types'
+import { XAxis, YAxis } from '../helpers'
 
 import { Container, Body, BarChartView, Grid } from './styles'
 
@@ -17,16 +20,23 @@ export const BarChart: React.FC<IChart> = ({
   values,
   inset = 5,
   height = 300,
-  strokeWidth = 2,
-  strokeColor,
   numberOfTicks = 10,
   gridColor = 'lightGray',
   activeGridIndex,
+  fillColor,
   activeGridColor = 'brandPink',
   ...rest
 }) => {
   const chartData = values.map((item) => item.value)
-  const maxValue = getMaxValue(chartData)
+
+  const GradientFill = () => (
+    <Defs key={'default'}>
+      <LinearGradient id="default" x1="0" y1="0%" x2="100%" y2="100%">
+        <Stop offset="0%" stopColor={themes.light.colors.brandOrange} />
+        <Stop offset="100%" stopColor={themes.light.colors.brandPink} />
+      </LinearGradient>
+    </Defs>
+  )
 
   return (
     <Container {...rest} p="sm">
@@ -37,29 +47,17 @@ export const BarChart: React.FC<IChart> = ({
       )}
 
       <Body height={height}>
-        <YAxis
-          data={chartData}
-          inset={inset}
-          numberOfTicks={numberOfTicks}
-          formatLabel={(value, index) => (maxValue / numberOfTicks) * index}
-        />
+        <YAxis data={chartData} inset={inset} />
 
         <Box flex={1}>
           <BarChartView
             data={chartData}
-            gridMin={0}
-            gridMax={maxValue}
-            strokeColor={strokeColor}
-            strokeWidth={strokeWidth}
-            numberOfTicks={numberOfTicks}
+            spacingInner={0.1}
             inset={inset}
+            svg={{ fill: fillColor || 'url(#default)' }}
           >
-            <Grid
-              strokeColor={gridColor}
-              activeColor={activeGridColor}
-              activeIndex={activeGridIndex}
-              belowChart
-            />
+            <Grid strokeColor={gridColor} type={ChartType.Bar} belowChart />
+            <GradientFill />
           </BarChartView>
 
           <XAxis
