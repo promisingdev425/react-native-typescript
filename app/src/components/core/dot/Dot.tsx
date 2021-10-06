@@ -18,7 +18,8 @@ export interface IDot {
 }
 
 /**
- * `<Dot>`
+ * `<Dot>` is a simple visual component that has props for
+ * changing the color and if it has an outer layer.
  */
 export const Dot: React.FC<IDot> = ({
   color,

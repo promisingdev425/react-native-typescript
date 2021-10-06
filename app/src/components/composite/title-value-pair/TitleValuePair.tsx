@@ -1,23 +1,18 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { ValueDotContainer, Value, TheDot, SubText } from './styles'
+import { ValueDotContainer, Value, TheDot, Title } from './styles'
 
 export interface ITitleValuePair {
   /**
-   * The value.
+   * The value can be any string or number (ie 3.6 or "21 days")
    */
   value: string
 
   /**
-   * Appends a percentage sign.
+   * The title below the value.
    */
-  isPercentage: boolean
-
-  /**
-   * The subtext.
-   */
-  subText: string
+  title: string
 
   /**
    * Should this have a dot.
@@ -25,37 +20,32 @@ export interface ITitleValuePair {
   hasDot?: boolean
 
   /**
-   * Controls the color of the dot.
+   * Controls the color of the <a href="/?path=/docs/components-dot--template">Dot</a>.
    */
   dotColor?: string
 }
 
 /**
- * `<TitleValuePair>`
+ * `<TitleValuePair>` is a simple component that displays a value,
+ * a dot (if included) and some title text.
  */
 export const TitleValuePair: React.FC<ITitleValuePair> = ({
   value,
-  isPercentage,
-  subText,
+  title,
   hasDot = false,
-  dotColor = 'red',
+  dotColor = 'positive',
   ...rest
 }) => {
-  const appendValue = isPercentage ? '%' : ''
 
   return (
-    <View {...rest} >
+    <View {...rest}>
 
       <ValueDotContainer>
-        <Value accessible={true} >
-          {value}
-          {appendValue}
-        </Value>
+        <Value accessible={true}>{value}</Value>
         {hasDot && <TheDot testID="Dot" color={dotColor} hasOuterLayer={true} />}
       </ValueDotContainer>
 
-      <SubText accessible={true}>{subText}</SubText>
-
+      <Title accessible={true}>{title}</Title>
     </View>
   )
 }

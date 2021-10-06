@@ -32,7 +32,7 @@ export const DotInner = styled(Box).attrs(({ color }: DotProps) => {
     ml: 'xxs',
     width: dotSize / scale,
     height: dotSize / scale,
-    borderRadius: dotSize / scale,
+    borderRadius: dotSize / 2,
     backgroundColor: color,
     position: 'absolute',
     left: dotSize / scale,

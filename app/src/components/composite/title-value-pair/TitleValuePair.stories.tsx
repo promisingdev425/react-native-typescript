@@ -10,8 +10,7 @@ export default {
   argTypes: {},
   args: {
     value: 91,
-    isPercentage: true,
-    subText: 'Occupancy',
+    title: 'Occupancy',
     hasDot: true,
     dotColor: 'positive',
   },
@@ -34,8 +33,8 @@ Template1.parameters = {
   docs: { source: { state: 'open' } },
 }
 Template1.args = {
-  value: 3.6,
+  value: '3.6 Days',
   isPercentage: false,
-  subText: 'Score',
+  title: 'Score',
   hasDot: false,
 }

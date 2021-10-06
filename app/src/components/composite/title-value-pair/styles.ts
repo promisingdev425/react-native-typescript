@@ -20,7 +20,7 @@ export const TheDot = styled(Dot).attrs({
   ml: 'xs'
 })``
 
-export const SubText = styled(Text).attrs((props) => {
+export const Title = styled(Text).attrs((props) => {
   return{
     fontSize: getFontSize('body2')(props),
     color: getColor('textGray')(props)
