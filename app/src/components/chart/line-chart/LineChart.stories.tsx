@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { centered, colorArgTypes } from '~/storybook-utils'
+import { centered, themeColorControl } from '~/storybook-utils'
 
 import { LineChart } from './LineChart'
 
@@ -8,9 +8,9 @@ export default {
   title: 'Components/LineChart',
   component: LineChart,
   argTypes: {
-    strokeColor: colorArgTypes.color,
-    gridColor: colorArgTypes.color,
-    activeGridColor: colorArgTypes.color,
+    strokeColor: themeColorControl,
+    gridColor: themeColorControl,
+    activeGridColor: themeColorControl,
   },
   args: {
     title: 'Average Rent',

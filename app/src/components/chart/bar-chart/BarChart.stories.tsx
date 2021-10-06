@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { centered, colorArgTypes } from '~/storybook-utils'
+import { centered, themeColorControl } from '~/storybook-utils'
 
 import { BarChart } from './BarChart'
 
@@ -11,9 +11,9 @@ export default {
   // in the storybook if you need.
   // https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    strokeColor: colorArgTypes.color,
-    gridColor: colorArgTypes.color,
-    activeGridColor: colorArgTypes.color,
+    strokeColor: themeColorControl,
+    gridColor: themeColorControl,
+    activeGridColor: themeColorControl,
   },
   // Default props for your stories.
   // https://storybook.js.org/docs/react/writing-stories/args
@@ -21,9 +21,9 @@ export default {
     title: 'Bar Chart',
     gridColor: 'lightGray',
     values: [
-      { value: 100, label: 'January' },
+      { value: -20, label: 'January' },
       { value: 120, label: 'Februray' },
-      { value: -120, label: 'March' },
+      { value: 180, label: 'March' },
       { value: 130, label: 'April' },
       { value: 140, label: 'May' },
     ],
