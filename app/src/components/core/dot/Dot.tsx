@@ -27,7 +27,7 @@ export const Dot: React.FC<IDot> = ({
 }) => {
   return (
     <Container {...rest} accessible={true}>
-      {hasOuterLayer && <DotOuter color={color} />}
+      {hasOuterLayer && <DotOuter testID="DotOuterLayer" color={color} />}
       <DotInner color={color} />
     </Container>
   )
