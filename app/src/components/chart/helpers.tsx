@@ -156,3 +156,9 @@ export const getMaxValue = (numbers: Array<number>) => {
 
   return Math.ceil(maxValue / units) * units
 }
+
+export const getGridMin = (numbers: Array<number>) => {
+  const minValue = Math.min(...numbers)
+
+  return minValue > 0 ? 0 : undefined
+}

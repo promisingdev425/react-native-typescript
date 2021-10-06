@@ -5,7 +5,7 @@ import { themes } from '~/theme'
 
 import { Box, Title } from '../../core'
 import { IChart, IDecorator, ChartType } from '../types'
-import { XAxis, YAxis } from '../helpers'
+import { XAxis, YAxis, getGridMin } from '../helpers'
 
 import { Container, Body, ChartView, Grid } from './styles'
 
@@ -24,7 +24,6 @@ export const BarChart: React.FC<IChart> = ({
   gridColor = 'lightGray',
   activeGridIndex,
   fillColor,
-  activeGridColor = 'brandPink',
   ...rest
 }) => {
   const chartData = values.map((item) => item.value)
@@ -78,13 +77,14 @@ export const BarChart: React.FC<IChart> = ({
       )}
 
       <Body height={height}>
-        <YAxis data={chartData} inset={inset} />
+        <YAxis data={chartData} min={getGridMin(chartData)} inset={inset} />
 
         <Box flex={1}>
           <ChartView
             data={chartData}
             inset={inset}
             svg={{ strokeWidth: 1, stroke: '#333' }}
+            gridMin={getGridMin(chartData)}
           >
             <Grid
               strokeColor={gridColor}

@@ -8,6 +8,7 @@ import { IChart, IDecorator, IGrid } from '../types'
 import { CircleDecorator, Grid as GridUI } from '../helpers'
 
 export const Container = styled(Box)<IBox>`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
