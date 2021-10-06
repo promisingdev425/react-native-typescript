@@ -83,6 +83,11 @@ export const colorArgTypes = {
   },
 }
 
+export const themeColorControl = {
+  options: [undefined].concat(Object.keys(themes.light.colors)),
+  control: { type: 'select' },
+}
+
 export const backgroundColorArgTypes = {
   bg: {
     options: [undefined].concat(Object.keys(themes.light.colors)),
