@@ -20,7 +20,7 @@ export interface IDot {
  */
 export const Dot: React.FC<IDot> = ({ size, color, ...rest }) => {
   return (
-    <Container size={size} {...rest}>
+    <Container size={size} {...rest} accessible={true}>
       <DotOuter size={size} color={color} />
       <DotInner size={size} color={color} />
     </Container>

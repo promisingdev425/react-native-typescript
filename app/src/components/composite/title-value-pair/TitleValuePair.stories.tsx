@@ -9,11 +9,11 @@ export default {
   component: TitleValuePair,
   argTypes: {},
   args: {
-    value: 3.6,
-    isPercentage: false,
-    subText: 'income',
+    value: 91,
+    isPercentage: true,
+    subText: 'Occupancy',
     hasDot: true,
-    dotColor: 'red',
+    dotColor: 'positive',
   },
   parameters: {
     controls: { sort: 'requiredFirst' },
@@ -28,14 +28,14 @@ Template.parameters = {
 }
 
 export const Template1 = (props) => <TitleValuePair {...props} />
-Template1.storyName = 'Percentage No Dot'
+Template1.storyName = 'Float and No Dot'
 Template1.decorators = [centered]
 Template1.parameters = {
   docs: { source: { state: 'open' } },
 }
 Template1.args = {
-  value: 300,
-  isPercentage: true,
-  subText: 'return',
+  value: 3.6,
+  isPercentage: false,
+  subText: 'Score',
   hasDot: false,
 }

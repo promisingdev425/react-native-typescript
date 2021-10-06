@@ -1,9 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { Dot, Text } from '../../core'
-
-import { ValueDotContainer, Value } from './styles'
+import { ValueDotContainer, Value, TheDot, SubText } from './styles'
 
 export interface ITitleValuePair {
   /**
@@ -27,7 +25,7 @@ export interface ITitleValuePair {
   hasDot?: boolean
 
   /**
-   * The dot color.
+   * Controls the color of the dot.
    */
   dotColor?: string
 }
@@ -46,17 +44,18 @@ export const TitleValuePair: React.FC<ITitleValuePair> = ({
   const appendValue = isPercentage ? '%' : ''
 
   return (
-    <View {...rest}>
+    <View {...rest} >
+
       <ValueDotContainer>
-        <Value>
+        <Value accessible={true} >
           {value}
           {appendValue}
         </Value>
-
-        {hasDot && <Dot size={18} color={dotColor} />}
+        {hasDot && <TheDot testID="Dot" size={20} color={dotColor} />}
       </ValueDotContainer>
 
-      <Text>{subText}</Text>
+      <SubText accessible={true}>{subText}</SubText>
+
     </View>
   )
 }
