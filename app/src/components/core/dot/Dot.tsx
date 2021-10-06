@@ -4,25 +4,31 @@ import { View } from 'react-native'
 import { Container, DotOuter, DotInner } from './styles'
 
 export interface IDot {
-  /**
-   * The size of the dot.
-   */
-  size: number
 
   /**
    * The color of the dot.
    */
   color: string
+
+  /**
+   * Adds an outer layer to the dot.
+   */
+  hasOuterLayer?: boolean
+
 }
 
 /**
- * `<Dot>` takes 2 properties for the size of the dot and the color.
+ * `<Dot>`
  */
-export const Dot: React.FC<IDot> = ({ size, color, ...rest }) => {
+export const Dot: React.FC<IDot> = ({
+  color,
+  hasOuterLayer=false,
+  ...rest
+}) => {
   return (
-    <Container size={size} {...rest} accessible={true}>
-      <DotOuter size={size} color={color} />
-      <DotInner size={size} color={color} />
+    <Container {...rest} accessible={true}>
+      {hasOuterLayer && <DotOuter color={color} />}
+      <DotInner color={color} />
     </Container>
   )
 }

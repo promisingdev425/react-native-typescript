@@ -4,38 +4,38 @@ import { Box } from '../box'
 
 import { IDot as DotProps } from './Dot'
 
+const dotSize = 20
+
 interface ContainerProps {
   size: number
 }
 
-export const Container = styled(Box).attrs(({ size }: ContainerProps) => {
-  return {
-    width: size,
-    height: size,
-  }
-})<ContainerProps>``
+export const Container = styled(Box).attrs({
+  width: dotSize,
+  height: dotSize
+})``
 
-export const DotOuter = styled(Box).attrs(({ size, color }: DotProps) => {
+export const DotOuter = styled(Box).attrs(({ color }: DotProps) => {
   return {
     ml: 'xxs',
-    width: size,
-    height: size,
-    borderRadius: size / 2,
+    width: dotSize,
+    height: dotSize,
+    borderRadius: dotSize / 2,
     backgroundColor: color,
     opacity: 0.1,
   }
 })<DotProps>``
 
-export const DotInner = styled(Box).attrs(({ size, color }: DotProps) => {
+export const DotInner = styled(Box).attrs(({ color }: DotProps) => {
   const scale = 3
   return {
     ml: 'xxs',
-    width: size / scale,
-    height: size / scale,
-    borderRadius: size / scale,
+    width: dotSize / scale,
+    height: dotSize / scale,
+    borderRadius: dotSize / scale,
     backgroundColor: color,
     position: 'absolute',
-    left: size / scale,
-    top: size / scale,
+    left: dotSize / scale,
+    top: dotSize / scale,
   }
 })<DotProps>``

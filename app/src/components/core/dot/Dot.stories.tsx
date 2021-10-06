@@ -9,8 +9,8 @@ export default {
   component: Dot,
   argTypes: {},
   args: {
-    size: 20,
-    color: 'red',
+    color: 'positive',
+    hasOuterLayer: false
   },
   parameters: {
     controls: { sort: 'requiredFirst' },
@@ -23,3 +23,11 @@ Template.decorators = [centered]
 Template.parameters = {
   docs: { source: { state: 'open' } },
 }
+
+export const Template1 = (props) => <Dot {...props} />
+Template1.storyName = 'Dot with Outer Layer'
+Template1.decorators = [centered]
+Template1.parameters = {
+  docs: { source: { state: 'open' } },
+}
+Template1.args={ color: 'negative', hasOuterLayer: true}

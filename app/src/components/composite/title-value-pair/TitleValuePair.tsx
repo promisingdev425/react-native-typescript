@@ -51,7 +51,7 @@ export const TitleValuePair: React.FC<ITitleValuePair> = ({
           {value}
           {appendValue}
         </Value>
-        {hasDot && <TheDot testID="Dot" size={20} color={dotColor} />}
+        {hasDot && <TheDot testID="Dot" color={dotColor} hasOuterLayer={true} />}
       </ValueDotContainer>
 
       <SubText accessible={true}>{subText}</SubText>
