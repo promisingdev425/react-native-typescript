@@ -6,7 +6,7 @@ import { Container, DotOuter, DotInner } from './styles'
 export interface IDot {
 
   /**
-   * The color of the dot.
+   * The color of the dot. Allowed values are "positive" or "negative".
    */
   color: string
 
