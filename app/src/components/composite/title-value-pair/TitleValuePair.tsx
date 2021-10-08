@@ -21,6 +21,7 @@ export interface ITitleValuePair {
 
   /**
    * Controls the color of the <a href="/?path=/docs/components-dot--template">Dot</a>.
+   * In many cases this should be "positive" or "negative".
    */
   dotColor?: string
 }

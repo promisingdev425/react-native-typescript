@@ -12,7 +12,8 @@ describe('Dot', function () {
     const InnerScreen = () => (
       <View testID="Root">
         <Dot testID="Dot" color="positive" />
-        <Dot testID="Dot1" color="positive" hasOuterLayer={true} />
+        <Dot testID="Dot1" color="negative" hasOuterLayer={true} />
+        <Dot testID="Dot2" color="black" accessibilityLabel="This is a test label" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -30,6 +31,20 @@ describe('Dot', function () {
     expect(within(screen.getByTestId('Dot')).queryByTestId('DotOuterLayer')).toBeNull()
     expect(screen.getByTestId('Dot1')).toContainElement(
       screen.getByTestId('DotOuterLayer'),
+    )
+  })
+
+  it('should have accessibility labels', () => {
+    expect(screen.getByTestId('Dot')).toContainElement(
+      screen.getByLabelText('Metric is passing'),
+    )
+
+    expect(screen.getByTestId('Dot1')).toContainElement(
+      screen.getByLabelText('Metric is failing'),
+    )
+
+    expect(screen.getByTestId('Dot2')).toContainElement(
+      screen.getByLabelText('This is a test label'),
     )
   })
 
