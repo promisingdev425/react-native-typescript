@@ -36,6 +36,7 @@ const getStories=() => {
 		require("../../app/src/components/core/icon-button/IconButton.stories.js"), 
 		require("../../app/src/components/core/list-sheet/ListSheet.stories.js"), 
 		require("../../app/src/components/core/list-sheet/option/Option.stories.js"), 
+		require("../../app/src/components/core/list/List.stories.tsx"), 
 		require("../../app/src/components/core/loader/PageLoader.stories.js"), 
 		require("../../app/src/components/core/text/Text.stories.tsx"), 
 		require("../../app/src/components/core/title/Title.stories.js"), 

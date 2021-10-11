@@ -1,20 +1,25 @@
 import styled from 'styled-components/native'
 
-import { Box } from '../../core'
+import { Box } from '../box'
 
 import { getColor, getSpace } from '~/theme'
 
 export const Container = styled(Box)``
 
-export const Item = styled(Box)`
-  flex-direction: row;
-`
+export const Item = styled(Box).attrs(props => {
+  return {
+    flexDirection: 'row',
+    marginBottom: getSpace('sm')(props),
+  }
+})``
 
-export const ItemDotContainer = styled(Box).attrs(props => {
+export const Dot = styled(Box).attrs(props => {
   return {
     backgroundColor: getColor('brandPink')(props),
-    marginRight: getSpace('xxs')(props),
-    width:10,
-    heigh:10,
+    marginRight: getSpace('sm')(props),
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    alignSelf: 'center'
   }
 })``

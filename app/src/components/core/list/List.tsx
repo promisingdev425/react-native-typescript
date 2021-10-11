@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { Container, Item, ItemDotContainer } from './styles'
+import { Container, Item, Dot } from './styles'
 
 import { Text } from '../text'
 
@@ -26,7 +26,7 @@ export const List: React.FC<IList> = ({
       {children.map((item, index) => {
         return(
           <Item key={index}>
-            <ItemDotContainer></ItemDotContainer>
+            <Dot></Dot>
             <View>{item}</View>
           </Item>
         )
