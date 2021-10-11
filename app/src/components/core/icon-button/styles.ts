@@ -3,7 +3,7 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 import { space, border, SpaceProps, BorderProps } from 'styled-system'
 
-import { Text } from '../../core'
+import { Text } from '../text'
 
 import { getColor, getFontSize, getSpace } from '~/theme'
 
