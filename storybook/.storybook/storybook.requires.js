@@ -33,7 +33,7 @@ const getStories=() => {
 		require("../../app/src/components/core/avatar/Avatar.stories.tsx"), 
 		require("../../app/src/components/core/box/Box.stories.tsx"), 
 		require("../../app/src/components/core/card/Card.stories.js"), 
-		require("../../app/src/components/core/icon-button/IconButton.stories.js"), 
+		require("../../app/src/components/core/icon-button/IconButton.stories.tsx"), 
 		require("../../app/src/components/core/list-sheet/ListSheet.stories.js"), 
 		require("../../app/src/components/core/list-sheet/option/Option.stories.js"), 
 		require("../../app/src/components/core/loader/PageLoader.stories.js"), 
