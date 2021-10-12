@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export * from './text-button'
 export * from './dot'
 export * from './box'
 export * from './avatar'
