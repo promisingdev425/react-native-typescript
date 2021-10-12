@@ -41,11 +41,22 @@ describe('Benchmark', function () {
       .toContainElement(screen.getByTestId('Benchmark'))
   })
 
+  it('should render all labels', () => {
+    expect(screen.getByTestId('Benchmark')).toContainElement(
+      screen.getByText(testValues.indicatorLabel),
+      screen.getByText(testValues.colorBarNegativeLabel),
+      screen.getByText(testValues.colorBarWarningLabel),
+      screen.getByText(testValues.colorBarPositiveLabel),
+      screen.getByText(testValues.dividerNegativeLabel),
+      screen.getByText(testValues.dividerWarningLabel),
+      screen.getByText(testValues.dividerPositiveLabel)
+    )
+  });
+
   it('should have an accessibilityLabel', () => {
     expect(screen.getByTestId('Benchmark')).toContainElement(
       screen.getByLabelText('This is a test label'),
     )
   })
-
 
 })
