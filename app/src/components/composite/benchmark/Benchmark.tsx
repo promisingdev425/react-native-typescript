@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, View } from 'react-native'
 
 import { Text } from '~/components/core'
@@ -81,7 +82,7 @@ export const Benchmark: React.FC<IBenchmark> = ({
   ...rest
 }) => {
   return (
-    <Container {...rest}>
+    <Container accessibilityRole="image" {...rest}>
 
       <Indicator indicatorPosition={indicatorPosition}>
         <IndicatorNotch />
@@ -121,4 +122,8 @@ export const Benchmark: React.FC<IBenchmark> = ({
 
     </Container>
   )
+}
+
+Benchmark.propTypes = {
+  accessibilityLabel: PropTypes.string.isRequired,
 }

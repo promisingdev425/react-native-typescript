@@ -17,7 +17,8 @@ export default {
     colorBarPositiveLabel: '10 pts',
     dividerNegativeLabel: '72%',
     dividerWarningLabel: '80%',
-    dividerPositiveLabel: '92%'
+    dividerPositiveLabel: '92%',
+    accessibilityLabel: 'this is the a11y label'
   },
   parameters: {
     controls: { sort: 'requiredFirst' },

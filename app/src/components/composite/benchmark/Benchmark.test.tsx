@@ -19,7 +19,8 @@ describe('Benchmark', function () {
       colorBarPositiveLabel: '10 pts',
       dividerNegativeLabel: '72%',
       dividerWarningLabel: '80%',
-      dividerPositiveLabel: '92%'
+      dividerPositiveLabel: '92%',
+      accessibilityLabel: 'This is a test label'
     }
 
     const InnerScreen = () => (
@@ -38,6 +39,12 @@ describe('Benchmark', function () {
   it('should render', () => {
     expect(screen.getByTestId('Root'))
       .toContainElement(screen.getByTestId('Benchmark'))
+  })
+
+  it('should have an accessibilityLabel', () => {
+    expect(screen.getByTestId('Benchmark')).toContainElement(
+      screen.getByLabelText('This is a test label'),
+    )
   })
 
 

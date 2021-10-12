@@ -7,7 +7,7 @@ import { getColor, getFontSize } from '~/theme'
 
 const barHeight = 25
 const borderRadius = 4
-const indicatorWidth = 45;
+const indicatorWidth = 48;
 
 export const Container = styled(Box)`
   width: 100%;
@@ -19,7 +19,7 @@ export const Indicator = styled(Box).attrs((props) => {
     backgroundColor: getColor('black')(props),
     borderRadius: 2,
     width: indicatorWidth,
-    height: 20,
+    height: 24,
     top: -5,
     left: left,
     marginBottom: 10,
@@ -34,7 +34,7 @@ export const IndicatorNotch = styled(Box).attrs((props) => {
     width: 15,
     height: 15,
     borderRadius: 1,
-    left: 14,
+    left: (indicatorWidth - 18) / 2,
     bottom: -7,
     position: 'absolute',
   }
@@ -45,11 +45,13 @@ export const IndicatorNotch = styled(Box).attrs((props) => {
 export const IndicatorText = styled(Text).attrs((props) => {
   return{
     color: getColor('white')(props),
+    fontSize: getFontSize('h3')(props),
     textAlign: 'center',
-    paddingTop: 3,
+    paddingTop: 2,
     position: 'absolute',
     width: '100%',
     zIndex: 3,
+    fontFamilyStyle: 'style.bold'
   }
 })``
 
@@ -105,6 +107,7 @@ export const ColorBarLabel = styled(Text).attrs((props) => {
     width: '100%',
     top: '50%',
     position: 'absolute',
+    fontFamilyStyle: 'style.bold'
   }
 })`
   transform: translateY(-8px)
@@ -144,6 +147,7 @@ export const DividerLabel = styled(Text).attrs((props) => {
   return{
     color: getColor('black')(props),
     fontSize: getFontSize('label1')(props),
+    fontFamilyStyle: 'style.bold'
   }
 })`
   width: 25%;
