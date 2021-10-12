@@ -6,6 +6,8 @@ import { getColor, getSpace } from '~/theme'
 
 export const Container = styled(Box)``
 
+const dotSize = 5
+
 export const Item = styled(Box).attrs(props => {
   return {
     flexDirection: 'row',
@@ -17,9 +19,9 @@ export const Dot = styled(Box).attrs(props => {
   return {
     backgroundColor: getColor('brandPink')(props),
     marginRight: getSpace('sm')(props),
-    width: 4,
-    height: 4,
-    borderRadius: 2,
+    width: dotSize,
+    height: dotSize,
+    borderRadius: dotSize / 2,
     alignSelf: 'center'
   }
 })``
