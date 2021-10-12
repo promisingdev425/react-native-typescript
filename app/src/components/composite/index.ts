@@ -1,4 +1,5 @@
 /* PLOP_INJECT_EXPORT */
+export * from './title-value-pair'
 export * from './app-bar'
 export * from './header-bar'
 export * from './gradient-button'
