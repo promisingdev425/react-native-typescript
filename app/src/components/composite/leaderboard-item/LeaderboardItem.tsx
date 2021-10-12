@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Icons } from '~/assets'
 
 import { Box } from '../../core'
-import { Benchmark, LeaderboardScore } from './leaderboard-score'
+import { LeaderboardScore } from './leaderboard-score'
+import { Benchmark } from './leaderboard-score/styles'
 import {
   Touchable,
   Container,
