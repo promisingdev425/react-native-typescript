@@ -11,7 +11,8 @@ export default {
   argTypes: {},
   args: {
     onPress: () => console.log('hit Circular arrow button'),
-    icon: <Icons.CircularArrow testID="IconButton" color="#333" />
+    icon: <Icons.CircularArrow testID="IconButton" color="#333" />,
+    accessibilityLabel: "Circular button"
   },
   parameters: {
     controls: { sort: 'requiredFirst' },

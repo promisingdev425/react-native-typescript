@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { TouchableWithoutFeedbackProps } from 'react-native'
 
 import { Container, StyledText } from './styles'
@@ -32,8 +33,19 @@ export const IconButton: React.FC<IIconButton> = ({
   text=null,
   ...rest
 }) => (
-  <Container onPress={onPress} accessibilityRole="button" accessibilityLabel={text ? text : 'Icon Button'} {...rest}>
+  <Container onPress={onPress} accessibilityRole="button" {...rest}>
     {icon}
     {text && <StyledText>{text}</StyledText>}
   </Container>
 )
+
+IconButton.propTypes = {
+  onPress: PropTypes.func,
+  icon: PropTypes.object.isRequired,
+  text: PropTypes.string,
+  customProp: function(props, propName, componentName) {
+    if (!/text/.test(props[propName]) && !('accessibilityLabel' in props)) {
+      return new Error('If you are not providing any text, please add an accessibilityLabel.');
+    }
+  },
+}
