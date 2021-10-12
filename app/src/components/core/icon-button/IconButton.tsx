@@ -44,7 +44,7 @@ IconButton.propTypes = {
   icon: PropTypes.object.isRequired,
   text: PropTypes.string,
   customProp: function(props, propName, componentName) {
-    if (!/text/.test(props[propName]) && !('accessibilityLabel' in props)) {
+    if (!('text' in props) && !('accessibilityLabel' in props)) {
       return new Error('If you are not providing any text, please add an accessibilityLabel.');
     }
   },
