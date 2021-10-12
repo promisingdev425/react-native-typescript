@@ -3,9 +3,9 @@ import { View } from 'react-native'
 import { render, RenderAPI } from '@testing-library/react-native'
 import { withTheme } from '~/theme/hocs'
 
-import { BenchmarkChart, calculateValuePercentage } from './BenchmarkChart'
+import { Benchmark, calculateValuePercentage } from './Benchmark'
 
-describe('BenchmarkChart', function () {
+describe('Benchmark', function () {
   let screen: RenderAPI
   let testValues;
 
@@ -21,9 +21,9 @@ describe('BenchmarkChart', function () {
 
     const InnerScreen = () => (
       <View testID="Root">
-        <BenchmarkChart
+        <Benchmark
           {...testValues}
-          testID="BenchmarkChart"
+          testID="Benchmark"
         />
       </View>
     )
@@ -34,7 +34,7 @@ describe('BenchmarkChart', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('BenchmarkChart'))
+      .toContainElement(screen.getByTestId('Benchmark'))
 
     expect(screen.getByTestId('Labels'))
       .toContainElement(screen.getByText('12%'))

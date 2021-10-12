@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { Text } from '~/components/core'
 import { styles } from './styles'
 
-export interface IBenchmarkChart {
+export interface IBenchmark {
 
   /**
    * The minimum value of the chart.
@@ -48,7 +48,7 @@ export const calculateValuePercentage = (minimum, maximum, value) => {
  *  to specify the absolute range of the report and the value prop to
  *  specify the current report value.
  */
-export const BenchmarkChart: React.FC<IBenchmarkChart> = ({
+export const Benchmark: React.FC<IBenchmark> = ({
   minimum = 0,
   maximum = 100,
   negative,
