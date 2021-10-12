@@ -9,11 +9,10 @@ export default {
   component: TextButton,
   argTypes: {},
   args: {
-    onPress: () => console.log('click button'),
     children: 'Browse All Reports'
   },
   parameters: {
-    controls: { sort: 'requiredFirst' },
+    controls: { sort: 'requiredFirst' }
   },
 }
 
