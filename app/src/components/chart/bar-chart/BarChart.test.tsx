@@ -35,4 +35,11 @@ describe('BarChart', function () {
       screen.getByA11yLabel('BarChart'),
     )
   })
+
+  it('should render titles', () => {
+    const titles = screen.getAllByA11yLabel('LineChartTitle')
+
+    expect(titles.length).toEqual(1)
+    expect(screen.getByTestId('Root')).toContainElement(titles[0])
+  })
 })
