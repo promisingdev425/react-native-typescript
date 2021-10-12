@@ -64,7 +64,7 @@ export const ColorBar = styled(Box).attrs({
 
 export const ColorBarFail = styled(LinearGradient).attrs((props) => {
   return{
-    colors: [getColor('white')(props), getColor('darkRed')(props)],
+    colors: [getColor('clear')(props), getColor('darkRed')(props)],
     start: [0.1, 0.45],
     end: [0.9, 0.55],
   }
