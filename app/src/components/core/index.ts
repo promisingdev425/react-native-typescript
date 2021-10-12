@@ -1,5 +1,6 @@
 /* PLOP_INJECT_EXPORT */
 export * from './list'
+export * from './dot'
 export * from './box'
 export * from './avatar'
 export * from './card'

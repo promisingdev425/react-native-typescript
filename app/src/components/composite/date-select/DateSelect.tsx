@@ -51,9 +51,7 @@ export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
         accessibilityLabel="Prev Button"
         accessibilityHint="Get previous month"
         onPress={handlePrevPress}
-      >
-        <Icons.CircularArrow />
-      </IconButton>
+        icon={<Icons.CircularArrow />} />
 
       <Selector>
         <Icons.Calendar />
@@ -73,9 +71,7 @@ export const DateSelect: React.FC<IDateSelect> = ({ onChange, ...rest }) => {
         accessibilityHint="Get next month"
         onPress={handleNextPress}
         style={{ transform: [{ rotate: '180deg' }] }}
-      >
-        <Icons.CircularArrow />
-      </IconButton>
+        icon={<Icons.CircularArrow />} />
     </Container>
   )
 }
