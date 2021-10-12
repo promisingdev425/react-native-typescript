@@ -65,9 +65,16 @@ describe('LineChart', function () {
     expect(screen.getByTestId('Root')).toContainElement(
       screen.getByA11yLabel('LineChart'),
     )
-
     expect(screen.getByTestId('Root')).toContainElement(
       screen.getByA11yLabel('LineChartActiveLine'),
     )
+  })
+
+  it('should render titles', () => {
+    const titles = screen.getAllByA11yLabel('LineChartTitle')
+
+    expect(titles.length).toEqual(2)
+    expect(screen.getByTestId('Root')).toContainElement(titles[0])
+    expect(screen.getByTestId('Root')).toContainElement(titles[1])
   })
 })

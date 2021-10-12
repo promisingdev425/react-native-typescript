@@ -31,7 +31,7 @@ export const LineChart: React.FC<IChart> = ({
   return (
     <Container {...rest} p="sm">
       {title && (
-        <Title variant="section" mb="xs">
+        <Title variant="section" mb="xs" accessibilityLabel="LineChartTitle">
           {title}
         </Title>
       )}
