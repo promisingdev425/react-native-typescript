@@ -10,8 +10,8 @@ export default {
   component: Benchmark,
   argTypes: {},
   args: {
-    indicatorPosition: .5,
-    indicatorLabel: '50%',
+    indicatorPosition: .7,
+    indicatorLabel: '88%',
     colorBarNegativeLabel: '0-5 pts',
     colorBarWarningLabel: '6-9 pts',
     colorBarPositiveLabel: '10 pts',

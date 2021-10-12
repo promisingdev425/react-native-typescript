@@ -5,7 +5,7 @@ import { Box, Text } from '../../core'
 
 import { getColor, getFontSize } from '~/theme'
 
-const barHeight = 25
+const barHeight = 28
 const borderRadius = 4
 const indicatorWidth = 48;
 
@@ -101,7 +101,7 @@ export const ColorBarPositive = styled(Box).attrs((props) => {
 export const ColorBarLabel = styled(Text).attrs((props) => {
   return{
     color: getColor('black')(props),
-    fontSize: getFontSize('label1')(props),
+    fontSize: getFontSize('body2')(props),
     fontWeight: 'bold',
     textAlign: 'center',
     width: '100%',
@@ -146,7 +146,7 @@ export const DividerLabels = styled(Box).attrs({
 export const DividerLabel = styled(Text).attrs((props) => {
   return{
     color: getColor('black')(props),
-    fontSize: getFontSize('label1')(props),
+    fontSize: getFontSize('body2')(props),
     fontFamilyStyle: 'style.bold'
   }
 })`
