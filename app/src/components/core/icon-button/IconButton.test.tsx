@@ -21,6 +21,7 @@ describe('IconButton', function () {
         <IconButton
           onPress={handlePress}
           icon={<Icons.CircularArrow testID="IconButton" />}
+          accessibilityLabel="This is the text"
           text="This is the text" />
       </View>
     )
