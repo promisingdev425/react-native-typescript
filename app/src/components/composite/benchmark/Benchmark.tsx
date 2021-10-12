@@ -1,111 +1,124 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+
 import { Text } from '~/components/core'
-import { styles } from './styles'
+
+import {
+  Container,
+  Indicator,
+  IndicatorNotch,
+  IndicatorText,
+  ColorBar,
+  ColorBarFail,
+  ColorBarNegative,
+  ColorBarWarning,
+  ColorBarPositive,
+  ColorBarLabel,
+  Dividers,
+  DividerContainer,
+  DividerShape,
+  DividerLabels,
+  DividerLabel
+} from './styles'
+
 
 export interface IBenchmark {
 
   /**
-   * The minimum value of the chart.
+   * This sets the position of the indicator, 0 being the far left, 1 being far right.
    */
-  minimum?: number,
+  indicatorPosition: number,
 
   /**
-   * The maximum value of the chart.
+   * This is the text value in the indicator.
    */
-  maximum?: number,
+  indicatorLabel: string,
 
   /**
-   * The threshold for negative scores.
+   * This is the label within the orange bar.
    */
-  negative: number,
+  colorBarNegativeLabel: string,
 
   /**
-   * The threshold for positive scores.
+   * This is the label within the yellow bar.
    */
-  positive: number,
+  colorBarWarningLabel: string,
 
   /**
-   * The value of the metric.
+   * This is the label within the green bar.
    */
-  value: number,
+  colorBarPositiveLabel: string,
 
   /**
-   * Appends percentage sign on number.
+   * This is the label underneath the negative divider.
    */
-  isPercentage?: boolean,
-}
+  dividerNegativeLabel: string,
 
-export const calculateValuePercentage = (minimum, maximum, value) => {
-  const range = maximum - minimum
-  return (value - minimum) / range * 100
+  /**
+   * This is the label underneath the warning divider.
+   */
+  dividerWarningLabel: string,
+
+  /**
+   * This is the label underneath the positive divider.
+   */
+  dividerPositiveLabel: string,
 }
 
 /**
- * `<BenchmarkChart>` is used to show what values are used to determine
- *  the passing and failing states of a report. Use the negative and positive
- *  props to set the report thresholds, use the minimum and maximum props
- *  to specify the absolute range of the report and the value prop to
- *  specify the current report value.
+ * `<BenchmarkChart>` is a visual component that displays a metric
+ * to a user and what their status related to the metric is.
  */
 export const Benchmark: React.FC<IBenchmark> = ({
-  minimum = 0,
-  maximum = 100,
-  negative,
-  positive,
-  value = 0,
-  isPercentage = false,
+  indicatorPosition,
+  indicatorLabel,
+  colorBarNegativeLabel,
+  colorBarWarningLabel,
+  colorBarPositiveLabel,
+  dividerNegativeLabel,
+  dividerWarningLabel,
+  dividerPositiveLabel,
   ...rest
 }) => {
-
-  const value_percentage = calculateValuePercentage(minimum, maximum, value)
-
-  const valueAppendString = isPercentage ? "%" : ''
-
-  const accouncement = "Occupancy is at " + value + valueAppendString + ". You need to get it to " + positive + valueAppendString + " to be considered in a good place."
-
   return (
-    <View style={styles.container} {...rest}>
+    <Container {...rest}>
 
-      <View testID="Labels" style={styles.top_text}>
-        <Text style={styles.top_text_minimum}>
-          {minimum}
-          {valueAppendString}
-        </Text>
-        <Text style={styles.top_text_maximum}>
-          {maximum}
-          {valueAppendString}
-        </Text>
-      </View>
+      <Indicator indicatorPosition={indicatorPosition}>
+        <IndicatorNotch />
+        <IndicatorText>{indicatorLabel}</IndicatorText>
+      </Indicator>
 
-      <View>
-        <View style={styles.bar_dividers}>
-          <View style={[styles.bar_divider, styles.bar_dividers_negative]} />
-          <View style={[styles.bar_divider, styles.bar_dividers_positive]} />
-        </View>
-        <View style={styles.bar}>
-          <View style={[styles.bar_column, styles.bar_column_negative]} />
-          <View style={[styles.bar_column, styles.bar_column_neutral]} />
-          <View style={[styles.bar_column, styles.bar_column_positive]} />
-        </View>
-      </View>
+      <ColorBar>
+        <ColorBarFail />
+        <ColorBarNegative>
+          <ColorBarLabel>{colorBarNegativeLabel}</ColorBarLabel>
+        </ColorBarNegative>
+        <ColorBarWarning>
+          <ColorBarLabel>{colorBarWarningLabel}</ColorBarLabel>
+        </ColorBarWarning>
+        <ColorBarPositive>
+          <ColorBarLabel>{colorBarPositiveLabel}</ColorBarLabel>
+        </ColorBarPositive>
+      </ColorBar>
 
-      <View testID="Dot" style={[styles.dot, { left: value_percentage + '%' }]}>
-        <View style={styles.dot_inner} />
-      </View>
+      <Dividers>
+        <DividerContainer>
+          <DividerShape />
+        </DividerContainer>
+        <DividerContainer>
+          <DividerShape />
+        </DividerContainer>
+        <DividerContainer>
+          <DividerShape />
+        </DividerContainer>
+      </Dividers>
 
-      <View testID="Indicator" style={[styles.indicator, { left: value_percentage + '%' }]}>
-        <View style={styles.indicator_notch} />
-        <Text color="white" style={styles.indicator_text}>
-          {value}
-          {valueAppendString}
-        </Text>
-      </View>
+      <DividerLabels>
+        <DividerLabel>{dividerNegativeLabel}</DividerLabel>
+        <DividerLabel>{dividerWarningLabel}</DividerLabel>
+        <DividerLabel>{dividerPositiveLabel}</DividerLabel>
+      </DividerLabels>
 
-      <Text accessible={true}>
-        {accouncement}
-      </Text>
-
-    </View>
+    </Container>
   )
 }

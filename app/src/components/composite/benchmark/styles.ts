@@ -1,126 +1,151 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
+import { LinearGradient } from 'expo-linear-gradient'
+
+import { Box, Text } from '../../core'
+
+import { getColor, getFontSize } from '~/theme'
 
 const barHeight = 25
 const borderRadius = 4
-const dotHeight = barHeight - 4
-const dotInnerHeight = dotHeight * .35
+const indicatorWidth = 45;
 
-export const styles = StyleSheet.create({
+export const Container = styled(Box)`
+  width: 100%;
+`
 
-  container: {
-    width: '100%',
-  },
-
-  /**
-   * The minimum and maximum text at the top
-   */
-  top_text: {
-    width: '100%',
-    flexDirection: 'row',
-    paddingBottom: 20,
-  },
-  top_text_minimum: {
-    flex: 1,
-  },
-  top_text_maximum: {
-  },
-
-  /**
-   * The black dividers between the regions
-   */
-  bar_dividers: {
-    position: 'absolute',
-    zIndex: 10,
-    width: '100%',
-    top: -3,
-  },
-  bar_divider: {
-    width: 2,
-    height: barHeight + 6,
-    backgroundColor: 'black',
-  },
-  bar_dividers_negative: {
-    left: '33.33%',
-  },
-  bar_dividers_positive: {
-    left: '66.66%',
-    top: -barHeight - 6,
-  },
-
-  /**
-   * The red, yellow and green regions
-   */
-  bar: {
-    flexDirection: 'row',
-  },
-  bar_column: {
-    width: '33.33%',
-    height: barHeight,
-  },
-  bar_column_negative: {
-    backgroundColor: 'red',
-    borderTopLeftRadius: borderRadius,
-    borderBottomLeftRadius: borderRadius,
-  },
-  bar_column_neutral: {
-    backgroundColor: 'yellow',
-  },
-  bar_column_positive: {
-    backgroundColor: 'green',
-    borderTopRightRadius: borderRadius,
-    borderBottomRightRadius: borderRadius,
-  },
-
-  /**
-   * The dot that overlays the red, yellow and green regions
-   */
-  dot: {
-    borderRadius: dotHeight / 2,
-    width: dotHeight,
-    height: dotHeight,
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    top: -barHeight + 2,
-    transform: [
-      { translateX: -dotHeight / 2 }
-    ]
-  },
-  dot_inner: {
-    width: dotInnerHeight,
-    height: dotInnerHeight,
-    borderRadius: dotInnerHeight / 2,
-    backgroundColor: 'white',
-    top: '32.5%',
-    left: '32.5%',
-  },
-
-  /**
-   * The indicator below the bar that displays the value
-   */
-  indicator: {
+export const Indicator = styled(Box).attrs((props) => {
+  const left = ( props.indicatorPosition * 100 ) + '%';
+  return{
+    backgroundColor: getColor('black')(props),
     borderRadius: 2,
-    backgroundColor: "black",
-    width: 45,
+    width: indicatorWidth,
     height: 20,
     top: -5,
-    transform: [
-      { translateX: -22.5 }
-    ]
-  },
-  indicator_notch: {
-    width: 10,
-    height: 10,
-    borderRadius: 1,
-    backgroundColor: "black",
-    transform: [
-      { rotate: '45deg' }
-    ],
-    left: 17,
-    top:-2
-  },
-  indicator_text: {
-    textAlign:"center",
-    top:3,
-    position: "absolute",
-    width: "100%"
+    left: left,
+    marginBottom: 10,
   }
-})
+})`
+  transform: translateX(${-indicatorWidth / 2}px);
+`
+
+export const IndicatorNotch = styled(Box).attrs((props) => {
+  return{
+    backgroundColor: getColor('black')(props),
+    width: 15,
+    height: 15,
+    borderRadius: 1,
+    left: 14,
+    bottom: -7,
+    position: 'absolute',
+  }
+})`
+  transform: rotateZ(45deg) rotateY(60deg);
+`
+
+export const IndicatorText = styled(Text).attrs((props) => {
+  return{
+    color: getColor('white')(props),
+    textAlign: 'center',
+    paddingTop: 3,
+    position: 'absolute',
+    width: '100%',
+    zIndex: 3,
+  }
+})``
+
+export const ColorBar = styled(Box).attrs({
+  height: barHeight,
+})`
+  flexDirection: row;
+  width: 100%;
+`
+
+export const ColorBarFail = styled(LinearGradient).attrs((props) => {
+  return{
+    colors: [getColor('white')(props), getColor('darkRed')(props)],
+    start: [0.1, 0.45],
+    end: [0.9, 0.55],
+  }
+})`
+  width: 25%;
+`
+
+export const ColorBarNegative = styled(Box).attrs((props) => {
+  return{
+    backgroundColor: getColor('negative')(props),
+    width: '25%'
+  }
+})`
+`
+
+export const ColorBarWarning = styled(Box).attrs((props) => {
+  return{
+    backgroundColor: getColor('warning')(props),
+    width: '25%'
+  }
+})`
+`
+
+export const ColorBarPositive = styled(Box).attrs((props) => {
+  return{
+    backgroundColor: getColor('positive')(props),
+    width: '25%',
+    borderTopRightRadius: borderRadius,
+    borderBottomRightRadius: borderRadius,
+  }
+})`
+`
+
+export const ColorBarLabel = styled(Text).attrs((props) => {
+  return{
+    color: getColor('black')(props),
+    fontSize: getFontSize('label1')(props),
+    fontWeight: 'bold',
+    textAlign: 'center',
+    width: '100%',
+    top: '50%',
+    position: 'absolute',
+  }
+})`
+  transform: translateY(-8px)
+`
+
+export const Dividers = styled(Box).attrs({
+  height: barHeight+4,
+  top: -barHeight-2,
+})`
+  width: 100%;
+  flexDirection: row;
+`
+
+export const DividerContainer = styled(Box)`
+  height: 100%;
+  width: 25%;
+`
+
+export const DividerShape = styled(Box).attrs((props) => {
+  return{
+    width: 2,
+    backgroundColor: getColor('black')(props),
+  }
+})`
+  height: 100%;
+  alignSelf: flex-end;
+`
+
+export const DividerLabels = styled(Box).attrs({
+  top: -barHeight + 5,
+  left: 15
+})`
+  flexDirection: row;
+`
+
+export const DividerLabel = styled(Text).attrs((props) => {
+  return{
+    color: getColor('black')(props),
+    fontSize: getFontSize('label1')(props),
+  }
+})`
+  width: 25%;
+  text-align: right;
+`

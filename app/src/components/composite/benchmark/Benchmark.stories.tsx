@@ -10,12 +10,14 @@ export default {
   component: Benchmark,
   argTypes: {},
   args: {
-    minimum: 0,
-    maximum: 100,
-    negative: 25,
-    positive: 75,
-    value: 30,
-    isPercentage: true
+    indicatorPosition: .5,
+    indicatorLabel: '50%',
+    colorBarNegativeLabel: '0-5 pts',
+    colorBarWarningLabel: '6-9 pts',
+    colorBarPositiveLabel: '10 pts',
+    dividerNegativeLabel: '72%',
+    dividerWarningLabel: '80%',
+    dividerPositiveLabel: '92%'
   },
   parameters: {
     controls: { sort: 'requiredFirst' },
