@@ -4,8 +4,8 @@ import { LineChart as LineChartUI } from 'react-native-svg-charts'
 import { getColor, getMetrics, getSpace } from '~/theme'
 
 import { Box, IBox } from '../../core'
-import { IChart, IDecorator, IGrid } from '../types'
-import { CircleDecorator, Grid as GridUI } from '../helpers'
+import { IChart, IGrid } from '../types'
+import { Grid as GridUI } from '../helpers'
 
 export const Container = styled(Box)<IBox>`
   flex: 1;
@@ -42,11 +42,6 @@ export const LineChartView = styled(LineChartUI).attrs(
 )<IChart>`
   flex: 1;
 `
-
-/* istanbul ignore next */
-export const Decorator = styled(CircleDecorator).attrs((props: IDecorator) => ({
-  strokeColor: getColor(props.strokeColor)(props),
-}))<IDecorator>``
 
 /* istanbul ignore next */
 export const Grid = styled(GridUI).attrs((props: IGrid) => ({

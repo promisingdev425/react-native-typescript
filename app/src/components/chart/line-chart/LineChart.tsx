@@ -1,11 +1,45 @@
 import React from 'react'
+import { Circle } from 'react-native-svg'
+
+import { useTheme } from '~/theme'
 
 import { Box, Title } from '../../core'
-import { IChart } from '../types'
+import { IChart, IDecorator } from '../types'
 import { getMaxValue, XAxis, YAxis } from '../helpers'
 
-import { Container, Body, LineChartView, Decorator, Grid } from './styles'
+import { Container, Body, LineChartView, Grid } from './styles'
 
+/**
+ * `<CircleRenderer>`
+ * istanbul ignore next
+ */
+const CircleRenderer = ({
+  radius = 4,
+  fill = 'white',
+  strokeColor = '#000',
+  strokeWidth = 2,
+  data,
+  x,
+  y,
+}: IDecorator) => {
+  const theme = useTheme()
+
+  return (
+    <>
+      {data.map((value, index) => (
+        <Circle
+          key={index}
+          cx={x(index)}
+          cy={y(value)}
+          r={radius}
+          stroke={theme.colors[strokeColor]}
+          strokeWidth={strokeWidth}
+          fill={fill}
+        />
+      ))}
+    </>
+  )
+}
 /**
  * `<LineChart>`
  */
@@ -51,7 +85,10 @@ export const LineChart: React.FC<IChart> = ({
               belowChart
             />
 
-            <Decorator strokeColor={strokeColor} strokeWidth={strokeWidth} />
+            <CircleRenderer
+              strokeColor={strokeColor}
+              strokeWidth={strokeWidth}
+            />
           </LineChartView>
 
           <XAxis

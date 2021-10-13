@@ -1,38 +1,11 @@
 import styled from 'styled-components'
 import React from 'react'
-import { G, Circle, Line } from 'react-native-svg'
+import { G, Line } from 'react-native-svg'
 import { XAxis as XAxisUI, YAxis as YAxisUI } from 'react-native-svg-charts'
 
 import { getMetrics, getSpace, getFontSize, getColor } from '~/theme'
 
-import { IDecorator, IGrid, IAxis, ChartType } from './types'
-
-/* istanbul ignore next */
-export const CircleDecorator = ({
-  radius = 4,
-  fill = 'white',
-  strokeColor = '#000',
-  strokeWidth = 2,
-  data,
-  x,
-  y,
-}: IDecorator) => {
-  return (
-    <>
-      {data.map((value, index) => (
-        <Circle
-          key={index}
-          cx={x(index)}
-          cy={y(value)}
-          r={radius}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          fill={fill}
-        />
-      ))}
-    </>
-  )
-}
+import { IGrid, IAxis, ChartType } from './types'
 
 /* istanbul ignore next */
 export const Grid = ({
