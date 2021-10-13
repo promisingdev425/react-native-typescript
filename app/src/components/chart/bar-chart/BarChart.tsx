@@ -1,7 +1,7 @@
 import React from 'react'
 import { Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
 
-import { themes } from '~/theme'
+import { useTheme } from '~/theme'
 
 import { Box, Title } from '../../core'
 import { IChart, IDecorator, ChartType } from '../types'
@@ -11,9 +11,6 @@ import { Container, Body, ChartView, Grid } from './styles'
 
 /**
  * `<BarChart>`
- *
- * @param {object} props
- * @return {React.ReactNode}
  */
 export const BarChart: React.FC<IChart> = ({
   title,
@@ -27,21 +24,23 @@ export const BarChart: React.FC<IChart> = ({
   ...rest
 }) => {
   const chartData = values.map((item) => item.value)
+  const theme = useTheme()
+  console.log(theme)
 
   /* istanbul ignore next */
   const GradientFill = () => (
     <Defs key={'default'}>
       <LinearGradient id="default" x1="0" y1="0%" x2="100%" y2="100%">
-        <Stop offset="0%" stopColor={themes.light.colors.brandOrange} />
-        <Stop offset="100%" stopColor={themes.light.colors.brandPink} />
+        <Stop offset="0%" stopColor={theme.colors.brandOrange} />
+        <Stop offset="100%" stopColor={theme.colors.brandPink} />
       </LinearGradient>
     </Defs>
   )
 
   /* istanbul ignore next */
   const BarDecorator = ({ data, x, y }: IDecorator) => {
-    const { screenWidth } = themes.light.metrics
-    const { sm } = themes.light.space
+    const { screenWidth } = theme.metrics
+    const { sm } = theme.space
     const elementWidth = (screenWidth - sm * 2 - 30) / data.length
     const xSpace = elementWidth * 0.15
 
@@ -58,9 +57,7 @@ export const BarChart: React.FC<IChart> = ({
               rx={5}
               width={elementWidth - xSpace * 2}
               height={Math.abs(barHeight)}
-              fill={
-                value >= 0 ? 'url(#default)' : themes.light.colors.lightGray
-              }
+              fill={value >= 0 ? 'url(#default)' : theme.colors.lightGray}
             />
           )
         })}

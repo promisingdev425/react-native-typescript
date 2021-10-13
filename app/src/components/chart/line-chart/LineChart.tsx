@@ -8,9 +8,6 @@ import { Container, Body, LineChartView, Decorator, Grid } from './styles'
 
 /**
  * `<LineChart>`
- *
- * @param {object} props
- * @return {React.ReactNode}
  */
 export const LineChart: React.FC<IChart> = ({
   title,
