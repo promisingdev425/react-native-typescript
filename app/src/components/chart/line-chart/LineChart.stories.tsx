@@ -14,6 +14,7 @@ export default {
   },
   args: {
     title: 'Average Rent',
+    width: '500px',
     strokeWidth: 2,
     strokeColor: 'brandPink',
     gridColor: 'lightGray',

@@ -8,11 +8,9 @@ import { IChart, IGrid } from '../types'
 import { Grid as GridUI } from '../helpers'
 
 export const Container = styled(Box)<IBox>`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   background-color: white;
+  max-width: ${(props) => getMetrics('screenWidth')(props)}px;
 `
 
 export const Body = styled(Box)`

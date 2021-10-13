@@ -19,6 +19,7 @@ export default {
   // https://storybook.js.org/docs/react/writing-stories/args
   args: {
     title: 'Bar Chart',
+    width: '500px',
     gridColor: 'lightGray',
     values: [
       { value: -20, label: 'January' },
