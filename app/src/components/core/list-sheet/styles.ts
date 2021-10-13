@@ -1,8 +1,9 @@
-import styled from 'styled-components/native'
-import { TouchableWithoutFeedbackProps, Dimensions } from 'react-native'
+import styled, { css } from 'styled-components/native'
+import { TouchableWithoutFeedbackProps, Dimensions, Platform } from 'react-native'
 import { getBottomSpace as getBottomSpaceX } from 'react-native-iphone-x-helper'
 
 import { getMetrics } from '~/theme'
+import PickingService from '~/services/picking'
 
 import { Box, IBox } from '../box'
 
@@ -21,6 +22,19 @@ export const getBottomSpace = (props) => {
   return bottomSpace
 }
 
+export const StyledModal = styled(Box)`
+  bottom: 0;
+  width: 100%;
+  ${PickingService.forPlatform({
+    default: css`
+      position: absolute;
+    `,
+    web: css`
+      position: fixed;
+    `,
+  })}
+`
+
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-end;
@@ -31,11 +45,18 @@ export const Overlay = styled.TouchableWithoutFeedback<TouchableWithoutFeedbackP
 export const OverlayBackground = styled(Box).attrs({
   bg: 'black',
 })<IBox>`
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  ${PickingService.forPlatform({
+    default: css`
+      position: absolute;
+    `,
+    web: css`
+      position: fixed;
+    `,
+  })}
 `
 
 export const Body = styled(Box).attrs((props) => {
@@ -45,7 +66,24 @@ export const Body = styled(Box).attrs((props) => {
     btlr: 3,
     btrr: 3,
   }
-})``
+})`
+  ${PickingService.forPlatform({
+    default: css`
+      margin: 0;
+    `,
+    web: css`
+      margin: 0 auto;
+    `,
+  })}
+  ${PickingService.forPlatform({
+    default: css`
+      min-width: auto;
+    `,
+    web: css`
+      min-width: 300;
+    `,
+  })}
+`
 
 export const Header = styled(Box).attrs({
   px: 'md',
