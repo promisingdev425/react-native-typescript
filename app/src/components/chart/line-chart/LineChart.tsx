@@ -4,7 +4,7 @@ import { Circle } from 'react-native-svg'
 import { useTheme } from '~/theme'
 
 import { Box, Title } from '../../core'
-import { IChart, IDecorator } from '../types'
+import { IChart, IDecorator, ChartType } from '../types'
 import { getMaxValue, XAxis, YAxis } from '../helpers'
 
 import { Container, Body, LineChartView, Grid } from './styles'
@@ -62,7 +62,12 @@ export const LineChart: React.FC<IChart> = ({
   return (
     <Container {...rest} p="sm">
       {title && (
-        <Title variant="section" mb="xs" accessibilityLabel="LineChartTitle">
+        <Title
+          variant="section"
+          mb="xs"
+          accessibilityLabel="LineChartTitle"
+          textAlign="center"
+        >
           {title}
         </Title>
       )}
@@ -80,6 +85,7 @@ export const LineChart: React.FC<IChart> = ({
           >
             <Grid
               strokeColor={gridColor}
+              type={ChartType.Line}
               activeColor={activeGridColor}
               activeIndex={activeGridIndex}
               belowChart

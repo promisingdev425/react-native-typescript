@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { LayoutChangeEvent, LayoutRectangle } from 'react-native'
 import { Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
 
 import { useTheme } from '~/theme'
@@ -25,7 +26,15 @@ export const BarChart: React.FC<IChart> = ({
 }) => {
   const chartData = values.map((item) => item.value)
   const theme = useTheme()
-  console.log(theme)
+  const [layout, setLayout] = useState<LayoutRectangle>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  })
+  const handleChartLayout = (event: LayoutChangeEvent) => {
+    setLayout(event.nativeEvent.layout)
+  }
 
   /* istanbul ignore next */
   const GradientFill = () => (
@@ -38,11 +47,12 @@ export const BarChart: React.FC<IChart> = ({
   )
 
   /* istanbul ignore next */
-  const BarDecorator = ({ data, x, y }: IDecorator) => {
-    const { screenWidth } = theme.metrics
+  const BarRenderer = ({ data, x, y }: IDecorator) => {
+    const layoutWidth = layout.width
     const { sm } = theme.space
-    const elementWidth = (screenWidth - sm * 2 - 30) / data.length
-    const xSpace = elementWidth * 0.15
+    const elementWidth = (layoutWidth - sm * 2 - 30) / data.length
+    const barWidth = Math.min(elementWidth * 0.6, 30)
+    const xSpace = (elementWidth - barWidth) / 2
 
     return (
       <>
@@ -66,9 +76,14 @@ export const BarChart: React.FC<IChart> = ({
   }
 
   return (
-    <Container {...rest} p="sm">
+    <Container {...rest} p="sm" onLayout={handleChartLayout}>
       {title && (
-        <Title variant="section" mb="xs" accessibilityLabel="LineChartTitle">
+        <Title
+          variant="section"
+          mb="xs"
+          accessibilityLabel="LineChartTitle"
+          textAlign="center"
+        >
           {title}
         </Title>
       )}
@@ -91,7 +106,7 @@ export const BarChart: React.FC<IChart> = ({
             />
 
             <GradientFill />
-            <BarDecorator />
+            <BarRenderer />
           </ChartView>
 
           <XAxis
