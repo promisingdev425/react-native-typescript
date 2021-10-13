@@ -5,7 +5,7 @@ import { centered, themeColorControl } from '~/storybook-utils'
 import { BarChart } from './BarChart'
 
 export default {
-  title: 'Components/BarChart',
+  title: 'Components/Charts/BarChart',
   component: BarChart,
   // You can use argTypes to further customize the controls
   // in the storybook if you need.

@@ -5,7 +5,7 @@ import { centered, themeColorControl } from '~/storybook-utils'
 import { LineChart } from './LineChart'
 
 export default {
-  title: 'Components/LineChart',
+  title: 'Components/Charts/LineChart',
   component: LineChart,
   argTypes: {
     strokeColor: themeColorControl,
