@@ -18,9 +18,11 @@ describe('IconButton', function () {
 
     const InnerScreen = () => (
       <View testID="Root">
-        <IconButton onPress={handlePress}>
-          <Icons.CircularArrow testID="IconButton" />
-        </IconButton>
+        <IconButton
+          onPress={handlePress}
+          icon={<Icons.CircularArrow testID="IconButton" />}
+          accessibilityLabel="This is the text"
+          text="This is the text" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -33,10 +35,19 @@ describe('IconButton', function () {
     expect(screen.getByTestId('Root')).toContainElement(
       screen.getByTestId('IconButton'),
     )
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByText('This is the text'),
+    )
   })
 
   it('should click', () => {
     fireEvent.press(button)
     expect(handlePress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should have accessibility label', () => {
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByLabelText('This is the text'),
+    )
   })
 })

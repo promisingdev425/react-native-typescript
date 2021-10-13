@@ -9,4 +9,5 @@ export default {
   label1: 13,
   label2: 10,
   label3: 8,
+  value: 24
 }
