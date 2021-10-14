@@ -17,18 +17,18 @@ describe('LineChart', function () {
           strokeColor="brandPink"
           strokeWidth={2}
           values={[
-            { value: 100, label: 'J' },
-            { value: 120, label: 'F' },
-            { value: 120, label: 'M' },
-            { value: 130, label: 'A' },
-            { value: 140, label: 'M' },
-            { value: 110, label: 'J' },
-            { value: 120, label: 'J' },
-            { value: 130, label: 'A' },
-            { value: 140, label: 'S' },
-            { value: 150, label: 'O' },
-            { value: 110, label: 'N' },
-            { value: 100, label: 'D' },
+            { key: 0, value: 100, label: 'J' },
+            { key: 0, value: 120, label: 'F' },
+            { key: 0, value: 120, label: 'M' },
+            { key: 0, value: 130, label: 'A' },
+            { key: 0, value: 140, label: 'M' },
+            { key: 0, value: 110, label: 'J' },
+            { key: 0, value: 120, label: 'J' },
+            { key: 0, value: 130, label: 'A' },
+            { key: 0, value: 140, label: 'S' },
+            { key: 0, value: 150, label: 'O' },
+            { key: 0, value: 110, label: 'N' },
+            { key: 0, value: 100, label: 'D' },
           ]}
         />
 
@@ -40,18 +40,18 @@ describe('LineChart', function () {
           activeGridColor="brandOrange"
           strokeWidth={2}
           values={[
-            { value: 100, label: 'J' },
-            { value: 120, label: 'F' },
-            { value: 120, label: 'M' },
-            { value: 130, label: 'A' },
-            { value: 140, label: 'M' },
-            { value: 110, label: 'J' },
-            { value: 120, label: 'J' },
-            { value: 130, label: 'A' },
-            { value: 140, label: 'S' },
-            { value: 150, label: 'O' },
-            { value: 110, label: 'N' },
-            { value: 100, label: 'D' },
+            { key: 0, value: 100, label: 'J' },
+            { key: 0, value: 120, label: 'F' },
+            { key: 0, value: 120, label: 'M' },
+            { key: 0, value: 130, label: 'A' },
+            { key: 0, value: 140, label: 'M' },
+            { key: 0, value: 110, label: 'J' },
+            { key: 0, value: 120, label: 'J' },
+            { key: 0, value: 130, label: 'A' },
+            { key: 0, value: 140, label: 'S' },
+            { key: 0, value: 150, label: 'O' },
+            { key: 0, value: 110, label: 'N' },
+            { key: 0, value: 100, label: 'D' },
           ]}
         />
       </View>

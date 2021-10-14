@@ -18,8 +18,10 @@ interface ICommonProps {
 }
 
 export type ChartData = {
+  key: string | number
   value: number
   label: string
+  color?: string
 }
 
 export enum ChartType {
@@ -66,6 +68,10 @@ export interface IChart extends IBox, ICommonProps {
    */
   values?: Array<ChartData>
 }
+
+// export interface IPieChart extends IChart {
+//   overview
+// }
 
 export interface IDecorator extends ICommonProps {
   radius?: number
