@@ -12,8 +12,8 @@ import { Container, Body, LineChartView, Grid } from './styles'
 
 /**
  * `<CircleRenderer>`
- * istanbul ignore next
  */
+/* istanbul ignore next */
 const CircleRenderer = ({
   radius = 4,
   fill = 'white',
