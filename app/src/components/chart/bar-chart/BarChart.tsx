@@ -29,8 +29,8 @@ export const BarChart: React.FC<IChart> = ({
   const [layout, setLayout] = useState<LayoutRectangle>({
     x: 0,
     y: 0,
-    width: 0,
-    height: 0,
+    width: theme.metrics.screenWidth,
+    height,
   })
   const handleChartLayout = (event: LayoutChangeEvent) => {
     setLayout(event.nativeEvent.layout)
@@ -110,6 +110,7 @@ export const BarChart: React.FC<IChart> = ({
           </ChartView>
 
           <XAxis
+            layoutWidth={layout.width}
             data={chartData}
             inset={inset}
             formatLabel={(value, index) => values[index].label}

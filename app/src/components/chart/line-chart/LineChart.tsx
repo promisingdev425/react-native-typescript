@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { LayoutChangeEvent, LayoutRectangle } from 'react-native'
 import { Circle } from 'react-native-svg'
 
 import { useTheme } from '~/theme'
@@ -58,9 +59,20 @@ export const LineChart: React.FC<IChart> = ({
 }) => {
   const chartData = values.map((item) => item.value)
   const maxValue = getMaxValue(chartData)
+  const theme = useTheme()
+  const [layout, setLayout] = useState<LayoutRectangle>({
+    x: 0,
+    y: 0,
+    width: theme.metrics.screenWidth,
+    height,
+  })
+
+  const handleChartLayout = (event: LayoutChangeEvent) => {
+    setLayout(event.nativeEvent.layout)
+  }
 
   return (
-    <Container {...rest} p="sm">
+    <Container {...rest} p="sm" onLayout={handleChartLayout}>
       {title && (
         <Title
           variant="section"
@@ -98,6 +110,7 @@ export const LineChart: React.FC<IChart> = ({
           </LineChartView>
 
           <XAxis
+            layoutWidth={layout.width}
             data={chartData}
             inset={inset}
             formatLabel={(value, index) => values[index].label}

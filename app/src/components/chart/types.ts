@@ -49,4 +49,6 @@ export interface IGrid extends GridProps<number>, ICommonProps {
 export interface IAxis extends AxisProps<number>, ICommonProps {
   textSize?: 'label1' | 'label2' | 'label3'
   textColor?: string
+  layoutWidth?: number
+  layoutHeight?: number
 }

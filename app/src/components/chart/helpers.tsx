@@ -4,6 +4,7 @@ import { G, Line } from 'react-native-svg'
 import { XAxis as XAxisUI, YAxis as YAxisUI } from 'react-native-svg-charts'
 
 import { getMetrics, getSpace, getFontSize, getColor } from '~/theme'
+import PickingService from '~/services/picking'
 
 import { IGrid, IAxis, ChartType } from './types'
 
@@ -84,15 +85,19 @@ export const Grid = ({
 }
 
 export const XAxis = styled(XAxisUI).attrs(
-  ({ data, inset, textSize, textColor, ...props }: IAxis) => {
-    const screenWidth = getMetrics('screenWidth')(props)
+  ({ data, inset, textSize, textColor, layoutWidth, ...props }: IAxis) => {
+    layoutWidth = layoutWidth || getMetrics('screenWidth')(props)
     const elementWidth =
-      (screenWidth - getSpace('sm')(props) * 2 - 30) / data.length
+      (layoutWidth - getSpace('sm')(props) * 2 - 30) / data.length
+    const amplifier = PickingService.forPlatform({
+      default: 0.5,
+      web: 0.67,
+    })
 
     return {
       contentInset: {
-        left: elementWidth / 2 + inset,
-        right: elementWidth / 2 + inset,
+        left: elementWidth * amplifier + inset,
+        right: elementWidth * amplifier + inset,
       },
       svg: {
         fontSize: getFontSize(textSize || 'label2')(props),
@@ -110,7 +115,7 @@ export const YAxis = styled(YAxisUI).attrs(
     style: { width: 30 },
     contentInset: {
       top: inset,
-      bottom: inset,
+      bottom: inset * 2,
     },
     svg: {
       fontSize: getFontSize(textSize || 'label2')(props),
