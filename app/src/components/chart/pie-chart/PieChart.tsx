@@ -37,10 +37,16 @@ export const PieChart: React.FC<IChart> = ({
         />
 
         <Overview>
-          <Title variant="header">{max}</Title>
+          <Title variant="header" accessibilityLabel="PieChartTotalValue">
+            {max}
+          </Title>
 
           {title && (
-            <Text color="textGray" fontSize="body2">
+            <Text
+              color="textGray"
+              fontSize="body2"
+              accessibilityLabel="PieChartTitle"
+            >
               {title.toUpperCase()}
             </Text>
           )}
@@ -51,7 +57,10 @@ export const PieChart: React.FC<IChart> = ({
         <ChartInfo key={`info-row${row}`}>
           {map(range(3), (col) =>
             row * 3 + col < values.length ? (
-              <Meta key={`info-row${row}-col${col}`}>
+              <Meta
+                key={`info-row${row}-col${col}`}
+                accessibilityLabel="PieChartFactor"
+              >
                 <MetaView {...values[row * 3 + col]} />
               </Meta>
             ) : (
