@@ -4,7 +4,6 @@ import { G, Line } from 'react-native-svg'
 import { XAxis as XAxisUI, YAxis as YAxisUI } from 'react-native-svg-charts'
 
 import { getMetrics, getSpace, getFontSize, getColor } from '~/theme'
-import PickingService from '~/services/picking'
 
 import { IGrid, IAxis, ChartType } from './types'
 
@@ -89,15 +88,11 @@ export const XAxis = styled(XAxisUI).attrs(
     layoutWidth = layoutWidth || getMetrics('screenWidth')(props)
     const elementWidth =
       (layoutWidth - getSpace('sm')(props) * 2 - 30) / data.length
-    const amplifier = PickingService.forPlatform({
-      default: 0.5,
-      web: 0.67,
-    })
 
     return {
       contentInset: {
-        left: elementWidth * amplifier + inset,
-        right: elementWidth * amplifier + inset,
+        left: elementWidth * 0.5 + inset,
+        right: elementWidth * 0.5 + inset,
       },
       svg: {
         fontSize: getFontSize(textSize || 'label2')(props),
