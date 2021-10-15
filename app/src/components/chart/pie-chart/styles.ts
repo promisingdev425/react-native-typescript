@@ -38,6 +38,7 @@ export const Overview = styled(Box)`
 `
 
 export const ChartInfo = styled(Box)`
+  width: 100%;
   display: flex;
   flex-direction: row;
 `
