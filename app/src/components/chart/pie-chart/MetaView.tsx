@@ -19,7 +19,9 @@ export const MetaView: React.FC<ChartData> = ({
       <Dot size={8} background={color} />
 
       <Box ml="xxs">
-        <Text fontSize="value">{value}</Text>
+        <Text fontSize="value" textAlign="left">
+          {value}
+        </Text>
         <Text fontSize="body2" color="textGray">
           {label}
         </Text>
