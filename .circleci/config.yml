@@ -92,8 +92,8 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - run: yarn add -W @lhci/cli@0.8.x
-      - run: yarn lhci autorun
+      - run: sudo npm install -g @lhci/cli@0.8.x
+      - run: lhci autorun
 
   # deploy-dev:
   #   executor: node
