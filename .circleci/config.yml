@@ -92,8 +92,7 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - run: yarn workspace @apartmentsnapshot/snapshot-ui add @lhci/cli@0.8.x
-      - run: yarn workspace @apartmentsnapshot/snapshot-ui web:mock
+      - run: yarn workspace @apartmentsnapshot/snapshot-ui add @lhci/cli
       - run: lhci autorun
 
   # deploy-dev:
