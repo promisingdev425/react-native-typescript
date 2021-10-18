@@ -92,7 +92,7 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      #- run: sudo yarn add global -W @lhci/cli@0.8.x
+      - run: yarn workspace @apartmentsnapshot/snapshot-ui add @lhci/cli@0.8.x
       - run: yarn workspace @apartmentsnapshot/snapshot-ui web:mock
       - run: lhci autorun
 

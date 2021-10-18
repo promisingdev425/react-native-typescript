@@ -44,7 +44,6 @@
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.0",
     "@graphql-tools/schema": "^8.2.0",
-    "@lhci/cli": "0.8.x",
     "@styled-system/theme-get": "^5.1.2",
     "@thesoulfresh/react-tools": "^1.4.0",
     "@thesoulfresh/utils": "^0.3.3",
