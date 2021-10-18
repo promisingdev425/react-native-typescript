@@ -91,7 +91,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - run: sudo yarn add global @lhci/cli@0.8.x
+      - run: sudo yarn add global -W @lhci/cli@0.8.x
       - run: yarn install
       - run: yarn start:mock
       - run: lhci autorun
