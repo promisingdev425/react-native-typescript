@@ -5,5 +5,5 @@
 # development workflow and we have the CI environment to
 # do the time intensive tasks for us.
 yarn workspace @apartmentsnapshot/snapshot-ui prettier:fix
-git status ##to list any changes
+git status #to list changes before added
 git add -A
