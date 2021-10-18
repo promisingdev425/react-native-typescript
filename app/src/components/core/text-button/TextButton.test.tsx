@@ -11,9 +11,7 @@ describe('TextButton', function () {
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <TextButton
-          testID="TextButton"
-        />
+        <TextButton testID="TextButton" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -22,7 +20,8 @@ describe('TextButton', function () {
   })
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('TextButton'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('TextButton'),
+    )
   })
 })

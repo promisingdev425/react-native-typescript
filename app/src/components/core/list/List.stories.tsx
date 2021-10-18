@@ -17,22 +17,26 @@ export default {
   },
 }
 
-export const Template = (props) => <List {...props}>
-  <Text>Item 1</Text>
-  <Text>Item 2</Text>
-</List>
+export const Template = (props) => (
+  <List {...props}>
+    <Text>Item 1</Text>
+    <Text>Item 2</Text>
+  </List>
+)
 Template.storyName = 'List'
 Template.decorators = [centered]
 Template.parameters = {
-  docs: {source: {state: 'open'}},
+  docs: { source: { state: 'open' } },
 }
 
-export const Template1 = (props) => <List {...props}>
-  <Button title="Learn More" />
-  <Button title="Learn More" />
-</List>
+export const Template1 = (props) => (
+  <List {...props}>
+    <Button title="Learn More" />
+    <Button title="Learn More" />
+  </List>
+)
 Template1.storyName = 'List w/ Buttons'
 Template1.decorators = [centered]
 Template1.parameters = {
-  docs: {source: {state: 'open'}},
+  docs: { source: { state: 'open' } },
 }

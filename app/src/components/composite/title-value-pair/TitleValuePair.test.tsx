@@ -16,12 +16,14 @@ describe('TitleValuePair', function () {
           title="Occupancy"
           hasDot={true}
           dotColor="red"
-          testID="TitleValuePair" />
+          testID="TitleValuePair"
+        />
         <TitleValuePair
           value="2.4 days"
           title="Hello"
           hasDot={false}
-          testID="TitleValuePair1" />
+          testID="TitleValuePair1"
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -48,7 +50,8 @@ describe('TitleValuePair', function () {
   })
 
   it('should not have a dot', () => {
-    expect(within(screen.getByTestId('TitleValuePair1')).queryByTestId('Dot')).toBeNull()
+    expect(
+      within(screen.getByTestId('TitleValuePair1')).queryByTestId('Dot'),
+    ).toBeNull()
   })
-
 })

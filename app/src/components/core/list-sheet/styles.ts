@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components/native'
-import { TouchableWithoutFeedbackProps, Dimensions, Platform } from 'react-native'
+import {
+  TouchableWithoutFeedbackProps,
+  Dimensions,
+  Platform,
+} from 'react-native'
 import { getBottomSpace as getBottomSpaceX } from 'react-native-iphone-x-helper'
 
 import { getMetrics } from '~/theme'

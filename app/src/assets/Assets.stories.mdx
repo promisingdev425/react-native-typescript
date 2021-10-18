@@ -26,19 +26,17 @@ generated, you must reference the components on the `Icons` export as follows:
 
 ```js
 import { Icons } from '~/assets'
-<Icons.Calendar />
+;<Icons.Calendar />
 
 // The following will not work:
 import { Calendar } from '~/assets'
-<Calendar />
+;<Calendar />
 ```
 
 > NOTE: Some `styled-system` properties such as `padding` only work on web so you should
 > test your styling on both native and web to ensure the icons function as you expect.
 
-<Story name="Icons">
-  {IconGallery.bind({})}
-</Story>
+<Story name="Icons">{IconGallery.bind({})}</Story>
 
 <ArgsTable story="Icons" />
 
@@ -56,12 +54,12 @@ see which attributes only work on web.
 
 1. To add new icons, simply add the `.svg` file into the `assets/images/icons` folder.
 2. Replace the main foreground colors in the SVG file with
-the value ["currentColor"](https://css-tricks.com/cascading-svg-fill-color/).
+   the value ["currentColor"](https://css-tricks.com/cascading-svg-fill-color/).
 3. Run `yarn build:icons`. This will generate a new icon component in the
-`assets/images/icons/components` folder for you and make it available on the
-`Icons` object.
+   `assets/images/icons/components` folder for you and make it available on the
+   `Icons` object.
 4. Commit the `.svg` file and the SVG component in the `icons/components` folder.
-Committing these files allows us to further customize those components if we need to.
+   Committing these files allows us to further customize those components if we need to.
 
 ### Re-generating Existing Icons
 
@@ -108,7 +106,7 @@ custom component but then access it in the same manner as all other icon compone
 const Icons = {} // Find this definition in the file
 
 // Attach your icon component to the Icons object so it gets exported.
-Icons.MyIcon = props => {
+Icons.MyIcon = (props) => {
   // You can write any custom component logic here,
   // including using styled-components or styled-system.
 }
@@ -124,4 +122,3 @@ the SVG components are recreated.
 
 However, you may sometimes need to customize the SVGs to do things like take
 multiple color props, in which case customizing the SVG component is the way to go.
-

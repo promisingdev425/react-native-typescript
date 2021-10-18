@@ -9,20 +9,20 @@ export const ValueDotContainer = styled(Box)`
 `
 
 export const Value = styled(Text).attrs((props) => {
-  return{
+  return {
     fontSize: getFontSize('value')(props),
-    mb: 'xxs'
+    mb: 'xxs',
   }
 })``
 
 export const TheDot = styled(Dot).attrs({
   mt: 'xxs',
-  ml: 'xs'
+  ml: 'xs',
 })``
 
 export const Title = styled(Text).attrs((props) => {
-  return{
+  return {
     fontSize: getFontSize('body2')(props),
-    color: getColor('textGray')(props)
+    color: getColor('textGray')(props),
   }
 })``

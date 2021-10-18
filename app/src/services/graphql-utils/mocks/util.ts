@@ -13,7 +13,9 @@
  *
  * @param target - An object with properties
  */
-export function toGenerator(target: { [key: string]: any }): {
+export function toGenerator(target: {
+  [key: string]: any
+}): {
   [key: string]: () => any
 } {
   const out = {}

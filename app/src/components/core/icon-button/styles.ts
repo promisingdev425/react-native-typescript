@@ -16,9 +16,9 @@ export const Container = styled(TouchableOpacity)<
 `
 
 export const StyledText = styled(Text).attrs((props) => {
-  return{
+  return {
     fontSize: getFontSize('body2')(props),
     color: getColor('black')(props),
-    marginTop: getSpace('xxs')(props)
+    marginTop: getSpace('xxs')(props),
   }
 })``

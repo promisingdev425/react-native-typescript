@@ -3,8 +3,7 @@ import { TouchableWithoutFeedbackProps } from 'react-native'
 
 import { Container, StyledText } from './styles'
 
-export interface ITextButton extends TouchableWithoutFeedbackProps  {
-
+export interface ITextButton extends TouchableWithoutFeedbackProps {
   /**
    * Click handler.
    */

@@ -10,7 +10,7 @@ export default {
   argTypes: {},
   args: {
     color: 'positive',
-    hasOuterLayer: false
+    hasOuterLayer: false,
   },
   parameters: {
     controls: { sort: 'requiredFirst' },

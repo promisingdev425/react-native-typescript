@@ -29,7 +29,7 @@ export default {
   },
   parameters: {
     controls: { sort: 'requiredFirst' },
-  }
+  },
 }
 
 export const Template = (props) => <Text {...props} />

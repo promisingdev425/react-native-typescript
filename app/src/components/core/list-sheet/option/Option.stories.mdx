@@ -1,21 +1,27 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs';
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
 import { Icons } from '~/assets'
 
-import { Option } from './Option';
+import { Option } from './Option'
 
 <Meta
   title="Components/Option"
   argTypes={{
-    onPress: { action: 'onPress' }
+    onPress: { action: 'onPress' },
   }}
 />
 
 # Option
 
-<Description of={ Option } />
+<Description of={Option} />
 
-export const Template = props => <Option {...props} />;
+export const Template = (props) => <Option {...props} />
 
 <Canvas>
   <Story
@@ -24,7 +30,7 @@ export const Template = props => <Option {...props} />;
       option: {
         Icon: Icons.Application,
         value: 'application',
-        label: 'Engagement Score'
+        label: 'Engagement Score',
       },
       height: 48,
     }}
@@ -33,4 +39,4 @@ export const Template = props => <Option {...props} />;
   </Story>
 </Canvas>
 
-<ArgsTable of={ Option } />
+<ArgsTable of={Option} />

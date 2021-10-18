@@ -128,7 +128,8 @@ export const ListSheet: React.FC<IListSheet> = ({
   const overlayStyle: AnimatedViewStyle = { opacity: opacityInterpolation }
 
   return (
-    <StyledModal as={Modal}
+    <StyledModal
+      as={Modal}
       visible={open}
       animationType="none"
       onRequestClose={handleCancel}
