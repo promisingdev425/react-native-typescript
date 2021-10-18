@@ -92,8 +92,8 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - run: sudo yarn global add -W @lhci/cli@0.8.x
-      - run: lhci autorun
+      - run: yarn add -W @lhci/cli@0.8.x
+      - run: yarn lhci autorun
 
   # deploy-dev:
   #   executor: node
