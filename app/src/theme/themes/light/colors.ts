@@ -19,6 +19,7 @@ export default {
   warningOverlay: 'rgba(254, 205, 0, 0.1)', // #FECD00<warning> to alpha 10%
   negative: '#FF5242',
   negativeOverlay: 'rgba(255, 82, 66, 0.1)', // #FF5242<negative> to alpha 10%
+  darkRed: '#ca5e27',
 
   background: '#F5F6FA',
 

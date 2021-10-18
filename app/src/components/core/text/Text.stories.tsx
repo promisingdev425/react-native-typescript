@@ -11,8 +11,6 @@ import {
 import { Box } from '../box'
 import { Text } from './Text'
 
-console.log('themes?', themes.light)
-
 export default {
   title: 'Components/Core/Text',
   component: Text,
