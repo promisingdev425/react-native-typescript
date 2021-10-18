@@ -6,7 +6,6 @@ import { Container, Item, Dot } from './styles'
 import { Text } from '../text'
 
 export interface IList {
-
   /**
    * Children elements.
    */
@@ -17,14 +16,11 @@ export interface IList {
  * `<List>` is a component similar to HTML ul elements.
  * You can add child elements which will automatically get formatted into the list style.
  */
-export const List: React.FC<IList> = ({
-  children,
-  ...rest
-}) => {
+export const List: React.FC<IList> = ({ children, ...rest }) => {
   return (
-    <Container {...rest} >
+    <Container {...rest}>
       {children.map((item, index) => {
-        return(
+        return (
           <Item key={index}>
             <Dot></Dot>
             <View>{item}</View>

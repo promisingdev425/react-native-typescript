@@ -25,13 +25,16 @@ describe('List', function () {
   })
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('List'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('List'),
+    )
 
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByText('Item 1'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByText('Item 1'),
+    )
 
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByText('Item 2'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByText('Item 2'),
+    )
   })
 })

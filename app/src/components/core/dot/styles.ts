@@ -9,7 +9,7 @@ const innerDotSize = 6
 
 export const Container = styled(Box).attrs({
   width: dotSize,
-  height: dotSize
+  height: dotSize,
 })``
 
 export const DotOuter = styled(Box).attrs(({ color }: DotProps) => {

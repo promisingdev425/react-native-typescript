@@ -12,7 +12,7 @@ export default {
   args: {
     onPress: () => console.log('hit Circular arrow button'),
     icon: <Icons.CircularArrow testID="IconButton" color="#333" />,
-    accessibilityLabel: "Circular button"
+    accessibilityLabel: 'Circular button',
   },
   parameters: {
     controls: { sort: 'requiredFirst' },
@@ -33,6 +33,12 @@ Template1.parameters = {
   docs: { source: { state: 'open' } },
 }
 Template1.args = {
-  icon: <Icons.CircularArrow testID="IconButton" color="#567" style={{ transform: [{ rotate: '180deg' }] }} />,
+  icon: (
+    <Icons.CircularArrow
+      testID="IconButton"
+      color="#567"
+      style={{ transform: [{ rotate: '180deg' }] }}
+    />
+  ),
   text: 'reports',
 }

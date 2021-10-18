@@ -1,26 +1,32 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 
 import { LeaderboardItem } from './LeaderboardItem'
 
 <Meta
   title="Components/LeaderboardItem"
   argTypes={{
-    onPress: { action: 'onPress' }
+    onPress: { action: 'onPress' },
   }}
 />
 
 # LeaderboardItem
 
-<Description of={ LeaderboardItem } />
+<Description of={LeaderboardItem} />
 
-export const Template = props => <LeaderboardItem {...props} />
+export const Template = (props) => <LeaderboardItem {...props} />
 
 <Canvas>
   <Story
     name="LeaderboardItem"
     args={{
-      id: "rank1",
-      name: "Stephen Curry",
+      id: 'rank1',
+      name: 'Stephen Curry',
       rank: 1,
       score: 90,
       dotSize: 6,
@@ -31,4 +37,4 @@ export const Template = props => <LeaderboardItem {...props} />
   </Story>
 </Canvas>
 
-<ArgsTable of={ LeaderboardItem } />
+<ArgsTable of={LeaderboardItem} />

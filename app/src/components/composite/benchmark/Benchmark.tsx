@@ -19,51 +19,49 @@ import {
   DividerContainer,
   DividerShape,
   DividerLabels,
-  DividerLabel
+  DividerLabel,
 } from './styles'
 
-
 export interface IBenchmark {
-
   /**
    * This sets the position of the indicator, 0 being the far left, 1 being far right.
    */
-  indicatorPosition: number,
+  indicatorPosition: number
 
   /**
    * This is the text value in the indicator.
    */
-  indicatorLabel: string,
+  indicatorLabel: string
 
   /**
    * This is the label within the orange bar.
    */
-  colorBarNegativeLabel: string,
+  colorBarNegativeLabel: string
 
   /**
    * This is the label within the yellow bar.
    */
-  colorBarWarningLabel: string,
+  colorBarWarningLabel: string
 
   /**
    * This is the label within the green bar.
    */
-  colorBarPositiveLabel: string,
+  colorBarPositiveLabel: string
 
   /**
    * This is the label underneath the negative divider.
    */
-  dividerNegativeLabel: string,
+  dividerNegativeLabel: string
 
   /**
    * This is the label underneath the warning divider.
    */
-  dividerWarningLabel: string,
+  dividerWarningLabel: string
 
   /**
    * This is the label underneath the positive divider.
    */
-  dividerPositiveLabel: string,
+  dividerPositiveLabel: string
 }
 
 /**
@@ -83,7 +81,6 @@ export const Benchmark: React.FC<IBenchmark> = ({
 }) => {
   return (
     <Container accessibilityRole="image" {...rest}>
-
       <Indicator testID="Indicator" indicatorPosition={indicatorPosition}>
         <IndicatorNotch />
         <IndicatorText>{indicatorLabel}</IndicatorText>
@@ -119,7 +116,6 @@ export const Benchmark: React.FC<IBenchmark> = ({
         <DividerLabel>{dividerWarningLabel}</DividerLabel>
         <DividerLabel>{dividerPositiveLabel}</DividerLabel>
       </DividerLabels>
-
     </Container>
   )
 }

@@ -16,43 +16,36 @@ import * as BaseIcons from './components'
 // from the `components/` folder.
 const defaults = {
   Application: {
-    color: 'brandOrange'
+    color: 'brandOrange',
   },
   Arrow: {
-    color: 'overlay'
+    color: 'overlay',
   },
   Calendar: {
-    color: 'brandPink'
+    color: 'brandPink',
   },
   CircularArrow: {
-    color: 'overlay'
+    color: 'overlay',
   },
   Property: {
-    color: 'white'
+    color: 'white',
   },
   TabBrowse: {
-    color: 'overlay'
+    color: 'overlay',
   },
   TabLeaderboard: {
-    color: 'overlay'
+    color: 'overlay',
   },
   TabSummary: {
-    color: 'overlay'
-  }
+    color: 'overlay',
+  },
 }
 
 // Use this to apply the default styled-system attributes
 // to any icons you want to customize more specifically.
-const composedProps = compose(
-  space,
-  layout,
-  flexbox,
-  position,
-  border,
-  color,
-)
+const composedProps = compose(space, layout, flexbox, position, border, color)
 
-const Icons = {};
+const Icons = {}
 
 // If you want to customize an icon further than just setting
 // its default props (example hover animations), you can add it
@@ -64,8 +57,6 @@ const Icons = {};
 //   // styled component definition.
 //   return styled(Foo)(composedProps)
 // }
-
-
 
 // Inorder to minimize the amount of work necessary to
 // add new icons to the application, all icons are
@@ -87,16 +78,13 @@ const Icons = {};
 // a script to generate the component definitions.
 // I'm sticking with the current solution since it's
 // requires the least manual work when adding new icons.
-export default Object.keys(BaseIcons)
-  .reduce((acc, name) => {
-    // Only add a new icon to the export if it isn't already defined.
-    if (!acc[name]) {
-      acc[name] = styled(BaseIcons[name])(composedProps)
+export default Object.keys(BaseIcons).reduce((acc, name) => {
+  // Only add a new icon to the export if it isn't already defined.
+  if (!acc[name]) {
+    acc[name] = styled(BaseIcons[name])(composedProps)
 
-      // Add any default props
-      if (defaults[name]) acc[name].defaultProps = defaults[name];
-    }
-    return acc
-  }, Icons) as any // TODO Is there a way to type this so Typescript knows what icons are available?
-
-
+    // Add any default props
+    if (defaults[name]) acc[name].defaultProps = defaults[name]
+  }
+  return acc
+}, Icons) as any // TODO Is there a way to type this so Typescript knows what icons are available?

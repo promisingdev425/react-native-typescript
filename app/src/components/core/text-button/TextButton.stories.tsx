@@ -9,10 +9,10 @@ export default {
   component: TextButton,
   argTypes: {},
   args: {
-    children: 'Browse All Reports'
+    children: 'Browse All Reports',
   },
   parameters: {
-    controls: { sort: 'requiredFirst' }
+    controls: { sort: 'requiredFirst' },
   },
 }
 
@@ -20,5 +20,5 @@ export const Template = (props) => <TextButton {...props} />
 Template.storyName = 'TextButton'
 Template.decorators = [centered]
 Template.parameters = {
-  docs: {source: {state: 'open'}},
+  docs: { source: { state: 'open' } },
 }

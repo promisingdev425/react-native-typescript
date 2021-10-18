@@ -7,12 +7,11 @@ import { Benchmark } from './Benchmark'
 
 describe('Benchmark', function () {
   let screen: RenderAPI
-  let testValues;
+  let testValues
 
   beforeEach(() => {
-
     testValues = {
-      indicatorPosition: .5,
+      indicatorPosition: 0.5,
       indicatorLabel: '50%',
       colorBarNegativeLabel: '0-5 pts',
       colorBarWarningLabel: '6-9 pts',
@@ -20,15 +19,12 @@ describe('Benchmark', function () {
       dividerNegativeLabel: '72%',
       dividerWarningLabel: '80%',
       dividerPositiveLabel: '92%',
-      accessibilityLabel: 'This is a test label'
+      accessibilityLabel: 'This is a test label',
     }
 
     const InnerScreen = () => (
       <View testID="Root">
-        <Benchmark
-          {...testValues}
-          testID="Benchmark"
-        />
+        <Benchmark {...testValues} testID="Benchmark" />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -37,8 +33,9 @@ describe('Benchmark', function () {
   })
 
   it('should render', () => {
-    expect(screen.getByTestId('Root'))
-      .toContainElement(screen.getByTestId('Benchmark'))
+    expect(screen.getByTestId('Root')).toContainElement(
+      screen.getByTestId('Benchmark'),
+    )
   })
 
   it('should render all labels', () => {
@@ -49,9 +46,9 @@ describe('Benchmark', function () {
       screen.getByText(testValues.colorBarPositiveLabel),
       screen.getByText(testValues.dividerNegativeLabel),
       screen.getByText(testValues.dividerWarningLabel),
-      screen.getByText(testValues.dividerPositiveLabel)
+      screen.getByText(testValues.dividerPositiveLabel),
     )
-  });
+  })
 
   it('should have an accessibilityLabel', () => {
     expect(screen.getByTestId('Benchmark')).toContainElement(
@@ -60,7 +57,6 @@ describe('Benchmark', function () {
   })
 
   it('it should render the indicator at the correct x position', () => {
-    expect(screen.getByTestId('Indicator')).toHaveStyle({'left':'50%'})
+    expect(screen.getByTestId('Indicator')).toHaveStyle({ left: '50%' })
   })
-
 })

@@ -7,8 +7,8 @@ import Svg, {
   Path,
 } from 'react-native-svg'
 interface SVGRProps {
-  title?: string;
-  titleId?: string;
+  title?: string
+  titleId?: string
 }
 
 function SvgTabBrowseActive(

@@ -37,13 +37,13 @@ export const TitleValuePair: React.FC<ITitleValuePair> = ({
   dotColor = 'positive',
   ...rest
 }) => {
-
   return (
     <View {...rest}>
-
       <ValueDotContainer>
         <Value accessible={true}>{value}</Value>
-        {hasDot && <TheDot testID="Dot" color={dotColor} hasOuterLayer={true} />}
+        {hasDot && (
+          <TheDot testID="Dot" color={dotColor} hasOuterLayer={true} />
+        )}
       </ValueDotContainer>
 
       <Title accessible={true}>{title}</Title>
