@@ -6,7 +6,7 @@ import { centered } from '~/storybook-utils'
 import { Benchmark } from './Benchmark'
 
 export default {
-  title: 'Components/Benchmark',
+  title: 'Components/Charts/Benchmark',
   component: Benchmark,
   argTypes: {},
   args: {

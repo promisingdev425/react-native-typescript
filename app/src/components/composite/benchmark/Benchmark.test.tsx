@@ -59,4 +59,8 @@ describe('Benchmark', function () {
     )
   })
 
+  it('it should render the indicator at the correct x position', () => {
+    expect(screen.getByTestId('Indicator')).toHaveStyle({'left':'50%'})
+  })
+
 })

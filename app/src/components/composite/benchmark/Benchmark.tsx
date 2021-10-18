@@ -84,7 +84,7 @@ export const Benchmark: React.FC<IBenchmark> = ({
   return (
     <Container accessibilityRole="image" {...rest}>
 
-      <Indicator indicatorPosition={indicatorPosition}>
+      <Indicator testID="Indicator" indicatorPosition={indicatorPosition}>
         <IndicatorNotch />
         <IndicatorText>{indicatorLabel}</IndicatorText>
       </Indicator>
