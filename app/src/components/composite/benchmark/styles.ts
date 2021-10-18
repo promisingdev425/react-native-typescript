@@ -58,7 +58,7 @@ export const IndicatorText = styled(Text).attrs((props) => {
 export const ColorBar = styled(Box).attrs({
   height: barHeight,
 })`
-  flexdirection: row;
+  flex-direction: row;
   width: 100%;
 `
 
