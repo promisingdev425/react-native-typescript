@@ -130,7 +130,7 @@ export const DividerShape = styled(Box).attrs((props) => {
   }
 })`
   height: 100%;
-  alignself: flex-end;
+  align-self: flex-end;
 `
 
 export const DividerLabels = styled(Box).attrs({
