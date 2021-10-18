@@ -115,7 +115,7 @@ export const Dividers = styled(Box).attrs({
   top: -barHeight - 2,
 })`
   width: 100%;
-  flexdirection: row;
+  flex-direction: row;
 `
 
 export const DividerContainer = styled(Box)`
@@ -137,7 +137,7 @@ export const DividerLabels = styled(Box).attrs({
   top: -barHeight + 5,
   left: 15,
 })`
-  flexdirection: row;
+  flex-direction: row;
 `
 
 export const DividerLabel = styled(Text).attrs((props) => {
