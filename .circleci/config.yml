@@ -91,17 +91,6 @@ jobs:
       - store_artifacts:
           path: reports
       - save_dependency_cache
-  lighthouse-ci:
-    executor: node-lighthouse
-    steps:
-      - checkout
-      - install_dependencies
-      - run:
-          name: "Build Web Mock"
-          command: yarn workspace @apartmentsnapshot/snapshot-ui build:web:mock
-      - run:
-          name: "Lighthouse CI"
-          command: yarn lhci autorun
 
   # deploy-dev:
   #   executor: node
@@ -144,6 +133,18 @@ jobs:
   #         command: yarn deploy-prod
   #     - save_logs
 
+  lighthouse-ci:
+    executor: node-lighthouse
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: "Build Web Mock"
+          command: yarn workspace @apartmentsnapshot/snapshot-ui build:web:mock
+      - run:
+          name: "Lighthouse CI"
+          command: yarn lhci autorun
+
 # https://circleci.com/docs/2.0/workflows/
 workflows:
   version: 2
@@ -156,7 +157,6 @@ workflows:
             # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
             tags:
               only: /.*/
-      - lighthouse-ci
 
       # - deploy-dev:
       #     requires:
@@ -182,3 +182,5 @@ workflows:
       #         ignore: /.*/
       #       tags:
       #         only: /release\/[0-9]+(\.[0-9]+)*/
+
+      - lighthouse-ci
