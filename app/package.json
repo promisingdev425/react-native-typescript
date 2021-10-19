@@ -5,7 +5,7 @@
   "scripts": {
     "start": "yarn setup && APP_ENV=dev expo start -c",
     "start:mock": "yarn setup:mock && APP_ENV=mock expo start -c",
-    "start:mock:webstatic": "yarn build:web:mock && npx serve web-build",
+    "start:mock:webstatic": "npx serve web-build",
     "android": "yarn setup && expo start --android",
     "android:mock": "yarn setup:mock && expo start --android",
     "ios": "yarn setup && expo start --ios",
