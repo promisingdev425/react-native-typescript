@@ -1,16 +1,34 @@
-{
-  "ci": {
-    "assert": {
-      "assertions": {
-        "first-contentful-paint": ["warn", { "maxNumericValue": 4000 }],
-        "viewport": "error",
-        "resource-summary:document:size": [
-          "error",
-          { "maxNumericValue": 14000 }
-        ],
-        "resource-summary:font:count": ["warn", { "maxNumericValue": 1 }],
-        "resource-summary:third-party:count": ["warn", { "maxNumericValue": 5 }]
+[
+  {
+    "timings": [
+      {
+        "metric": "interactive",
+        "budget": 1000
+      },
+      {
+        "metric": "first-meaningful-paint",
+        "budget": 1000
       }
-    }
+    ],
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 200
+      },
+      {
+        "resourceType": "image",
+        "budget": 500
+      },
+      {
+        "resourceType": "total",
+        "budget": 500
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "total",
+        "budget": 25
+      }
+    ]
   }
-}
+]
