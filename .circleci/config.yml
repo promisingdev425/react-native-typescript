@@ -160,7 +160,7 @@ jobs:
       #     command: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
       - run:
           name: 'No traffic shaping with performance budget'
-          command: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
+          command: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath budgets/speedtest.json https://www.sitespeed.io/
 
 # https://circleci.com/docs/2.0/workflows/
 workflows:
