@@ -9,7 +9,7 @@ executors:
     working_directory: ~/apartment-snapshot
   node-lighthouse:
     docker:
-      - image: circleci/node:15.12-browsers
+      - image: cimg/node:15.12-browsers
     working_directory: ~/apartment-snapshot
 
 commands:
@@ -146,7 +146,8 @@ jobs:
           command: yarn lhci autorun
 
   speedtest:
-    machine: true
+    #machine: true
+    executor: node
     steps:
       - run: sudo modprobe ifb numifbs=1
       - run:
