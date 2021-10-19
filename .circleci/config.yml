@@ -87,6 +87,7 @@ jobs:
       - store_artifacts:
           path: reports
       - save_dependency_cache
+
   test-sitespeed:
     machine: true
     steps:
@@ -100,7 +101,7 @@ jobs:
       - run: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
 
       # No traffic shaping with performance budget
-      - run: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath budget.json https://www.sitespeed.io/
+      - run: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
 
   # deploy-dev:
   #   executor: node
@@ -156,6 +157,7 @@ workflows:
             tags:
               only: /.*/
       - test-sitespeed
+
       # - deploy-dev:
       #     requires:
       #       - test
