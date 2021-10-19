@@ -1,8 +1,6 @@
 import React from 'react'
 import { PieChart as PieChartView } from 'react-native-svg-charts'
 import range from 'lodash/range'
-import map from 'lodash/map'
-import reduce from 'lodash/reduce'
 
 import { IChart, ChartData } from '../types'
 import { Title, Text } from '../../core'
@@ -19,9 +17,10 @@ export const PieChart: React.FC<IChart> = ({
   values,
   ...rest
 }) => {
-  const max = reduce(values, (acc, value) => acc + value.value, 0)
-  const pieData = map(values, (value: ChartData) => ({
+  const max = values.reduce((acc, value) => acc + value.value, 0)
+  const pieData = values.map((value: ChartData, index) => ({
     ...value,
+    key: index,
     svg: { fill: value.color },
   }))
   const numRows = Math.ceil(values.length / 3.0)
@@ -53,9 +52,9 @@ export const PieChart: React.FC<IChart> = ({
         </Overview>
       </ChartView>
 
-      {map(range(numRows), (row) => (
+      {range(numRows).map((row) => (
         <ChartInfo key={`info-row${row}`}>
-          {map(range(3), (col) =>
+          {range(3).map((col) =>
             row * 3 + col < values.length ? (
               <Meta
                 key={`info-row${row}-col${col}`}

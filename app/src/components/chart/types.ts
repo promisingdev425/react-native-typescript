@@ -18,7 +18,6 @@ interface ICommonProps {
 }
 
 export type ChartData = {
-  key: string | number
   value: number
   label: string
   color?: string

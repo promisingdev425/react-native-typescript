@@ -16,11 +16,11 @@ describe('BarChart', function () {
           title="Bar Chart"
           gridColor="lightGray"
           values={[
-            { key: 0, value: 100, label: 'January' },
-            { key: 0, value: 120, label: 'Februray' },
-            { key: 0, value: -120, label: 'March' },
-            { key: 0, value: 130, label: 'April' },
-            { key: 0, value: 140, label: 'May' },
+            { value: 100, label: 'January' },
+            { value: 120, label: 'Februray' },
+            { value: -120, label: 'March' },
+            { value: 130, label: 'April' },
+            { value: 140, label: 'May' },
           ]}
         />
       </View>

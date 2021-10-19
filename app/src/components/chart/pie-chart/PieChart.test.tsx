@@ -8,31 +8,26 @@ import { PieChart } from './PieChart'
 
 const data = [
   {
-    key: 1,
     value: 8,
     label: 'Renewed',
     color: themes.light.colors.brandPink,
   },
   {
-    key: 2,
     value: 2,
     label: 'MTM',
     color: themes.light.colors.brandOrange,
   },
   {
-    key: 3,
     value: 1,
     label: 'Skipped',
     color: themes.light.colors.orangeOverlay,
   },
   {
-    key: 4,
     value: 8,
     label: 'Notice to vocate',
     color: themes.light.colors.textPrimary,
   },
   {
-    key: 5,
     value: 22,
     label: 'Pending',
     color: themes.light.colors.lightGray,
