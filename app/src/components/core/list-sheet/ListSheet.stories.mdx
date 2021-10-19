@@ -1,4 +1,10 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs'
+import {
+  Meta,
+  Story,
+  Canvas,
+  ArgsTable,
+  Description,
+} from '@storybook/addon-docs'
 import { View } from 'react-native'
 
 import { Icons } from '~/assets'
@@ -9,15 +15,15 @@ import { ListSheet } from './ListSheet'
   title="Components/ListSheet"
   argTypes={{
     onChange: { action: 'onChange' },
-    onChangeAfterHide: { action: 'onChange' }
+    onChangeAfterHide: { action: 'onChange' },
   }}
 />
 
 # ListSheet
 
-<Description of={ ListSheet } />
+<Description of={ListSheet} />
 
-export const Template = props => <ListSheet {...props} />
+export const Template = (props) => <ListSheet {...props} />
 
 <Canvas>
   <Story
@@ -40,12 +46,10 @@ export const Template = props => <ListSheet {...props} />
       height: 48,
       isHideAfterChoose: true,
     }}
-    decorators={[
-      (sb) => <View style={{height: 300}}>{sb()}</View>
-    ]}
+    decorators={[(sb) => <View style={{ height: 300 }}>{sb()}</View>]}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={ ListSheet } />
+<ArgsTable of={ListSheet} />

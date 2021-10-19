@@ -30,7 +30,7 @@ export interface IIconButton extends TouchableWithoutFeedbackProps {
 export const IconButton: React.FC<IIconButton> = ({
   onPress,
   icon,
-  text=null,
+  text = null,
   ...rest
 }) => (
   <Container onPress={onPress} accessibilityRole="button" {...rest}>
@@ -43,9 +43,11 @@ IconButton.propTypes = {
   onPress: PropTypes.func,
   icon: PropTypes.object.isRequired,
   text: PropTypes.string,
-  customProp: function(props, propName, componentName) {
+  customProp: function (props, propName, componentName) {
     if (!('text' in props) && !('accessibilityLabel' in props)) {
-      return new Error('If you are not providing any text, please add an accessibilityLabel.');
+      return new Error(
+        'If you are not providing any text, please add an accessibilityLabel.',
+      )
     }
   },
 }

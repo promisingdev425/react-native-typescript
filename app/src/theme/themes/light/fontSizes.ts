@@ -9,5 +9,5 @@ export default {
   label1: 13, // nope
   label2: 10, // 0
   label3: 8, // nope
-  value: 24
+  value: 24,
 }

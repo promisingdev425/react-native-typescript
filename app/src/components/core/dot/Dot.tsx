@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import { Container, DotOuter, DotInner } from './styles'
 
 export interface IDot {
-
   /**
    * The color of the dot. Allowed values are "positive" or "negative".
    */
@@ -21,7 +20,6 @@ export interface IDot {
    * but can be overridden.
    */
   accessibilityLabel?: string
-
 }
 
 /**
@@ -30,26 +28,25 @@ export interface IDot {
  */
 export const Dot: React.FC<IDot> = ({
   color,
-  hasOuterLayer=false,
-  accessibilityLabel=false,
+  hasOuterLayer = false,
+  accessibilityLabel = false,
   ...rest
 }) => {
-
   /**
    * Let's set the accessibility label based on
    * the color or a provided label
    */
   let a11yLabel
-  if(!accessibilityLabel){
-    switch(color){
-      case "positive":
-        a11yLabel = "Metric is passing"
+  if (!accessibilityLabel) {
+    switch (color) {
+      case 'positive':
+        a11yLabel = 'Metric is passing'
         break
-      case "negative":
-        a11yLabel = "Metric is failing"
+      case 'negative':
+        a11yLabel = 'Metric is failing'
         break
     }
-  }else{
+  } else {
     a11yLabel = accessibilityLabel
   }
 
@@ -58,11 +55,10 @@ export const Dot: React.FC<IDot> = ({
       {...rest}
       accessible={true}
       accessibilityRole="image"
-      accessibilityLabel={a11yLabel}>
-
+      accessibilityLabel={a11yLabel}
+    >
       {hasOuterLayer && <DotOuter testID="DotOuterLayer" color={color} />}
       <DotInner color={color} />
-
     </Container>
   )
 }

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Svg, { SvgProps, Path } from 'react-native-svg'
 interface SVGRProps {
-  title?: string;
-  titleId?: string;
+  title?: string
+  titleId?: string
 }
 
 function SvgArrow(

@@ -22,7 +22,8 @@ describe('IconButton', function () {
           onPress={handlePress}
           icon={<Icons.CircularArrow testID="IconButton" />}
           accessibilityLabel="This is the text"
-          text="This is the text" />
+          text="This is the text"
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)

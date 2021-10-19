@@ -7,15 +7,15 @@ import { getColor, getFontSize } from '~/theme'
 
 const barHeight = 28
 const borderRadius = 4
-const indicatorWidth = 48;
+const indicatorWidth = 48
 
 export const Container = styled(Box)`
   width: 100%;
 `
 
 export const Indicator = styled(Box).attrs((props) => {
-  const left = ( props.indicatorPosition * 100 ) + '%';
-  return{
+  const left = props.indicatorPosition * 100 + '%'
+  return {
     backgroundColor: getColor('black')(props),
     borderRadius: 2,
     width: indicatorWidth,
@@ -29,7 +29,7 @@ export const Indicator = styled(Box).attrs((props) => {
 `
 
 export const IndicatorNotch = styled(Box).attrs((props) => {
-  return{
+  return {
     backgroundColor: getColor('black')(props),
     width: 15,
     height: 15,
@@ -43,7 +43,7 @@ export const IndicatorNotch = styled(Box).attrs((props) => {
 `
 
 export const IndicatorText = styled(Text).attrs((props) => {
-  return{
+  return {
     color: getColor('white')(props),
     fontSize: getFontSize('h3')(props),
     textAlign: 'center',
@@ -51,19 +51,19 @@ export const IndicatorText = styled(Text).attrs((props) => {
     position: 'absolute',
     width: '100%',
     zIndex: 3,
-    fontFamilyStyle: 'style.bold'
+    fontFamilyStyle: 'style.bold',
   }
 })``
 
 export const ColorBar = styled(Box).attrs({
   height: barHeight,
 })`
-  flexDirection: row;
+  flex-direction: row;
   width: 100%;
 `
 
 export const ColorBarFail = styled(LinearGradient).attrs((props) => {
-  return{
+  return {
     colors: [getColor('clear')(props), getColor('darkRed')(props)],
     start: [0.1, 0.45],
     end: [0.9, 0.55],
@@ -73,33 +73,30 @@ export const ColorBarFail = styled(LinearGradient).attrs((props) => {
 `
 
 export const ColorBarNegative = styled(Box).attrs((props) => {
-  return{
+  return {
     backgroundColor: getColor('negative')(props),
-    width: '25%'
+    width: '25%',
   }
-})`
-`
+})``
 
 export const ColorBarWarning = styled(Box).attrs((props) => {
-  return{
+  return {
     backgroundColor: getColor('warning')(props),
-    width: '25%'
+    width: '25%',
   }
-})`
-`
+})``
 
 export const ColorBarPositive = styled(Box).attrs((props) => {
-  return{
+  return {
     backgroundColor: getColor('positive')(props),
     width: '25%',
     borderTopRightRadius: borderRadius,
     borderBottomRightRadius: borderRadius,
   }
-})`
-`
+})``
 
 export const ColorBarLabel = styled(Text).attrs((props) => {
-  return{
+  return {
     color: getColor('black')(props),
     fontSize: getFontSize('body2')(props),
     fontWeight: 'bold',
@@ -107,18 +104,18 @@ export const ColorBarLabel = styled(Text).attrs((props) => {
     width: '100%',
     top: '50%',
     position: 'absolute',
-    fontFamilyStyle: 'style.bold'
+    fontFamilyStyle: 'style.bold',
   }
 })`
-  transform: translateY(-8px)
+  transform: translateY(-8px);
 `
 
 export const Dividers = styled(Box).attrs({
-  height: barHeight+4,
-  top: -barHeight-2,
+  height: barHeight + 4,
+  top: -barHeight - 2,
 })`
   width: 100%;
-  flexDirection: row;
+  flex-direction: row;
 `
 
 export const DividerContainer = styled(Box)`
@@ -127,27 +124,27 @@ export const DividerContainer = styled(Box)`
 `
 
 export const DividerShape = styled(Box).attrs((props) => {
-  return{
+  return {
     width: 2,
     backgroundColor: getColor('black')(props),
   }
 })`
   height: 100%;
-  alignSelf: flex-end;
+  align-self: flex-end;
 `
 
 export const DividerLabels = styled(Box).attrs({
   top: -barHeight + 5,
-  left: 15
+  left: 15,
 })`
-  flexDirection: row;
+  flex-direction: row;
 `
 
 export const DividerLabel = styled(Text).attrs((props) => {
-  return{
+  return {
     color: getColor('black')(props),
     fontSize: getFontSize('body2')(props),
-    fontFamilyStyle: 'style.bold'
+    fontFamilyStyle: 'style.bold',
   }
 })`
   width: 25%;

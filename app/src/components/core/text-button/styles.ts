@@ -15,7 +15,7 @@ export const Container = styled(TouchableOpacity)<
 `
 
 export const StyledText = styled(Text).attrs((props) => {
-  return{
+  return {
     fontSize: getFontSize('body1')(props),
     color: getColor('brandPink')(props),
   }

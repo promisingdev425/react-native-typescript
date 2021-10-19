@@ -13,7 +13,11 @@ describe('Dot', function () {
       <View testID="Root">
         <Dot testID="Dot" color="positive" />
         <Dot testID="Dot1" color="negative" hasOuterLayer={true} />
-        <Dot testID="Dot2" color="black" accessibilityLabel="This is a test label" />
+        <Dot
+          testID="Dot2"
+          color="black"
+          accessibilityLabel="This is a test label"
+        />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -28,7 +32,9 @@ describe('Dot', function () {
   })
 
   it('should hide and show outer layer', () => {
-    expect(within(screen.getByTestId('Dot')).queryByTestId('DotOuterLayer')).toBeNull()
+    expect(
+      within(screen.getByTestId('Dot')).queryByTestId('DotOuterLayer'),
+    ).toBeNull()
     expect(screen.getByTestId('Dot1')).toContainElement(
       screen.getByTestId('DotOuterLayer'),
     )
@@ -47,5 +53,4 @@ describe('Dot', function () {
       screen.getByLabelText('This is a test label'),
     )
   })
-
 })
