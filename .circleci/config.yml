@@ -92,6 +92,8 @@ jobs:
       - save_dependency_cache
   lighthouse-ci:
     executor: node
+    docker:
+      - image: circleci/node:15.12-browsers
     steps:
       - checkout
       - install_dependencies
