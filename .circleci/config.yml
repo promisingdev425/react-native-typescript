@@ -80,6 +80,9 @@ jobs:
       - run:
           name: "Validate the Build"
           command: yarn validate
+      - run:
+          name: "Lighthouse CI"
+          command: lhci autorun
       - save_logs
       - store_test_results:
           path: reports/coverage
@@ -87,13 +90,6 @@ jobs:
       - store_artifacts:
           path: reports
       - save_dependency_cache
-  lighthouse:
-    executor: node
-    steps:
-      - checkout
-      - install_dependencies
-      - run: sudo npm install -g @lhci/cli@0.8.x
-      - run: lhci autorun
 
   # deploy-dev:
   #   executor: node
@@ -148,7 +144,6 @@ workflows:
             # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
             tags:
               only: /.*/
-      - lighthouse
 
       # - deploy-dev:
       #     requires:
