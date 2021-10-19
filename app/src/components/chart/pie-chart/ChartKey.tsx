@@ -6,9 +6,9 @@ import { Text, Box } from '../../core'
 import { Dot } from './styles'
 
 /**
- * `<MetaView>`
+ * `<ChartKey>`
  */
-export const MetaView: React.FC<ChartData> = ({
+export const ChartKey: React.FC<ChartData> = ({
   value,
   label,
   color,

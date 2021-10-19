@@ -6,7 +6,7 @@ import { useTheme } from '~/theme'
 import { IChart, ChartData } from '../types'
 import { Title, Text } from '../../core'
 
-import { MetaView } from './MetaView'
+import { ChartKey } from './ChartKey'
 import { Container, Overview, ChartView, ChartInfo, Meta } from './styles'
 
 /**
@@ -45,7 +45,7 @@ export const PieChart: React.FC<IChart> = ({
         />
 
         <Overview>
-          <Title variant="header" accessibilityLabel="PieChartTotalValue">
+          <Title variant="header" accessibilityLabel="Pie Chart Total Value">
             {max}
           </Title>
 
@@ -53,7 +53,7 @@ export const PieChart: React.FC<IChart> = ({
             <Text
               color="textGray"
               fontSize="body2"
-              accessibilityLabel="PieChartTitle"
+              accessibilityLabel="Pie Chart Title"
             >
               {title.toUpperCase()}
             </Text>
@@ -68,7 +68,7 @@ export const PieChart: React.FC<IChart> = ({
             key={`info-${index}`}
             accessibilityLabel="Pie Chart Factor"
           >
-            <MetaView {...value} />
+            <ChartKey {...value} />
           </Meta>
         ))}
       </ChartInfo>
