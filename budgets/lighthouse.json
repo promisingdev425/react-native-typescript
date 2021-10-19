@@ -1,31 +1,16 @@
-[
-  {
-    "path": "/*",
-    "timings": [
-      {
-        "metric": "interactive",
-        "budget": 3000
-      },
-      {
-        "metric": "first-meaningful-paint",
-        "budget": 1000
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "first-contentful-paint": ["warn", { "maxNumericValue": 4000 }],
+        "viewport": "error",
+        "resource-summary:document:size": [
+          "error",
+          { "maxNumericValue": 14000 }
+        ],
+        "resource-summary:font:count": ["warn", { "maxNumericValue": 1 }],
+        "resource-summary:third-party:count": ["warn", { "maxNumericValue": 5 }]
       }
-    ],
-    "resourceSizes": [
-      {
-        "resourceType": "script",
-        "budget": 125
-      },
-      {
-        "resourceType": "total",
-        "budget": 300
-      }
-    ],
-    "resourceCounts": [
-      {
-        "resourceType": "third-party",
-        "budget": 10
-      }
-    ]
+    }
   }
-]
+}
