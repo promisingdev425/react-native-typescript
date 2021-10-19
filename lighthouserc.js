@@ -9,5 +9,8 @@ module.exports = {
     upload: {
       target: 'temporary-public-storage',
     },
+    assert: {
+      budgetsFile: './budgets/lighthouse.json'
+    }
   },
 };
