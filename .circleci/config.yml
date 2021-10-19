@@ -7,6 +7,10 @@ executors:
     docker:
       - image: cimg/node:14.17.5-browsers
     working_directory: ~/apartment-snapshot
+  node-lighthouse:
+    docker:
+      - image: circleci/node:15.12-browsers
+    working_directory: ~/apartment-snapshot
 
 commands:
   set_deploy_key:
@@ -91,9 +95,7 @@ jobs:
           path: reports
       - save_dependency_cache
   lighthouse-ci:
-    executor: node
-    docker:
-      - image: circleci/node:15.12-browsers
+    executor: node-lighthouse
     steps:
       - checkout
       - install_dependencies
