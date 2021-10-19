@@ -146,13 +146,9 @@ jobs:
           command: yarn lhci autorun
 
   speedtest:
-    #machine: true
-    executor: node
+    machine: true
     steps:
       - run: sudo modprobe ifb numifbs=1
-      - run:
-          name: 'Build Web Mock'
-          command: yarn workspace @apartmentsnapshot/snapshot-ui build:web:mock
       - run:
           name: '3G'
           command: docker run --cap-add=NET_ADMIN --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 -c 3g --browsertime.connectivity.engine=throttle https://www.sitespeed.io/
