@@ -84,9 +84,6 @@ jobs:
       - run:
           name: "Validate the Build"
           command: yarn validate
-      - run:
-          name: "Lighthouse CI"
-          command: lhci autorun
       - save_logs
       - store_test_results:
           path: reports/coverage
