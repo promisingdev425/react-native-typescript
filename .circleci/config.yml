@@ -101,7 +101,7 @@ jobs:
       - install_dependencies
       - run:
           name: "Build Web Mock"
-          command: yarn build:web:mock
+          command: yarn workspace @apartmentsnapshot/snapshot-ui build:web:mock
       - run:
           name: "Lighthouse CI"
           command: yarn lhci autorun
