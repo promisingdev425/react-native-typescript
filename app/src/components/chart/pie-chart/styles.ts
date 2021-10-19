@@ -38,15 +38,15 @@ export const Overview = styled(Box)`
 `
 
 export const ChartInfo = styled(Box)`
-  width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `
 
 export const Meta = styled(Box).attrs({
   p: 'sm',
 })<IBox>`
-  flex: 1;
+  max-width: 130px;
 `
 
 export const Dot = styled(Box).attrs((props: IDot) => ({
