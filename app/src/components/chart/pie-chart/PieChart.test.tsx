@@ -50,16 +50,16 @@ describe('PieChart', function () {
 
   it('should render', () => {
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('PieChartTitle'),
+      screen.getByA11yLabel('Pie Chart Title'),
     )
 
     expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('PieChartTotalValue'),
+      screen.getByA11yLabel('Pie Chart TotalValue'),
     )
   })
 
   it('should include all factors', () => {
-    const factors = screen.getAllByA11yLabel('PieChartFactor')
+    const factors = screen.getAllByA11yLabel('Pie Chart Factor')
 
     expect(factors.length).toEqual(data.length)
   })
