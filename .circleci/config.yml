@@ -145,6 +145,20 @@ jobs:
           name: 'Lighthouse CI'
           command: yarn lhci autorun
 
+  speedtest:
+    machine: true
+    steps:
+      - run: sudo modprobe ifb numifbs=1
+
+      # 3G
+      - run: docker run --cap-add=NET_ADMIN --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 -c 3g --browsertime.connectivity.engine=throttle https://www.sitespeed.io/
+
+      # No Traffic shaping
+      - run: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
+
+      # No traffic shaping with performance budget
+      - run: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
+
 # https://circleci.com/docs/2.0/workflows/
 workflows:
   version: 2
@@ -184,3 +198,5 @@ workflows:
       #         only: /release\/[0-9]+(\.[0-9]+)*/
 
       - lighthouse-ci
+
+      - speedtest
