@@ -13,21 +13,21 @@
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 1000
+        "budget": 2000
       },
       {
         "resourceType": "image",
-        "budget": 1000
+        "budget": 2000
       },
       {
         "resourceType": "total",
-        "budget": 1000
+        "budget": 4000
       }
     ],
     "resourceCounts": [
       {
         "resourceType": "total",
-        "budget": 25
+        "budget": 50
       }
     ]
   }
