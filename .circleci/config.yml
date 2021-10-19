@@ -90,6 +90,14 @@ jobs:
       - store_artifacts:
           path: reports
       - save_dependency_cache
+  lighthouse-ci:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: "Lighthouse CI"
+          command: yarn lhci autorun
 
   # deploy-dev:
   #   executor: node
@@ -144,6 +152,7 @@ workflows:
             # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
             tags:
               only: /.*/
+      - lighthouse-ci
 
       # - deploy-dev:
       #     requires:
