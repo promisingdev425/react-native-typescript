@@ -9,7 +9,7 @@ executors:
     working_directory: ~/apartment-snapshot
   node-lighthouse:
     docker:
-      - image: cimg/node:16.11.1-browsers
+      - image: cimg/node:15.14.0-browsers
     working_directory: ~/apartment-snapshot
 
 commands:
