@@ -71,7 +71,7 @@ export interface IChart extends IBox, ICommonProps {
   values?: Array<ChartData>
 }
 
-export interface IPieChart extends IBox, ICommonProps {
+export interface IPieChart extends IBox {
   /**
    * The title of the chart
    */
