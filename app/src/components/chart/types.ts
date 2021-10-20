@@ -22,6 +22,10 @@ export type ChartData = {
   label: string
 }
 
+export type PieChartData = ChartData & {
+  color?: string
+}
+
 export enum ChartType {
   Bar,
   Line,
@@ -58,13 +62,28 @@ export interface IChart extends IBox, ICommonProps {
    */
   activeGridColor?: string | undefined
   /**
-   * Number array for yAxis values
+   * Number array from chart values
    */
   data?: Array<number>
   /**
    * Total chart data given by user - pair of x-label, y-values
    */
   values?: Array<ChartData>
+}
+
+export interface IPieChart extends IBox {
+  /**
+   * The title of the chart
+   */
+  title?: string
+  /**
+   * height can be a number or string to speicify chart's height
+   */
+  height?: number
+  /**
+   * Chart data given by user
+   */
+  values?: Array<PieChartData>
 }
 
 export interface IDecorator extends ICommonProps {

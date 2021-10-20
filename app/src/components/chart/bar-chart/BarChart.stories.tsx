@@ -22,11 +22,11 @@ export default {
     width: '500px',
     gridColor: 'lightGray',
     values: [
-      { value: -20, label: 'January' },
-      { value: 120, label: 'Februray' },
-      { value: 180, label: 'March' },
-      { value: 130, label: 'April' },
-      { value: 140, label: 'May' },
+      { key: 0, value: -20, label: 'January' },
+      { key: 1, value: 120, label: 'Februray' },
+      { key: 2, value: 180, label: 'March' },
+      { key: 3, value: 130, label: 'April' },
+      { key: 4, value: 140, label: 'May' },
     ],
   },
   parameters: {
