@@ -11,9 +11,9 @@ executors:
     docker:
       - image: circleci/node:15.12-browsers
     working_directory: ~/apartment-snapshot
-  speedtest:
-    machine: true
-    working_directory: ~/apartment-snapshot
+  # speedtest:
+  #   machine: true
+  #   working_directory: ~/apartment-snapshot
 
 commands:
   set_deploy_key:
@@ -148,20 +148,20 @@ jobs:
           name: 'Lighthouse CI'
           command: yarn lhci autorun
 
-  speedtest:
-    executor: speedtest
-    steps:
-      - checkout
-      - run: sudo modprobe ifb numifbs=1
-      # - run:
-      #     name: '3G'
-      #     command: docker run --cap-add=NET_ADMIN --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 -c 3g --browsertime.connectivity.engine=throttle https://www.sitespeed.io/
-      # - run:
-      #     name: 'No Traffic shaping'
-      #     command: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
-      - run:
-          name: 'No traffic shaping with performance budget'
-          command: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
+  # speedtest:
+  #   executor: speedtest
+  #   steps:
+  #     - checkout
+  #     - run: sudo modprobe ifb numifbs=1
+  #     - run:
+  #         name: '3G'
+  #         command: docker run --cap-add=NET_ADMIN --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 -c 3g --browsertime.connectivity.engine=throttle https://www.sitespeed.io/
+  #     - run:
+  #         name: 'No Traffic shaping'
+  #         command: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
+  #     - run:
+  #         name: 'No traffic shaping with performance budget'
+  #         command: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
 
 # https://circleci.com/docs/2.0/workflows/
 workflows:
@@ -203,4 +203,4 @@ workflows:
 
       - lighthouse-ci
 
-      - speedtest
+      # - speedtest
