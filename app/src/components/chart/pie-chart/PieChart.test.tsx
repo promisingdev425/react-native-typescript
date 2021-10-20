@@ -6,6 +6,8 @@ import { themes } from '~/theme'
 
 import { PieChart } from './PieChart'
 
+const chartTitle = 'Lease expirations'
+
 const data = [
   {
     value: 8,
@@ -40,7 +42,7 @@ describe('PieChart', function () {
   beforeEach(() => {
     const InnerScreen = () => (
       <View testID="Root">
-        <PieChart testID="PieChart" values={data} title="Lease expirations" />
+        <PieChart testID="PieChart" values={data} title={chartTitle} />
       </View>
     )
     const Themed = withTheme(InnerScreen)
@@ -48,18 +50,23 @@ describe('PieChart', function () {
     screen = render(<Themed />)
   })
 
-  it('should render', () => {
-    expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('Pie Chart Title'),
-    )
+  it('should render title', () => {
+    const titleComp = screen.getByA11yLabel('Pie Chart Title')
+    expect(screen.getByTestId('Root')).toContainElement(titleComp)
 
-    expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('Pie Chart TotalValue'),
-    )
+    expect(titleComp.props.children).toBe(chartTitle.toUpperCase())
+  })
+
+  it('should render total', () => {
+    const totalValueComp = screen.getByA11yLabel('Pie Chart Total Value')
+    expect(screen.getByTestId('Root')).toContainElement(totalValueComp)
+
+    const sum = data.reduce((acc, value) => acc + value.value, 0)
+    expect(totalValueComp.props.children).toBe(sum)
   })
 
   it('should include all factors', () => {
-    const factors = screen.getAllByA11yLabel('Pie Chart Factor')
+    const factors = screen.getAllByA11yLabel('Pie Chart Range Value')
 
     expect(factors.length).toEqual(data.length)
   })

@@ -66,7 +66,7 @@ export const PieChart: React.FC<IChart> = ({
           <Meta
             width={(containerWidth - theme.space.sm * 2) / 3}
             key={`info-${index}`}
-            accessibilityLabel="Pie Chart Factor"
+            accessibilityLabel="Pie Chart Range Value"
           >
             <ChartKey {...value} />
           </Meta>
