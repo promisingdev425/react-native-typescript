@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ChartData } from '../types'
+import { PieChartData } from '../types'
 import { Text, Box } from '../../core'
 
 import { Dot } from './styles'
@@ -8,7 +8,7 @@ import { Dot } from './styles'
 /**
  * `<ChartKey>`
  */
-export const ChartKey: React.FC<ChartData> = ({
+export const ChartKey: React.FC<PieChartData> = ({
   value,
   label,
   color,

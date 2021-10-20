@@ -20,6 +20,9 @@ interface ICommonProps {
 export type ChartData = {
   value: number
   label: string
+}
+
+export type PieChartData = ChartData & {
   color?: string
 }
 
@@ -59,7 +62,7 @@ export interface IChart extends IBox, ICommonProps {
    */
   activeGridColor?: string | undefined
   /**
-   * Number array for yAxis values
+   * Number array from chart values
    */
   data?: Array<number>
   /**
@@ -68,9 +71,20 @@ export interface IChart extends IBox, ICommonProps {
   values?: Array<ChartData>
 }
 
-// export interface IPieChart extends IChart {
-//   overview
-// }
+export interface IPieChart extends IBox, ICommonProps {
+  /**
+   * The title of the chart
+   */
+  title?: string
+  /**
+   * height can be a number or string to speicify chart's height
+   */
+  height?: number
+  /**
+   * Chart data given by user
+   */
+  values?: Array<PieChartData>
+}
 
 export interface IDecorator extends ICommonProps {
   radius?: number

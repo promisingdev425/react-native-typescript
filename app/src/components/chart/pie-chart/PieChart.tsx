@@ -3,7 +3,7 @@ import { LayoutChangeEvent } from 'react-native'
 import { PieChart as PieChartView } from 'react-native-svg-charts'
 import { useTheme } from '~/theme'
 
-import { IChart, ChartData } from '../types'
+import { IPieChart, PieChartData } from '../types'
 import { Title, Text } from '../../core'
 
 import { ChartKey } from './ChartKey'
@@ -12,7 +12,7 @@ import { Container, Overview, ChartView, ChartInfo, Meta } from './styles'
 /**
  * `<PieChart>`
  */
-export const PieChart: React.FC<IChart> = ({
+export const PieChart: React.FC<IPieChart> = ({
   title,
   height = 250,
   values,
@@ -23,7 +23,7 @@ export const PieChart: React.FC<IChart> = ({
     theme.metrics.screenWidth,
   )
   const max = values.reduce((acc, value) => acc + value.value, 0)
-  const pieData = values.map((value: ChartData, index) => ({
+  const pieData = values.map((value: PieChartData, index) => ({
     ...value,
     key: index,
     svg: { fill: value.color },
@@ -62,7 +62,7 @@ export const PieChart: React.FC<IChart> = ({
       </ChartView>
 
       <ChartInfo>
-        {values.map((value: ChartData, index: number) => (
+        {values.map((value: PieChartData, index: number) => (
           <Meta
             width={(containerWidth - theme.space.sm * 2) / 3}
             key={`info-${index}`}
