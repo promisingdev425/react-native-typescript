@@ -23,6 +23,9 @@ if (parameters) {
 const getStories=() => {
   return [
 		require("../../app/src/assets/Assets.stories.native.tsx"), 
+		require("../../app/src/components/chart/bar-chart/BarChart.stories.tsx"), 
+		require("../../app/src/components/chart/line-chart/LineChart.stories.tsx"), 
+		require("../../app/src/components/chart/pie-chart/PieChart.stories.tsx"), 
 		require("../../app/src/components/composite/app-bar/AppBar.stories.js"), 
 		require("../../app/src/components/composite/benchmark/Benchmark.stories.tsx"), 
 		require("../../app/src/components/composite/date-select/DateSelect.stories.js"), 

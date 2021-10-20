@@ -23,16 +23,13 @@ export const DotOuter = styled(Box).attrs(({ color }: DotProps) => {
   }
 })<DotProps>``
 
-export const DotInner = styled(Box).attrs(({ color }: DotProps) => {
-  const scale = 3
-  return {
-    ml: 'xxs',
-    width: innerDotSize,
-    height: innerDotSize,
-    borderRadius: innerDotSize / 2,
-    backgroundColor: color,
-    position: 'absolute',
-    left: (dotSize - innerDotSize) / 2,
-    top: (dotSize - innerDotSize) / 2,
-  }
-})<DotProps>``
+export const DotInner = styled(Box).attrs(({ color }: DotProps) => ({
+  ml: 'xxs',
+  width: innerDotSize,
+  height: innerDotSize,
+  borderRadius: innerDotSize / 2,
+  backgroundColor: color,
+  position: 'absolute',
+  left: (dotSize - innerDotSize) / 2,
+  top: (dotSize - innerDotSize) / 2,
+}))<DotProps>``
