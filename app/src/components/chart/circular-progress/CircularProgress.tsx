@@ -21,6 +21,7 @@ export const CircularProgress: React.FC<ICircularProgress> = ({
   ...rest
 }) => {
   const { colors } = useTheme()
+  const percent = `${progress * 100} %`
 
   /* istanbul ignore next */
   const GradientFill = () => (
@@ -39,7 +40,7 @@ export const CircularProgress: React.FC<ICircularProgress> = ({
   )
 
   return (
-    <Container width={width} isFull={isFull}>
+    <Container width={width} isFull={isFull} {...rest}>
       <ChartView>
         <ProgressCircle
           style={{ width: Number(width), height: Number(width) }}
@@ -61,7 +62,7 @@ export const CircularProgress: React.FC<ICircularProgress> = ({
           accessibilityLabel="Progress Percentage"
           mt={isFull ? 0 : 'lg'}
         >
-          {progress * 100} %
+          {percent}
         </Title>
       </Overview>
     </Container>

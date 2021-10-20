@@ -5,7 +5,7 @@ import { centered } from '~/storybook-utils'
 import { CircularProgress } from './CircularProgress'
 
 export default {
-  title: 'Components/CircularProgress',
+  title: 'Components/Charts/CircularProgress',
   component: CircularProgress,
   // You can use argTypes to further customize the controls
   // in the storybook if you need.
