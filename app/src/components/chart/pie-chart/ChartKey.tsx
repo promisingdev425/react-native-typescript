@@ -19,7 +19,11 @@ export const ChartKey: React.FC<ChartData> = ({
       <Dot size={8} background={color} />
 
       <Box ml="xxs">
-        <Text fontSize="value" textAlign="left">
+        <Text
+          fontSize="value"
+          textAlign="left"
+          accessibilityLabel="Pie Chart Range Value"
+        >
           {value}
         </Text>
         <Text fontSize="body2" color="textGray">

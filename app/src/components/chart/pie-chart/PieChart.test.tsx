@@ -67,6 +67,9 @@ describe('PieChart', function () {
 
   it('should include all factors', () => {
     const factors = screen.getAllByA11yLabel('Pie Chart Range Value')
+    factors.forEach((factor, index) => {
+      expect(factor.props.children).toBe(data[index].value)
+    })
 
     expect(factors.length).toEqual(data.length)
   })
