@@ -40,7 +40,7 @@ export const CircularProgress: React.FC<ICircularProgress> = ({
   )
 
   return (
-    <Container width={width} isFull={isFull} {...rest}>
+    <Container width={width} isFull={isFull}>
       <ChartView>
         <ProgressCircle
           style={{ width: Number(width), height: Number(width) }}

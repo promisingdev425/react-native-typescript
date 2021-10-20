@@ -31,18 +31,14 @@ describe('CircularProgress', function () {
   })
 
   it('should render progress components', () => {
-    expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('Full Circular Progress'),
-    )
-    expect(screen.getByTestId('Root')).toContainElement(
-      screen.getByA11yLabel('Semi Circular Progress'),
-    )
+    const percentComp = screen.getAllByA11yLabel('Progress Percentage')
+
+    expect(screen.getByTestId('Root')).toContainElement(percentComp[0])
+    expect(screen.getByTestId('Root')).toContainElement(percentComp[1])
   })
 
   it('should render progress percentage', () => {
     const percentComp = screen.getAllByA11yLabel('Progress Percentage')
-    expect(screen.getByTestId('Root')).toContainElement(percentComp[0])
-    expect(screen.getByTestId('Root')).toContainElement(percentComp[1])
 
     expect(percentComp[0].props.children).toBe(`${fullPercent * 100} %`)
     expect(percentComp[1].props.children).toBe(`${halfPercent * 100} %`)
