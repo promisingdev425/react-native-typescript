@@ -109,7 +109,7 @@ export interface ICircularProgress extends IBox, ProgressData {
    */
   activeColor?: string
   /**
-   * Progress color
+   * The background color behind the active color
    */
   backgroundColor?: string
 }
