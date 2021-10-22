@@ -26,6 +26,10 @@ export type PieChartData = ChartData & {
   color?: string
 }
 
+export type ProgressData = {
+  progress: number
+}
+
 export enum ChartType {
   Bar,
   Line,
@@ -84,6 +88,30 @@ export interface IPieChart extends IBox {
    * Chart data given by user
    */
   values?: Array<PieChartData>
+}
+
+export interface ICircularProgress extends IBox, ProgressData {
+  /**
+   * height can be a number or string to speicify progress's width
+   */
+  width?: number
+  /**
+   * If `isFull` is true, it should render full circlular progress
+   * If `isFull` is false, it should render semi circlular progress
+   */
+  isFull?: boolean
+  /**
+   * Progress stroke(thick) width
+   */
+  strokeWidth?: number
+  /**
+   * Progress color
+   */
+  activeColor?: string
+  /**
+   * The background color behind the active color
+   */
+  backgroundColor?: string
 }
 
 export interface IDecorator extends ICommonProps {
