@@ -9,7 +9,7 @@ executors:
     working_directory: ~/apartment-snapshot
   node-lighthouse:
     docker:
-      - image: cimg/node:15.12-browsers
+      - image: circleci/node:15.12-browsers
     working_directory: ~/apartment-snapshot
   # speedtest:
   #   machine: true
@@ -141,6 +141,9 @@ jobs:
     steps:
       - checkout
       - install_dependencies
+      - run:
+          name: 'chmod chromedriver'
+          command: chmod +x /usr/local/bin/chromedriver
       - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
