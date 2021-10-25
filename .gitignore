@@ -15,5 +15,8 @@ storybook.requires.js
 reports
 .vscode
 
+# other
+.lighthouseci
+
 # macOS
 .DS_Store

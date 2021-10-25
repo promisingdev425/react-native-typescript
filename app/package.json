@@ -41,7 +41,8 @@
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci",
     "download-report-schema": "gq https://hasura-ltqs5ytkqa-uc.a.run.app/v1/graphql -H 'X-Hasura-Admin-Secret: CW7yh4nHSorj' --introspect > ./src/graphql-report-schema.graphql",
-    "postinstall": "expo-yarn-workspaces postinstall && cd .. && yarn postinstall"
+    "postinstall": "expo-yarn-workspaces postinstall && cd .. && yarn postinstall",
+    "lighthouse": "yarn build:web:mock && yarn lhci autorun"
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
