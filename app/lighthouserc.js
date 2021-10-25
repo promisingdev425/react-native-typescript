@@ -8,8 +8,8 @@ module.exports = {
       url: ['http://localhost:5000'],
     },
     upload: {
-      target: 'filesystem',
-      outputDir: '../reports/lighthouse',
+      target: 'temporary-public-storage', //'filesystem',
+      //outputDir: '../reports/lighthouse',
     },
     assert: {
       budgetsFile: '../budgets/lighthouse.json',
