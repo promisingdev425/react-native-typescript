@@ -19,7 +19,7 @@ module.exports = {
        * So this gives you a temporary url.
        * Otherwise we should always use 'filesystem' to store results
        */
-      target: 'temporary-public-storage',
+      target: 'filesystem',
       outputDir: '../reports/lighthouse',
     },
     assert: {
