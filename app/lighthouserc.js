@@ -7,9 +7,8 @@ module.exports = {
         'yarn workspace @apartmentsnapshot/snapshot-ui serve:web',
       url: ['http://localhost:5000'],
       settings: {
-        //throttlingMethod: 'devtools',
         throttling: {
-          cpuSlowdownMultiplier: 9,
+          cpuSlowdownMultiplier: 3,
         },
       },
     },
