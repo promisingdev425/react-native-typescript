@@ -8,13 +8,13 @@ module.exports = {
       url: ['http://localhost:5000'],
       settings: {
         throttling: {
-          cpuSlowdownMultiplier: 6,
+          cpuSlowdownMultiplier: 1,
         },
       },
     },
     upload: {
-      target: 'temporary-public-storage', //'filesystem',
-      //outputDir: '../reports/lighthouse',
+      target: 'filesystem',
+      outputDir: '../reports/lighthouse',
     },
     assert: {
       budgetsFile: '../budgets/lighthouse.json',
