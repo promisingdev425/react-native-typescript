@@ -10,10 +10,6 @@ executors:
     docker:
       - image: cimg/node:14.17.5-browsers
     working_directory: ~/apartment-snapshot
-  node-lighthouse:
-    docker:
-      - image: cimg/node:14.17.5-browsers
-    working_directory: ~/apartment-snapshot
   # speedtest:
   #   machine: true
   #   working_directory: ~/apartment-snapshot
@@ -140,20 +136,12 @@ jobs:
   #     - save_logs
 
   lighthouse-ci:
-    executor: node-lighthouse
+    executor: node
     steps:
       - checkout
       - install_dependencies
       - browser-tools/install-browser-tools:
           chrome-version: 85.0.4183.102
-          firefox-version: 80.0.1
-      - run:
-          command: |
-            google-chrome --version
-            firefox --version
-            geckodriver --version
-            chromedriver --version
-            java -jar /usr/local/bin/selenium.jar --version
       - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
