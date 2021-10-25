@@ -2,6 +2,9 @@
 # https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
+
 executors:
   node:
     docker:
@@ -141,15 +144,16 @@ jobs:
     steps:
       - checkout
       - install_dependencies
+      - browser-tools/install-browser-tools:
+          chrome-version: 85.0.4183.102
+          firefox-version: 80.0.1
       - run:
-          name: 'test'
           command: |
-            ls /usr/bin && ls /usr/local/bin
-      - run:
-          name: 'Symbolic Link chromedriver to usr/local/bin'
-          command: |
-            npm install chromedriver
-            sudo ln -sf node_modules/chromedriver/lib/chromedriver/chromedriver /usr/local/bin
+            google-chrome --version
+            firefox --version
+            geckodriver --version
+            chromedriver --version
+            java -jar /usr/local/bin/selenium.jar --version
       - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
