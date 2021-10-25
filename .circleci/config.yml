@@ -148,8 +148,8 @@ jobs:
       - run:
           name: 'Symbolic Link chromedriver to usr/local/bin'
           command: |
-            sudo npm -g install chromedriver
-            sudo ln -sf /usr/lib/node_modules/chromedriver/lib/chromedriver/chromedriver /usr/local/bin
+            npm install chromedriver
+            sudo ln -sf node_modules/chromedriver/lib/chromedriver/chromedriver /usr/local/bin
       - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
