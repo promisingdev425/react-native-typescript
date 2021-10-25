@@ -6,6 +6,14 @@ module.exports = {
       startServerCommand:
         'yarn workspace @apartmentsnapshot/snapshot-ui serve:web',
       url: ['http://localhost:5000'],
+      settings: {
+        emulatedFormFactor: 'desktop',
+        throttling: {
+          rttMs: 40,
+          throughputKbps: 10 * 1024,
+          cpuSlowdownMultiplier: 1,
+        },
+      },
     },
     upload: {
       target: 'temporary-public-storage', //'filesystem',

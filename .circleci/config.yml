@@ -143,7 +143,7 @@ jobs:
       - install_dependencies
       - run:
           name: 'Build and Run Lighthouse'
-          command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse --throttling.cpuSlowdownMultiplier=6
+          command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
 
   # speedtest:
   #   executor: speedtest
