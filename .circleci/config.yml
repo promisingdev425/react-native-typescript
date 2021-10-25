@@ -140,6 +140,7 @@ jobs:
     steps:
       - checkout
       - install_dependencies
+      # https://discuss.circleci.com/t/next-gen-convenience-image-browsers-variant-beta/37794
       - browser-tools/install-browser-tools:
           chrome-version: 85.0.4183.102
       - run:
