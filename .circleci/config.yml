@@ -143,7 +143,10 @@ jobs:
       - install_dependencies
       - run:
           name: 'test'
-          command: ls /usr/bin && ls /usr/local/bin
+          command: |
+            ls /usr/bin && ls /usr/local/bin
+            google-chrome --version
+            chromedriver --version
       # - run:
       #     name: 'Symbolic Link chromedriver to usr/local/bin'
       #     command: sudo ln -s /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 /usr/local/bin/
