@@ -142,6 +142,9 @@ jobs:
       - checkout
       - install_dependencies
       - run:
+          name: 'test'
+          command: 'ls /usr/bin && ls /usr/local/bin'
+      - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
 
