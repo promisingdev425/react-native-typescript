@@ -8,7 +8,7 @@ module.exports = {
       url: ['http://localhost:5000'],
       settings: {
         throttling: {
-          cpuSlowdownMultiplier: 1,
+          cpuSlowdownMultiplier: 6,
         },
       },
     },
