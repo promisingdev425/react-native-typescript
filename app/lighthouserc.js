@@ -13,12 +13,6 @@ module.exports = {
       },
     },
     upload: {
-      /*
-       * Only use 'temporary-public-storage' for troubleshooting on CircleCI
-       * You can't see the results within CircleCI.
-       * So this gives you a temporary url.
-       * Otherwise we should always use 'filesystem' to store results
-       */
       target: 'filesystem',
       outputDir: '../reports/lighthouse',
     },
