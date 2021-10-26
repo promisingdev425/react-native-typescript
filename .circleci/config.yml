@@ -146,6 +146,8 @@ jobs:
       - run:
           name: 'Build and Run Lighthouse'
           command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
+      - store_artifacts:
+          path: reports/lighthouse
 
   # speedtest:
   #   executor: speedtest
