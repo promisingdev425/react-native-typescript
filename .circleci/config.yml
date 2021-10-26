@@ -2,11 +2,17 @@
 # https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
+
 executors:
   node:
     docker:
       - image: cimg/node:14.17.5-browsers
     working_directory: ~/apartment-snapshot
+  # speedtest:
+  #   machine: true
+  #   working_directory: ~/apartment-snapshot
 
 commands:
   set_deploy_key:
@@ -45,12 +51,12 @@ commands:
             - << parameters.cache_id >>-streetwise-{{ checksum "yarn.lock" }}-{{ checksum ".nvmrc" }}
             - << parameters.cache_id >>-streetwise-
       - run:
-          name: "Install Dependencies"
+          name: 'Install Dependencies'
           command: |
             yarn install
 
   save_dependency_cache:
-    description: "Caching Dependencies"
+    description: 'Caching Dependencies'
     parameters:
       cache_id:
         type: string
@@ -78,7 +84,7 @@ jobs:
       - checkout
       - install_dependencies
       - run:
-          name: "Validate the Build"
+          name: 'Validate the Build'
           command: yarn validate
       - save_logs
       - store_test_results:
@@ -107,7 +113,7 @@ jobs:
     steps:
       - set_deploy_key
       - run:
-          name: "Ensure Correct Node Path"
+          name: 'Ensure Correct Node Path'
           command: npm config set scripts-prepend-node-path auto
       - checkout
       - install_dependencies
@@ -128,6 +134,35 @@ jobs:
   #         name: "Deploy to Prod"
   #         command: yarn deploy-prod
   #     - save_logs
+
+  lighthouse-ci:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      # https://discuss.circleci.com/t/next-gen-convenience-image-browsers-variant-beta/37794
+      - browser-tools/install-browser-tools:
+          chrome-version: 85.0.4183.102
+      - run:
+          name: 'Build and Run Lighthouse'
+          command: yarn workspace @apartmentsnapshot/snapshot-ui lighthouse
+      - store_artifacts:
+          path: reports/lighthouse
+
+  # speedtest:
+  #   executor: speedtest
+  #   steps:
+  #     - checkout
+  #     - run: sudo modprobe ifb numifbs=1
+  #     - run:
+  #         name: '3G'
+  #         command: docker run --cap-add=NET_ADMIN --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 -c 3g --browsertime.connectivity.engine=throttle https://www.sitespeed.io/
+  #     - run:
+  #         name: 'No Traffic shaping'
+  #         command: docker run --shm-size=1g --rm sitespeedio/sitespeed.io:20.2.0 https://www.sitespeed.io/
+  #     - run:
+  #         name: 'No traffic shaping with performance budget'
+  #         command: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:20.2.0 -n 3 --budget.configPath ./budgets/speedtest.json https://www.sitespeed.io/
 
 # https://circleci.com/docs/2.0/workflows/
 workflows:
@@ -166,3 +201,13 @@ workflows:
       #         ignore: /.*/
       #       tags:
       #         only: /release\/[0-9]+(\.[0-9]+)*/
+
+      - lighthouse-ci:
+          filters:
+            branches:
+              ignore: gh-pages
+            # https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
+            tags:
+              only: /.*/
+
+      # - speedtest

@@ -5,3 +5,6 @@ storybook-static
 web-build
 dist
 docs
+
+# other
+.lighthouseci
